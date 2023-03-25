@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="VOA" id="1A098290-3ED5-FFC2-E9D7-17C4458E38A1" version="3.5">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:35:47 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>1A098290-3ED5-FFC2-E9D7-17C4458E38A1</designId>
+</OSDM_Design>

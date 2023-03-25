@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="7CECC6B5-C36B-688A-FF17-E840133E3B85" name="Orders">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 21:27:46 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Order_ID" id="606007EF-8058-1F84-18C3-3E02E6E2DD88">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 21:27:52 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique order id.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<ownDataTypeParameters>,8,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Order_Date" id="BC3F4768-4D4A-ED3E-36E9-7F6BC48528CE">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 21:28:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[Order date.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Quantity" id="7B39C373-55A0-ADD2-3BEA-E475203E865A">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 21:29:13 UTC</createdTime>
+<commentInRDBMS><![CDATA[Item quantity in order. (Unit: 1)]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="D2B1A3F3-5A62-2D73-D52A-7ADBF8341164" name="Orders PK">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 21:28:22 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>606007EF-8058-1F84-18C3-3E02E6E2DD88</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
