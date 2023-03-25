@@ -1,0 +1,157 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C869FAC6-4963-7019-C2A9-C6D1B9A8A243" name="Visitors">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:36:23 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Visitor_ID" id="069BB3ED-AA89-EE37-4932-365D6AAA92B6">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:37:16 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Visitor ID.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Fname" id="89459732-24E6-8831-4BF3-CB70BCC23368">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:38:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[First name of visitor]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Lname" id="EDC1913E-A2EF-AB9E-BAEB-814FDC239F8F">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:39:33 UTC</createdTime>
+<commentInRDBMS><![CDATA[Last name of visitor]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="City" id="628C0D91-1E31-BCF5-A252-8E40A5F19E97">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:42:23 UTC</createdTime>
+<commentInRDBMS><![CDATA[The city of visitor.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Email" id="29D8C581-F58C-588D-500F-291018B6FA8C">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:42:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[The email of visitor]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Cell_Number" id="0F13B0B7-8C7D-6187-24B3-A37CDBB23C91">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:43:19 UTC</createdTime>
+<commentInRDBMS><![CDATA[The cell phone number of visitor.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Birthdate" id="750E4ECE-8DFA-D07E-E987-29F0BE714838">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:44:29 UTC</createdTime>
+<commentInRDBMS><![CDATA[The birthdate of the visitor.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Visitor_Type" id="9D30ADB8-CA55-ED3D-5D17-83F294CBCA71">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:45:34 UTC</createdTime>
+<commentInRDBMS><![CDATA[The visitor type.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Visit_Date" id="C505D375-14A7-A69F-9F1F-4A1966CC0517">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:46:26 UTC</createdTime>
+<commentInRDBMS><![CDATA[Last visit date of the visitor.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="8ABE8A87-D919-5857-5C94-6E212A637204" name="Visitors PK">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-25 20:38:08 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>069BB3ED-AA89-EE37-4932-365D6AAA92B6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
