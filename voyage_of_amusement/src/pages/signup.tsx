@@ -10,6 +10,7 @@ const Signup: React.FC = () => {
   const [lastName, setLastName] = useState('')
   const [currentImage, setCurrentImage] = useState(0);
   const [showProcess, setShowProcess] = useState(false)
+  const [showDone, setShowDone] = useState(false)
   const imagePaths = ['/asset_img/1.jpg', '/asset_img/2.jpg', '/asset_img/3.jpg', '/asset_img/4.jpg', '/asset_img/5.jpg'];
 
   const handleFocus = (labelId) => {
@@ -33,7 +34,7 @@ const Signup: React.FC = () => {
   }
 
   useEffect(() => {
-
+   
     let count = 1
     const intervalId = setInterval(() => {
       // img.classList.add('w-0')
@@ -57,10 +58,15 @@ const Signup: React.FC = () => {
     return () => { clearInterval(intervalId) };
 
   }, []);
+ 
+  
 
-  const handleSignUp = () => {
+  const handleSignUp = async() => {
     console.log('signing up')
     setShowProcess(true)
+    await delay(3000)
+    setShowProcess(false)
+    setShowDone(true)
   }
 
   return (
@@ -83,7 +89,7 @@ const Signup: React.FC = () => {
 
             <h1 className="text-2xl font-bold mb-4">Sign up</h1>
 
-            {showProcess == false &&
+            {showProcess == false && showDone == false && 
               <>
                 <p className="text-gray-500 mb-4">
                   Create a new account to access all the features of our app.
@@ -161,6 +167,15 @@ const Signup: React.FC = () => {
                   <span className="sr-only">Loading...</span>
                 </div>
               </div>
+            </>}
+
+            {showDone && <>
+              <h3 className="text-gray-500 mb-4">
+                 You are all set!
+                </h3>
+                <p className="text-gray-500 mb-4">
+                 You will be redirect to your profile in 3 seconds, or you can go back to home page 
+                </p>
             </>}
 
 
