@@ -60,9 +60,9 @@ const Signup: React.FC = () => {
 
 
   return (
-    <>
+    <div className='mt-5 flex items-center justify-center rounded-lg'>
 
-      <div className=' flex justify-center items-center bg-slate-50 p-5 '>
+      <div className=' flex justify-center items-center bg-slate-50 p-5 w-4/5'>
 
         <div className={`cus_max_75vh flex flex-grow w-1/2 max-h-min`} >
           <img src={imagePaths[0]} id="rotate_img0" alt="Slider Image" className=" transition-all duration-500 object-cover rounded-lg transition-all ease-in-out" />
@@ -144,7 +144,7 @@ const Signup: React.FC = () => {
         </div>
       </div>
 
-    </>
+    </div>
   );
 };
 
