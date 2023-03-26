@@ -31,44 +31,49 @@ const Signup: React.FC = () => {
     // event.target.classList.remove('border-4')
   }
 
+  useEffect(() => {
+    let count = 0
+    const intervalId = setInterval(() => {
+      // img.classList.add('w-0')
+      const img = document.getElementById(`rotate_img${count-1}`)
+      let newImg = document.getElementById(`rotate_img${count}`)
+      if(!newImg) {
+        newImg = document.getElementById(`rotate_img${0}`)
+      }
+      console.log(img, newImg)
+    console.log(img)
+      img?.classList.add('opacity-0')
+      img?.classList.add('w-0')
+      newImg?.classList.remove('opacity-0')
+      newImg?.classList.remove('w-0')
+      count = ((count+1)% (imagePaths.length+1))
+
+      // setCurrentImage(currentImage => (currentImage + 1) % imagePaths.length);
+      console.log(count-1, count)
+    }, 5000);
+    
+    
+    // img.classList.remove('w-0')
+    
+    return () => {clearInterval(intervalId)};
+  }, []);
 
 
   return (
     <>
     
-      <div id="default-carousel" className="relative w-full" data-carousel="slide">
-
-        <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
-
-          <div className=" duration-700 ease-in-out" data-carousel-item>
-            <img src="/asset_img/1.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-          </div>
-
-          <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/asset_img/2.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-          </div>
-
-          <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/asset_img/3.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-          </div>
-
-          <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/asset_img/4.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-          </div>
-
-          <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/asset_img/5.jpg" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
-          </div>
-        </div>
-
-      </div>
       <div className=' flex justify-center items-center bg-slate-50 p-5 '>
+        
         <div className={`cus_max_75vh flex flex-grow w-1/2 max-h-min`} >
-
-
-          {/* <img src={imagePaths[currentImage]} id="rotate_img" alt="Slider Image" className=" object-cover rounded-lg  transition-all" /> */}
+          <img src={imagePaths[0]} id="rotate_img0" alt="Slider Image" className=" transition-all duration-500 object-cover rounded-lg transition-all ease-in-out" />
+          <img src={imagePaths[1]} id="rotate_img1" alt="Slider Image" className=" opacity-0 w-0 transition-all duration-500 object-cover rounded-lg transition-width ease-in-out" />
+          <img src={imagePaths[2]} id="rotate_img2" alt="Slider Image" className=" opacity-0 w-0 transition-all duration-500 object-cover rounded-lg transition-width ease-in-out" />
+          <img src={imagePaths[3]} id="rotate_img3" alt="Slider Image" className=" opacity-0 w-0 transition-all duration-500 object-cover rounded-lg transition-width ease-in-out" />
+          <img src={imagePaths[4]} id="rotate_img4" alt="Slider Image" className=" opacity-0 w-0 transition-all duration-500 object-cover rounded-lg transition-width ease-in-out" />
+          {/* <img src={imagePaths[1]} id="rotate_img1" alt="Slider Image" className=" opacity-0 w-0 transition-all duration-500 object-cover rounded-lg transition-all" /> */}
         </div>
 
+        
         <div className="flex flex-col items-center mt-4 w-1/2">
           <div className='border-4 border-slate-50  px-5 py-5 mt-5'>
 

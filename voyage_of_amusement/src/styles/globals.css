@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+.cus_max_75vh{
+  max-height: 75vh ;
+}
