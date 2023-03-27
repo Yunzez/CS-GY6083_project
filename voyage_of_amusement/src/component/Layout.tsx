@@ -9,8 +9,8 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <div>
-      <Navbar />
+    <div >
+      <Navbar className='w-100'/>
       {children}
       <Footer/>
     </div>

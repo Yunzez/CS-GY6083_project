@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useAppContext } from '@/contexts/GlobaclContext'
 import Image from 'next/image'
 import Button from '@/component/Button';
+import { useRouter } from 'next/router';
 const Signup: React.FC = () => {
   const delay = ms => new Promise(res => setTimeout(res, ms));
-
+  const router = useRouter();
   const { isLoggedIn } = useAppContext();
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -67,6 +68,9 @@ const Signup: React.FC = () => {
     await delay(3000)
     setShowProcess(false)
     setShowDone(true)
+
+    // await delay(3000)
+    // router.push('/')
   }
 
   return (
@@ -87,10 +91,11 @@ const Signup: React.FC = () => {
         <div className="flex flex-col items-center mt-4 w-1/2">
           <div className='border-4 border-slate-50  px-5 py-5 mt-5'>
 
-            <h1 className="text-2xl font-bold mb-4">Sign up</h1>
+            
 
             {showProcess == false && showDone == false && 
               <>
+              <h1 className="text-2xl font-bold mb-4">Sign up</h1>
                 <p className="text-gray-500 mb-4">
                   Create a new account to access all the features of our app.
                 </p>
@@ -170,11 +175,11 @@ const Signup: React.FC = () => {
             </>}
 
             {showDone && <>
-              <h3 className="text-gray-500 mb-4">
+              <h3 className="text-4xl flex justify-center font-bold mb-4">
                  You are all set!
                 </h3>
                 <p className="text-gray-500 mb-4">
-                 You will be redirect to your profile in 3 seconds, or you can go back to home page 
+                 You will be redirect to  home page in 3 seconds, view my <b>user profile</b>
                 </p>
             </>}
 

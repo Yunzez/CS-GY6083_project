@@ -27,8 +27,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col  mb-5  bottom-0 pb-16">
-      <div className="relative h-80 sm:h-96 mb-5">
+    <div className="flex flex-col  mb-5  bottom-0 pb-16 w-full">
+      <div className="relative h-80 mb-5">
         <Image
           src={imagePaths[currentImage]}
           layout="fill"
@@ -36,7 +36,6 @@ export default function Home() {
           objectPosition="center"
           alt="Coursal Image"
         />
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black"></div>
         <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to Our Amusement Park</h1>
           <p className="text-xl md:text-2xl font-medium text-center max-w-3xl mb-8">
