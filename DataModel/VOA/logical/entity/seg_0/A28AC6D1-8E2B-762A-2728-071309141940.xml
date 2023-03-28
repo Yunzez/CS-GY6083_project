@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A28AC6D1-8E2B-762A-2728-071309141940" name="SHOWS">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A28AC6D1-8E2B-762A-2728-071309141940" name="Shows">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:10:41 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -11,9 +11,11 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
+<hierarchicalParent>78969216-0122-01D8-A39B-0C4A4ED0CD75</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<discriminatorValue>Sho</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
 <Attribute name="Show_ID" id="C96E2025-61C3-1E72-832B-FD5242C09A75">
 <createdBy>angelowu</createdBy>

@@ -11,9 +11,11 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
+<hierarchicalParent>78969216-0122-01D8-A39B-0C4A4ED0CD75</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<discriminatorValue>Sto</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
 <Attribute name="Store_ID" id="3525CB72-2E93-32A4-6BA7-33FDAAFD80B3">
 <createdBy>angelowu</createdBy>

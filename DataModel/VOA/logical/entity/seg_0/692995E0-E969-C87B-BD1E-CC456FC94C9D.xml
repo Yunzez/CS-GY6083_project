@@ -11,9 +11,11 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
+<hierarchicalParent>78969216-0122-01D8-A39B-0C4A4ED0CD75</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
+<discriminatorValue>Par</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
 <Attribute name="Parking_ID" id="8B53BC2F-2B31-DB96-7F22-BAC0A880EE38">
 <createdBy>angelowu</createdBy>
@@ -28,6 +30,34 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>4</dataTypePrecision>
 <ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Lot" id="7FDABD5D-7BCE-AC7D-DA94-1E7B2D72B9A0">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:39:35 UTC</createdTime>
+<commentInRDBMS><![CDATA[The lot code of the parking lot.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Spot_Number" id="4BAE453A-B64F-4735-CA67-164174650B94">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:40:12 UTC</createdTime>
+<commentInRDBMS><![CDATA[The spot number of the parking lot.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

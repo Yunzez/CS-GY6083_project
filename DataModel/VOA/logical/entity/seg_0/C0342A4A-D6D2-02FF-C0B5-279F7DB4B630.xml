@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="387DCEAB-B2A6-79E2-52AE-04E766BC466D" name="Payments">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:31:11 UTC</createdTime>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C0342A4A-D6D2-02FF-C0B5-279F7DB4B630" name="Visitor_Show">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:03:58 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -14,15 +14,11 @@
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
-<generateDiscrimColumn>true</generateDiscrimColumn>
-<discriminatorAttributeID>7B23FC78-5887-EBA6-3FAE-F242D4D9DA36</discriminatorAttributeID>
-<discriminatorValue>Card</discriminatorValue>
-<completeSubtypes>true</completeSubtypes>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Payment_ID" id="96356225-A547-D551-662D-04791853766F">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:31:20 UTC</createdTime>
-<commentInRDBMS><![CDATA[Unique patment id.]]></commentInRDBMS>
+<Attribute name="Visitor_ID" id="29B7D021-C6E1-58AE-E67C-156B2C20F51B">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:05:17 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the visitor. This is the part of the Primary Key of this table.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -33,10 +29,10 @@
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Payment_Amount" id="598BFEE0-D474-7ADA-4F0E-0131DF74842B">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:32:05 UTC</createdTime>
-<commentInRDBMS><![CDATA[Payment amount.]]></commentInRDBMS>
+<Attribute name="Show_ID" id="ECC119A5-0A25-313E-A065-111F60EF03C9">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:05:24 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the show. This is the part of the Primary Key of this table.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -44,14 +40,13 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>8</dataTypePrecision>
-<dataTypeScale>2</dataTypeScale>
-<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Payment_Date" id="512B169C-137A-A6AC-D8B5-4EA1AE32D64F">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:33:04 UTC</createdTime>
-<commentInRDBMS><![CDATA[Payment date.]]></commentInRDBMS>
+<Attribute name="Visit_Time" id="7984B12C-B692-AC89-08C1-7273913894E6">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:05:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[The date and time that the visitor visit the show.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -61,45 +56,49 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Payment_Method" id="7B23FC78-5887-EBA6-3FAE-F242D4D9DA36">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:35:10 UTC</createdTime>
-<commentInRDBMS><![CDATA[The code of  payment method.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>4</dataTypeSize>
-<ownDataTypeParameters>4,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Payment_Target" id="62160727-587E-5197-934D-BC0979AAE690">
+<Attribute name="Show_ID1" id="C6372878-942F-A712-4DAC-C4506A90A3AB">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:24:49 UTC</createdTime>
+<createdTime>2023-03-28 02:07:43 UTC</createdTime>
+<generatorID>2E4411BD-437A-170C-723A-5BA5C6AEA227</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
+<referedAttribute>C96E2025-61C3-1E72-832B-FD5242C09A75</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Visitor_ID1" id="3BFF3ADC-1D93-B309-E35F-844588551FF8">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:08:30 UTC</createdTime>
+<generatorID>DE5D15DB-53E5-4737-CD73-F58757C48B75</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>069BB3ED-AA89-EE37-4932-365D6AAA92B6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="D24CBE52-24FA-17C6-AD7C-915D29DBC6B8" name="Payments PK">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:31:55 UTC</createdTime>
+<identifier id="B9799DC0-5EA6-7198-B2DE-464FF64C5A10" name="Visitor_Show PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-28 02:05:44 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>62160727-587E-5197-934D-BC0979AAE690</attributeRef>
+<attributeRef>29B7D021-C6E1-58AE-E67C-156B2C20F51B</attributeRef>
+<attributeRef>ECC119A5-0A25-313E-A065-111F60EF03C9</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
