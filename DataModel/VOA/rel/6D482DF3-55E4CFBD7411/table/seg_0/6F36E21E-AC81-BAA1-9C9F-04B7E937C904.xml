@@ -40,6 +40,7 @@
 <Column name="Category_ID" id="99C4D169-479D-0704-9FFB-B74C56E67B93">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[IDof Category of the store]]></commentInRDBMS>
 <generatorID>3EADC8C7-2A7B-2E02-EDBD-2BE400CAA309</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>

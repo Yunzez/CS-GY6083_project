@@ -24,6 +24,7 @@
 <Column name="Attraction_Type" id="27E8B682-35EF-594D-67B4-01A0357266D3">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 19:17:20 UTC</createdTime>
+<commentInRDBMS><![CDATA[Type of the attraction]]></commentInRDBMS>
 <generatorID>D48E9892-B95B-C5CC-CA92-91CA88702652</generatorID>
 <notes><![CDATA[Attraction type: roller coaster, water ride, dark ride, kid ride etc.]]></notes>
 <ownerDesignName>VOA</ownerDesignName>
