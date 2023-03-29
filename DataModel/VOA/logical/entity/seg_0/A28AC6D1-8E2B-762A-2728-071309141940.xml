@@ -17,20 +17,6 @@
 <normalForm>Third</normalForm>
 <discriminatorValue>Sho</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Show_ID" id="C96E2025-61C3-1E72-832B-FD5242C09A75">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:10:46 UTC</createdTime>
-<commentInRDBMS><![CDATA[Unique Show ID.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Name" id="695B9440-9186-5FAA-5017-183C38ABFDBF">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:11:23 UTC</createdTime>
@@ -117,6 +103,7 @@
 <Attribute name="Show_Type_ID" id="9670D618-2949-1187-467B-A997AAE5E1BB">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:55:24 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the Show]]></commentInRDBMS>
 <generatorID>997A8BC8-21D0-BF06-4536-AFDE2AA22465</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -130,18 +117,4 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
-<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="1A04D604-448F-32CF-A7C2-04EE01229998" name="SHOWS PK">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:11:10 UTC</createdTime>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<pk>true</pk>
-<usedAttributes>
-<attributeRef>C96E2025-61C3-1E72-832B-FD5242C09A75</attributeRef>
-</usedAttributes>
-</identifier>
-</identifiers>
 </Entity>

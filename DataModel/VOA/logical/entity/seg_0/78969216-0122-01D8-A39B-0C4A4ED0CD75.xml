@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="78969216-0122-01D8-A39B-0C4A4ED0CD75" name="Entertainment">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="78969216-0122-01D8-A39B-0C4A4ED0CD75" name="Source">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:27:51 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -15,14 +15,13 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <generateDiscrimColumn>true</generateDiscrimColumn>
-<discriminatorAttributeID>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</discriminatorAttributeID>
-<discriminatorColumnName>Entertainment_Type</discriminatorColumnName>
+<discriminatorAttributeID>53841171-4DAB-4DE7-7E30-6BCBA253D419</discriminatorAttributeID>
 <completeSubtypes>true</completeSubtypes>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Entertainment_ID" id="5B2E0294-8319-6729-DDBA-D0FD5D3912FC">
+<Attribute name="Source_ID" id="5B2E0294-8319-6729-DDBA-D0FD5D3912FC">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:28:25 UTC</createdTime>
-<commentInRDBMS><![CDATA[UID of the Facility, the primary key of this table.]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[UID of the source, the primary key of this table.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -33,10 +32,10 @@
 <dataTypePrecision>10</dataTypePrecision>
 <ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Entertainment_Type" id="53841171-4DAB-4DE7-7E30-6BCBA253D419">
+<Attribute name="Source_Type" id="53841171-4DAB-4DE7-7E30-6BCBA253D419">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:28:53 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Entertainment Type Code.]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[The Source Type Code.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -53,8 +52,9 @@
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:28:32 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>

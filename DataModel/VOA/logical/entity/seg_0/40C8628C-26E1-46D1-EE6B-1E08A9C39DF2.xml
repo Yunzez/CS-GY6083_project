@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="40C8628C-26E1-46D1-EE6B-1E08A9C39DF2" name="Atraction_Locations">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 15:40:01 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Location_Section_ID" id="9CBC7A2C-7B1C-5E39-618B-691A506290EC">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 15:40:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique location section id.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Location_Section" id="8EFA6241-0320-DB2E-F0F3-C0EBF5EC5BA6">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 15:40:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[Location Section: A,  B, C, D etc.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F813704B-D1B3-F481-78F2-B7EE81AC3049" name="Attraction_Type PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 15:40:01 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>9CBC7A2C-7B1C-5E39-618B-691A506290EC</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

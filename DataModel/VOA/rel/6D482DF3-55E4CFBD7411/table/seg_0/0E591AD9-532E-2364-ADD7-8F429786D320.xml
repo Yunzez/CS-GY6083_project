@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0E591AD9-532E-2364-ADD7-8F429786D320" name="Parking">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>692995E0-E969-C87B-BD1E-CC456FC94C9D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Source_ID" id="3D97BE07-9375-242D-EDD1-F1D9B82930D3">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[UID of the source, the primary key of this table.]]></commentInRDBMS>
+<generatorID>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FCD6B4E4-067A-A18D-A5F0-69F7A724E78E" referredColumn="FFA328BF-37DF-69C1-F214-91FB51EFFF63"/>
+</associations>
+</Column>
+<Column name="Spot_Number" id="4AF4357B-8303-8028-6E87-E0193340BC82">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The spot number of the parking lot.]]></commentInRDBMS>
+<generatorID>4BAE453A-B64F-4735-CA67-164174650B94</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Parking_Locations_Location_Section_ID" id="27306777-BD5D-2EF3-EF34-46D545B416AA">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>EF7C0A7A-E6B7-8DE9-0E04-DB97A3700BBF</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1D7EE4D8-FB5B-F9E5-6AE3-CB60A97B75C6" referredColumn="77558BD6-3171-FEE1-2606-1AA346731875"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="181BE0D2-4C79-B4A4-62E9-BF6A77A8CA54" name="Parking_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>CBEE0841-D08F-57C5-8FF6-4DF1C614F208</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3D97BE07-9375-242D-EDD1-F1D9B82930D3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="482B0503-FB8B-BDA0-3A80-CDDC2986DF7E" name="Parking_Source_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>18B49E10-F74D-CA68-4874-B0D76E3357B1</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3D97BE07-9375-242D-EDD1-F1D9B82930D3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="A68026CB-AD0F-40BA-CAE5-3C81F505434F" name="Parking_Parking_Locations_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>ABA16113-8E37-5C70-95A9-DB908AED75DB</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="27306777-BD5D-2EF3-EF34-46D545B416AA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

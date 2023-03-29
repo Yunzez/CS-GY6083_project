@@ -15,47 +15,37 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Item_ID" id="0F841AF2-3E08-2629-0110-023A94B860C2">
+<Attribute name="Item_ID1" id="64840C71-9DEA-CC36-74E8-8999FF6BCA02">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:59:10 UTC</createdTime>
+<createdTime>2023-03-28 03:01:25 UTC</createdTime>
 <commentInRDBMS><![CDATA[The part of Primary Key of this table. The ID of Item.]]></commentInRDBMS>
+<generatorID>C064F07F-2390-6D19-BC11-23FD53FCC40C</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
+<referedAttribute>5BAD7A4A-DA9D-CFAD-B8C0-1A89C708846B</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Store_ID" id="FF817025-3B41-55BC-CE43-B7EF4482A62A">
+<Attribute name="Order_ID1" id="02650C04-DF28-9068-215D-B955FCD7DE0C">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:59:41 UTC</createdTime>
-<commentInRDBMS><![CDATA[The part of Primary Key of this table. The ID of store.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Order_ID" id="245F0D42-2394-89AB-66BB-2341896F67FA">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:08:32 UTC</createdTime>
+<createdTime>2023-03-28 03:09:05 UTC</createdTime>
 <commentInRDBMS><![CDATA[Unique order id. Part of  Primary Key of this table.]]></commentInRDBMS>
+<generatorID>0A8F127C-95CE-DCC0-21F0-C7460ABE18E3</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
+<referedAttribute>606007EF-8058-1F84-18C3-3E02E6E2DD88</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>8</dataTypePrecision>
-<ownDataTypeParameters>,8,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Unit_Price" id="8103A6D1-E9B1-D215-FC96-5EEBEF478673">
 <createdBy>black</createdBy>
@@ -72,33 +62,6 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,5,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Item_ID1" id="64840C71-9DEA-CC36-74E8-8999FF6BCA02">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:01:25 UTC</createdTime>
-<generatorID>C064F07F-2390-6D19-BC11-23FD53FCC40C</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>5BAD7A4A-DA9D-CFAD-B8C0-1A89C708846B</referedAttribute>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Store_ID1" id="EA494890-A243-0696-E4DC-A71AA2A47314">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:01:30 UTC</createdTime>
-<generatorID>071107AD-39BF-0AFC-2FF7-4D7EC616F0E0</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>3525CB72-2E93-32A4-6BA7-33FDAAFD80B3</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Quantity" id="D83403DC-E7BE-39BE-B86D-79C1D75CBCA6">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:08:14 UTC</createdTime>
@@ -113,19 +76,19 @@
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Order_ID1" id="02650C04-DF28-9068-215D-B955FCD7DE0C">
+<Attribute name="Source_ID" id="619B9B9E-C155-B9C7-6EA9-FEB714DD4A2D">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 03:09:05 UTC</createdTime>
-<generatorID>0A8F127C-95CE-DCC0-21F0-C7460ABE18E3</generatorID>
+<createdTime>2023-03-29 17:31:35 UTC</createdTime>
+<generatorID>071107AD-39BF-0AFC-2FF7-4D7EC616F0E0</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>606007EF-8058-1F84-18C3-3E02E6E2DD88</referedAttribute>
+<referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>8</dataTypePrecision>
+<dataTypePrecision>10</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -134,14 +97,15 @@
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 02:59:24 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>0F841AF2-3E08-2629-0110-023A94B860C2</attributeRef>
-<attributeRef>FF817025-3B41-55BC-CE43-B7EF4482A62A</attributeRef>
-<attributeRef>245F0D42-2394-89AB-66BB-2341896F67FA</attributeRef>
+<attributeRef>64840C71-9DEA-CC36-74E8-8999FF6BCA02</attributeRef>
+<attributeRef>02650C04-DF28-9068-215D-B955FCD7DE0C</attributeRef>
+<attributeRef>619B9B9E-C155-B9C7-6EA9-FEB714DD4A2D</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

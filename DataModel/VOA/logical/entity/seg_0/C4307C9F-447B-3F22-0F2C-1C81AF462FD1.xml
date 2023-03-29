@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C4307C9F-447B-3F22-0F2C-1C81AF462FD1" name="Ent_Pay_Vis">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C4307C9F-447B-3F22-0F2C-1C81AF462FD1" name="Sou_Pay_Vis">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:39:29 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -15,66 +15,43 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Entertainment_ID" id="0E29C3D4-AA9A-C351-F831-C495B897D89D">
+<Attribute name="Source_ID" id="15736C01-0597-1D17-DC76-062B16963C1C">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 03:42:03 UTC</createdTime>
-<commentInRDBMS><![CDATA[The part of Primary Key, UID of the entertainment.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Payment_ID" id="F35E35D9-698B-28AD-AE59-59FD501BF7C5">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:42:38 UTC</createdTime>
-<commentInRDBMS><![CDATA[The part of primary key, UID of Payment]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Visitor_ID" id="2730515B-F387-9DFA-A7D8-EBEC4B1A7359">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:43:38 UTC</createdTime>
-<commentInRDBMS><![CDATA[The part of primary key, UID of Visitor.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Entertainment_ID1" id="867B5F9C-D530-6B77-A7CD-13D624FC0A43">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:44:00 UTC</createdTime>
-<generatorID>BEB10B19-76E7-F00B-6E0D-3ED6707627CB</generatorID>
+<createdTime>2023-03-29 15:29:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[UID of the source, the primary key of this table.]]></commentInRDBMS>
+<generatorID>4798DAF2-8018-6155-E166-1F7A2610C041</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
 <referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Visitor_ID1" id="701A30D4-D979-9C8E-88F3-81F0317F61F9">
+<Attribute name="Payment_ID" id="6F8EFD4F-C093-952F-3357-1BD153987970">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 03:44:05 UTC</createdTime>
-<generatorID>6BDFD286-864E-14C2-AF7C-3F490BF27349</generatorID>
+<createdTime>2023-03-29 15:29:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique patment id.]]></commentInRDBMS>
+<generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>96356225-A547-D551-662D-04791853766F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Visitor_ID" id="21B5F087-3085-7404-C405-E2397AC762A2">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 15:29:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Visitor ID.]]></commentInRDBMS>
+<generatorID>D2091A86-5F2D-EDBE-2B7C-DC07F2790C05</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -84,34 +61,6 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Payment_Target" id="CE2F7DC3-B329-21EF-3BAE-BEF4B8308E40">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:44:13 UTC</createdTime>
-<generatorID>A8C81378-C0A7-D25A-2A7B-0B224835D6AA</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>62160727-587E-5197-934D-BC0979AAE690</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Source_ID" id="D4672191-37C1-75F6-8BAC-6DA4BDE253F2">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 04:13:15 UTC</createdTime>
-<commentInRDBMS><![CDATA[The source id of the payment. Having prefix to identify the source type from: tickets, shows, parking and Tickets.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Source_Type" id="6175E599-A269-AD02-5CF3-3CD68BFFCD4D">
@@ -134,14 +83,15 @@
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:43:25 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>F35E35D9-698B-28AD-AE59-59FD501BF7C5</attributeRef>
-<attributeRef>0E29C3D4-AA9A-C351-F831-C495B897D89D</attributeRef>
-<attributeRef>2730515B-F387-9DFA-A7D8-EBEC4B1A7359</attributeRef>
+<attributeRef>15736C01-0597-1D17-DC76-062B16963C1C</attributeRef>
+<attributeRef>6F8EFD4F-C093-952F-3357-1BD153987970</attributeRef>
+<attributeRef>21B5F087-3085-7404-C405-E2397AC762A2</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

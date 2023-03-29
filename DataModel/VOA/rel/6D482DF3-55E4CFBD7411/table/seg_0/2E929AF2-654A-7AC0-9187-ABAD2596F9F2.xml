@@ -1,0 +1,94 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="2E929AF2-654A-7AC0-9187-ABAD2596F9F2" name="Visitor_Show">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>C0342A4A-D6D2-02FF-C0B5-279F7DB4B630</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Visitors_Visitor_ID" id="EC30A2B3-8A5F-D4DB-F418-1E5D12E0CD11">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the visitor. This is the part of the Primary Key of this table.]]></commentInRDBMS>
+<generatorID>3BFF3ADC-1D93-B309-E35F-844588551FF8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="215628F2-E3FA-4FCF-6E74-280DBF06D754" referredColumn="3624E2AA-AEDE-76D0-82C0-621F6ACB39F7"/>
+</associations>
+</Column>
+<Column name="Visit_Time" id="77EAC6EC-D466-7C6B-A5BD-7ECE725ACC4B">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The date and time that the visitor visit the show.]]></commentInRDBMS>
+<generatorID>7984B12C-B692-AC89-08C1-7273913894E6</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Shows_Source_ID" id="A5A67088-E995-42F3-67EA-33EE424CE295">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>3F607BC7-7162-C062-33A9-E2398B2808AF</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5E7A19D3-EBA5-B772-31CC-0C33D8ED3C8F" referredColumn="580A151B-B525-7AD1-A560-181CC8599BAE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8AD036D6-F07B-55D0-4F46-A13B9C0EC73C" name="Visitor_Show_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>B9799DC0-5EA6-7198-B2DE-464FF64C5A10</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EC30A2B3-8A5F-D4DB-F418-1E5D12E0CD11"/>
+<colUsage columnID="A5A67088-E995-42F3-67EA-33EE424CE295"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B9566E24-E776-90FE-B1E4-D6FE56BD26FE" name="Visitor_Show_Visitors_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>DE5D15DB-53E5-4737-CD73-F58757C48B75</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EC30A2B3-8A5F-D4DB-F418-1E5D12E0CD11"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="605CF4D3-E654-53CB-6BBD-1144CC57B627" name="Visitor_Show_Shows_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>2E4411BD-437A-170C-723A-5BA5C6AEA227</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A5A67088-E995-42F3-67EA-33EE424CE295"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F3EDD254-A211-D26C-2893-6EF3BA952538" containerWithKeyObject="D844DB3F-F6BF-7069-E87C-06F3C85B8354" localFKIndex="2C0F097A-8CD3-BC9F-7632-E9A5D2F13A7C" name="Tickets_Source_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>B7F2FCBA-2EFE-7F19-6386-3ED9FC68193A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>Source</referredTableLongName>
+<arc>377BECBB-6A54-0486-0ECF-1C4C3BFE4CB8</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>87D27887-FE3B-299F-DF6E-0BBE1C6A0E48</referredTableID>
+<keyObject>5F0C00E5-A5AD-7222-8CF0-B2F7AF0F3B29</keyObject>
+<referredKeyID>5F0C00E5-A5AD-7222-8CF0-B2F7AF0F3B29</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Source_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>Tic</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,137 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A9645EB9-E3A0-21CC-12FE-4710A028D2D1" name="Sou_Pay_Vis">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>C4307C9F-447B-3F22-0F2C-1C81AF462FD1</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<ordsAlias>ent_pay_vis</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Source_Source_ID" id="08CA9B1F-9447-84E3-D11A-AFC4B7CCD6B9">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[UID of the source, the primary key of this table.]]></commentInRDBMS>
+<generatorID>15736C01-0597-1D17-DC76-062B16963C1C</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="DF7C5390-900E-B35F-1A69-C635053F69BF" referredColumn="FFA328BF-37DF-69C1-F214-91FB51EFFF63"/>
+</associations>
+</Column>
+<Column name="Payments_Payment_ID" id="B8E045C1-94FF-522A-252B-D0EEAA8E2A22">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique patment id.]]></commentInRDBMS>
+<generatorID>6F8EFD4F-C093-952F-3357-1BD153987970</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="94D08E36-EB48-4736-ABA2-0DA9C39217D0" referredColumn="7B8921C7-EF0C-DDB7-33A4-D8366F0BB9E1"/>
+</associations>
+</Column>
+<Column name="Visitors_Visitor_ID" id="1F703FCA-8024-25D4-5DE6-00B924B8AE24">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Visitor ID.]]></commentInRDBMS>
+<generatorID>21B5F087-3085-7404-C405-E2397AC762A2</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="50E60D87-51F0-D387-322E-A7E29DE03CAF" referredColumn="3624E2AA-AEDE-76D0-82C0-621F6ACB39F7"/>
+</associations>
+</Column>
+<Column name="Source_Type" id="A44E6486-5FB5-C290-604F-43902ED7DC23">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The type of the payment source]]></commentInRDBMS>
+<generatorID>6175E599-A269-AD02-5CF3-3CD68BFFCD4D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>15</dataTypeSize>
+<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="7610ABC9-B882-2F73-EE03-ACF6D8B0AE5F" name="Ent_Pay_Vis_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>30AC8F83-94FF-04F0-B011-79EE506DBEFD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08CA9B1F-9447-84E3-D11A-AFC4B7CCD6B9"/>
+<colUsage columnID="B8E045C1-94FF-522A-252B-D0EEAA8E2A22"/>
+<colUsage columnID="1F703FCA-8024-25D4-5DE6-00B924B8AE24"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="25B3BFE0-394D-6170-1838-D9B84A07A0BA" name="Ent_Pay_Vis__IDX">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<relationGeneratorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</relationGeneratorID>
+<indexColumnUsage>
+<colUsage columnID="B8E045C1-94FF-522A-252B-D0EEAA8E2A22"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7D8CF6C8-B0EA-DD4F-E54B-FA581F207BC0" name="Ent_Pay_Vis_Source_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>4798DAF2-8018-6155-E166-1F7A2610C041</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="08CA9B1F-9447-84E3-D11A-AFC4B7CCD6B9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="82256031-46BE-361F-A0D4-11E0DA743622" name="Ent_Pay_Vis_Payments_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B8E045C1-94FF-522A-252B-D0EEAA8E2A22"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="EF3D733C-C1EB-6E60-B26A-C06509370F90" name="Ent_Pay_Vis_Visitors_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>D2091A86-5F2D-EDBE-2B7C-DC07F2790C05</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1F703FCA-8024-25D4-5DE6-00B924B8AE24"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

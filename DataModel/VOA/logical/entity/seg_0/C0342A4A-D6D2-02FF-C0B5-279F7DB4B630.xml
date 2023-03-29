@@ -15,33 +15,21 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Visitor_ID" id="29B7D021-C6E1-58AE-E67C-156B2C20F51B">
+<Attribute name="Visitor_ID1" id="3BFF3ADC-1D93-B309-E35F-844588551FF8">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:05:17 UTC</createdTime>
+<createdTime>2023-03-28 02:08:30 UTC</createdTime>
 <commentInRDBMS><![CDATA[The UID of the visitor. This is the part of the Primary Key of this table.]]></commentInRDBMS>
+<generatorID>DE5D15DB-53E5-4737-CD73-F58757C48B75</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
+<referedAttribute>069BB3ED-AA89-EE37-4932-365D6AAA92B6</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Show_ID" id="ECC119A5-0A25-313E-A065-111F60EF03C9">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 02:05:24 UTC</createdTime>
-<commentInRDBMS><![CDATA[The UID of the show. This is the part of the Primary Key of this table.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Visit_Time" id="7984B12C-B692-AC89-08C1-7273913894E6">
 <createdBy>black</createdBy>
@@ -56,34 +44,19 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Show_ID1" id="C6372878-942F-A712-4DAC-C4506A90A3AB">
+<Attribute name="Source_ID" id="3F607BC7-7162-C062-33A9-E2398B2808AF">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:07:43 UTC</createdTime>
+<createdTime>2023-03-29 17:31:42 UTC</createdTime>
 <generatorID>2E4411BD-437A-170C-723A-5BA5C6AEA227</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>C96E2025-61C3-1E72-832B-FD5242C09A75</referedAttribute>
+<referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Visitor_ID1" id="3BFF3ADC-1D93-B309-E35F-844588551FF8">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 02:08:30 UTC</createdTime>
-<generatorID>DE5D15DB-53E5-4737-CD73-F58757C48B75</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>069BB3ED-AA89-EE37-4932-365D6AAA92B6</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>6</dataTypePrecision>
+<dataTypePrecision>10</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -97,8 +70,8 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>29B7D021-C6E1-58AE-E67C-156B2C20F51B</attributeRef>
-<attributeRef>ECC119A5-0A25-313E-A065-111F60EF03C9</attributeRef>
+<attributeRef>3BFF3ADC-1D93-B309-E35F-844588551FF8</attributeRef>
+<attributeRef>3F607BC7-7162-C062-33A9-E2398B2808AF</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

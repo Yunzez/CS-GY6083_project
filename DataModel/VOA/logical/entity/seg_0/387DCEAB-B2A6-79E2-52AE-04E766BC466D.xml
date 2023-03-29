@@ -75,62 +75,49 @@
 <dataTypeSize>4</dataTypeSize>
 <ownDataTypeParameters>4,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Payment_Target" id="62160727-587E-5197-934D-BC0979AAE690">
+<Attribute name="Source_ID" id="097E0531-3FA9-357A-B344-48E89B8A870E">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:24:49 UTC</createdTime>
+<createdTime>2023-03-29 17:16:57 UTC</createdTime>
+<generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
+<referedAttribute>15736C01-0597-1D17-DC76-062B16963C1C</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Payment_ID1" id="2F5E97F0-9579-14A0-5E5E-5E50CBE22F48">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-29 01:20:13 UTC</createdTime>
-<generatorID>A8C81378-C0A7-D25A-2A7B-0B224835D6AA</generatorID>
+<Attribute name="Payment_ID1" id="3873EF17-BD32-BCB1-FDB7-CA13EF00FEC1">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:16:58 UTC</createdTime>
+<generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>F35E35D9-698B-28AD-AE59-59FD501BF7C5</referedAttribute>
+<referedAttribute>6F8EFD4F-C093-952F-3357-1BD153987970</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Entertainment_ID" id="2976CB67-1FB3-B75D-4DEA-49EE7E159523">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-29 01:20:13 UTC</createdTime>
-<generatorID>A8C81378-C0A7-D25A-2A7B-0B224835D6AA</generatorID>
+<Attribute name="Visitor_ID" id="9D8252C8-FF14-F31C-5715-26F3531A96F6">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:16:59 UTC</createdTime>
+<generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>0E29C3D4-AA9A-C351-F831-C495B897D89D</referedAttribute>
+<referedAttribute>21B5F087-3085-7404-C405-E2397AC762A2</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Visitor_ID" id="F5868225-5C24-A01B-AAD1-C39548CC5864">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-29 01:20:13 UTC</createdTime>
-<generatorID>A8C81378-C0A7-D25A-2A7B-0B224835D6AA</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>2730515B-F387-9DFA-A7D8-EBEC4B1A7359</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
+<dataTypePrecision>6</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -139,12 +126,13 @@
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:31:55 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>62160727-587E-5197-934D-BC0979AAE690</attributeRef>
+<attributeRef>96356225-A547-D551-662D-04791853766F</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

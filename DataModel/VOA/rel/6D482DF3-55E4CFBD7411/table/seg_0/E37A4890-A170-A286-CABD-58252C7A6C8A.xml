@@ -1,0 +1,120 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E37A4890-A170-A286-CABD-58252C7A6C8A" name="Parking_Visitor">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>C15387AA-8902-1816-DDCE-1F4C3D0835F2</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Time_In" id="DD660A71-D401-16D9-9DEF-BD0DDDD62FEC">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time of the visitor getting in the parking lot.]]></commentInRDBMS>
+<generatorID>0B1ACF58-8DA7-9D08-0E18-D2C06B1B0B23</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Time_Out" id="0F5F942B-E4B2-7B45-B320-22B1563F1481">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time of the visitor getting out from the parking lot.]]></commentInRDBMS>
+<generatorID>B92F0F67-9941-6EE7-F9DC-294746AA08BD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Fee" id="A472C847-9EF8-1481-4039-CE3DA8D9E071">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The parking fee that visitor spends.]]></commentInRDBMS>
+<generatorID>1B0E4416-B1D0-31AE-90F4-178E1972E1DB</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Visitors_Visitor_ID" id="F19C18EF-2C47-846E-4249-5EA32B2602F3">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the Visitor. Part of the Primary Key in this table.]]></commentInRDBMS>
+<generatorID>56F24D25-1508-1146-999A-433E0FD4CEED</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1A74B5F0-EB13-C8B5-A137-2077F2DB5AF6" referredColumn="3624E2AA-AEDE-76D0-82C0-621F6ACB39F7"/>
+</associations>
+</Column>
+<Column name="Parking_Source_ID" id="4BC0FA72-3C51-BEBD-CDC5-93B349B73AA9">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>BD4E91C3-90C5-CA19-638A-D26E6FC90DF3</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="917B3C0F-2B9A-EBDE-ACBE-B81B73FA6989" referredColumn="3D97BE07-9375-242D-EDD1-F1D9B82930D3"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2A09558B-A66A-F937-2A48-322D4280B39C" name="Parking_Visitor_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>CECEB021-0329-081A-BD62-1DD5FBFEEA2C</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F19C18EF-2C47-846E-4249-5EA32B2602F3"/>
+<colUsage columnID="4BC0FA72-3C51-BEBD-CDC5-93B349B73AA9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="45EC9862-A4BF-A0B3-414E-C5B288A8E4D0" name="Parking_Visitor_Visitors_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>AA528C6C-3565-3D6E-0B73-4AF8C76E8B9D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F19C18EF-2C47-846E-4249-5EA32B2602F3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CC90ADCF-3C10-325D-31CA-3338DEBED5C6" name="Parking_Visitor_Parking_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:34:09 UTC</createdTime>
+<generatorID>D2DEDB4D-D17A-5B80-3101-F9E2B807ACE9</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4BC0FA72-3C51-BEBD-CDC5-93B349B73AA9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

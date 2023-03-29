@@ -15,34 +15,6 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Visitor_ID" id="4F1D0100-1D16-FBCE-1DB9-36FF05D3CC69">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 02:43:12 UTC</createdTime>
-<commentInRDBMS><![CDATA[The UID of the Visitor. Part of the Primary Key in this table.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Parking_ID" id="B0E46507-AFFF-35F7-5C28-404246EA8F01">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 02:43:50 UTC</createdTime>
-<commentInRDBMS><![CDATA[Parking lot UID. The part of the primary key of this table.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Time_In" id="0B1ACF58-8DA7-9D08-0E18-D2C06B1B0B23">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 02:44:33 UTC</createdTime>
@@ -87,6 +59,7 @@
 <Attribute name="Visitor_ID1" id="56F24D25-1508-1146-999A-433E0FD4CEED">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 02:44:55 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the Visitor. Part of the Primary Key in this table.]]></commentInRDBMS>
 <generatorID>AA528C6C-3565-3D6E-0B73-4AF8C76E8B9D</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -99,19 +72,19 @@
 <dataTypePrecision>6</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Parking_ID1" id="FD1CFB7A-80F7-7ABC-5A36-464FF9CE4A35">
+<Attribute name="Source_ID" id="BD4E91C3-90C5-CA19-638A-D26E6FC90DF3">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:45:00 UTC</createdTime>
+<createdTime>2023-03-29 17:31:38 UTC</createdTime>
 <generatorID>D2DEDB4D-D17A-5B80-3101-F9E2B807ACE9</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>8B53BC2F-2B31-DB96-7F22-BAC0A880EE38</referedAttribute>
+<referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>4</dataTypePrecision>
+<dataTypePrecision>10</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
@@ -125,8 +98,8 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>4F1D0100-1D16-FBCE-1DB9-36FF05D3CC69</attributeRef>
-<attributeRef>B0E46507-AFFF-35F7-5C28-404246EA8F01</attributeRef>
+<attributeRef>56F24D25-1508-1146-999A-433E0FD4CEED</attributeRef>
+<attributeRef>BD4E91C3-90C5-CA19-638A-D26E6FC90DF3</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

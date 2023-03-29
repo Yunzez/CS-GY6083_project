@@ -23,8 +23,11 @@
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Item_Name" id="F8D6A6A6-0562-976C-AA9A-3A1449FAF3BB">
 <createdBy>black</createdBy>
@@ -60,8 +63,9 @@
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 02:57:35 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
 <engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="false"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
