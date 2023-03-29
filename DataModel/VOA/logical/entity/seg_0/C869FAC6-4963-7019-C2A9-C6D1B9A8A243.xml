@@ -112,20 +112,6 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Visitor_Type" id="9D30ADB8-CA55-ED3D-5D17-83F294CBCA71">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 20:45:34 UTC</createdTime>
-<commentInRDBMS><![CDATA[The visitor type.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Visit_Date" id="C505D375-14A7-A69F-9F1F-4A1966CC0517">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 20:46:26 UTC</createdTime>
@@ -137,6 +123,21 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Visitor_Type_ID" id="BA9DC8F0-EEF8-531B-4D73-81DE7FCC49C2">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 02:05:34 UTC</createdTime>
+<generatorID>E1740E83-899F-F5A1-5945-BBE1CDC461C4</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>EF3452D3-53AD-47A0-0B34-FFC2A7440993</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

@@ -27,8 +27,11 @@
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<use>0</use>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Entertainment_Type" id="53841171-4DAB-4DE7-7E30-6BCBA253D419">
 <createdBy>black</createdBy>

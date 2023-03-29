@@ -59,24 +59,10 @@
 <dataTypeSize>128</dataTypeSize>
 <ownDataTypeParameters>128,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Show_Type_ID" id="56AE38F4-9E38-9302-6314-1127169ABFC1">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:11:52 UTC</createdTime>
-<commentInRDBMS><![CDATA[The show type ID.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,1,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Accessibility_Type_ID" id="DD8926A3-D0C1-740C-C5A8-967DABA93D66">
+<Attribute name="Accessibility" id="DD8926A3-D0C1-740C-C5A8-967DABA93D66">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:12:40 UTC</createdTime>
-<commentInRDBMS><![CDATA[Wheelchair accessibility.]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[Wheelchair accessibility:Yes or No]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -126,6 +112,21 @@
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Show_Type_ID" id="9670D618-2949-1187-467B-A997AAE5E1BB">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 01:55:24 UTC</createdTime>
+<generatorID>997A8BC8-21D0-BF06-4536-AFDE2AA22465</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>5A61E568-037A-41B3-9982-49FB0F70E281</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="949FC905-583D-33D1-3CCF-75847868F417" name="Store_Category">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 00:37:36 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Category_ID" id="23B754FA-EDFD-578B-BA82-1E7994C1CB1F">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 00:37:50 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Category Store ID.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Category" id="6A0D5EC5-A036-BDAF-1F99-66F1B14626EE">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 00:38:34 UTC</createdTime>
+<commentInRDBMS><![CDATA[Store Category:
+Food stall, Ice cream parlor, Restaurant, Gift Shop, Apparels]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="E9F56A28-3E18-DB1E-346B-9A005C1A8B45" name="Store_Category PK">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 00:38:23 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>23B754FA-EDFD-578B-BA82-1E7994C1CB1F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

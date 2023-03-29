@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="38E776F6-5D48-4BDC-43CB-2919D9BEF163" name="Status_Type">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 01:47:33 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Status_Type_ID" id="16DC168B-9DDD-DC6E-D435-4A60514BEFB6">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 01:47:40 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique status type.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Status_Type" id="C5A18DEC-BE8B-1805-5583-06F67524643F">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 01:48:01 UTC</createdTime>
+<commentInRDBMS><![CDATA[Status Type: open, closed, under maintenance]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="6E0B0485-8D74-C823-9359-187CD27DB3AC" name="Status_Type PK">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 01:47:52 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>16DC168B-9DDD-DC6E-D435-4A60514BEFB6</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -70,34 +70,6 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Method_Type_ID" id="9CC19386-A3C7-7805-A91D-15EFCAF239C8">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:43:13 UTC</createdTime>
-<commentInRDBMS><![CDATA[Ticket method type id.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,1,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Type_ID" id="9EE4633B-16EC-58B1-B5E2-B49134724239">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:43:41 UTC</createdTime>
-<commentInRDBMS><![CDATA[The ticket type id.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,1,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Visitor_ID" id="63A8023A-8567-2C5C-1B95-F087C2A3BDAD">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 02:03:12 UTC</createdTime>
@@ -111,6 +83,36 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Method_Type_ID" id="4920A172-EF00-864B-BA3B-CD31964DB8D9">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 01:58:40 UTC</createdTime>
+<generatorID>9AFE9F0B-4EB6-F5F9-B03E-0B2C08BFD15A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>D95734AF-11E6-F58E-F6ED-26A32BB1A782</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Ticket_Type_ID" id="FC2CA3C0-728E-229D-CB86-32DF1FE82595">
+<createdBy>angelowu</createdBy>
+<createdTime>2023-03-29 02:00:13 UTC</createdTime>
+<generatorID>30ECAFE4-8D75-51D1-6349-11ECC67DDDE0</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>CC47EAFD-552D-28BA-8443-40B899E47147</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

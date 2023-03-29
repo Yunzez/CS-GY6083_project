@@ -86,7 +86,7 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Type" id="5B786138-AB55-BB95-B3AD-B02D305C6B9A">
+<Attribute name="Card_Type" id="5B786138-AB55-BB95-B3AD-B02D305C6B9A">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 03:53:58 UTC</createdTime>
 <commentInRDBMS><![CDATA[The type of the card, to determine whether it is credit or debit.]]></commentInRDBMS>

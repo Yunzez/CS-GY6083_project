@@ -66,7 +66,9 @@
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
 <referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
-<use>0</use>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Visitor_ID1" id="701A30D4-D979-9C8E-88F3-81F0317F61F9">
@@ -82,7 +84,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Payment_Target" id="CE2F7DC3-B329-21EF-3BAE-BEF4B8308E40">
 <createdBy>black</createdBy>
@@ -97,7 +99,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Source_ID" id="D4672191-37C1-75F6-8BAC-6DA4BDE253F2">
 <createdBy>black</createdBy>
