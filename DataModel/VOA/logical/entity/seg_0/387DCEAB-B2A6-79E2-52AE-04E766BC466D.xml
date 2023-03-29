@@ -75,50 +75,19 @@
 <dataTypeSize>4</dataTypeSize>
 <ownDataTypeParameters>4,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Source_ID" id="097E0531-3FA9-357A-B344-48E89B8A870E">
+<Attribute name="SPV_ID" id="207DF68F-CD76-E5BB-1AF5-B9C77B91E365">
 <createdBy>black</createdBy>
-<createdTime>2023-03-29 17:16:57 UTC</createdTime>
+<createdTime>2023-03-29 19:12:22 UTC</createdTime>
 <generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>15736C01-0597-1D17-DC76-062B16963C1C</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
+<referedAttribute>15ACA929-1C85-A9D4-21E0-5930B4A0898D</referedAttribute>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,10,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Payment_ID1" id="3873EF17-BD32-BCB1-FDB7-CA13EF00FEC1">
-<createdBy>black</createdBy>
-<createdTime>2023-03-29 17:16:58 UTC</createdTime>
-<generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>6F8EFD4F-C093-952F-3357-1BD153987970</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Visitor_ID" id="9D8252C8-FF14-F31C-5715-26F3531A96F6">
-<createdBy>black</createdBy>
-<createdTime>2023-03-29 17:16:59 UTC</createdTime>
-<generatorID>B0BEB853-7DAF-DF05-8978-A9EFA80D498B</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>21B5F087-3085-7404-C405-E2397AC762A2</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

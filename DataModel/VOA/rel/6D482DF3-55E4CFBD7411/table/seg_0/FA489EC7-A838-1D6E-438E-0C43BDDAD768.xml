@@ -1,0 +1,130 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="FA489EC7-A838-1D6E-438E-0C43BDDAD768" name="AFZ_Card_Payment">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>0B016927-6D20-5EEC-DBC2-B3718DB02CCD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Payment_ID" id="DB48943B-10BB-9EAC-E183-1AD4ADDC1A4D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique patment id.]]></commentInRDBMS>
+<generatorID>96356225-A547-D551-662D-04791853766F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="98396280-08DB-D86A-6E5B-03727C6523FF" referredColumn="1DD7171B-38BB-3FF1-F1CC-13B163984C24"/>
+</associations>
+</Column>
+<Column name="Card_Number" id="CD92E1F1-4A82-2E1B-F2E7-A617C0287812">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Card number of the payment]]></commentInRDBMS>
+<generatorID>8F7EF311-876A-3FEB-A663-8140BAC0CCE4</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>16</dataTypePrecision>
+<ownDataTypeParameters>,16,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Holder_FName" id="35D0F4B3-167D-2E7D-A8E5-6FE166AA7A77">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[First name of the card holder.]]></commentInRDBMS>
+<generatorID>D419FB93-D300-C735-CE8F-5A1C91C3CAC1</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Holder_LName" id="A50CA38A-55A9-550F-86FA-42AD7C5F1011">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Last name of the card holder.]]></commentInRDBMS>
+<generatorID>8030DAD4-0B68-C58C-4BAC-83F4C4D5954F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="CVV" id="F5E2C090-B1F1-73DF-11BB-B80EE80091BE">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The CVV number of the card]]></commentInRDBMS>
+<generatorID>DE051AC4-83C1-2BB8-9EC7-726C20CAADA5</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Expiration_Date" id="B16E0352-3794-2EB1-9CDA-B65F6FC33AE8">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Expiration date of the card]]></commentInRDBMS>
+<generatorID>9B664AAB-A079-3DCC-AFA2-BC2442641D5B</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Card_Type" id="1D7969A4-C219-E1C1-FDC9-75AA098DF90B">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The type of the card, to determine whether it is credit or debit.]]></commentInRDBMS>
+<generatorID>5B786138-AB55-BB95-B3AD-B02D305C6B9A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="06F92933-E23E-7D45-0F42-CD390DCCA4BA" name="AFZ_Card_Payment_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>D24CBE52-24FA-17C6-AD7C-915D29DBC6B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DB48943B-10BB-9EAC-E183-1AD4ADDC1A4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4CA92BFF-BC54-C16D-A160-46A763759250" name="Card_Payment_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>72B7E3F8-4977-4126-6C90-9A80CAB29799</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DB48943B-10BB-9EAC-E183-1AD4ADDC1A4D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

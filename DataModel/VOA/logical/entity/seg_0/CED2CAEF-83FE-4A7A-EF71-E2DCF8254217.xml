@@ -31,7 +31,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Method_Type_ID" id="4920A172-EF00-864B-BA3B-CD31964DB8D9">
 <createdBy>angelowu</createdBy>

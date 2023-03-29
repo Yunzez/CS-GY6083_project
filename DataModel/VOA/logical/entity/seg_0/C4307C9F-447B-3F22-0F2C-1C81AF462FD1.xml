@@ -15,6 +15,20 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="SPV_ID" id="15ACA929-1C85-A9D4-21E0-5930B4A0898D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:12:00 UTC</createdTime>
+<commentInRDBMS><![CDATA[The payment of the visitor pay for each source.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="Source_ID" id="15736C01-0597-1D17-DC76-062B16963C1C">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 15:29:02 UTC</createdTime>
@@ -29,7 +43,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Payment_ID" id="6F8EFD4F-C093-952F-3357-1BD153987970">
 <createdBy>black</createdBy>
@@ -45,7 +59,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Visitor_ID" id="21B5F087-3085-7404-C405-E2397AC762A2">
 <createdBy>black</createdBy>
@@ -61,21 +75,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Source_Type" id="6175E599-A269-AD02-5CF3-3CD68BFFCD4D">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 04:34:21 UTC</createdTime>
-<commentInRDBMS><![CDATA[The type of the payment source]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>15</dataTypeSize>
-<ownDataTypeParameters>15,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
@@ -89,9 +89,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>15736C01-0597-1D17-DC76-062B16963C1C</attributeRef>
-<attributeRef>6F8EFD4F-C093-952F-3357-1BD153987970</attributeRef>
-<attributeRef>21B5F087-3085-7404-C405-E2397AC762A2</attributeRef>
+<attributeRef>15ACA929-1C85-A9D4-21E0-5930B4A0898D</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

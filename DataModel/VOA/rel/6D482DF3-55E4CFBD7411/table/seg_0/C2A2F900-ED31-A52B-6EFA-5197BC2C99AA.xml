@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C2A2F900-ED31-A52B-6EFA-5197BC2C99AA" name="AFZ_Payments">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>387DCEAB-B2A6-79E2-52AE-04E766BC466D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Payment_ID" id="1DD7171B-38BB-3FF1-F1CC-13B163984C24">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique patment id.]]></commentInRDBMS>
+<generatorID>96356225-A547-D551-662D-04791853766F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Payment_Amount" id="F5A96151-AF8E-5AD3-A11F-AE5C7F956A84">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Payment amount.]]></commentInRDBMS>
+<generatorID>598BFEE0-D474-7ADA-4F0E-0131DF74842B</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Payment_Date" id="88D699C2-434A-3B27-8322-3D988C54547F">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Payment date.]]></commentInRDBMS>
+<generatorID>512B169C-137A-A6AC-D8B5-4EA1AE32D64F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Payment_Method" id="7ED3364D-2F1D-2EB7-56E3-D72AA099D9C3">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The code of  payment method.]]></commentInRDBMS>
+<generatorID>7B23FC78-5887-EBA6-3FAE-F242D4D9DA36</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<constraintName>CH_INH_AFZ_Payments</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<listOfValues>
+<valueDef value="Card" description="entity AFZ_Card_Payment"/>
+</listOfValues>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isDiscriminatorColumn>true</isDiscriminatorColumn>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B9FF006F-A51C-B6EF-62DF-ADE1170B5E70" name="AFZ_Payments_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>D24CBE52-24FA-17C6-AD7C-915D29DBC6B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1DD7171B-38BB-3FF1-F1CC-13B163984C24"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

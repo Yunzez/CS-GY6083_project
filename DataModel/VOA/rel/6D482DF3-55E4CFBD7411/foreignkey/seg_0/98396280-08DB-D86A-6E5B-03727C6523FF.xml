@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="98396280-08DB-D86A-6E5B-03727C6523FF" containerWithKeyObject="FA489EC7-A838-1D6E-438E-0C43BDDAD768" localFKIndex="4CA92BFF-BC54-C16D-A160-46A763759250" name="Card_Payment_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>72B7E3F8-4977-4126-6C90-9A80CAB29799</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>AFZ_Payments</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>C2A2F900-ED31-A52B-6EFA-5197BC2C99AA</referredTableID>
+<keyObject>B9FF006F-A51C-B6EF-62DF-ADE1170B5E70</keyObject>
+<referredKeyID>B9FF006F-A51C-B6EF-62DF-ADE1170B5E70</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Payment_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorColumn>7ED3364D-2F1D-2EB7-56E3-D72AA099D9C3</discriminatorColumn>
+<discriminatorValue>Card</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,158 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A1CB88CC-4CB7-DE82-8E2C-758D3B6CAA4C" name="AFZ_Shows">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>A28AC6D1-8E2B-762A-2728-071309141940</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Show_ID" id="FF6F0601-DA29-70A4-6ADE-944F821CC5F2">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[UID of the source, the primary key of this table.]]></commentInRDBMS>
+<generatorID>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="449EF6F9-9C95-12A0-E34F-FEFA53B3FC60" referredColumn="B36056F7-033D-2B38-672C-F15E960AD471"/>
+</associations>
+</Column>
+<Column name="Name" id="F74AACF4-38F5-7F88-085F-D93B5CF400C2">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Show Name.]]></commentInRDBMS>
+<generatorID>695B9440-9186-5FAA-5017-183C38ABFDBF</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Description" id="00464851-1ACD-B122-B711-32DB8B148B64">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of the show.]]></commentInRDBMS>
+<generatorID>08BBB9E6-CDFE-C7BD-0A0E-2DE55EB67F5A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Accessibility" id="218D77DE-8096-3E9E-6E73-E7BACC702067">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Wheelchair accessibility:Yes or No]]></commentInRDBMS>
+<generatorID>DD8926A3-D0C1-740C-C5A8-967DABA93D66</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Price" id="C459C01A-6174-C2D9-F7ED-FFE7328BE3AA">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The price of the show.]]></commentInRDBMS>
+<generatorID>A9A9F769-1540-BFB6-9D28-C46AF4D1750D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Start_Time" id="29F1B25F-AA25-2ABE-EC6C-1564C2E84CDA">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Start time of the show.]]></commentInRDBMS>
+<generatorID>66AD0AE7-D5BB-BC8C-3765-926C9A674F50</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="End_Time" id="FB493F23-7C97-221B-EBB2-EA24FF1D6348">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[End Time of the show.]]></commentInRDBMS>
+<generatorID>E926FBB1-A9F3-DDF4-0C5F-CB9FF05E2031</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Show_Type_ID" id="6E651007-AF13-B79E-2742-11F2E06E37E2">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the Show Type]]></commentInRDBMS>
+<generatorID>9670D618-2949-1187-467B-A997AAE5E1BB</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="57BF9FD1-EB5C-3F56-540C-67E43E445ED9" referredColumn="6C997FA1-E7BA-DED2-C5E4-DE5D4E1EFFFC"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2FFB295E-F760-3C3A-EC2C-7FE489152C21" name="AFZ_Shows_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>CBEE0841-D08F-57C5-8FF6-4DF1C614F208</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF6F0601-DA29-70A4-6ADE-944F821CC5F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7526A1D5-CC2E-FC03-39FF-2916BC1BDBF8" name="Shows_Source_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>4B9C1385-F7B6-7949-6CD2-DE6623BDA290</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FF6F0601-DA29-70A4-6ADE-944F821CC5F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9C7EAB2D-6174-FDBF-142B-585A25DFBB50" name="Shows_Type_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>997A8BC8-21D0-BF06-4536-AFDE2AA22465</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6E651007-AF13-B79E-2742-11F2E06E37E2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

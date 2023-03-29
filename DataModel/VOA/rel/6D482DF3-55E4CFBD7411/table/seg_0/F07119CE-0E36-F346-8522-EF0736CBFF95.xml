@@ -1,0 +1,173 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F07119CE-0E36-F346-8522-EF0736CBFF95" name="AFZ_Tickets">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>CED2CAEF-83FE-4A7A-EF71-E2DCF8254217</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Ticket_ID" id="E87D7901-3E20-D3A3-4503-9B9F0E6EC5A1">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[UID of the source, the primary key of this table.]]></commentInRDBMS>
+<generatorID>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="3A834700-1B2D-3229-4EFE-242387F02232" referredColumn="B36056F7-033D-2B38-672C-F15E960AD471"/>
+</associations>
+</Column>
+<Column name="Visitor_ID" id="EA854226-BA18-2417-D9C5-0FC5CA17DB0B">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the visitor]]></commentInRDBMS>
+<generatorID>63A8023A-8567-2C5C-1B95-F087C2A3BDAD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="259666F7-BA9A-CD37-055D-2EB76261B132" referredColumn="D28DED51-158A-3E69-32CE-1BEFBFB51834"/>
+</associations>
+</Column>
+<Column name="Method_Type_ID" id="0E604DAE-7BA7-EE30-603F-4342F77340DF">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the ticket purchase  method]]></commentInRDBMS>
+<generatorID>4920A172-EF00-864B-BA3B-CD31964DB8D9</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EE63685C-5DF7-F358-93C1-0C38060A82AD" referredColumn="17F59768-7E83-A0FF-F2D0-CE034151847B"/>
+</associations>
+</Column>
+<Column name="Ticket_Type_ID" id="23B517D5-5DE1-815F-B4A0-460FD7E6907F">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the Ticket type]]></commentInRDBMS>
+<generatorID>FC2CA3C0-728E-229D-CB86-32DF1FE82595</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="25900BAE-C892-F1DA-896A-050EE6D941EA" referredColumn="0FCA1B98-0B23-002C-B84C-61B17E4AD0AA"/>
+</associations>
+</Column>
+<Column name="Purchase_Date" id="DCE9F36E-CA77-58B3-0AB8-DFD92257250D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Purchase date of the ticket.]]></commentInRDBMS>
+<generatorID>2DDCD68A-5127-784B-6D29-892FCE4C7830</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Visit_Date" id="EC67E667-156F-3324-EB90-F9449824CC2D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Visit date of the ticket.]]></commentInRDBMS>
+<generatorID>418D7BE4-E5DE-EB9B-50A6-699071874090</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Price" id="45571625-D961-9DDB-E36F-11F3A6175FF3">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The paid price for this ticket.]]></commentInRDBMS>
+<generatorID>A66192A5-A68B-A8C4-2080-6B3B5D6570A1</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="CC6A63A0-2955-5173-8817-826BF7C84E01" name="AFZ_Tickets_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>CBEE0841-D08F-57C5-8FF6-4DF1C614F208</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E87D7901-3E20-D3A3-4503-9B9F0E6EC5A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="9FF4DF2A-D4D6-90E6-0BCC-65BCDE37EBEE" name="Tickets_Source_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>B7F2FCBA-2EFE-7F19-6386-3ED9FC68193A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E87D7901-3E20-D3A3-4503-9B9F0E6EC5A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DC2E6DC5-FCD1-06F0-38A4-A4C88E9E3C40" name="Tickets_Visitors_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>90DE5D81-F171-6E91-89BB-07D282FEC42A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EA854226-BA18-2417-D9C5-0FC5CA17DB0B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0A4C44CA-63EE-D91F-6972-2370C30BD59D" name="Tickets_Method_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>9AFE9F0B-4EB6-F5F9-B03E-0B2C08BFD15A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="0E604DAE-7BA7-EE30-603F-4342F77340DF"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="2F22A96C-9209-E95B-739A-B1E41753679F" name="Ticket_Type_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>30ECAFE4-8D75-51D1-6349-11ECC67DDDE0</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="23B517D5-5DE1-815F-B4A0-460FD7E6907F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

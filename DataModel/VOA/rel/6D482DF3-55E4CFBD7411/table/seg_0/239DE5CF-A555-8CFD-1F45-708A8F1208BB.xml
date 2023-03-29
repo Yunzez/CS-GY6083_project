@@ -1,0 +1,156 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="239DE5CF-A555-8CFD-1F45-708A8F1208BB" name="AFZ_Visitors">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>C869FAC6-4963-7019-C2A9-C6D1B9A8A243</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Visitor_ID" id="D28DED51-158A-3E69-32CE-1BEFBFB51834">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Visitor ID.]]></commentInRDBMS>
+<generatorID>069BB3ED-AA89-EE37-4932-365D6AAA92B6</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Fname" id="0F192B5C-5F7D-398F-A628-9DA7E17A9950">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[First name of visitor]]></commentInRDBMS>
+<generatorID>89459732-24E6-8831-4BF3-CB70BCC23368</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Lname" id="9DFEC89A-DE47-DBBA-4DC1-90ABA9204100">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Last name of visitor]]></commentInRDBMS>
+<generatorID>EDC1913E-A2EF-AB9E-BAEB-814FDC239F8F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="City" id="AF097E01-51EB-B72D-A9C8-C111AE56F229">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The city of visitor.]]></commentInRDBMS>
+<generatorID>628C0D91-1E31-BCF5-A252-8E40A5F19E97</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Email" id="D4ADA3E1-C4A6-0AD9-4E40-DF91F72B912A">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The email of visitor]]></commentInRDBMS>
+<generatorID>29D8C581-F58C-588D-500F-291018B6FA8C</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Cell_Number" id="BE82AC43-1B51-74F4-20F3-D6CF3C597005">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The cell phone number of visitor.]]></commentInRDBMS>
+<generatorID>0F13B0B7-8C7D-6187-24B3-A37CDBB23C91</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Birthdate" id="10BDFCCC-F641-2D77-2C9E-E226B4860B71">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The birthdate of the visitor.]]></commentInRDBMS>
+<generatorID>750E4ECE-8DFA-D07E-E987-29F0BE714838</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Visit_Date" id="C54D48F9-7528-8451-10EE-738CEFD9D514">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[Last visit date of the visitor.]]></commentInRDBMS>
+<generatorID>C505D375-14A7-A69F-9F1F-4A1966CC0517</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Visitor_Type_ID" id="96F66791-BF95-C818-41D1-64C27B4EDB7D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the Visitor type.]]></commentInRDBMS>
+<generatorID>BA9DC8F0-EEF8-531B-4D73-81DE7FCC49C2</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9B3F8143-B1DE-DC73-D25E-C7B1F5F5D3B9" referredColumn="A3775086-983B-2893-43FC-CB1A5FC5D920"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="631211E8-460F-6A90-00EE-6F42303B5FB3" name="AFZ_Visitors_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>8ABE8A87-D919-5857-5C94-6E212A637204</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D28DED51-158A-3E69-32CE-1BEFBFB51834"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="462B8BC1-9E58-0C5F-7C69-A45CBCFFD56E" name="Visitor_Type_ID">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:17:21 UTC</createdTime>
+<generatorID>E1740E83-899F-F5A1-5945-BBE1CDC461C4</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="96F66791-BF95-C818-41D1-64C27B4EDB7D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

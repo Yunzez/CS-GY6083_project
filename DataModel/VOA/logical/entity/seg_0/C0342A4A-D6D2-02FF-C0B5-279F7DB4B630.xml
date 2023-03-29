@@ -15,6 +15,20 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="VSH_ID" id="F46409C0-972D-B989-4DB2-651559C350E9">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 19:09:32 UTC</createdTime>
+<commentInRDBMS><![CDATA[The primary key of this table.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="Visitor_ID1" id="3BFF3ADC-1D93-B309-E35F-844588551FF8">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 02:08:30 UTC</createdTime>
@@ -29,7 +43,23 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Source_ID" id="3F607BC7-7162-C062-33A9-E2398B2808AF">
+<createdBy>black</createdBy>
+<createdTime>2023-03-29 17:31:42 UTC</createdTime>
+<commentInRDBMS><![CDATA[THe UID of the show.]]></commentInRDBMS>
+<generatorID>2E4411BD-437A-170C-723A-5BA5C6AEA227</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Visit_Time" id="7984B12C-B692-AC89-08C1-7273913894E6">
 <createdBy>black</createdBy>
@@ -44,21 +74,6 @@
 <logicalDatatype>LOGDT007</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Source_ID" id="3F607BC7-7162-C062-33A9-E2398B2808AF">
-<createdBy>black</createdBy>
-<createdTime>2023-03-29 17:31:42 UTC</createdTime>
-<generatorID>2E4411BD-437A-170C-723A-5BA5C6AEA227</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,10,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="B9799DC0-5EA6-7198-B2DE-464FF64C5A10" name="Visitor_Show PK">
@@ -70,8 +85,7 @@
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>3BFF3ADC-1D93-B309-E35F-844588551FF8</attributeRef>
-<attributeRef>3F607BC7-7162-C062-33A9-E2398B2808AF</attributeRef>
+<attributeRef>F46409C0-972D-B989-4DB2-651559C350E9</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
