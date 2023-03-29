@@ -1,9 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0E7DC314-3ACA-2F68-3C61-BA1024A20F2E" name="Ticket_Type">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0E7DC314-3ACA-2F68-3C61-BA1024A20F2E" name="AFZ_Ticket_Type">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 17:34:09 UTC</createdTime>
 <generatorID>A71EDC4B-80F4-93AB-3AB8-2CD20E4765ED</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
+<ordsAlias>ticket_type</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>

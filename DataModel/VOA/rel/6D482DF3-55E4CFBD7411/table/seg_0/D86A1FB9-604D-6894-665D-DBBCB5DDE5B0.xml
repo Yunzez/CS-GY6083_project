@@ -1,9 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D86A1FB9-604D-6894-665D-DBBCB5DDE5B0" name="Attractions">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D86A1FB9-604D-6894-665D-DBBCB5DDE5B0" name="AFZ_Attractions">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 17:34:09 UTC</createdTime>
 <generatorID>2EF867CE-C63C-26A4-4642-7ED69236D6DC</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
+<ordsAlias>attractions</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -76,7 +77,7 @@
 <ownDataTypeParameters>,3,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Attraction_Type_Attraction_Type_ID" id="1C8E9840-3942-79DE-C776-9C1153BC51A6">
+<Column name="Attraction_Type_ID" id="1C8E9840-3942-79DE-C776-9C1153BC51A6">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 17:34:09 UTC</createdTime>
 <generatorID>6CC06FAD-4B6A-AE50-9F19-99D9A2777A62</generatorID>
@@ -92,7 +93,7 @@
 <colAssociation fkAssociation="FDDE80F0-E45C-3379-3690-0CAFED40E50D" referredColumn="F0F6B33A-66A3-6F66-E912-8C4F1A5C7218"/>
 </associations>
 </Column>
-<Column name="Status_Type_Status_Type_ID" id="0FEBDA2F-70BE-0906-E8F9-9F8B612CDF8E">
+<Column name="Status_Type_ID" id="0FEBDA2F-70BE-0906-E8F9-9F8B612CDF8E">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 17:34:09 UTC</createdTime>
 <generatorID>FA6A8A1E-E273-7AE3-102F-06967DA332C8</generatorID>
@@ -108,7 +109,7 @@
 <colAssociation fkAssociation="5BC31B22-55DF-5694-F0E9-2527973E2E30" referredColumn="811DA067-C275-9832-E0DD-FA3B8F14E178"/>
 </associations>
 </Column>
-<Column name="Atraction_Locations_Location_Section_ID" id="01368BF9-DCC1-FB0F-D731-D692AC991D72">
+<Column name="Location_Section_ID" id="01368BF9-DCC1-FB0F-D731-D692AC991D72">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 17:34:09 UTC</createdTime>
 <generatorID>47039E4A-FCD3-3872-28DC-FD30C743DC89</generatorID>
@@ -149,7 +150,7 @@
 <colUsage columnID="D91E318E-64D2-0C73-6119-FB9F95D1A8E0"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="7EE48A1C-669F-61A7-3985-2AE4A6FE157E" name="Attractions_Attraction_Type_FK">
+<ind_PK_UK id="7EE48A1C-669F-61A7-3985-2AE4A6FE157E" name="Attractions_Type_FK">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 17:34:09 UTC</createdTime>
 <generatorID>9FF04970-EB41-90A1-F951-5BEBBBC24350</generatorID>
@@ -171,7 +172,7 @@
 <colUsage columnID="0FEBDA2F-70BE-0906-E8F9-9F8B612CDF8E"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="CD0B7AF2-0351-0C9B-B527-B395E1C343C4" name="Attractions_Atraction_Locations_FK">
+<ind_PK_UK id="CD0B7AF2-0351-0C9B-B527-B395E1C343C4" name="Attractions_Locations_FK">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 17:34:09 UTC</createdTime>
 <generatorID>2F479C1E-68DA-7F58-55DA-72E2280666A2</generatorID>

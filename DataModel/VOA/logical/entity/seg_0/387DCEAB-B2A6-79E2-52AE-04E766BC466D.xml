@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="387DCEAB-B2A6-79E2-52AE-04E766BC466D" name="Payments">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="387DCEAB-B2A6-79E2-52AE-04E766BC466D" name="AFZ_Payments">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:31:11 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -88,7 +88,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Payment_ID1" id="3873EF17-BD32-BCB1-FDB7-CA13EF00FEC1">
 <createdBy>black</createdBy>
@@ -103,7 +103,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Visitor_ID" id="9D8252C8-FF14-F31C-5715-26F3531A96F6">
 <createdBy>black</createdBy>
@@ -118,7 +118,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

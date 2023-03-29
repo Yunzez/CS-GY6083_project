@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A28AC6D1-8E2B-762A-2728-071309141940" name="Shows">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A28AC6D1-8E2B-762A-2728-071309141940" name="AFZ_Shows">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:10:41 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -114,7 +114,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 </Entity>

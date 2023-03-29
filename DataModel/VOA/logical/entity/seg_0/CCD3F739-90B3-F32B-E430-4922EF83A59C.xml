@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CCD3F739-90B3-F32B-E430-4922EF83A59C" name="Attraction_Type">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CCD3F739-90B3-F32B-E430-4922EF83A59C" name="AFZ_Attraction_Type">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:43:09 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>

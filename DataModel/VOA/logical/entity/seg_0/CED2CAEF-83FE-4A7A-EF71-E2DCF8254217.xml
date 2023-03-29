@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CED2CAEF-83FE-4A7A-EF71-E2DCF8254217" name="Tickets">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CED2CAEF-83FE-4A7A-EF71-E2DCF8254217" name="AFZ_Tickets">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:35:59 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -31,7 +31,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Method_Type_ID" id="4920A172-EF00-864B-BA3B-CD31964DB8D9">
 <createdBy>angelowu</createdBy>
@@ -47,7 +47,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Ticket_Type_ID" id="FC2CA3C0-728E-229D-CB86-32DF1FE82595">
 <createdBy>angelowu</createdBy>
@@ -63,7 +63,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Purchase_Date" id="2DDCD68A-5127-784B-6D29-892FCE4C7830">
 <createdBy>angelowu</createdBy>
