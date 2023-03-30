@@ -16,7 +16,6 @@
 <normalForm>Third</normalForm>
 <generateDiscrimColumn>true</generateDiscrimColumn>
 <discriminatorAttributeID>75BCD820-FB0C-3FD2-4A6D-9C8AA19D7730</discriminatorAttributeID>
-<completeSubtypes>true</completeSubtypes>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
 <Attribute name="PS_ID" id="B90F4BD3-E66C-31EA-1ADF-0345A773F17F">
 <createdBy>black</createdBy>

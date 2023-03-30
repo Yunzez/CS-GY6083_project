@@ -58,7 +58,7 @@
 <Column name="Facility_ID" id="E7471CA5-6E79-0436-13A7-E0E453601C17">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 03:09:02 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Facility UID of the payment source. This is optional because ticket doesn't have corrsponding facility.
+<commentInRDBMS><![CDATA[The Facility UID of the payment source. This is optional because ticket does not have corrsponding facility.
 ]]></commentInRDBMS>
 <generatorID>FBCE0685-AC03-D2C8-97FF-0BF5A75A5C77</generatorID>
 <ownerDesignName>VOA</ownerDesignName>

@@ -8,8 +8,16 @@ INSERT INTO voa.dbo.AFZ_Attraction_Type (Attraction_Type) VALUES
 -- add attraction status
 INSERT INTO voa.dbo.AFZ_Attraction_Status (Status_Type) VALUES (N'open'), (N'closed'), (N'under maintenance');
 
--- add attraction source
-INSERT INTO voa.dbo.AFZ_Source (Source_Type)
+-- add show types
+INSERT INTO voa.dbo.AFZ_Show_Type (Show_Type) VALUES
+     (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
+
+-- add Parking Locations
+INSERT INTO voa.dbo.AFZ_Parking_Locations (Location) VALUES
+     (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
+
+-- add attraction
+INSERT INTO voa.dbo.AFZ_Facility (Facility_ID, Facility_Type)
 values
     ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att');
 INSERT INTO voa.dbo.AFZ_Attractions
@@ -31,9 +39,6 @@ VALUES
     (14, 'Viper', 'Brace yourself for a wild ride on this serpent-themed coaster!', 48, 90, 1, 3, 1),
     (15, 'Wild West Showdown', 'Strap on your cowboy boots and take aim in this thrilling shooting gallery!', 52, 180, 3, 1, 3);
 
--- add show types
-INSERT INTO voa.dbo.AFZ_Show_Type (Show_Type) VALUES
-     (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
 
 -- add shows
 INSERT INTO voa.dbo.AFZ_Source (Source_Type)
