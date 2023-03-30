@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="FBFD828C-D26C-66FB-C861-7626CE99B78D" containerWithKeyObject="8E10F8C1-7A77-80BE-379F-D78DAC45DB7E" localFKIndex="480739A1-EA2A-5928-E6EF-AEFE901755CB" name="Store_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>9748D6A9-6AD5-BA6C-CF6D-59A729BE08FA</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>AFZ_Facility</referredTableLongName>
+<arc>C48047EE-02EC-4BDE-871B-E1FD9A319A89</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>FA3C9C50-E772-D0F5-F08A-7E3F1BFF6203</referredTableID>
+<keyObject>95CA1B62-1F15-46BB-C02A-AE671EB685CE</keyObject>
+<referredKeyID>95CA1B62-1F15-46BB-C02A-AE671EB685CE</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Facility_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>Sto</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="8A6F1A7D-B739-CBA7-9E57-A1FACDF1E575" containerWithKeyObject="FF7A7B5F-A332-178D-EB8D-E69E55511A0C" localFKIndex="CC7A4AB3-49C7-464C-989A-2DCB01CE6504" name="Att_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>4FEA82DC-E8FF-823F-BD50-8DFD91F47458</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>AFZ_Facility</referredTableLongName>
+<arc>C48047EE-02EC-4BDE-871B-E1FD9A319A89</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>FA3C9C50-E772-D0F5-F08A-7E3F1BFF6203</referredTableID>
+<keyObject>95CA1B62-1F15-46BB-C02A-AE671EB685CE</keyObject>
+<referredKeyID>95CA1B62-1F15-46BB-C02A-AE671EB685CE</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Facility_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>Att</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

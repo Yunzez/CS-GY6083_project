@@ -1,5 +1,6 @@
 -- add attraction locations
-INSERT INTO voa.dbo.AFZ_Attraction_Locations (Location_Section) VALUES (N'A'), (N'B'), (N'C'), (N'D');
+INSERT INTO voa.dbo.AFZ_Attraction_Locations (Location_Section)
+    VALUES (N'A'), (N'B'), (N'C'), (N'D');
 
 -- add attraction types
 INSERT INTO voa.dbo.AFZ_Attraction_Type (Attraction_Type) VALUES
@@ -13,56 +14,13 @@ INSERT INTO voa.dbo.AFZ_Show_Type (Show_Type) VALUES
      (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
 
 -- add Parking Locations
-INSERT INTO voa.dbo.AFZ_Parking_Locations (Location) VALUES
-     (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
+INSERT INTO voa.dbo.AFZ_Parking_Locations (Parking_Lot_Section)
+    VALUES (N'A'), (N'B'), (N'C'), (N'D');
 
--- add attraction
-INSERT INTO voa.dbo.AFZ_Facility (Facility_ID, Facility_Type)
-values
-    ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att');
-INSERT INTO voa.dbo.AFZ_Attractions
-    (Attraction_ID, Attraction_Name, Description, Minimum_Height, Durations, Attraction_Type_ID, Status_Type_ID, Location_Section_ID)
-VALUES
-    (1, 'Sky High', 'Take a thrilling ride through the clouds and enjoy breathtaking views from high above!', 48, 120, 1, 1, 1),
-    (2, 'Splashdown', 'Brace yourself for a wet and wild ride down a twisting water slide!', 42, 90, 2, 2, 2),
-    (3, 'Thunderbolt', 'Get ready for an electrifying ride full of twists and turns!', 54, 60, 3, 1, 1),
-    (4, 'Cyclone', 'Experience the rush of wind as you soar through the air on this high-speed rollercoaster!', 52, 180, 4, 3, 3),
-    (5, 'Fireball', 'Feel the heat as you spin and twist on this fiery ride!', 48, 75, 2, 1, 1),
-    (6, 'Wild River', 'Take a scenic rafting adventure down a raging river!', 46, 240, 1, 2, 4),
-    (7, 'Tornado', 'Hold on tight as you spiral through the air in this whirlwind of a ride!', 48, 90, 3, 2, 2),
-    (8, 'Dragon''s Lair', 'Brave the fiery depths of the dragon''s lair on this thrilling coaster!', 54, 120, 4, 3, 3),
-    (9, 'Wave Rider', 'Hang ten on this giant wave pool and ride the waves like a pro!', 44, 180, 2, 1, 1),
-    (10, 'Haunted Mansion', 'Enter if you dare and experience the chills and thrills of this spooky mansion!', 48, 150, 1, 2, 4),
-    (11, 'Twisted Twister', 'Get twisted up on this hair-raising ride that will leave you breathless!', 54, 60, 3, 3, 3),
-    (12, 'Space Odyssey', 'Blast off into outer space on this high-tech simulator ride!', 44, 240, 4, 1, 2),
-    (13, 'Pirate''s Plunder', 'Set sail on a pirate adventure and search for hidden treasure!', 46, 120, 2, 2, 4),
-    (14, 'Viper', 'Brace yourself for a wild ride on this serpent-themed coaster!', 48, 90, 1, 3, 1),
-    (15, 'Wild West Showdown', 'Strap on your cowboy boots and take aim in this thrilling shooting gallery!', 52, 180, 3, 1, 3);
+-- add Store Category
+INSERT INTO voa.dbo.AFZ_Store_Category (Category)
+    VALUES (N'Food stall'), (N'Ice cream parlor'), (N'Restaurant'), (N'Gift Shop'), (N'Apparels');
 
-
--- add shows
-INSERT INTO voa.dbo.AFZ_Source (Source_Type)
-values
-    ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho');
-
-INSERT INTO voa.dbo.AFZ_Shows
-    (show_id, name, description, accessibility, price, start_time, end_time, show_type_id)
-VALUES
-    (16, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-01 18:00:00', '2023-04-01 20:00:00', 1),
-    (17, 'Shakespearean Sonnets', 'A selection of sonnets by William Shakespeare', 0, 15.00, '2023-04-01 20:30:00', '2023-04-01 22:00:00', 3),
-    (18, 'Improv Night', 'A night of spontaneous comedy and improvisation', 1, 20.00, '2023-04-02 18:00:00', '2023-04-02 20:00:00', 2),
-    (19, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-02 20:30:00', '2023-04-02 22:00:00', 4),
-    (20, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-03 18:00:00', '2023-04-03 20:00:00', 5),
-    (21, 'Comedy Central', 'An evening of stand-up comedy with up-and-coming comedians', 0, 20.00, '2023-04-03 20:30:00', '2023-04-03 22:00:00', 2),
-    (22, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-04 18:00:00', '2023-04-04 20:00:00', 1),
-    (23, 'Shakespearean Sonnets', 'A selection of sonnets by William Shakespeare', 0, 15.00, '2023-04-04 20:30:00', '2023-04-04 22:00:00', 3),
-    (24, 'Improv Night', 'A night of spontaneous comedy and improvisation', 1, 20.00, '2023-04-05 18:00:00', '2023-04-05 20:00:00', 2),
-    (25, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-05 20:30:00', '2023-04-05 22:00:00', 4),
-    (26, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-06 18:00:00', '2023-04-06 20:00:00', 5),
-    (27, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-06 20:30:00', '2023-04-06 22:00:00', 4),
-    (28, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-07 18:00:00', '2023-04-07 20:00:00', 5),
-    (29, 'Comedy Central', 'An evening of stand-up comedy with up-and-coming comedians', 0, 20.00, '2023-04-07 20:30:00', '2023-04-07 22:00:00', 2),
-    (30, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-08 18:00:00', '2023-04-08 20:00:00', 1);
 
 -- add items
 INSERT INTO voa.dbo.AFZ_Item
@@ -84,7 +42,225 @@ VALUES
     ('Keychain', 'Metal keychain with VOA emblem.'),
     ('Plush Toy', 'Soft and cuddly plush toy of VOA mascot.');
 
-INSERT INTO voa.dbo.AFZ_Store
-    (Store_ID, Store_Name, Category_ID)
+-- add source type
+INSERT INTO voa.dbo.AFZ_Source_Type
+    (Source_Type, Source_Type_Name)
 VALUES
+    ('Att', 'Attraction'), ('Par', 'Parking'), ('Shw', 'Show'), ('Sto', 'Store'), ('Tic', 'Ticket');
+
+-- add attraction
+DECLARE @insertedIds TABLE (Facility_ID INT);
+
+INSERT INTO voa.dbo.AFZ_Facility (Source_Type)
+OUTPUT inserted.Facility_ID INTO @insertedIds
+VALUES
+    ('Att'),('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att');
+
+
+DECLARE @tem_attractions TABLE (
+     Row_Num NUMERIC(5),
+     Attraction_Name VARCHAR (20) NOT NULL ,
+     Att_Description VARCHAR (128) NOT NULL ,
+     Minimum_Height NUMERIC (3) NOT NULL ,
+     Durations NUMERIC (3) NOT NULL ,
+     Attraction_Type_ID NUMERIC (2) NOT NULL ,
+     Attraction_Status_ID NUMERIC (1) NOT NULL ,
+     Attraction_Locations_ID NUMERIC (2) NOT NULL
+    );
+INSERT INTO @tem_attractions
+    (Row_Num, Attraction_Name, Att_Description, Minimum_Height, Durations, Attraction_Type_ID, Attraction_Status_ID, Attraction_Locations_ID)
+VALUES
+    (1, 'Sky High', 'Take a thrilling ride through the clouds and enjoy breathtaking views from high above!', 48, 120, 1, 1, 1),
+    (2, 'Splashdown', 'Brace yourself for a wet and wild ride down a twisting water slide!', 42, 90, 2, 2, 2),
+    (3, 'Thunderbolt', 'Get ready for an electrifying ride full of twists and turns!', 54, 60, 3, 1, 1),
+    (4, 'Cyclone', 'Experience the rush of wind as you soar through the air on this high-speed rollercoaster!', 52, 180, 4, 3, 3),
+    (5, 'Fireball', 'Feel the heat as you spin and twist on this fiery ride!', 48, 75, 2, 1, 1),
+    (6, 'Wild River', 'Take a scenic rafting adventure down a raging river!', 46, 240, 1, 2, 4),
+    (7, 'Tornado', 'Hold on tight as you spiral through the air in this whirlwind of a ride!', 48, 90, 3, 2, 2),
+    (8, 'Dragon''s Lair', 'Brave the fiery depths of the dragon''s lair on this thrilling coaster!', 54, 120, 4, 3, 3),
+    (9, 'Wave Rider', 'Hang ten on this giant wave pool and ride the waves like a pro!', 44, 180, 2, 1, 1),
+    (10, 'Haunted Mansion', 'Enter if you dare and experience the chills and thrills of this spooky mansion!', 48, 150, 1, 2, 4),
+    (11, 'Twisted Twister', 'Get twisted up on this hair-raising ride that will leave you breathless!', 54, 60, 3, 3, 3),
+    (12, 'Space Odyssey', 'Blast off into outer space on this high-tech simulator ride!', 44, 240, 4, 1, 2),
+    (13, 'Pirate''s Plunder', 'Set sail on a pirate adventure and search for hidden treasure!', 46, 120, 2, 2, 4),
+    (14, 'Viper', 'Brace yourself for a wild ride on this serpent-themed coaster!', 48, 90, 1, 3, 1),
+    (15, 'Wild West Showdown', 'Strap on your cowboy boots and take aim in this thrilling shooting gallery!', 52, 180, 3, 1, 3);
+
+INSERT INTO voa.dbo.AFZ_Attractions (Attraction_Name, Att_Description, Minimum_Height, Durations, Attraction_Type_ID, Status_Type_ID, Location_Section_ID, Facility_ID)
+SELECT a.Attraction_Name, a.Att_Description, a.Minimum_Height, a.Durations, a.Attraction_Type_ID, a.Attraction_Status_ID, a.Attraction_Locations_ID, i.Facility_ID
+FROM @tem_attractions a
+JOIN (SELECT Facility_ID, ROW_NUMBER() OVER (ORDER BY Facility_ID) AS Row_Num
+FROM @insertedIds) i ON i.Row_Num = a.Row_Num;
+
+
+
+-- add shows
+DECLARE @insertedShwIds TABLE (Facility_ID INT);
+
+INSERT INTO voa.dbo.AFZ_Facility (Source_Type)
+OUTPUT inserted.Facility_ID INTO @insertedShwIds
+VALUES
+    ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw'), ('Shw');
+
+
+DECLARE @tem_shows TABLE
+    (
+     Row_Num NUMERIC (5) NOT NULL ,
+     Name VARCHAR (32) NOT NULL ,
+     Description VARCHAR (128) NOT NULL ,
+     Accessibility NUMERIC (1) NOT NULL ,
+     Price NUMERIC (8,2) NOT NULL ,
+     Start_Time DATE NOT NULL ,
+     End_Time DATE NOT NULL ,
+     Show_Type_ID NUMERIC (2) NOT NULL
+    )
+INSERT INTO @tem_shows
+    (Row_Num, name, description, accessibility, price, start_time, end_time, show_type_id)
+VALUES
+    (1, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-01 18:00:00', '2023-04-01 20:00:00', 1),
+    (2, 'Shakespearean Sonnets', 'A selection of sonnets by William Shakespeare', 0, 15.00, '2023-04-01 20:30:00', '2023-04-01 22:00:00', 3),
+    (3, 'Improv Night', 'A night of spontaneous comedy and improvisation', 1, 20.00, '2023-04-02 18:00:00', '2023-04-02 20:00:00', 2),
+    (4, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-02 20:30:00', '2023-04-02 22:00:00', 4),
+    (5, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-03 18:00:00', '2023-04-03 20:00:00', 5),
+    (6, 'Comedy Central', 'An evening of stand-up comedy with up-and-coming comedians', 0, 20.00, '2023-04-03 20:30:00', '2023-04-03 22:00:00', 2),
+    (7, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-04 18:00:00', '2023-04-04 20:00:00', 1),
+    (8, 'Shakespearean Sonnets', 'A selection of sonnets by William Shakespeare', 0, 15.00, '2023-04-04 20:30:00', '2023-04-04 22:00:00', 3),
+    (9, 'Improv Night', 'A night of spontaneous comedy and improvisation', 1, 20.00, '2023-04-05 18:00:00', '2023-04-05 20:00:00', 2),
+    (10, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-05 20:30:00', '2023-04-05 22:00:00', 4),
+    (11, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-06 18:00:00', '2023-04-06 20:00:00', 5),
+    (12, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-06 20:30:00', '2023-04-06 22:00:00', 4),
+    (13, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-07 18:00:00', '2023-04-07 20:00:00', 5),
+    (14, 'Comedy Central', 'An evening of stand-up comedy with up-and-coming comedians', 0, 20.00, '2023-04-07 20:30:00', '2023-04-07 22:00:00', 2),
+    (15, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-08 18:00:00', '2023-04-08 20:00:00', 1);
+
+INSERT INTO voa.dbo.AFZ_Shows (Name, Description, Accessibility, Price, Start_Time, End_Time, Show_Type_ID, Facility_ID)
+SELECT a.Name, a.Description, a.accessibility, a.Price, a.Start_Time, a.End_Time, a.Show_Type_ID, i.Facility_ID
+FROM @tem_shows a
+JOIN (SELECT Facility_ID, ROW_NUMBER() OVER (ORDER BY Facility_ID) AS Row_Num
+FROM @insertedShwIds) i ON i.Row_Num = a.Row_Num;
+
+
+-- add Parking
+DECLARE @insertedParIds TABLE (Facility_ID INT);
+
+INSERT INTO voa.dbo.AFZ_Facility (Source_Type)
+OUTPUT inserted.Facility_ID INTO @insertedParIds
+VALUES
+    ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par');
+
+
+DECLARE @tem_parking TABLE
+    (
+     Row_Num NUMERIC (5) NOT NULL ,
+     Spot_Number NUMERIC (3) NOT NULL ,
+     Parking_Locations_ID NUMERIC (2) NOT NULL
+    )
+INSERT INTO @tem_parking
+    (Row_Num, Spot_Number, Parking_Locations_ID)
+VALUES
+    (1, 1, 1),
+    (2, 2, 1),
+    (3, 3, 1),
+    (4, 4, 1),
+    (5, 1, 2),
+    (6, 2, 2),
+    (7, 3, 2),
+    (8, 4, 2),
+    (9, 1, 3),
+    (10, 2, 3),
+    (11, 3, 3),
+    (12, 4, 3),
+    (13, 1 ,4),
+    (14, 2 ,4),
+    (15, 3 ,4);
+
+INSERT INTO voa.dbo.AFZ_Parking_Lot (Spot_Number, Parking_Section_ID, Facility_ID)
+SELECT a.Spot_Number, a.Parking_Locations_ID, i.Facility_ID
+FROM @tem_parking a
+JOIN (SELECT Facility_ID, ROW_NUMBER() OVER (ORDER BY Facility_ID) AS Row_Num
+FROM @insertedParIds) i ON i.Row_Num = a.Row_Num;
+
+-- add stores
+DECLARE @insertedStrIds TABLE (Facility_ID INT);
+
+INSERT INTO voa.dbo.AFZ_Facility (Source_Type)
+OUTPUT inserted.Facility_ID INTO @insertedStrIds
+VALUES
+    ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto'), ('Sto');
+
+
+DECLARE @tem_store TABLE
+    (
+     Row_Num NUMERIC (5) NOT NULL ,
+     Store_Name VARCHAR (32) NOT NULL ,
+     Store_Category_ID NUMERIC (2) NOT NULL
+    )
+INSERT INTO @tem_store
+    (Row_Num, Store_Name, Store_Category_ID)
+VALUES
+    (1,'The Hungry Panda',1),
+    (2,'Sweet Treats',2),
+    (3,'Casa di Pizza',3),
+    (4,'The Souvenir Shop',4),
+    (5,'Fashionista',5),
+    (6,'Burgers N'' Fries',1),
+    (7,'The Ice Cream Shoppe',2),
+    (8,'La Cantina',3),
+    (9,'The Toy Chest',4),
+    (10,'Shoe Emporium',5),
+    (11,'Taco Stop',1),
+    (12,'Sundae Funday',2),
+    (13,'Pasta Palace',3),
+    (14,'The Boutique',5),
+    (15,'The Trading Post',4);
+
+INSERT INTO voa.dbo.AFZ_Store (Store_Name, Category_ID, Facility_ID)
+SELECT a.Store_Name, a.Store_Category_ID, i.Facility_ID
+FROM @tem_store a
+JOIN (SELECT Facility_ID, ROW_NUMBER() OVER (ORDER BY Facility_ID) AS Row_Num
+FROM @insertedStrIds) i ON i.Row_Num = a.Row_Num;
+
+-- add Item_Store
+DECLARE @minPrice NUMERIC(6, 2) = 5.00;
+INSERT INTO voa.dbo.AFZ_Item_Store (Item_ID, Facility_ID, Unit_Price)
+SELECT TOP 35 i.Item_ID, s.Facility_ID,
+              @minPrice +
+              CAST((CAST((ABS(CHECKSUM(NewId())) % 20 )AS NUMERIC(5, 2))) +
+                   (CAST((ABS(CHECKSUM(NewId())) % 100 )AS NUMERIC(5, 2)) / 100) AS NUMERIC(5, 2))
+FROM voa.dbo.AFZ_Item i CROSS JOIN voa.dbo.AFZ_Store s
+ORDER BY NEWID();
+
+-- add Visitor Type
+INSERT INTO voa.dbo.AFZ_Visitor_Type (Visitor_Type) VALUES
+     (N'Individual'),(N'Group'),(N'Member'),(N'Student');
+
+-- add Ticket Method
+INSERT INTO voa.dbo.AFZ_Ticket_Method (Method_Type) VALUES
+     (N'Online'),(N'Onsite');
+
+-- add Ticket Type
+INSERT INTO voa.dbo.AFZ_Ticket_Type (Ticket_Type) VALUES
+     (N'Child'),(N'Adult'),(N'Member'),(N'Senior');
+
+-- add Visitor
+INSERT INTO afz_visitors (fname, lname, city, email, cell_number, birthdate, visitor_type_id)
+VALUES
+('John', 'Doe', 'New York', 'john.doe@example.com', 5555551234, '1990-01-01', 1),
+('Jane', 'Doe', 'Los Angeles', 'jane.doe@example.com', 5555555678, '1995-05-05', 2),
+('Bob', 'Smith', 'Chicago', 'bob.smith@example.com', 5555552468, '1980-12-31', 3),
+('Alice', 'Johnson', 'Houston', 'alice.johnson@example.com', 5555553691, '1985-08-15', 1),
+('David', 'Brown', 'Philadelphia', 'david.brown@example.com', 5555557890, '1998-11-11', 4),
+('Sarah', 'Wilson', 'Phoenix', 'sarah.wilson@example.com', 5555551357, '1975-02-28', 3),
+('Michael', 'Taylor', 'San Diego', 'michael.taylor@example.com', 5555552468, '1992-07-17', 4),
+('Emily', 'Davis', 'Dallas', 'emily.davis@example.com', 5555558024, '1996-04-30', 2),
+('Daniel', 'Miller', 'San Francisco', 'daniel.miller@example.com', 5555554680, '1999-09-22', 3),
+('Linda', 'Clark', 'Miami', 'linda.clark@example.com', 5555551357, '1988-03-15', 4),
+('James', 'Martinez', 'Seattle', 'james.martinez@example.com', 5555558024, '1983-06-12', 2),
+('Karen', 'Lee', 'Denver', 'karen.lee@example.com', 5555557890, '1979-09-04', 3),
+('Steven', 'Wright', 'Boston', 'steven.wright@example.com', 5555553691, '1994-12-25', 1),
+('Megan', 'Garcia', 'Austin', 'megan.garcia@example.com', 5555551234, '1997-03-05', 4),
+('Robert', 'Perez', 'Las Vegas', 'robert.perez@example.com', 5555554680, '1982-08-08', 3);
+
+-- TODO: DATA FOR activity: order, ticket, parking,
+--       data for payment.
 

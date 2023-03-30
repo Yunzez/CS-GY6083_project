@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="C7756FDC-7CFC-6A69-A5D9-AA7C4D63214D" name="AFZ_Store_Category">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>949FC905-583D-33D1-3CCF-75847868F417</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Category_ID" id="B851D0DE-D821-ED78-36A2-1DB2A41D2A1E">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Category Store ID.]]></commentInRDBMS>
+<generatorID>23B754FA-EDFD-578B-BA82-1E7994C1CB1F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Category" id="E36E658B-147A-8DA3-D34C-C06E7FD0C576">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[Store Category:
+Food stall, Ice cream parlor, Restaurant, Gift Shop, Apparels]]></commentInRDBMS>
+<generatorID>6A0D5EC5-A036-BDAF-1F99-66F1B14626EE</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="266F3EC9-5A2F-9BD0-15CC-37E9B37D6592" name="AFZ_Store_Category_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>E9F56A28-3E18-DB1E-346B-9A005C1A8B45</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B851D0DE-D821-ED78-36A2-1DB2A41D2A1E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

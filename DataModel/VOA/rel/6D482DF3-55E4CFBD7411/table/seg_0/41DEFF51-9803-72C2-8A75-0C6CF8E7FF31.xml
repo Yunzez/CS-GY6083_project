@@ -1,0 +1,54 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="41DEFF51-9803-72C2-8A75-0C6CF8E7FF31" name="AFZ_Ticket_Type">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>A71EDC4B-80F4-93AB-3AB8-2CD20E4765ED</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Ticket_Type_ID" id="AF92BD27-0C6F-393E-C9AC-8B39CAC7294E">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique ticket type.]]></commentInRDBMS>
+<generatorID>CC47EAFD-552D-28BA-8443-40B899E47147</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Ticket_Type" id="F388F4CB-3F82-6D20-BCBC-88BC63DFC031">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[Ticket type: Child, Adult, Senior, or Member]]></commentInRDBMS>
+<generatorID>1B47D8C9-6510-BF8A-B46F-F52400BB2AE6</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="0FF3296F-B50E-DCEE-DC60-240DD300BA8D" name="AFZ_Ticket_Type_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>6780EDB9-CAFD-F371-CAFB-B0D1B1794898</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AF92BD27-0C6F-393E-C9AC-8B39CAC7294E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

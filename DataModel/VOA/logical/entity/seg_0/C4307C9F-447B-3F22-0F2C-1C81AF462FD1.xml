@@ -47,7 +47,7 @@
 <dataTypePrecision>6</dataTypePrecision>
 <ownDataTypeParameters>,6,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="PS_ID" id="7EE8A19C-8784-907B-6086-018F5EAE8CFD">
+<Attribute name="Activity_ID" id="7EE8A19C-8784-907B-6086-018F5EAE8CFD">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 00:47:00 UTC</createdTime>
 <commentInRDBMS><![CDATA[The UID of the payment Resource.]]></commentInRDBMS>

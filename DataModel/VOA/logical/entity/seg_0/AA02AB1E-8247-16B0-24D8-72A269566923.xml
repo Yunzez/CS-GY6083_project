@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AA02AB1E-8247-16B0-24D8-72A269566923" name="AFZ_Payment_Source">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AA02AB1E-8247-16B0-24D8-72A269566923" name="AFZ_Activity">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 00:39:17 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -17,10 +17,10 @@
 <generateDiscrimColumn>true</generateDiscrimColumn>
 <discriminatorAttributeID>75BCD820-FB0C-3FD2-4A6D-9C8AA19D7730</discriminatorAttributeID>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="PS_ID" id="B90F4BD3-E66C-31EA-1ADF-0345A773F17F">
+<Attribute name="Activity_ID" id="B90F4BD3-E66C-31EA-1ADF-0345A773F17F">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 00:39:29 UTC</createdTime>
-<commentInRDBMS><![CDATA[The UID of the source of the payment]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[The UID of the activity]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -34,7 +34,7 @@
 <Attribute name="Amount_Due" id="5C9DFF40-2AF8-E1E3-14FD-99707AC02F38">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 00:43:41 UTC</createdTime>
-<commentInRDBMS><![CDATA[The total amount due to the source.]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[The total amount due to the Activity.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -49,7 +49,7 @@
 <Attribute name="Facility_ID" id="FB470D6F-4E48-91E0-B5C9-B38DA5599716">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 01:57:26 UTC</createdTime>
-<commentInRDBMS><![CDATA[The ID of the payment source facility
+<commentInRDBMS><![CDATA[The ID of the facility of Activity
 ]]></commentInRDBMS>
 <generatorID>E404F0A0-D83D-631F-E57E-EC52FE00EEA4</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
@@ -62,12 +62,12 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Source_Type" id="75BCD820-FB0C-3FD2-4A6D-9C8AA19D7730">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 02:00:08 UTC</createdTime>
-<commentInRDBMS><![CDATA[The type of the facility of the payment source.
+<commentInRDBMS><![CDATA[The type of the facility of the Activity.
 ]]></commentInRDBMS>
 <generatorID>0DAB2370-49CE-06E5-198A-CB1199EDA02E</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
@@ -79,7 +79,37 @@
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>3</dataTypeSize>
-<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Visitor_ID" id="3907A755-6A57-6EBA-A6E3-12D60F891DBE">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 07:09:57 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Visitor in the acitivity
+]]></commentInRDBMS>
+<generatorID>CED677EA-5BAF-F480-D085-9C4005664416</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>069BB3ED-AA89-EE37-4932-365D6AAA92B6</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Activity_Date" id="55B6A033-1078-35E3-548A-E615DB722CBD">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 07:29:45 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Date that the activity happens.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

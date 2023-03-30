@@ -11,35 +11,47 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
-<hierarchicalParent>97015ED2-C463-6D9D-E340-E2C0A9DFA582</hierarchicalParent>
+<hierarchicalParent>AA02AB1E-8247-16B0-24D8-72A269566923</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <discriminatorValue>Par</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Spot_Number" id="4BAE453A-B64F-4735-CA67-164174650B94">
+<Attribute name="Time_In" id="0520C8F6-D979-8505-2CE3-7791A222064E">
 <createdBy>black</createdBy>
-<createdTime>2023-03-28 02:40:12 UTC</createdTime>
-<commentInRDBMS><![CDATA[The spot number of the parking lot.]]></commentInRDBMS>
+<createdTime>2023-03-30 07:30:49 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time the visitor starts parking]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>3</dataTypePrecision>
-<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Location_Section_ID" id="EF7C0A7A-E6B7-8DE9-0E04-DB97A3700BBF">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-29 01:56:51 UTC</createdTime>
-<generatorID>ABA16113-8E37-5C70-95A9-DB908AED75DB</generatorID>
+<Attribute name="Time_Out" id="15502361-986D-2D6B-E65B-31E38562A8DC">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 07:30:49 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time the visitor ends  parking]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>B625072C-02AC-79C3-BB98-A2FDA0F1F92E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Parking_Lot_ID" id="999D6024-3BCD-7AA4-88B2-89C813FB3F65">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:09:14 UTC</createdTime>
+<generatorID>7F02C0CA-49FB-FC2C-118C-7612B325D7A7</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>A7089F62-5828-3973-B170-08289279B09C</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>

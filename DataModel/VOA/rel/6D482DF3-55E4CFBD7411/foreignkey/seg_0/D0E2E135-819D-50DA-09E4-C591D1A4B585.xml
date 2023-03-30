@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="D0E2E135-819D-50DA-09E4-C591D1A4B585" containerWithKeyObject="26B8AB52-FA5F-EFC6-9DFE-26A8C4681D76" localFKIndex="1D2C8C38-A0B9-351C-3921-F26C2D33D64E" name="Ticket_Method_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>9AFE9F0B-4EB6-F5F9-B03E-0B2C08BFD15A</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>AFZ_Ticket_Method</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>2BC05899-879F-EC25-78BE-145E743EFAB2</referredTableID>
+<keyObject>F17F9DB4-326C-B3B5-A63E-E89FECBEF385</keyObject>
+<referredKeyID>F17F9DB4-326C-B3B5-A63E-E89FECBEF385</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Method_Type_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

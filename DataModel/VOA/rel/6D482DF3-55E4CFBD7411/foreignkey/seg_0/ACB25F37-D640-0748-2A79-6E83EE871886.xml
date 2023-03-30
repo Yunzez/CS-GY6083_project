@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="ACB25F37-D640-0748-2A79-6E83EE871886" containerWithKeyObject="F5A4F58B-77B3-02E3-E7A0-53D01DA82744" localFKIndex="10FC0972-C17D-32E3-896A-71A1365D9401" name="Shows_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>C6421C9A-F0AC-6422-3EBE-547EC1E022CA</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>AFZ_Facility</referredTableLongName>
+<arc>C48047EE-02EC-4BDE-871B-E1FD9A319A89</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>FA3C9C50-E772-D0F5-F08A-7E3F1BFF6203</referredTableID>
+<keyObject>95CA1B62-1F15-46BB-C02A-AE671EB685CE</keyObject>
+<referredKeyID>95CA1B62-1F15-46BB-C02A-AE671EB685CE</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Facility_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>Shw</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

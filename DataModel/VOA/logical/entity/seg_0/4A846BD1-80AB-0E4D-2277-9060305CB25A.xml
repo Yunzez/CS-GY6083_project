@@ -72,7 +72,7 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="PS_ID" id="72922CE0-9BC3-428C-9FAD-609B2C5EDA8C">
+<Attribute name="Activity_ID" id="72922CE0-9BC3-428C-9FAD-609B2C5EDA8C">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 02:28:30 UTC</createdTime>
 <generatorID>CC064B88-C1FA-F0C3-C297-C3404A62B413</generatorID>
@@ -85,7 +85,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

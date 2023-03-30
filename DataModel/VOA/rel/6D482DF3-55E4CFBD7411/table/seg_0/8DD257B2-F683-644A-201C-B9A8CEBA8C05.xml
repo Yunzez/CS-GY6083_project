@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8DD257B2-F683-644A-201C-B9A8CEBA8C05" name="AFZ_Parking">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>692995E0-E969-C87B-BD1E-CC456FC94C9D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Activity_ID" id="2FD445CD-45B6-9C98-FC51-9D7C5B6314F2">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the activity]]></commentInRDBMS>
+<generatorID>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6A4CB366-7931-EA9F-3794-64BCDCE822AE" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
+</associations>
+</Column>
+<Column name="Parking_Lot_Facility_ID" id="C78198EA-8DAA-46F4-13DE-388AD0D765A5">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:09:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Facility UID of the Parking Lot
+]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="AE7D7430-7FA7-3005-84D6-4FBFA1B4DF22" referredColumn="9D4C9FBF-2C1E-E75B-34F4-8744639F2FBC"/>
+</associations>
+</Column>
+<Column name="Time_In" id="E95BCEAC-0193-6582-9E95-614BF41228D7">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time the visitor starts parking]]></commentInRDBMS>
+<generatorID>0520C8F6-D979-8505-2CE3-7791A222064E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Time_Out" id="5C72A95F-3EF9-6733-3873-031B0EE76233">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time the visitor ends  parking]]></commentInRDBMS>
+<generatorID>15502361-986D-2D6B-E65B-31E38562A8DC</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="98565169-FD5C-490D-581B-0B12F85A7302" name="AFZ_Parking_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>AD236288-FE69-2311-0C25-D0059968A430</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2FD445CD-45B6-9C98-FC51-9D7C5B6314F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B4BA92D0-04BF-F149-7C32-5D57B9F8919E" name="Parking_Activity_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>2ED99503-CE54-8ADB-412B-57A0C064B33E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2FD445CD-45B6-9C98-FC51-9D7C5B6314F2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0359B658-D44C-5AF2-4181-99AE8A98314F" name="PParking_Lot_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:09:30 UTC</createdTime>
+<generatorID>14A63DF6-1D25-8F24-B818-03C16DCDD9B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C78198EA-8DAA-46F4-13DE-388AD0D765A5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -91,5 +91,19 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Validate" id="79A88C82-7442-27E5-7EC9-A3854EBA2DAE">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 07:52:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[If the Ticket is valudate. This will be updated by a trigger function on each select. Default 0.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 </Entity>

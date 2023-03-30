@@ -16,7 +16,6 @@
 <normalForm>Third</normalForm>
 <generateDiscrimColumn>true</generateDiscrimColumn>
 <discriminatorAttributeID>985A8A06-8E56-5E92-9C9A-D67D4C0165F5</discriminatorAttributeID>
-<completeSubtypes>true</completeSubtypes>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
 <Attribute name="Facility_ID" id="8F0FBD68-1B31-0414-F37C-41822445B3A0">
 <createdBy>black</createdBy>

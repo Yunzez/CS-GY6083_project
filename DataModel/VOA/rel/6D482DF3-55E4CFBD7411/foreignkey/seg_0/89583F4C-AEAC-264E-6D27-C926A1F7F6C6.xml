@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="89583F4C-AEAC-264E-6D27-C926A1F7F6C6" containerWithKeyObject="26B8AB52-FA5F-EFC6-9DFE-26A8C4681D76" localFKIndex="3B33DAF1-2C61-A99D-8B29-D09551FCC039" name="Tickets_Activity_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>78096908-A308-9BE7-FC49-CABEFDF2F6E8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>AFZ_Activity</referredTableLongName>
+<arc>6630DC80-9694-7E08-2EF9-571001807F79</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>6262527B-2B5B-0B2A-A410-75BBDEF80458</referredTableID>
+<keyObject>25174CAF-5529-F837-EB8E-73D85140F579</keyObject>
+<referredKeyID>25174CAF-5529-F837-EB8E-73D85140F579</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Activity_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>Tic</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

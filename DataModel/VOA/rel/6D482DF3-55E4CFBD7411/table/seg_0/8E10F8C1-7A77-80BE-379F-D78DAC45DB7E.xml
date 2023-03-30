@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8E10F8C1-7A77-80BE-379F-D78DAC45DB7E" name="AFZ_Store">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>C70F7747-DE33-BF32-E83C-9512268935FB</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Facility_ID" id="F5882B81-992B-3362-4C76-95946EB10505">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the facility. The primary key]]></commentInRDBMS>
+<generatorID>8F0FBD68-1B31-0414-F37C-41822445B3A0</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FBFD828C-D26C-66FB-C861-7626CE99B78D" referredColumn="100D71D6-726E-A975-4CD9-F45E5CBAA132"/>
+</associations>
+</Column>
+<Column name="Store_Name" id="3DC8D78D-EDC2-933C-D162-8AFC1F0D8201">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[Store Name.]]></commentInRDBMS>
+<generatorID>319F0CBF-88DB-1B09-9EA3-AA8292C308D3</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Category_ID" id="A42A17FF-A6D4-D8FD-AB27-62B1008890F7">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>3EADC8C7-2A7B-2E02-EDBD-2BE400CAA309</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="88EE23AE-D60C-A4E8-4389-99B24D4E1A05" referredColumn="B851D0DE-D821-ED78-36A2-1DB2A41D2A1E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="79F660D1-A908-ABD3-2CFA-44E307744A51" name="AFZ_Store_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>14A63DF6-1D25-8F24-B818-03C16DCDD9B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F5882B81-992B-3362-4C76-95946EB10505"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="480739A1-EA2A-5928-E6EF-AEFE901755CB" name="Store_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>9748D6A9-6AD5-BA6C-CF6D-59A729BE08FA</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F5882B81-992B-3362-4C76-95946EB10505"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="29138E75-95BE-4822-4798-57E367D5FBD4" name="Store_Category_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>3A6CEB89-3035-514B-2613-D2FEA07B366C</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A42A17FF-A6D4-D8FD-AB27-62B1008890F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

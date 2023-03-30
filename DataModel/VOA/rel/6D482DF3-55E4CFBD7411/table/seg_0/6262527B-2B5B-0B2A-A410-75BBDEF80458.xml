@@ -1,0 +1,162 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="6262527B-2B5B-0B2A-A410-75BBDEF80458" name="AFZ_Activity">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>AA02AB1E-8247-16B0-24D8-72A269566923</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Activity_ID" id="5DE65289-C183-C9F3-033C-2903B4A6EF68">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the activity]]></commentInRDBMS>
+<generatorID>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Amount_Due" id="06353F03-1519-FC04-EEA4-DDD4ABD476F0">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The total amount due to the Activity.]]></commentInRDBMS>
+<generatorID>5C9DFF40-2AF8-E1E3-14FD-99707AC02F38</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Facility_ID" id="5BC09A29-8730-08F8-9877-1993692C9383">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the facility of Activity
+]]></commentInRDBMS>
+<generatorID>FB470D6F-4E48-91E0-B5C9-B38DA5599716</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B0631E54-9C76-8F5A-2AF7-7FA3874F9772" referredColumn="100D71D6-726E-A975-4CD9-F45E5CBAA132"/>
+</associations>
+</Column>
+<Column name="Source_Type" id="EDA532E4-91AC-B251-E6A3-1B8190BC5528">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The type of the facility of the Activity.
+]]></commentInRDBMS>
+<generatorID>75BCD820-FB0C-3FD2-4A6D-9C8AA19D7730</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<constraintName>CH_INH_AFZ_Activity</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<listOfValues>
+<valueDef value="AFZ_Activity" description="entity AFZ_Activity"/>
+<valueDef value="Par" description="entity AFZ_Parking"/>
+<valueDef value="Tic" description="entity AFZ_Tickets"/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isDiscriminatorColumn>true</isDiscriminatorColumn>
+<associations>
+<colAssociation fkAssociation="0ECC35C1-53AF-17EC-6505-F6D33191D1E9" referredColumn="3563057A-95F1-E0A3-76D5-37BF68724A1D"/>
+</associations>
+</Column>
+<Column name="Visitor_ID" id="D1C63B3D-E0B5-D6F3-5E9B-6E9A7178C05B">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Visitor in the acitivity
+]]></commentInRDBMS>
+<generatorID>3907A755-6A57-6EBA-A6E3-12D60F891DBE</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="31B2B601-8483-9652-1A25-0ECA38060041" referredColumn="57592B80-7070-C397-79ED-CFE7EDED8142"/>
+</associations>
+</Column>
+<Column name="Activity_Date" id="F0DF1732-B634-E4A2-57D3-6EF3E3985D2C">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Date that the activity happens.]]></commentInRDBMS>
+<generatorID>55B6A033-1078-35E3-548A-E615DB722CBD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="25174CAF-5529-F837-EB8E-73D85140F579" name="AFZ_Activity_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>AD236288-FE69-2311-0C25-D0059968A430</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E279281F-76D0-D1A5-A5EB-898827AFF17C" name="Activity_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>E404F0A0-D83D-631F-E57E-EC52FE00EEA4</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5BC09A29-8730-08F8-9877-1993692C9383"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C544B264-A008-0588-68F8-40581E9FE7F9" name="Activity_Visitors_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>CED677EA-5BAF-F480-D085-9C4005664416</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D1C63B3D-E0B5-D6F3-5E9B-6E9A7178C05B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="27318DDA-3254-391B-688E-854E0A0E769C" name="Activity_Source_Type_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<generatorID>0DAB2370-49CE-06E5-198A-CB1199EDA02E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EDA532E4-91AC-B251-E6A3-1B8190BC5528"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
