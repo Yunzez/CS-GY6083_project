@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import Button from './Button';
 import { useRouter } from 'next/router';
-
+import avator from '../../public/user.png'
+import { useAppContext } from '@/contexts/GlobaclContext';
 const Navbar: React.FC = () => {
     const router = useRouter();
     const [firstLoad, setFirstLoad] = useState(true)
     const [showMenu, setShowMenu] = useState(false);
-
+    const { isLoggedIn, setLoggedIn } = useAppContext();
     const toggleMenu = () => {
         setShowMenu(!showMenu);
         if (firstLoad) {
@@ -63,6 +64,12 @@ const Navbar: React.FC = () => {
                     <Button className="mx-4" onClick={() => router.push('/signup')}>
                         Sign Up
                     </Button>
+                    {isLoggedIn &&
+                        <Button className="mx-4 flex items-center justify-center" onClick={() => router.push('/user')}>
+                            <img className="h-5 w-5 rounded-full " src='/user.png' alt="Avatar" />
+                        </Button>
+                    }
+
                 </div>
                 <div className="flex md:hidden items-center justify-end md:flex-1 mr-5">
                     <button

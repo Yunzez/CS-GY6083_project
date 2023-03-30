@@ -6,7 +6,7 @@ type AppContextType = {
 };
 
 const AppContext = createContext<AppContextType>({
-  isLoggedIn: false,
+  isLoggedIn: true,
   setLoggedIn: () => {},
 });
 
