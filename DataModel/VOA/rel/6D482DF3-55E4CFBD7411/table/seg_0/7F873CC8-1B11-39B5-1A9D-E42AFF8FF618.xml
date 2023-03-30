@@ -1,0 +1,52 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7F873CC8-1B11-39B5-1A9D-E42AFF8FF618" name="AFZ_Visitor_Type">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>7318993F-6813-FF89-CAA0-CD5CDB86F9DD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Visitor_Type_ID" id="2F3F1479-E043-D071-E9BA-106EFF5E38B7">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique visitor type id.]]></commentInRDBMS>
+<generatorID>EF3452D3-53AD-47A0-0B34-FFC2A7440993</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Visitor_Type" id="FE0A29BE-0DB0-A0B0-2DAB-F30704ABB1CB">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Vistor type: Individual, Group, Member or Student]]></commentInRDBMS>
+<generatorID>73985342-7450-9D55-65AC-A3DA7D07D296</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="927BE9E8-02FA-B839-97C3-1C88F2231F8B" name="AFZ_Visitor_Type_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>542357B8-55D0-CEF1-1988-852DA3F5EC8C</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2F3F1479-E043-D071-E9BA-106EFF5E38B7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

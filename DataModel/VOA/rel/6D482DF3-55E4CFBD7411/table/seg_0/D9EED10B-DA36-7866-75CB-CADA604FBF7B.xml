@@ -1,0 +1,65 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D9EED10B-DA36-7866-75CB-CADA604FBF7B" name="AFZ_Item">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>87BBC98E-F50A-BBCF-1F19-2296430AE603</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Item_ID" id="301262DF-81C6-C00C-8201-74A8904C7031">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the item. Primary Key of this table.]]></commentInRDBMS>
+<generatorID>5BAD7A4A-DA9D-CFAD-B8C0-1A89C708846B</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Item_Name" id="FFD97922-0735-F84D-EE28-18EB9C39746E">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Name of this Item]]></commentInRDBMS>
+<generatorID>F8D6A6A6-0562-976C-AA9A-3A1449FAF3BB</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Item_Des" id="27765168-51F2-2989-D19C-C3460EAFEFF1">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Description of the Item.]]></commentInRDBMS>
+<generatorID>BF880F2C-C0D6-8DA8-7303-02A4A5DC1B01</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9A38DC5E-CCBE-1180-BCD7-CC5326C0869F" name="AFZ_Item_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>44A85F56-D667-FFA6-4CDE-69551DCF36ED</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="301262DF-81C6-C00C-8201-74A8904C7031"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

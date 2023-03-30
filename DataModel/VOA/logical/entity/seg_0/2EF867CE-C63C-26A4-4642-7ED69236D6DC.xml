@@ -11,27 +11,24 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
-<hierarchicalParent>78969216-0122-01D8-A39B-0C4A4ED0CD75</hierarchicalParent>
+<hierarchicalParent>97015ED2-C463-6D9D-E340-E2C0A9DFA582</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <discriminatorValue>Att</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Attraction_Name" id="5A399AB7-2F66-351F-AC63-6E93815C0624">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 20:58:08 UTC</createdTime>
-<commentInRDBMS><![CDATA[The name of the attraction.]]></commentInRDBMS>
+<Attribute name="Attraction_Name" id="410DA806-E357-CEE9-8449-94049BCA8BF1">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 02:11:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The name of Attraction.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>32</dataTypeSize>
-<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Description" id="25AFAD5D-CC5E-0AD8-7BAA-20162E2AF8FC">
+<Attribute name="Att_Description" id="25AFAD5D-CC5E-0AD8-7BAA-20162E2AF8FC">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:01:32 UTC</createdTime>
 <commentInRDBMS><![CDATA[The description of the attraction.]]></commentInRDBMS>
@@ -48,7 +45,7 @@
 <Attribute name="Minimum_Height" id="D4736125-F5E6-2936-1B94-CB9552B5F8B8">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:03:24 UTC</createdTime>
-<commentInRDBMS><![CDATA[The minimum height required to enter the attraction. (Unit: CM)]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[The minimum height required to enter the attraction. (Unit: inch)]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -62,7 +59,7 @@
 <Attribute name="Durations" id="DA60F409-2A9B-AAB4-9FB1-14357828C5E5">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:03:59 UTC</createdTime>
-<commentInRDBMS><![CDATA[The durations of the attraction.(Unit: Minute)]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[The durations of the attraction.(Unit: second)]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -76,6 +73,7 @@
 <Attribute name="Attraction_Type_ID" id="6CC06FAD-4B6A-AE50-9F19-99D9A2777A62">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:52:56 UTC</createdTime>
+<commentInRDBMS><![CDATA[The type of the attraction]]></commentInRDBMS>
 <generatorID>9FF04970-EB41-90A1-F951-5BEBBBC24350</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -91,6 +89,7 @@
 <Attribute name="Status_Type_ID" id="FA6A8A1E-E273-7AE3-102F-06967DA332C8">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:53:33 UTC</createdTime>
+<commentInRDBMS><![CDATA[The status of the attraction]]></commentInRDBMS>
 <generatorID>0408A052-A129-FF9B-DFEE-79126CF38706</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -106,6 +105,7 @@
 <Attribute name="Location_Section_ID" id="47039E4A-FCD3-3872-28DC-FD30C743DC89">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 15:43:27 UTC</createdTime>
+<commentInRDBMS><![CDATA[The location of the attraction]]></commentInRDBMS>
 <generatorID>2F479C1E-68DA-7F58-55DA-72E2280666A2</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -116,7 +116,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
-<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 </Entity>

@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="97015ED2-C463-6D9D-E340-E2C0A9DFA582" name="AFZ_Facility">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 01:48:21 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<generateDiscrimColumn>true</generateDiscrimColumn>
+<discriminatorAttributeID>985A8A06-8E56-5E92-9C9A-D67D4C0165F5</discriminatorAttributeID>
+<completeSubtypes>true</completeSubtypes>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Facility_ID" id="8F0FBD68-1B31-0414-F37C-41822445B3A0">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 01:49:08 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the facility. The primary key]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Source_Type" id="985A8A06-8E56-5E92-9C9A-D67D4C0165F5">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 02:00:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Type of the Facility.]]></commentInRDBMS>
+<generatorID>CDDF36FE-3E29-8EFC-5728-741AA2362C86</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>CB56C6A3-66BC-9B19-9152-473805345794</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="14A63DF6-1D25-8F24-B818-03C16DCDD9B8" name="Facility PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 01:49:12 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8F0FBD68-1B31-0414-F37C-41822445B3A0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

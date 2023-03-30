@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4A846BD1-80AB-0E4D-2277-9060305CB25A" name="AFZ_Item_Store_Order">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="4A846BD1-80AB-0E4D-2277-9060305CB25A" name="AFZ_Order">
 <createdBy>black</createdBy>
 <createdTime>2023-03-28 02:58:58 UTC</createdTime>
 <ownerDesignName>VOA</ownerDesignName>
@@ -15,7 +15,7 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="VST_ID" id="545310CE-6C82-0530-FB5A-968AAC02B4A5">
+<Attribute name="Order_ID" id="545310CE-6C82-0530-FB5A-968AAC02B4A5">
 <createdBy>black</createdBy>
 <createdTime>2023-03-29 19:10:49 UTC</createdTime>
 <commentInRDBMS><![CDATA[The primary key of this table.]]></commentInRDBMS>
@@ -28,53 +28,6 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,5,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Item_ID1" id="64840C71-9DEA-CC36-74E8-8999FF6BCA02">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:01:25 UTC</createdTime>
-<commentInRDBMS><![CDATA[The part of Primary Key of this table. The ID of Item.]]></commentInRDBMS>
-<generatorID>C064F07F-2390-6D19-BC11-23FD53FCC40C</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>5BAD7A4A-DA9D-CFAD-B8C0-1A89C708846B</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Order_ID1" id="02650C04-DF28-9068-215D-B955FCD7DE0C">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:09:05 UTC</createdTime>
-<commentInRDBMS><![CDATA[Unique order id. Part of  Primary Key of this table.]]></commentInRDBMS>
-<generatorID>0A8F127C-95CE-DCC0-21F0-C7460ABE18E3</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>606007EF-8058-1F84-18C3-3E02E6E2DD88</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>8</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Unit_Price" id="8103A6D1-E9B1-D215-FC96-5EEBEF478673">
-<createdBy>black</createdBy>
-<createdTime>2023-03-28 03:00:40 UTC</createdTime>
-<commentInRDBMS><![CDATA[The unit price of the item in the store.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<dataTypeScale>2</dataTypeScale>
-<ownDataTypeParameters>,5,2</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Quantity" id="D83403DC-E7BE-39BE-B86D-79C1D75CBCA6">
 <createdBy>black</createdBy>
@@ -90,17 +43,44 @@
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Source_ID" id="619B9B9E-C155-B9C7-6EA9-FEB714DD4A2D">
+<Attribute name="IS_ID" id="47B88469-24A9-4914-31E1-AB00BEAFD7B7">
 <createdBy>black</createdBy>
-<createdTime>2023-03-29 17:31:35 UTC</createdTime>
-<commentInRDBMS><![CDATA[The UID of the store
-]]></commentInRDBMS>
-<generatorID>071107AD-39BF-0AFC-2FF7-4D7EC616F0E0</generatorID>
+<createdTime>2023-03-30 00:00:23 UTC</createdTime>
+<generatorID>C8613C5A-B012-4EE4-FE56-7B89A533BAD0</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
 </engineerTo>
-<referedAttribute>5B2E0294-8319-6729-DDBA-D0FD5D3912FC</referedAttribute>
+<referedAttribute>49C58272-4E26-FAAA-315C-EB57809EA845</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Order Date" id="F9AF664E-D39D-05A3-9F60-AA3974931F7C">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 02:28:24 UTC</createdTime>
+<commentInRDBMS><![CDATA[The date of the order
+]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PS_ID" id="72922CE0-9BC3-428C-9FAD-609B2C5EDA8C">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 02:28:30 UTC</createdTime>
+<generatorID>CC064B88-C1FA-F0C3-C297-C3404A62B413</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>

@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D72AA46D-CA11-D041-DDF9-38DCF898746F" name="AFZ_Store_Category">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>949FC905-583D-33D1-3CCF-75847868F417</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Category_ID" id="BEFFE588-8319-5F82-FF43-AD294381F49E">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Category Store ID.]]></commentInRDBMS>
+<generatorID>23B754FA-EDFD-578B-BA82-1E7994C1CB1F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Category" id="CFAD18EB-87B4-544A-5F76-95A481FB930A">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Store Category:
+Food stall, Ice cream parlor, Restaurant, Gift Shop, Apparels]]></commentInRDBMS>
+<generatorID>6A0D5EC5-A036-BDAF-1F99-66F1B14626EE</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="373D9BEF-7645-875C-96D8-9BB26C42ED28" name="AFZ_Store_Category_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>E9F56A28-3E18-DB1E-346B-9A005C1A8B45</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BEFFE588-8319-5F82-FF43-AD294381F49E"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

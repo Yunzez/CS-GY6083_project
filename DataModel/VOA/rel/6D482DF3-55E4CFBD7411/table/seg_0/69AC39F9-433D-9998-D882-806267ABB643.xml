@@ -1,0 +1,164 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="69AC39F9-433D-9998-D882-806267ABB643" name="AFZ_Payment">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>C4307C9F-447B-3F22-0F2C-1C81AF462FD1</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Payment_ID" id="B1512B4A-C8E0-F25A-0A2C-D30F7AE22E78">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The payment of the visitor pay for each source.]]></commentInRDBMS>
+<generatorID>15ACA929-1C85-A9D4-21E0-5930B4A0898D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Visitor_ID" id="8BD3D131-820E-2729-BB88-0AFB8F2CBE3F">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Unique Visitor ID.]]></commentInRDBMS>
+<generatorID>21B5F087-3085-7404-C405-E2397AC762A2</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="FD897262-7B3B-3888-A14F-7F9777DD22AB" referredColumn="2E4CC54B-EA41-F138-DC05-F56BC3CE28DF"/>
+</associations>
+</Column>
+<Column name="PS_ID" id="8BBE83D6-2194-5400-68FA-F34786E6CDD3">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the payment Resource.]]></commentInRDBMS>
+<generatorID>7EE8A19C-8784-907B-6086-018F5EAE8CFD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="38DD6447-FD0E-09C8-E414-38F0BAE83459" referredColumn="CFD7D40E-0C79-FEB2-45C3-EBFC21F21A7A"/>
+</associations>
+</Column>
+<Column name="Facility_ID" id="E7471CA5-6E79-0436-13A7-E0E453601C17">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Facility UID of the payment source. This is optional because ticket doesn't have corrsponding facility.
+]]></commentInRDBMS>
+<generatorID>FBCE0685-AC03-D2C8-97FF-0BF5A75A5C77</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="5362862F-3CEC-BBD4-F0AD-856DF3EB4414" referredColumn="6A4D2B9C-2D7E-9280-B32E-CD67AB3A11B1"/>
+</associations>
+</Column>
+<Column name="Payment_Amount" id="797FD17B-465C-BD03-605D-1257EBD01208">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Payment amount.]]></commentInRDBMS>
+<generatorID>FB2A334C-4D19-7DCC-C120-35F1F8E7A8DD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>8</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,8,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Payment_Date" id="11C4C0EB-0B6B-3128-5982-E1223AC90F8A">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Payment date.]]></commentInRDBMS>
+<generatorID>E59A1E9B-8DE7-7297-6536-006DDFB61956</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Payment_Method" id="B9630897-AE6F-7BF2-36BD-1C0851692797">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The code of  payment method.]]></commentInRDBMS>
+<generatorID>F9C9AE62-1C5B-9568-10B3-A56D9E3AA5BC</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4</dataTypeSize>
+<ownDataTypeParameters>4,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BED0AC8C-CC6E-8752-A930-2B487190FAB3" name="AFZ_Payment_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>30AC8F83-94FF-04F0-B011-79EE506DBEFD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B1512B4A-C8E0-F25A-0A2C-D30F7AE22E78"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="AED0BBEC-B8E5-DE7A-E247-E81BA006FEF1" name="Payment_Source_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>2A765223-3B17-3543-66EA-F6BB1DC74641</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8BBE83D6-2194-5400-68FA-F34786E6CDD3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6298BDCF-B060-A6DB-531C-D540F9D481C6" name="Payment_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>BC18E481-0F67-C509-7617-2A19C0DB5665</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E7471CA5-6E79-0436-13A7-E0E453601C17"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="83569123-B4F8-4F14-6726-075BC56AF598" name="Payment_Visitors_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>D2091A86-5F2D-EDBE-2B7C-DC07F2790C05</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8BD3D131-820E-2729-BB88-0AFB8F2CBE3F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,75 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9B138DE2-2846-C53D-CA34-ABAE404CC79C" name="AFZ_Facility">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>97015ED2-C463-6D9D-E340-E2C0A9DFA582</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Facility_ID" id="6A4D2B9C-2D7E-9280-B32E-CD67AB3A11B1">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the facility. The primary key]]></commentInRDBMS>
+<generatorID>8F0FBD68-1B31-0414-F37C-41822445B3A0</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Facility_Type" id="A6E1C611-CE66-FCD3-0486-99E26A33953D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Type of the Facility.]]></commentInRDBMS>
+<generatorID>985A8A06-8E56-5E92-9C9A-D67D4C0165F5</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<constraintName>CH_INH_AFZ_Facility</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<listOfValues>
+<valueDef value="Att" description="entity AFZ_Attractions"/>
+<valueDef value="Par" description="entity AFZ_Parking"/>
+<valueDef value="Shw" description="entity AFZ_Shows"/>
+<valueDef value="Sto" description="entity AFZ_Store"/>
+</listOfValues>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<isDiscriminatorColumn>true</isDiscriminatorColumn>
+<associations>
+<colAssociation fkAssociation="B086A03F-906C-AB3B-6235-3E516CABD952" referredColumn="0CDE1AF7-4073-9F14-70A1-1ADFEF8ED28D"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="474985F1-42D1-B42F-ED43-485F40D9220F" name="AFZ_Facility_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>14A63DF6-1D25-8F24-B818-03C16DCDD9B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6A4D2B9C-2D7E-9280-B32E-CD67AB3A11B1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C9D89D8B-F7FF-D62A-0FA8-83D3C5D15B63" name="Facility_Type_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>CDDF36FE-3E29-8EFC-5728-741AA2362C86</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="A6E1C611-CE66-FCD3-0486-99E26A33953D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

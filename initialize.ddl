@@ -30,7 +30,7 @@ GO
 
 CREATE TABLE AFZ_Attraction_Type 
     (
-     Attraction_Type_ID NUMERIC (2) NOT NULL , 
+     Attraction_Type_ID NUMERIC (2) IDENTITY(1, 1) NOT NULL ,
      Attraction_Type VARCHAR (32) NOT NULL 
     )
 GO 
@@ -53,7 +53,7 @@ GO
 
 CREATE TABLE AFZ_Attractions 
     (
-     Attraction_ID NUMERIC (10) IDENTITY(1, 1) NOT NULL ,
+     Attraction_ID NUMERIC (10) NOT NULL ,
      Attraction_Name VARCHAR (32) NOT NULL , 
      Description VARCHAR (128) NOT NULL , 
      Minimum_Height NUMERIC (3) NOT NULL , 
@@ -240,7 +240,7 @@ ALTER TABLE AFZ_Item_Store_Order ADD CONSTRAINT AFZ_Item_Store_Order_PK PRIMARY 
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE AFZ_Method_Type_ID 
+CREATE TABLE AFZ_Ticket_Method
     (
      Method_Type_ID NUMERIC (1) IDENTITY(1, 1) NOT NULL ,
      Method_Type VARCHAR (8) NOT NULL 
@@ -249,15 +249,15 @@ GO
 
 
 
-EXEC sp_addextendedproperty 'MS_Description' , 'Unique method ID.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Method_Type_ID' , 'COLUMN' , 'Method_Type_ID' 
+EXEC sp_addextendedproperty 'MS_Description' , 'Unique method ID.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Ticket_Method' , 'COLUMN' , 'Method_Type_ID'
 GO
 
 
 
-EXEC sp_addextendedproperty 'MS_Description' , 'Ticket method: Online, Onsite.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Method_Type_ID' , 'COLUMN' , 'Method_Type' 
+EXEC sp_addextendedproperty 'MS_Description' , 'Ticket method: Online, Onsite.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Ticket_Method' , 'COLUMN' , 'Method_Type'
 GO
 
-ALTER TABLE AFZ_Method_Type_ID ADD CONSTRAINT AFZ_Method_Type_ID_PK PRIMARY KEY CLUSTERED (Method_Type_ID)
+ALTER TABLE AFZ_Ticket_Method ADD CONSTRAINT AFZ_Ticket_Method_ID_PK PRIMARY KEY CLUSTERED (Method_Type_ID)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
@@ -300,7 +300,7 @@ GO
 
 CREATE TABLE AFZ_Parking 
     (
-     Parking_ID NUMERIC (10) IDENTITY(1, 1) NOT NULL ,
+     Parking_ID NUMERIC (10) NOT NULL ,
      Spot_Number NUMERIC (3) NOT NULL , 
      Location_Section_ID NUMERIC (2) NOT NULL 
     )
@@ -463,7 +463,7 @@ GO
 
 CREATE TABLE AFZ_Shows 
     (
-     Show_ID NUMERIC (10) IDENTITY(1, 1) NOT NULL ,
+     Show_ID NUMERIC (10) NOT NULL ,
      Name VARCHAR (32) NOT NULL , 
      Description VARCHAR (128) NOT NULL , 
      Accessibility NUMERIC (1) NOT NULL , 
@@ -594,7 +594,7 @@ ALTER TABLE AFZ_Source ADD CONSTRAINT AFZ_Source_PK PRIMARY KEY CLUSTERED (Sourc
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE AFZ_Status_Type 
+CREATE TABLE AFZ_Attraction_Status 
     (
      Status_Type_ID NUMERIC (1) IDENTITY(1, 1) NOT NULL ,
      Status_Type VARCHAR (32) NOT NULL 
@@ -603,15 +603,15 @@ GO
 
 
 
-EXEC sp_addextendedproperty 'MS_Description' , 'Unique status type.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Status_Type' , 'COLUMN' , 'Status_Type_ID' 
+EXEC sp_addextendedproperty 'MS_Description' , 'Unique status type.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Attraction_Status' , 'COLUMN' , 'Status_Type_ID' 
 GO
 
 
 
-EXEC sp_addextendedproperty 'MS_Description' , 'Status Type: open, closed, under maintenance' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Status_Type' , 'COLUMN' , 'Status_Type' 
+EXEC sp_addextendedproperty 'MS_Description' , 'Status Type: open, closed, under maintenance' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Attraction_Status' , 'COLUMN' , 'Status_Type' 
 GO
 
-ALTER TABLE AFZ_Status_Type ADD CONSTRAINT AFZ_Status_Type_PK PRIMARY KEY CLUSTERED (Status_Type_ID)
+ALTER TABLE AFZ_Attraction_Status ADD CONSTRAINT AFZ_Attraction_Status_PK PRIMARY KEY CLUSTERED (Status_Type_ID)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
      ALLOW_ROW_LOCKS = ON )
@@ -619,7 +619,7 @@ GO
 
 CREATE TABLE AFZ_Store 
     (
-     Store_ID NUMERIC (10) IDENTITY(1, 1) NOT NULL ,
+     Store_ID NUMERIC (10) NOT NULL ,
      Store_Name VARCHAR (32) NOT NULL , 
      Category_ID NUMERIC (2) NOT NULL 
     )
@@ -949,7 +949,7 @@ ALTER TABLE AFZ_Attractions
     ( 
      Status_Type_ID
     ) 
-    REFERENCES AFZ_Status_Type 
+    REFERENCES AFZ_Attraction_Status 
     ( 
      Status_Type_ID 
     ) 
@@ -1183,7 +1183,7 @@ ALTER TABLE AFZ_Tickets
     ( 
      Method_Type_ID
     ) 
-    REFERENCES AFZ_Method_Type_ID 
+    REFERENCES AFZ_Ticket_Method
     ( 
      Method_Type_ID 
     ) 

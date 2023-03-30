@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="2F7C7393-0BE9-F35F-450E-B46196616450" containerWithKeyObject="AE28AA50-A80A-C7A1-8715-0CF0253ABDA6" localFKIndex="02463841-2C1E-82AC-5FD9-0C56684BB0FD" name="Parking_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>2ED99503-CE54-8ADB-412B-57A0C064B33E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<referredTableLongName>AFZ_Facility</referredTableLongName>
+<arc>117DA8F9-6E74-A52E-2AA7-8E08551931C6</arc>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>9B138DE2-2846-C53D-CA34-ABAE404CC79C</referredTableID>
+<keyObject>474985F1-42D1-B42F-ED43-485F40D9220F</keyObject>
+<referredKeyID>474985F1-42D1-B42F-ED43-485F40D9220F</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>Facility_ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<discriminatorValue>Par</discriminatorValue>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,85 @@
+-- add attraction locations
+INSERT INTO voa.dbo.AFZ_Attraction_Locations (Location_Section) VALUES (N'A'), (N'B'), (N'C'), (N'D');
+
+-- add attraction types
+INSERT INTO voa.dbo.AFZ_Attraction_Type (Attraction_Type) VALUES
+     (N'roller coaster'),(N'water ride'),(N'dark ride'),(N'kid ride');
+
+-- add attraction status
+INSERT INTO voa.dbo.AFZ_Attraction_Status (Status_Type) VALUES (N'open'), (N'closed'), (N'under maintenance');
+
+-- add attraction source
+INSERT INTO voa.dbo.AFZ_Source (Source_Type)
+values
+    ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att'), ('Att');
+INSERT INTO voa.dbo.AFZ_Attractions
+    (Attraction_ID, Attraction_Name, Description, Minimum_Height, Durations, Attraction_Type_ID, Status_Type_ID, Location_Section_ID)
+VALUES
+    (1, 'Sky High', 'Take a thrilling ride through the clouds and enjoy breathtaking views from high above!', 48, 120, 1, 1, 1),
+    (2, 'Splashdown', 'Brace yourself for a wet and wild ride down a twisting water slide!', 42, 90, 2, 2, 2),
+    (3, 'Thunderbolt', 'Get ready for an electrifying ride full of twists and turns!', 54, 60, 3, 1, 1),
+    (4, 'Cyclone', 'Experience the rush of wind as you soar through the air on this high-speed rollercoaster!', 52, 180, 4, 3, 3),
+    (5, 'Fireball', 'Feel the heat as you spin and twist on this fiery ride!', 48, 75, 2, 1, 1),
+    (6, 'Wild River', 'Take a scenic rafting adventure down a raging river!', 46, 240, 1, 2, 4),
+    (7, 'Tornado', 'Hold on tight as you spiral through the air in this whirlwind of a ride!', 48, 90, 3, 2, 2),
+    (8, 'Dragon''s Lair', 'Brave the fiery depths of the dragon''s lair on this thrilling coaster!', 54, 120, 4, 3, 3),
+    (9, 'Wave Rider', 'Hang ten on this giant wave pool and ride the waves like a pro!', 44, 180, 2, 1, 1),
+    (10, 'Haunted Mansion', 'Enter if you dare and experience the chills and thrills of this spooky mansion!', 48, 150, 1, 2, 4),
+    (11, 'Twisted Twister', 'Get twisted up on this hair-raising ride that will leave you breathless!', 54, 60, 3, 3, 3),
+    (12, 'Space Odyssey', 'Blast off into outer space on this high-tech simulator ride!', 44, 240, 4, 1, 2),
+    (13, 'Pirate''s Plunder', 'Set sail on a pirate adventure and search for hidden treasure!', 46, 120, 2, 2, 4),
+    (14, 'Viper', 'Brace yourself for a wild ride on this serpent-themed coaster!', 48, 90, 1, 3, 1),
+    (15, 'Wild West Showdown', 'Strap on your cowboy boots and take aim in this thrilling shooting gallery!', 52, 180, 3, 1, 3);
+
+-- add show types
+INSERT INTO voa.dbo.AFZ_Show_Type (Show_Type) VALUES
+     (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
+
+-- add shows
+INSERT INTO voa.dbo.AFZ_Source (Source_Type)
+values
+    ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho'), ('Sho');
+
+INSERT INTO voa.dbo.AFZ_Shows
+    (show_id, name, description, accessibility, price, start_time, end_time, show_type_id)
+VALUES
+    (16, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-01 18:00:00', '2023-04-01 20:00:00', 1),
+    (17, 'Shakespearean Sonnets', 'A selection of sonnets by William Shakespeare', 0, 15.00, '2023-04-01 20:30:00', '2023-04-01 22:00:00', 3),
+    (18, 'Improv Night', 'A night of spontaneous comedy and improvisation', 1, 20.00, '2023-04-02 18:00:00', '2023-04-02 20:00:00', 2),
+    (19, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-02 20:30:00', '2023-04-02 22:00:00', 4),
+    (20, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-03 18:00:00', '2023-04-03 20:00:00', 5),
+    (21, 'Comedy Central', 'An evening of stand-up comedy with up-and-coming comedians', 0, 20.00, '2023-04-03 20:30:00', '2023-04-03 22:00:00', 2),
+    (22, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-04 18:00:00', '2023-04-04 20:00:00', 1),
+    (23, 'Shakespearean Sonnets', 'A selection of sonnets by William Shakespeare', 0, 15.00, '2023-04-04 20:30:00', '2023-04-04 22:00:00', 3),
+    (24, 'Improv Night', 'A night of spontaneous comedy and improvisation', 1, 20.00, '2023-04-05 18:00:00', '2023-04-05 20:00:00', 2),
+    (25, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-05 20:30:00', '2023-04-05 22:00:00', 4),
+    (26, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-06 18:00:00', '2023-04-06 20:00:00', 5),
+    (27, 'The Magic of Illusion', 'A spellbinding magic show featuring illusions and tricks', 1, 30.00, '2023-04-06 20:30:00', '2023-04-06 22:00:00', 4),
+    (28, 'A Night with the Stars', 'A variety show featuring talented performers', 1, 25.00, '2023-04-07 18:00:00', '2023-04-07 20:00:00', 5),
+    (29, 'Comedy Central', 'An evening of stand-up comedy with up-and-coming comedians', 0, 20.00, '2023-04-07 20:30:00', '2023-04-07 22:00:00', 2),
+    (30, 'Cirque de Lumiere', 'Acrobatic circus show with dazzling light effects', 1, 25.00, '2023-04-08 18:00:00', '2023-04-08 20:00:00', 1);
+
+-- add items
+INSERT INTO voa.dbo.AFZ_Item
+    (Item_Name, Item_Des)
+VALUES
+    ('Hot Dog', 'Classic American street food.'),
+    ('Soft Serve Ice Cream', 'Smooth and creamy vanilla ice cream.'),
+    ('Burger', 'Juicy beef patty topped with cheese, and beef.'),
+    ('Chicken Nuggets', 'Crispy fried chicken pieces.'),
+    ('Popcorn', 'Freshly popped buttery popcorn.'),
+    ('Pizza Slice', 'Hot and cheesy pizza slice.'),
+    ('Cotton Candy', 'Fluffy and sweet spun sugar treat.'),
+    ('Pretzel', 'Soft and salty twisted bread snack.'),
+    ('Nachos', 'Tortilla chips topped with cheese and salsa.'),
+    ('Churro', 'Sweet fried dough pastry.'),
+    ('Baseball Cap', 'Classic baseball cap with VOA logo.'),
+    ('T-Shirt', 'Comfortable cotton t-shirt with VOA design.'),
+    ('Mug', 'Sturdy ceramic mug with VOA branding.'),
+    ('Keychain', 'Metal keychain with VOA emblem.'),
+    ('Plush Toy', 'Soft and cuddly plush toy of VOA mascot.');
+
+INSERT INTO voa.dbo.AFZ_Store
+    (Store_ID, Store_Name, Category_ID)
+VALUES
+

@@ -1,0 +1,100 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="AA02AB1E-8247-16B0-24D8-72A269566923" name="AFZ_Payment_Source">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 00:39:17 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<generateDiscrimColumn>true</generateDiscrimColumn>
+<discriminatorAttributeID>75BCD820-FB0C-3FD2-4A6D-9C8AA19D7730</discriminatorAttributeID>
+<completeSubtypes>true</completeSubtypes>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="PS_ID" id="B90F4BD3-E66C-31EA-1ADF-0345A773F17F">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 00:39:29 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the source of the payment]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Amount_Due" id="5C9DFF40-2AF8-E1E3-14FD-99707AC02F38">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 00:43:41 UTC</createdTime>
+<commentInRDBMS><![CDATA[The total amount due to the source.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Facility_ID" id="FB470D6F-4E48-91E0-B5C9-B38DA5599716">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 01:57:26 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the payment source facility
+]]></commentInRDBMS>
+<generatorID>E404F0A0-D83D-631F-E57E-EC52FE00EEA4</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<referedAttribute>8F0FBD68-1B31-0414-F37C-41822445B3A0</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Source_Type" id="75BCD820-FB0C-3FD2-4A6D-9C8AA19D7730">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 02:00:08 UTC</createdTime>
+<commentInRDBMS><![CDATA[The type of the facility of the payment source.
+]]></commentInRDBMS>
+<generatorID>0DAB2370-49CE-06E5-198A-CB1199EDA02E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>CB56C6A3-66BC-9B19-9152-473805345794</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3</dataTypeSize>
+<ownDataTypeParameters>3,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="AD236288-FE69-2311-0C25-D0059968A430" name="Payment_Source PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 00:39:38 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

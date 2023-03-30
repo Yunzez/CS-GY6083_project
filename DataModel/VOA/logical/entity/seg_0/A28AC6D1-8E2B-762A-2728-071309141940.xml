@@ -11,11 +11,11 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
-<hierarchicalParent>78969216-0122-01D8-A39B-0C4A4ED0CD75</hierarchicalParent>
+<hierarchicalParent>97015ED2-C463-6D9D-E340-E2C0A9DFA582</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
-<discriminatorValue>Sho</discriminatorValue>
+<discriminatorValue>Shw</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
 <Attribute name="Name" id="695B9440-9186-5FAA-5017-183C38ABFDBF">
 <createdBy>angelowu</createdBy>

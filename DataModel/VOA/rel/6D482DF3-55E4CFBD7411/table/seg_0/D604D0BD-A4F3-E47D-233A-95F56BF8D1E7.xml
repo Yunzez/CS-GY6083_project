@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D604D0BD-A4F3-E47D-233A-95F56BF8D1E7" name="AFZ_Item_Store">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>FA90D8A2-CC98-5C39-ECEE-9C18FFCF8015</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="IS_ID" id="2D524F8C-F9B0-B32D-2E9C-D6EE578D582A">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Primary key of this table.]]></commentInRDBMS>
+<generatorID>49C58272-4E26-FAAA-315C-EB57809EA845</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Item_ID" id="775E1712-4E72-98BD-74EF-7D81CB7AAFB0">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[UID of the item.]]></commentInRDBMS>
+<generatorID>1EB1C953-D2D6-BC1C-52AD-1DEF1AD148BD</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EE9D5D6D-5469-EDEA-458B-2E99B90DA868" referredColumn="301262DF-81C6-C00C-8201-74A8904C7031"/>
+</associations>
+</Column>
+<Column name="Store_Facility_ID" id="5A6871F8-4B15-695C-2250-C45171F2DF9C">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The facility UID of the store]]></commentInRDBMS>
+<generatorID>80F009A7-E348-49EC-9428-89C6959EEE8F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="189EAE70-C0F4-FEE2-0992-B9904498CD85" referredColumn="81C25B22-A570-7796-A63B-C7F44A9BE286"/>
+</associations>
+</Column>
+<Column name="Unit_Price" id="4A541C25-5042-9B67-71A5-435353CEEFC2">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The unit price of the item in the store]]></commentInRDBMS>
+<generatorID>08D22577-95E0-3D7B-8D44-E1B1B60975C5</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="836B7850-AB90-643B-F28F-2ABDE84F6597" name="AFZ_Item_Store_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>23837025-50A0-C67F-467A-621B678FE75F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2D524F8C-F9B0-B32D-2E9C-D6EE578D582A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="E1BDC1DE-D44D-8838-2946-5491A39099B2" name="IS_Store_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>B813C571-DF3E-A882-5165-C84C253F9D17</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5A6871F8-4B15-695C-2250-C45171F2DF9C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="B3EC9BDB-61BA-2CE8-B96F-BFF01195B60A" name="IS_Item_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>7ACE4ABA-99F1-0A62-8E54-34CCC99D584E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="775E1712-4E72-98BD-74EF-7D81CB7AAFB0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

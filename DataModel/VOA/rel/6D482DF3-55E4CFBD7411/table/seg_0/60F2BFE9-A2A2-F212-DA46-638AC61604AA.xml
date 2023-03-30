@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="60F2BFE9-A2A2-F212-DA46-638AC61604AA" name="AFZ_Parking_Pay">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>CFEAF8C4-99DD-E01C-4A8A-39C3E3859E44</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="PS_ID" id="AE5F4609-4FB0-6CCE-2112-D9BFA6EA10F7">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the source of the payment]]></commentInRDBMS>
+<generatorID>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6C99B929-ACAC-B8AF-0222-B6FDB3E97236" referredColumn="CFD7D40E-0C79-FEB2-45C3-EBFC21F21A7A"/>
+</associations>
+</Column>
+<Column name="Time_In" id="D40ACAB4-351B-5ABE-BB7E-FEDE5A61BBF1">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time the visitor starts parking]]></commentInRDBMS>
+<generatorID>3D3D0B34-A527-5B66-9359-34411C2D5ADB</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Time_Out" id="0B74EC3C-8E87-4A5B-FC86-5D9DD1B99CF4">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time the visitor ends  parking]]></commentInRDBMS>
+<generatorID>C5055CE6-54B4-C8DD-AA34-947EA24A2112</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F75C31A2-5CC3-8777-DE2A-B3E418C07D60" name="AFZ_Parking_Pay_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>AD236288-FE69-2311-0C25-D0059968A430</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AE5F4609-4FB0-6CCE-2112-D9BFA6EA10F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C459656F-8EF3-62B6-1A63-988DD8FFF5BF" name="PP_PS_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>5CC0C309-1202-9FD4-821A-161BF7589FF7</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AE5F4609-4FB0-6CCE-2112-D9BFA6EA10F7"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

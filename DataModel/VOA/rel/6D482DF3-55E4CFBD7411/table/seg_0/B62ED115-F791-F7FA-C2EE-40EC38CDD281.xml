@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="B62ED115-F791-F7FA-C2EE-40EC38CDD281" name="AFZ_Store">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>C70F7747-DE33-BF32-E83C-9512268935FB</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Facility_ID" id="81C25B22-A570-7796-A63B-C7F44A9BE286">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the facility. The primary key]]></commentInRDBMS>
+<generatorID>8F0FBD68-1B31-0414-F37C-41822445B3A0</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="529E425D-E62F-C5E0-E624-C87A0FF754DE" referredColumn="6A4D2B9C-2D7E-9280-B32E-CD67AB3A11B1"/>
+</associations>
+</Column>
+<Column name="Store_Name" id="F64A6295-0644-0722-1E48-6A9C9BE6CD4A">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[Store Name.]]></commentInRDBMS>
+<generatorID>319F0CBF-88DB-1B09-9EA3-AA8292C308D3</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>32</dataTypeSize>
+<ownDataTypeParameters>32,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Store_Category_ID" id="24B00220-9F2C-FAEB-6774-BBB8DA2FDBBB">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>3EADC8C7-2A7B-2E02-EDBD-2BE400CAA309</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D5E60DD0-AD15-DBEB-5C4E-92507C41C3A9" referredColumn="BEFFE588-8319-5F82-FF43-AD294381F49E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="919A3A2E-BB0F-AC60-F510-429F3BBCB945" name="AFZ_Store_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>14A63DF6-1D25-8F24-B818-03C16DCDD9B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="81C25B22-A570-7796-A63B-C7F44A9BE286"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="82C08975-2CCC-97E5-8FD1-932726E07AB0" name="Store_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>9748D6A9-6AD5-BA6C-CF6D-59A729BE08FA</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="81C25B22-A570-7796-A63B-C7F44A9BE286"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0D81EB9B-F83C-A115-FF8B-4E9281CE30AD" name="Store_Category_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>3A6CEB89-3035-514B-2613-D2FEA07B366C</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="24B00220-9F2C-FAEB-6774-BBB8DA2FDBBB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

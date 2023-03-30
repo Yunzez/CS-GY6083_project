@@ -1,0 +1,189 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="542C9FED-9C45-6CD9-A079-A0207DD4D693" name="AFZ_Attractions">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>2EF867CE-C63C-26A4-4642-7ED69236D6DC</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Facility_ID" id="27377C23-F191-8ADA-BA01-000A456B6B5F">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the facility. The primary key]]></commentInRDBMS>
+<generatorID>8F0FBD68-1B31-0414-F37C-41822445B3A0</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EB327395-B874-C20F-9F40-0571448F1C06" referredColumn="6A4D2B9C-2D7E-9280-B32E-CD67AB3A11B1"/>
+</associations>
+</Column>
+<Column name="Attraction_Name" id="88363DF7-C9ED-AC12-BD85-416F488DD75D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The name of Attraction.]]></commentInRDBMS>
+<generatorID>410DA806-E357-CEE9-8449-94049BCA8BF1</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Att_Description" id="8CD48B99-5259-821B-B85C-76773F62D191">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of the attraction.]]></commentInRDBMS>
+<generatorID>25AFAD5D-CC5E-0AD8-7BAA-20162E2AF8FC</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>128</dataTypeSize>
+<ownDataTypeParameters>128,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Minimum_Height" id="4E3083D1-E57F-42E6-DF60-8AA0D34F9A36">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The minimum height required to enter the attraction. (Unit: inch)]]></commentInRDBMS>
+<generatorID>D4736125-F5E6-2936-1B94-CB9552B5F8B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Durations" id="DDA94230-2106-A879-823C-398A3C37B5CE">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The durations of the attraction.(Unit: second)]]></commentInRDBMS>
+<generatorID>DA60F409-2A9B-AAB4-9FB1-14357828C5E5</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Attraction_Type_ID" id="CBB69359-9E8D-6A9D-EEE9-4A282F159846">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The type of the attraction]]></commentInRDBMS>
+<generatorID>6CC06FAD-4B6A-AE50-9F19-99D9A2777A62</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="286BA548-AFFC-32EA-178B-1E47AAC3D857" referredColumn="0BBCC6E8-8E3D-0031-6D7E-1916759C25E9"/>
+</associations>
+</Column>
+<Column name="Attraction_Status_ID" id="23E2A034-5ADD-7814-214F-66C21363E64D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The status of the attraction]]></commentInRDBMS>
+<generatorID>FA6A8A1E-E273-7AE3-102F-06967DA332C8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EF5631A2-0EC4-125E-209B-088331360372" referredColumn="9F8FB1CD-A48F-0341-A28B-70C9CDC2E5B0"/>
+</associations>
+</Column>
+<Column name="Attraction_Locations_ID" id="1FAE99BB-50E7-5D11-DC1A-2BC91057AF81">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The location of the attraction]]></commentInRDBMS>
+<generatorID>47039E4A-FCD3-3872-28DC-FD30C743DC89</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="9D47DE9D-CD4C-ADA1-BBCB-E616D49276E7" referredColumn="2AF08298-D277-9BFA-D83C-73A1DBBBD148"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="8AEAFFA0-0265-BC1B-04C7-A20A2E0C3723" name="AFZ_Attractions_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>14A63DF6-1D25-8F24-B818-03C16DCDD9B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="27377C23-F191-8ADA-BA01-000A456B6B5F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F01CB9E5-94AC-297F-B9A9-71C163A3E840" name="Att_Facility_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>4FEA82DC-E8FF-823F-BD50-8DFD91F47458</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="27377C23-F191-8ADA-BA01-000A456B6B5F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3EB8A7EF-C5E3-3225-A22D-A60843D74A65" name="Att_Type_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>9FF04970-EB41-90A1-F951-5BEBBBC24350</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="CBB69359-9E8D-6A9D-EEE9-4A282F159846"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0897BB94-CCE0-57F6-FDF0-D5D56212F20B" name="Att_Status_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>0408A052-A129-FF9B-DFEE-79126CF38706</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="23E2A034-5ADD-7814-214F-66C21363E64D"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4D1CA6C2-7873-FB3B-8D70-E21900035758" name="Att_Locations_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 03:09:02 UTC</createdTime>
+<generatorID>2F479C1E-68DA-7F58-55DA-72E2280666A2</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1FAE99BB-50E7-5D11-DC1A-2BC91057AF81"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
