@@ -64,7 +64,7 @@ export default function Home() {
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Our Attractions</h2>
           <div className="flex flex-col md:flex-row justify-around max-w-7xl mx-auto">
 
-            <div className="w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4 ">
+          <div className={`${styles.hoverEffect} w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
               <div className="w-full relative">
                 <Image
                 priority={true} // Add this line
@@ -85,10 +85,10 @@ export default function Home() {
               }}>Learn More</button>
             </div>
 
-            <div className="w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4">
+            <div className={`${styles.hoverEffect} w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
 
               <div className="w-full relative transition-opacity">
-                <Image
+                <Image 
                 priority={true} // Add this line
                   className='object-cover cus_max_25vh rounded-md'
                   src="/home_img/store.jpg"
@@ -107,7 +107,7 @@ export default function Home() {
                
               }}>Learn More</button>
             </div>
-            <div className="w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4">
+            <div className={`${styles.hoverEffect} w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
               <div className="w-full relative transition-opacity">
                 <Image
                 priority={true} // Add this line
@@ -130,8 +130,8 @@ export default function Home() {
               }}>Learn More</button>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-around max-w-7xl mx-auto">
-            <div className="w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4">
+          <div className=" flex flex-col md:flex-row justify-around max-w-7xl mx-auto">
+          <div className={`${styles.hoverEffect} w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
               <div className="w-full relative transition-opacity">
                 <Image
                 priority={true} // Add this line
@@ -153,7 +153,7 @@ export default function Home() {
               }}>Learn More</button>
             </div>
 
-            <div className="w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4 hover:mb-5">
+            <div className={`${styles.hoverEffect} w-full md:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
               <div className="w-full relative transition-opacity">
                 <Image
                 priority={true} // Add this line
