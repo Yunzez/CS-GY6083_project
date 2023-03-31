@@ -1327,9 +1327,14 @@ CREATE TRIGGER UpdateShowAmountDue
         GROUP BY i.Activity_ID
 
         UPDATE AFZ_Activity
-        SET AFZ_Activity.Amount_Due = NA.Amount
+        SET AFZ_Activity.Amount_Due =
+            CASE WHEN DATEDIFF(year, AV.Birthdate, getutcdate()) <= 7
+                 THEN 0
+                 ELSE NA.Amount
+            END
         FROM @newAmount NA
         JOIN AFZ_Activity ON NA.Activity_ID = AFZ_Activity.Activity_ID
+        INNER JOIN AFZ_Visitors AV on AFZ_Activity.Visitor_ID = AV.Visitor_ID
      END
 GO
 
