@@ -36,6 +36,19 @@
 <ownDataTypeParameters>8,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Discount" id="BB4B722E-A22B-2028-B3B8-116439CCCCF3">
+<createdBy>black</createdBy>
+<createdTime>2023-03-31 17:03:59 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Discount of this method.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="F17F9DB4-326C-B3B5-A63E-E89FECBEF385" name="AFZ_Ticket_Method_PK">

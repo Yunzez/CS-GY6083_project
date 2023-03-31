@@ -253,13 +253,14 @@ SELECT TOP 15 v.Visitor_ID, 'Tic', DATEADD(second, ABS(CHECKSUM(NEWID())) % (864
 FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Store s
 ORDER BY NEWID();
 
-INSERT INTO voa.dbo.AFZ_Tickets (Activity_ID, Method_Type_ID, Ticket_Type_ID, Purchase_Date, Visit_Date, Price)
-SELECT TOP 15 A.Activity_ID,
+INSERT INTO voa.dbo.AFZ_Tickets (Method_Type_ID, Ticket_Type_ID, Purchase_Date, Visit_Date, Price, Activity_ID)
+SELECT TOP 15
               (CAST((ABS(CHECKSUM(NewId())) % 2 + 1 )AS NUMERIC(5))),
               2, -- default by the adult ticket
               A.Activity_Date,
               DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01'),
-              100
+              100,
+              A.Activity_ID
 FROM voa.dbo.AFZ_Activity A
 WHERE A.Source_Type = 'Tic';
 

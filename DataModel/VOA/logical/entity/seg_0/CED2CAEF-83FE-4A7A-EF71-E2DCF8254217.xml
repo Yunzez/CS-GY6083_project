@@ -11,7 +11,6 @@
 <fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
 <growthPercent>0</growthPercent>
 <growthType>Year</growthType>
-<hierarchicalParent>AA02AB1E-8247-16B0-24D8-72A269566923</hierarchicalParent>
 <maxVolumes>9999999</maxVolumes>
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
@@ -119,6 +118,21 @@
 <dataTypePrecision>3</dataTypePrecision>
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,3,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Activity_ID" id="16681F30-1B31-EB8F-3FA0-DCA2C5B10624">
+<createdBy>black</createdBy>
+<createdTime>2023-03-31 16:52:56 UTC</createdTime>
+<generatorID>9D1C50CB-8E1A-D62E-F190-860A49F5F6ED</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 </Entity>
