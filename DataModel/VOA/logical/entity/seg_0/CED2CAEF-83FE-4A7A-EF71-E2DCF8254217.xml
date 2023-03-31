@@ -16,6 +16,20 @@
 <normalForm>Third</normalForm>
 <discriminatorValue>Tic</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Ticket_ID" id="94C2B5C9-7499-056C-E008-125237717B11">
+<createdBy>frezy</createdBy>
+<createdTime>2023-03-31 20:03:34 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Id of this table]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
 <Attribute name="Method_Type_ID" id="4920A172-EF00-864B-BA3B-CD31964DB8D9">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:58:40 UTC</createdTime>
@@ -104,21 +118,6 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Discount" id="8917D193-8AAE-D0BE-900F-078162D230E7">
-<createdBy>black</createdBy>
-<createdTime>2023-03-31 02:42:49 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Discount that applied on this ticket.(In decimal)]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>3</dataTypePrecision>
-<dataTypeScale>2</dataTypeScale>
-<ownDataTypeParameters>,3,2</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Activity_ID" id="16681F30-1B31-EB8F-3FA0-DCA2C5B10624">
 <createdBy>black</createdBy>
 <createdTime>2023-03-31 16:52:56 UTC</createdTime>
@@ -132,7 +131,21 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
 </attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="7E735F76-85D2-5B53-46E8-1D0C1D43BB43" name="AFZ_Tickets PK">
+<createdBy>frezy</createdBy>
+<createdTime>2023-03-31 20:04:10 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>94C2B5C9-7499-056C-E008-125237717B11</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
 </Entity>

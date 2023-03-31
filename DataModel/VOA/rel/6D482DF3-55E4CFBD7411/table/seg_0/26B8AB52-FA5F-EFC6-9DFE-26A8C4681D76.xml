@@ -109,20 +109,6 @@
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Discount" id="2075C69E-AB90-29CA-CEBC-035E9AD9334A">
-<createdBy>black</createdBy>
-<createdTime>2023-03-31 02:42:08 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Discount that applied on this ticket.(In decimal)]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>3</dataTypePrecision>
-<dataTypeScale>2</dataTypeScale>
-<defaultValue>1</defaultValue>
-<ownDataTypeParameters>,3,2</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="Activity_ID" id="33E0FD90-C557-F1B9-6ACC-4398EB4BAF2D">
 <createdBy>black</createdBy>
 <createdTime>2023-03-31 16:53:43 UTC</createdTime>
