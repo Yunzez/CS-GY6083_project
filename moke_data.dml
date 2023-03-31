@@ -234,7 +234,7 @@ VALUES
 -- add order
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Facility_ID, Source_Type, Activity_Date)
 SELECT TOP 15 v.Visitor_ID, s.Facility_ID, 'Sto', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01')
-FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Store s
+FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Item_Store s
 ORDER BY NEWID();
 
 INSERT INTO voa.dbo.AFZ_Order (Activity_ID, Quantity, Order_Date, Item_ID, Store_Facility_ID)
