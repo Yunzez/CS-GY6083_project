@@ -203,4 +203,3 @@ CREATE TRIGGER UpdateShowAmountDue
         JOIN AFZ_Activity ON NA.Activity_ID = AFZ_Activity.Activity_ID
         INNER JOIN AFZ_Visitors AV on AFZ_Activity.Visitor_ID = AV.Visitor_ID
      END
-GO

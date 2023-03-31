@@ -1157,7 +1157,7 @@ ALTER TABLE AFZ_Visitors
     ) 
     ON DELETE NO ACTION 
     ON UPDATE NO ACTION 
-GO
+
 
 
 
