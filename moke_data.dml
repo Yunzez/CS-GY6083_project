@@ -1,3 +1,8 @@
+INSERT INTO AFZ_Holidays (Holiday_Date) VALUES
+('2023-01-01'), -- New Year's Day
+('2023-07-04'), -- Independence Day
+('2023-12-25'); -- Christmas Day
+
 -- add attraction locations
 INSERT INTO voa.dbo.AFZ_Attraction_Locations (Location_Section)
     VALUES (N'A'), (N'B'), (N'C'), (N'D');
@@ -194,12 +199,18 @@ INSERT INTO voa.dbo.AFZ_Visitor_Type (Visitor_Type) VALUES
      (N'Individual'),(N'Group'),(N'Member'),(N'Student');
 
 -- add Ticket Method
-INSERT INTO voa.dbo.AFZ_Ticket_Method (Method_Type) VALUES
-     (N'Online'),(N'Onsite');
+INSERT INTO voa.dbo.AFZ_Ticket_Method (Method_Type, Discount) VALUES
+     (N'Online' ,1),(N'Onsite', 0.95);
 
 -- add Ticket Type
-INSERT INTO voa.dbo.AFZ_Ticket_Type (Ticket_Type) VALUES
-     (N'Child'),(N'Adult'),(N'Member'),(N'Senior'),(N'Child-Member'),(N'Senior-Member');
+INSERT INTO voa.dbo.AFZ_Ticket_Type (Ticket_Type, Discount)
+VALUES
+       (N'Child' , 0.85),
+       (N'Adult', 1),
+       (N'Member', 0.9),
+       (N'Senior', 0.85),
+       (N'Child-Member', 0.85 * 0.9),
+       (N'Senior-Member', 0.85 * 0.9);
 
 -- add Visitor
 INSERT INTO afz_visitors (fname, lname, city, email, cell_number, birthdate, visitor_type_id)
@@ -219,9 +230,6 @@ VALUES
 ('Steven', 'Wright', 'Boston', 'steven.wright@example.com', 5555553691, '1994-12-25', 1),
 ('Megan', 'Garcia', 'Austin', 'megan.garcia@example.com', 5555551234, '1997-03-05', 4),
 ('Robert', 'Perez', 'Las Vegas', 'robert.perez@example.com', 5555554680, '1982-08-08', 3);
-
--- TODO: DATA FOR activity: ticket, parking, Show pay
---       data for payment.
 
 -- add order
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Facility_ID, Source_Type, Activity_Date)
@@ -245,7 +253,7 @@ ORDER BY NEWID();
 INSERT INTO voa.dbo.AFZ_Tickets (Activity_ID, Method_Type_ID, Ticket_Type_ID, Purchase_Date, Visit_Date, Price)
 SELECT TOP 15 A.Activity_ID,
               (CAST((ABS(CHECKSUM(NewId())) % 2 + 1 )AS NUMERIC(5))),
-              2,
+              2, -- default by the adult ticket
               A.Activity_Date,
               DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01'),
               100
@@ -278,3 +286,4 @@ ORDER BY NEWID();
 
 
 -- add payment
+

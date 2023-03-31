@@ -85,7 +85,7 @@
 <Column name="Validate" id="B7A9915A-1C20-EDFC-8599-AF807DAB9CFA">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[If the Ticket is valudate. This will be updated by a trigger function on each select. Default 0.]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[This is a computed column. Only be 1 while the system date is same to the visit date.]]></commentInRDBMS>
 <generatorID>79A88C82-7442-27E5-7EC9-A3854EBA2DAE</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <formulaDesc>as case when CAST(visit_date as DATE) = CAST(getutcdate() as DATE) then 1 else 0 end</formulaDesc>
@@ -95,6 +95,33 @@
 <dataTypePrecision>1</dataTypePrecision>
 <ownDataTypeParameters>,1,</ownDataTypeParameters>
 <computed>true</computed>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Price" id="505B59D6-5764-C9A0-9C0D-967CFB631AC0">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 21:36:50 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Price of this type of ticket.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Discount" id="2075C69E-AB90-29CA-CEBC-035E9AD9334A">
+<createdBy>black</createdBy>
+<createdTime>2023-03-31 02:42:08 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Discount that applied on this ticket.(In decimal)]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<defaultValue>1</defaultValue>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>

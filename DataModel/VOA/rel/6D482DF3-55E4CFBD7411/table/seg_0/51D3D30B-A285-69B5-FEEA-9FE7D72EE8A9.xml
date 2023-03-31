@@ -23,23 +23,6 @@
 <identityColumn>true</identityColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Visitor_ID" id="6C963E8C-4FE8-8B68-E198-F33D6929A08C">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[Unique Visitor ID.]]></commentInRDBMS>
-<generatorID>21B5F087-3085-7404-C405-E2397AC762A2</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="8A9AC9F9-1EE5-7620-5ABA-E886C277484B" referredColumn="57592B80-7070-C397-79ED-CFE7EDED8142"/>
-</associations>
-</Column>
 <Column name="Payment_Amount" id="36C9ED5C-5902-F700-AF5B-4A470F7DA99A">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -134,17 +117,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="1D459B21-4FF7-E7E5-1F69-C476E7A1FDF5"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="A9970AC1-AB73-395A-2FFA-38F3B2D24395" name="Payment_Visitors_FK">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<generatorID>D2091A86-5F2D-EDBE-2B7C-DC07F2790C05</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="6C963E8C-4FE8-8B68-E198-F33D6929A08C"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="3360A30F-6279-6D32-032F-D0D2A1700DDA" name="AFZ_Payment_AFZ_Activity_FK">

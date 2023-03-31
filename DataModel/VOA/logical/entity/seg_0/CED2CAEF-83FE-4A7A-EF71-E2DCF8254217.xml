@@ -89,5 +89,36 @@
 <dataTypePrecision>1</dataTypePrecision>
 <ownDataTypeParameters>,1,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Price" id="6ED32B5A-F580-FB85-1984-B0D043F2DE6C">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 21:37:02 UTC</createdTime>
+<commentInRDBMS><![CDATA[The price of the ticket.
+]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,10,2</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Discount" id="8917D193-8AAE-D0BE-900F-078162D230E7">
+<createdBy>black</createdBy>
+<createdTime>2023-03-31 02:42:49 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Discount that applied on this ticket.(In decimal)]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
+</Attribute>
 </attributes>
 </Entity>

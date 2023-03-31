@@ -526,8 +526,8 @@ CREATE TABLE AFZ_Shows
      Description VARCHAR (128) NOT NULL , 
      Accessibility NUMERIC (1) NOT NULL , 
      Price NUMERIC (8,2) NOT NULL , 
-     Start_Time DATE NOT NULL , 
-     End_Time DATE NOT NULL , 
+     Start_Time DATETIME NOT NULL ,
+     End_Time DATETIME NOT NULL ,
      Show_Type_ID NUMERIC (2) NOT NULL 
     )
 GO 
@@ -652,7 +652,8 @@ GO
 CREATE TABLE AFZ_Ticket_Method 
     (
      Method_Type_ID NUMERIC (1) NOT NULL IDENTITY NOT FOR REPLICATION , 
-     Method_Type VARCHAR (8) NOT NULL 
+     Method_Type VARCHAR (8) NOT NULL ,
+     Discount NUMERIC (3,2) NOT NULL DEFAULT 1
     )
 GO 
 
@@ -666,6 +667,9 @@ GO
 EXEC sp_addextendedproperty 'MS_Description' , 'Ticket method: Online, Onsite.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Ticket_Method' , 'COLUMN' , 'Method_Type' 
 GO
 
+EXEC sp_addextendedproperty 'MS_Description' , 'The Discount that can be on this ticket by the method.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Ticket_Method' , 'COLUMN' , 'Discount'
+GO
+
 ALTER TABLE AFZ_Ticket_Method ADD CONSTRAINT AFZ_Ticket_Method_PK PRIMARY KEY CLUSTERED (Method_Type_ID)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
@@ -675,7 +679,8 @@ GO
 CREATE TABLE AFZ_Ticket_Type 
     (
      Ticket_Type_ID NUMERIC (1) NOT NULL IDENTITY NOT FOR REPLICATION , 
-     Ticket_Type VARCHAR (32) NOT NULL
+     Ticket_Type VARCHAR (32) NOT NULL,
+     Discount NUMERIC (3,2) NOT NULL DEFAULT 1
     )
 GO 
 
@@ -687,6 +692,10 @@ GO
 
 
 EXEC sp_addextendedproperty 'MS_Description' , 'Ticket type: Child, Adult, Senior, or Member' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Ticket_Type' , 'COLUMN' , 'Ticket_Type' 
+GO
+
+
+EXEC sp_addextendedproperty 'MS_Description' , 'The Discount that can be on this ticket by the type.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Ticket_Type' , 'COLUMN' , 'Discount'
 GO
 
 ALTER TABLE AFZ_Ticket_Type ADD CONSTRAINT AFZ_Ticket_Type_PK PRIMARY KEY CLUSTERED (Ticket_Type_ID)
@@ -740,8 +749,9 @@ GO
 
 
 
-EXEC sp_addextendedproperty 'MS_Description' , 'If the Ticket is valudate. This will be updated by a trigger function on each select. Default 0.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Tickets' , 'COLUMN' , 'Validate' 
+EXEC sp_addextendedproperty 'MS_Description' , 'This is a computed column. Only be 1 while the system date is same to the visit date.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Tickets' , 'COLUMN' , 'Validate'
 GO
+
 
 ALTER TABLE AFZ_Tickets ADD CONSTRAINT AFZ_Tickets_PK PRIMARY KEY CLUSTERED (Activity_ID)
      WITH (
@@ -1172,6 +1182,23 @@ ALTER TABLE AFZ_Visitors
     ON UPDATE NO ACTION 
 GO
 
+CREATE TABLE AFZ_Holidays
+    (
+     Holiday_Date DATETIME NOT NULL
+    )
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description' , 'The date of the holiday.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Holidays' , 'COLUMN' , 'Holiday_Date'
+GO
+
+ALTER TABLE AFZ_Holidays ADD CONSTRAINT AFZ_Holidays_PK PRIMARY KEY CLUSTERED (Holiday_Date)
+     WITH (
+     ALLOW_PAGE_LOCKS = ON ,
+     ALLOW_ROW_LOCKS = ON )
+GO
+
 CREATE TRIGGER UpdateOrderAmountDue
      ON AFZ_Order
      AFTER INSERT
@@ -1195,6 +1222,7 @@ CREATE TRIGGER UpdateOrderAmountDue
 GO
 
 
+
  CREATE TRIGGER UpdateTicketAmountDue
      ON AFZ_Tickets
      AFTER INSERT
@@ -1214,22 +1242,21 @@ GO
         SELECT @purchaseMemberTicketNum = COALESCE(@purchaseMemberTicketNum, 0)
 
         SELECT @remainMemberTicket = @maxMemberTicket- @purchaseMemberTicketNum;
-        SELECT @remainMemberTicket
 
 
         UPDATE AFZ_Tickets
-        SET AFZ_Tickets.Ticket_Type_ID = 3 -- update the Amount_Due column with a 10% increase
+        SET AFZ_Tickets.Ticket_Type_ID = 3
         FROM (
           SELECT Activity_ID,
-                 Visitor_ID,
+                 AA.Visitor_ID,
                  CAST(Activity_Date AS DATE) as PDate,
-                 ROW_NUMBER() OVER (PARTITION BY CAST(Activity_Date AS DATE), Visitor_ID ORDER BY CAST(Activity_Date AS DATE) DESC) AS RowNum
-          FROM AFZ_Activity
-          WHERE Source_Type = 'Tic'
+                 ROW_NUMBER() OVER (PARTITION BY CAST(Activity_Date AS DATE), AA.Visitor_ID ORDER BY CAST(Activity_Date AS DATE) DESC) AS RowNum
+          FROM AFZ_Activity AA
+          INNER JOIN AFZ_Visitors AV on AV.Visitor_ID= AA.Visitor_ID
+          WHERE Source_Type = 'Tic' and Visitor_Type_ID = 3
         ) AS Subquery
         WHERE Subquery.Activity_ID = AFZ_Tickets.Activity_ID
           AND Subquery.RowNum <= @remainMemberTicket -- select only the top-ranked row in each group
-
 
 
         UPDATE AFZ_Tickets
@@ -1252,16 +1279,15 @@ GO
 
         UPDATE AFZ_Activity
         SET AFZ_Activity.Amount_Due =
-            CASE WHEN T.Ticket_Type_ID = 1 OR T.Ticket_Type_ID = 4 THEN 0.85 * NA.price -- CHILD AND SENIOR PRICE
-                 WHEN T.Ticket_Type_ID = 5 OR T.Ticket_Type_ID = 6 THEN 0.9 * 0.85 * NA.price -- CHILD AND SENIOR with member PRICE
-                 WHEN T.Ticket_Type_ID = 3 THEN 0.9 * NA.price
-                 WHEN T.Method_Type_ID = 1 AND T.Ticket_Type_ID = 1 OR T.Ticket_Type_ID = 4 THEN 0.95 * 0.85 * NA.price -- CHILD AND SENIOR PRICE
-                 WHEN T.Method_Type_ID = 1 AND T.Ticket_Type_ID = 5 OR T.Ticket_Type_ID = 6 THEN 0.95 * 0.9 * 0.85 * NA.price -- CHILD AND SENIOR with member PRICE
-                 WHEN T.Method_Type_ID = 1 AND T.Ticket_Type_ID = 3 THEN 0.95 * 0.9 * NA.price
-                 ELSE NA.price
+            CASE WHEN (DATENAME(WEEKDAY, NA.Purchase_Date) IN ('Saturday', 'Sunday')) -- weekend
+                    OR (EXISTS (SELECT * FROM AFZ_Holidays WHERE Holiday_Date = NA.Purchase_Date)) -- holiday
+                THEN NA.Price -- NO Discount on weekend or holiday
+            ELSE NA.Price * TT.Discount * TM.Discount
             END
         FROM inserted NA
         INNER JOIN AFZ_Tickets T ON NA.Activity_ID = T.Activity_ID
+        INNER JOIN AFZ_Ticket_Type TT ON T.Ticket_Type_ID = TT.Ticket_Type_ID
+        INNER JOIN AFZ_Ticket_Method Tm ON T.Method_Type_ID = TM.Method_Type_ID
         INNER JOIN AFZ_Activity ON NA.Activity_ID = AFZ_Activity.Activity_ID
         INNER JOIN inserted i ON AFZ_Activity.Activity_ID = i.Activity_ID
      END

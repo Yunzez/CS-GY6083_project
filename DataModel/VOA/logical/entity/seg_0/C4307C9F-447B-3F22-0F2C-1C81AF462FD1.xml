@@ -31,22 +31,6 @@
 <dataTypePrecision>10</dataTypePrecision>
 <ownDataTypeParameters>,10,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Visitor_ID" id="21B5F087-3085-7404-C405-E2397AC762A2">
-<createdBy>black</createdBy>
-<createdTime>2023-03-29 15:29:43 UTC</createdTime>
-<commentInRDBMS><![CDATA[Unique Visitor ID.]]></commentInRDBMS>
-<generatorID>D2091A86-5F2D-EDBE-2B7C-DC07F2790C05</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>069BB3ED-AA89-EE37-4932-365D6AAA92B6</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Payment_Amount" id="FB2A334C-4D19-7DCC-C120-35F1F8E7A8DD">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 00:18:53 UTC</createdTime>
@@ -105,10 +89,10 @@
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Activity_ID" id="CC95C4F2-AFF2-8FB4-3B9F-154040B9B213">
+<Attribute name="Activity_ID" id="645F16B1-73C6-A1C9-CB68-5B0F9F55E074">
 <createdBy>black</createdBy>
-<createdTime>2023-03-30 21:01:45 UTC</createdTime>
-<generatorID>C3291011-1FE3-09C7-6B88-F751A1DD3B22</generatorID>
+<createdTime>2023-03-30 22:12:21 UTC</createdTime>
+<generatorID>98010DE1-2EE0-8BBC-16CF-BC3C1EE6970B</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>

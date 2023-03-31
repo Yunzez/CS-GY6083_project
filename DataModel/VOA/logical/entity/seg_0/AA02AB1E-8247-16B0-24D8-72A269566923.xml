@@ -112,21 +112,6 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Payment_ID" id="AEC9EFAC-81D1-57B0-3AD2-B91AEB47F7B9">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 21:01:48 UTC</createdTime>
-<generatorID>C3291011-1FE3-09C7-6B88-F751A1DD3B22</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>15ACA929-1C85-A9D4-21E0-5930B4A0898D</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="AD236288-FE69-2311-0C25-D0059968A430" name="Payment_Source PK">

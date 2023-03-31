@@ -77,11 +77,10 @@
 <colAssociation fkAssociation="1BBCA164-701C-2842-4BF8-7C211FD58F2F" referredColumn="03C31A57-62DA-8A9A-FE6A-B2AFF81EF5C6"/>
 </associations>
 </Column>
-<Column name="Fee" id="8F761B21-1C6D-DDC2-8683-BFF3B2540331">
+<Column name="Fee" id="9EAFAEF3-E6CE-7664-AE26-03C53923519A">
 <createdBy>black</createdBy>
-<createdTime>2023-03-30 18:56:54 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Parking Fee.
-]]></commentInRDBMS>
+<createdTime>2023-03-31 01:52:13 UTC</createdTime>
+<commentInRDBMS><![CDATA[The paring fee.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
