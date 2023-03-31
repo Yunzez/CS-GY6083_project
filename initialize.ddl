@@ -197,7 +197,7 @@ CREATE TABLE AFZ_Card_Payment
      Holder_LName VARCHAR (20) NOT NULL , 
      CVV NUMERIC (3) NOT NULL , 
      Expiration_Date DATE NOT NULL , 
-     Card_Type VARCHAR (4) NOT NULL 
+     Card_Type VARCHAR (6) NOT NULL
     )
 GO 
 
@@ -450,11 +450,10 @@ GO
 
 CREATE TABLE AFZ_Payment 
     (
-     Payment_ID NUMERIC (10) NOT NULL IDENTITY NOT FOR REPLICATION , 
-     Visitor_ID NUMERIC (6) NOT NULL , 
+     Payment_ID NUMERIC (10) NOT NULL IDENTITY NOT FOR REPLICATION ,
      Activity_ID NUMERIC (10) NOT NULL , 
      Payment_Amount NUMERIC (8,2) NOT NULL , 
-     Payment_Date DATE NOT NULL , 
+     Payment_Date DATETIME NOT NULL ,
      Payment_Method VARCHAR (4) NOT NULL , 
      Facility_ID NUMERIC (5) 
     )
@@ -463,11 +462,6 @@ GO
 
 
 EXEC sp_addextendedproperty 'MS_Description' , 'The payment of the visitor pay for each source.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Payment' , 'COLUMN' , 'Payment_ID' 
-GO
-
-
-
-EXEC sp_addextendedproperty 'MS_Description' , 'Unique Visitor ID.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Payment' , 'COLUMN' , 'Visitor_ID' 
 GO
 
 
@@ -1065,19 +1059,6 @@ ALTER TABLE AFZ_Payment
     ON UPDATE NO ACTION 
 GO
 
-ALTER TABLE AFZ_Payment 
-    ADD CONSTRAINT Payment_Visitors_FK FOREIGN KEY 
-    ( 
-     Visitor_ID
-    ) 
-    REFERENCES AFZ_Visitors 
-    ( 
-     Visitor_ID 
-    ) 
-    ON DELETE NO ACTION 
-    ON UPDATE NO ACTION 
-GO
-
 ALTER TABLE AFZ_Shows 
     ADD CONSTRAINT Show_Type_FK FOREIGN KEY 
     ( 
@@ -1188,6 +1169,9 @@ CREATE TABLE AFZ_Holidays
     )
 GO
 
+ALTER TABLE AFZ_Card_Payment
+ADD CONSTRAINT CK_AFZ_Card_Payment_card_type
+CHECK (Card_Type IN ('credit', 'debit'));
 
 
 EXEC sp_addextendedproperty 'MS_Description' , 'The date of the holiday.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Holidays' , 'COLUMN' , 'Holiday_Date'

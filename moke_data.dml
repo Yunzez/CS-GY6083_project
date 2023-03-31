@@ -241,7 +241,10 @@ INSERT INTO voa.dbo.AFZ_Order (Activity_ID, Quantity, Order_Date, Item_ID, Store
 SELECT TOP 35 A.Activity_ID, (CAST((ABS(CHECKSUM(NewId())) % 10 + 1 )AS NUMERIC(5))), A.Activity_Date, AIS.Item_ID, AIS.Facility_ID
 FROM voa.dbo.AFZ_Item_Store AIS
 INNER JOIN voa.dbo.AFZ_Activity A ON AIS.Facility_ID = A.Facility_ID
-WHERE A.Source_Type = 'Sto'
+WHERE A.Source_Type = 'Sto' and A.Facility_ID IN (
+    SELECT A.Facility_ID
+    FROM voa.dbo.AFZ_Item_Store A
+)
 ORDER BY NEWID();
 
 -- ADD TICKET
@@ -284,4 +287,59 @@ ORDER BY NEWID();
 
 
 -- add payment
+INSERT INTO voa.dbo.AFZ_Payment (Activity_ID, Payment_Amount, Payment_Date, Payment_Method, Facility_ID)
+SELECT top 40 A.Activity_ID, A.Amount_Due, DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
+       'Card', a.Facility_ID
+FROM voa.dbo.AFZ_Activity A
+ORDER BY NEWID();
 
+INSERT INTO voa.dbo.AFZ_Payment (Activity_ID, Payment_Amount, Payment_Date, Payment_Method, Facility_ID)
+SELECT A.Activity_ID, A.Amount_Due, DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
+       'Cash', a.Facility_ID
+FROM voa.dbo.AFZ_Activity A
+ORDER BY NEWID()
+OFFSET 40 ROWS
+FETCH NEXT 40 ROWS ONLY;
+
+INSERT INTO AFZ_Card_Payment (Payment_ID, Card_Number, Holder_FName, Holder_LName, CVV, Expiration_Date, Card_Type)
+VALUES
+  (1, 4539859758147605, 'John', 'Doe', 123, '2025-06-30', 'credit'),
+  (2, 376166444143588, 'Jane', 'Doe', 456, '2023-09-30', 'debit'),
+  (3, 5450258001841699, 'Bob', 'Smith', 789, '2024-12-31', 'credit'),
+  (4, 6011346804642873, 'Sarah', 'Johnson', 234, '2023-03-31', 'debit'),
+  (5, 4929415677866153, 'Mike', 'Brown', 567, '2026-08-31', 'credit'),
+  (6, 4532648285106349, 'Emily', 'Jones', 890, '2025-11-30', 'debit'),
+  (7, 4916615658124520, 'Alex', 'Lee', 123, '2024-02-28', 'credit'),
+  (8, 5232911839877406, 'Kelly', 'Wang', 456, '2026-07-31', 'debit'),
+  (9, 4929245292931742, 'Tom', 'Davis', 789, '2023-10-31', 'credit'),
+  (10, 5289458203825902, 'Anna', 'Miller', 234, '2025-05-31', 'debit'),
+  (11, 5450258001841699, 'Bob', 'Smith', 123, '2024-12-31', 'credit'),
+  (12, 376166444143588, 'Jane', 'Doe', 456, '2023-09-30', 'debit'),
+  (13, 4532648285106349, 'Emily', 'Jones', 789, '2025-11-30', 'credit'),
+  (14, 5289458203825902, 'Anna', 'Miller', 234, '2025-05-31', 'debit'),
+  (15, 4539859758147605, 'John', 'Doe', 567, '2025-06-30', 'credit'),
+  (16, 4916615658124520, 'Alex', 'Lee', 890, '2024-02-28', 'debit'),
+  (17, 4929245292931742, 'Tom', 'Davis', 123, '2023-10-31', 'credit'),
+  (18, 5232911839877406, 'Kelly', 'Wang', 456, '2026-07-31', 'debit'),
+  (19, 4929415677866153, 'Mike', 'Brown', 789, '2026-08-31', 'credit'),
+  (20, 6011346804642873, 'Sarah', 'Johnson', 234, '2023-03-31', 'debit'),
+  (21, 4532648285106349, 'Emily', 'Jones', 789, '2025-11-30', 'credit'),
+  (22, 5289458203825902, 'Anna', 'Miller', 234, '2025-05-31', 'debit'),
+  (23, 4539859758147605, 'John', 'Doe', 567, '2025-06-30', 'credit'),
+  (24, 4916615658124520, 'Alex', 'Lee', 890, '2024-02-28', 'debit'),
+  (25, 4929245292931742, 'Tom', 'Davis', 123, '2023-10-31', 'credit'),
+  (26, 4929245292931742, 'Tom', 'Davis', 789, '2023-10-31', 'credit'),
+  (27, 5289458203825902, 'Anna', 'Miller', 234, '2025-05-31', 'debit'),
+  (28, 5450258001841699, 'Bob', 'Smith', 123, '2024-12-31', 'credit'),
+  (29, 376166444143588, 'Jane', 'Doe', 456, '2023-09-30', 'debit'),
+  (30, 4532648285106349, 'Emily', 'Jones', 789, '2025-11-30', 'credit'),
+  (31, 376166444143588, 'Jane', 'Doe', 456, '2023-09-30', 'debit'),
+  (32, 4532648285106349, 'Emily', 'Jones', 789, '2025-11-30', 'credit'),
+  (33, 5289458203825902, 'Anna', 'Miller', 234, '2025-05-31', 'debit'),
+  (34, 4539859758147605, 'John', 'Doe', 567, '2025-06-30', 'credit'),
+  (35, 4916615658124520, 'Alex', 'Lee', 890, '2024-02-28', 'debit'),
+  (36, 4929245292931742, 'Tom', 'Davis', 123, '2023-10-31', 'credit'),
+  (37, 5232911839877406, 'Kelly', 'Wang', 456, '2026-07-31', 'debit'),
+  (38, 4929415677866153, 'Mike', 'Brown', 789, '2026-08-31', 'credit'),
+  (39, 6011346804642873, 'Sarah', 'Johnson', 234, '2023-03-31', 'debit'),
+  (40, 4532648285106349, 'Emily', 'Jones', 789, '2025-11-30', 'credit')
