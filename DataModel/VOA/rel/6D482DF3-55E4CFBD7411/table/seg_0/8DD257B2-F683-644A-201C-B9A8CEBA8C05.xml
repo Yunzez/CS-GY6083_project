@@ -24,23 +24,6 @@
 <colAssociation fkAssociation="6A4CB366-7931-EA9F-3794-64BCDCE822AE" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
 </associations>
 </Column>
-<Column name="Parking_Lot_Facility_ID" id="C78198EA-8DAA-46F4-13DE-388AD0D765A5">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:09:30 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Facility UID of the Parking Lot
-]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="AE7D7430-7FA7-3005-84D6-4FBFA1B4DF22" referredColumn="9D4C9FBF-2C1E-E75B-34F4-8744639F2FBC"/>
-</associations>
-</Column>
 <Column name="Time_In" id="E95BCEAC-0193-6582-9E95-614BF41228D7">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -63,6 +46,49 @@
 <use>1</use>
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Spot_Number" id="3C117E54-9CAA-0686-2D3C-CC7C98063EED">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 17:15:19 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Spot Number of the parking lot.]]></commentInRDBMS>
+<generatorID>A56348D6-0A0A-1E65-3B0B-35AA3DCE8EA9</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,3,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Parking_Section_ID" id="CF10A963-169F-FD18-1031-C233B36D1457">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 17:15:27 UTC</createdTime>
+<commentInRDBMS><![CDATA[Section of this spot.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1BBCA164-701C-2842-4BF8-7C211FD58F2F" referredColumn="03C31A57-62DA-8A9A-FE6A-B2AFF81EF5C6"/>
+</associations>
+</Column>
+<Column name="Fee" id="8F761B21-1C6D-DDC2-8683-BFF3B2540331">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 18:56:54 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Parking Fee.
+]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,5,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
@@ -90,15 +116,15 @@
 <colUsage columnID="2FD445CD-45B6-9C98-FC51-9D7C5B6314F2"/>
 </indexColumnUsage>
 </ind_PK_UK>
-<ind_PK_UK id="0359B658-D44C-5AF2-4181-99AE8A98314F" name="PParking_Lot_FK">
+<ind_PK_UK id="BF9E5A20-E67B-720D-0D4A-75F6ECC4E4BC" name="Parking_Section_FK">
 <createdBy>black</createdBy>
-<createdTime>2023-03-30 08:09:30 UTC</createdTime>
-<generatorID>14A63DF6-1D25-8F24-B818-03C16DCDD9B8</generatorID>
+<createdTime>2023-03-30 17:15:27 UTC</createdTime>
+<generatorID>303E3E71-613F-AB8E-3FD4-D5E931442BC3</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="C78198EA-8DAA-46F4-13DE-388AD0D765A5"/>
+<colUsage columnID="CF10A963-169F-FD18-1031-C233B36D1457"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

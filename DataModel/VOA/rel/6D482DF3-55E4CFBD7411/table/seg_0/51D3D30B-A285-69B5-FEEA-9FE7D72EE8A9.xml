@@ -40,23 +40,6 @@
 <colAssociation fkAssociation="8A9AC9F9-1EE5-7620-5ABA-E886C277484B" referredColumn="57592B80-7070-C397-79ED-CFE7EDED8142"/>
 </associations>
 </Column>
-<Column name="Activity_ID" id="2A22D693-43D2-4FC8-2179-C3930C9D86EC">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[The UID of the payment Resource.]]></commentInRDBMS>
-<generatorID>7EE8A19C-8784-907B-6086-018F5EAE8CFD</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="68E4D5E5-F056-34EC-3F36-65058A6160F9" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
-</associations>
-</Column>
 <Column name="Payment_Amount" id="36C9ED5C-5902-F700-AF5B-4A470F7DA99A">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -113,6 +96,21 @@
 <colAssociation fkAssociation="58574AC9-3AC4-CD90-FBA3-287CC306E7D1" referredColumn="100D71D6-726E-A975-4CD9-F45E5CBAA132"/>
 </associations>
 </Column>
+<Column name="Activity_ID" id="5890CADA-695F-0AA4-4CEF-AA52DB4AB6C2">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 21:02:52 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D97768A2-19D0-D07C-D416-B1B6010F57AB" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="461DB9F8-3D25-AC36-0BA3-ABBFB2E534E1" name="AFZ_Payment_PK">
@@ -125,17 +123,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="CD48A287-83DB-62A5-06BC-8F85696506FA"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="AA5B4D0B-3181-201A-F69F-98A24E9EFEEF" name="Payment_Activity_FK">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<generatorID>2A765223-3B17-3543-66EA-F6BB1DC74641</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="2A22D693-43D2-4FC8-2179-C3930C9D86EC"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="24EF3264-F0F6-722C-75C6-701DBB957A00" name="Payment_Facility_FK">
@@ -158,6 +145,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="6C963E8C-4FE8-8B68-E198-F33D6929A08C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="3360A30F-6279-6D32-032F-D0D2A1700DDA" name="AFZ_Payment_AFZ_Activity_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 21:02:52 UTC</createdTime>
+<generatorID>AD236288-FE69-2311-0C25-D0059968A430</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5890CADA-695F-0AA4-4CEF-AA52DB4AB6C2"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

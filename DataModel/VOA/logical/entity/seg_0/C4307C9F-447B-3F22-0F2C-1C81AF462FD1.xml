@@ -47,22 +47,6 @@
 <dataTypePrecision>6</dataTypePrecision>
 <ownDataTypeParameters>,6,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Activity_ID" id="7EE8A19C-8784-907B-6086-018F5EAE8CFD">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 00:47:00 UTC</createdTime>
-<commentInRDBMS><![CDATA[The UID of the payment Resource.]]></commentInRDBMS>
-<generatorID>2A765223-3B17-3543-66EA-F6BB1DC74641</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<referedAttribute>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,10,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Payment_Amount" id="FB2A334C-4D19-7DCC-C120-35F1F8E7A8DD">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 00:18:53 UTC</createdTime>
@@ -120,6 +104,21 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
 <ownDataTypeParameters>,5,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Activity_ID" id="CC95C4F2-AFF2-8FB4-3B9F-154040B9B213">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 21:01:45 UTC</createdTime>
+<generatorID>C3291011-1FE3-09C7-6B88-F751A1DD3B22</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<referedAttribute>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

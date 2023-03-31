@@ -8,21 +8,6 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="IS_ID" id="712AD27B-6270-E973-D85E-CE5E2904D970">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[Primary key of this table.]]></commentInRDBMS>
-<generatorID>49C58272-4E26-FAAA-315C-EB57809EA845</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementColumn>true</autoIncrementColumn>
-<identityColumn>true</identityColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="Item_ID" id="473D5FF7-A863-1520-31AA-6EBB511EEB70">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -40,6 +25,23 @@
 <colAssociation fkAssociation="D7DE4D03-D7C1-EB31-1D30-FB9A3C32BA56" referredColumn="498EDE7D-424B-3977-F1FB-E834240301F2"/>
 </associations>
 </Column>
+<Column name="Facility_ID" id="8591F40F-F1C5-6CE1-8B6D-E96B08EE56F0">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of store]]></commentInRDBMS>
+<generatorID>9FDD8DA8-5C76-0F57-12D1-D465FDAD0036</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F6997D2D-F7E2-1283-6C53-595AEB35F8BB" referredColumn="F5882B81-992B-3362-4C76-95946EB10505"/>
+</associations>
+</Column>
 <Column name="Unit_Price" id="0EA1FFFA-C68D-1EFB-5482-70753EEB69A9">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -54,22 +56,6 @@
 <ownDataTypeParameters>,5,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Facility_ID" id="8591F40F-F1C5-6CE1-8B6D-E96B08EE56F0">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<generatorID>9FDD8DA8-5C76-0F57-12D1-D465FDAD0036</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="F6997D2D-F7E2-1283-6C53-595AEB35F8BB" referredColumn="F5882B81-992B-3362-4C76-95946EB10505"/>
-</associations>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="49C2D454-349D-0817-2E8B-142084A02954" name="AFZ_Item_Store_PK">
@@ -81,7 +67,8 @@
 <indexState>Primary Constraint</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="712AD27B-6270-E973-D85E-CE5E2904D970"/>
+<colUsage columnID="473D5FF7-A863-1520-31AA-6EBB511EEB70"/>
+<colUsage columnID="8591F40F-F1C5-6CE1-8B6D-E96B08EE56F0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 <ind_PK_UK id="1AC47E17-7F19-B558-53F6-C18CE6AE373F" name="Item_Store_Store_FK">

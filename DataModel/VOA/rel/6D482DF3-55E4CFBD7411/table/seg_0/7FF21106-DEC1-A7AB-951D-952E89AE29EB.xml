@@ -23,21 +23,6 @@
 <identityColumn>true</identityColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="IS_ID" id="B5684FED-89DC-1ED4-9071-36AC9455B41D">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<generatorID>47B88469-24A9-4914-31E1-AB00BEAFD7B7</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="B5CA71CA-8C6C-58D1-A5C6-C8748FF4662B" referredColumn="712AD27B-6270-E973-D85E-CE5E2904D970"/>
-</associations>
-</Column>
 <Column name="Activity_ID" id="B3F56299-98B6-E93E-1624-875EBADBA055">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -80,6 +65,38 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Item_ID" id="F90A13D6-B53C-08B2-B07F-904CFE12C70D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 18:34:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Item ID in this order.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B5CA71CA-8C6C-58D1-A5C6-C8748FF4662B" referredColumn="473D5FF7-A863-1520-31AA-6EBB511EEB70"/>
+</associations>
+</Column>
+<Column name="Store_Facility_ID" id="9A3C5910-2533-912A-A5F8-2DBD23D08C7D">
+<createdBy>black</createdBy>
+<createdTime>2023-03-30 18:34:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Facility ID of this order]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="B5CA71CA-8C6C-58D1-A5C6-C8748FF4662B" referredColumn="8591F40F-F1C5-6CE1-8B6D-E96B08EE56F0"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="5D0B28B3-0A3C-37F4-BE49-1F0BDD3DEB9B" name="AFZ_Order_PK">
@@ -113,7 +130,8 @@
 <indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
-<colUsage columnID="B5684FED-89DC-1ED4-9071-36AC9455B41D"/>
+<colUsage columnID="F90A13D6-B53C-08B2-B07F-904CFE12C70D"/>
+<colUsage columnID="9A3C5910-2533-912A-A5F8-2DBD23D08C7D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

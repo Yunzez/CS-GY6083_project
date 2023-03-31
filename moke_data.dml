@@ -14,7 +14,7 @@ INSERT INTO voa.dbo.AFZ_Show_Type (Show_Type) VALUES
      (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
 
 -- add Parking Locations
-INSERT INTO voa.dbo.AFZ_Parking_Locations (Parking_Lot_Section)
+INSERT INTO voa.dbo.AFZ_Parking_Sections (Parking_Section)
     VALUES (N'A'), (N'B'), (N'C'), (N'D');
 
 -- add Store Category
@@ -139,47 +139,6 @@ FROM @tem_shows a
 JOIN (SELECT Facility_ID, ROW_NUMBER() OVER (ORDER BY Facility_ID) AS Row_Num
 FROM @insertedShwIds) i ON i.Row_Num = a.Row_Num;
 
-
--- add Parking
-DECLARE @insertedParIds TABLE (Facility_ID INT);
-
-INSERT INTO voa.dbo.AFZ_Facility (Source_Type)
-OUTPUT inserted.Facility_ID INTO @insertedParIds
-VALUES
-    ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par'), ('Par');
-
-
-DECLARE @tem_parking TABLE
-    (
-     Row_Num NUMERIC (5) NOT NULL ,
-     Spot_Number NUMERIC (3) NOT NULL ,
-     Parking_Locations_ID NUMERIC (2) NOT NULL
-    )
-INSERT INTO @tem_parking
-    (Row_Num, Spot_Number, Parking_Locations_ID)
-VALUES
-    (1, 1, 1),
-    (2, 2, 1),
-    (3, 3, 1),
-    (4, 4, 1),
-    (5, 1, 2),
-    (6, 2, 2),
-    (7, 3, 2),
-    (8, 4, 2),
-    (9, 1, 3),
-    (10, 2, 3),
-    (11, 3, 3),
-    (12, 4, 3),
-    (13, 1 ,4),
-    (14, 2 ,4),
-    (15, 3 ,4);
-
-INSERT INTO voa.dbo.AFZ_Parking_Lot (Spot_Number, Parking_Section_ID, Facility_ID)
-SELECT a.Spot_Number, a.Parking_Locations_ID, i.Facility_ID
-FROM @tem_parking a
-JOIN (SELECT Facility_ID, ROW_NUMBER() OVER (ORDER BY Facility_ID) AS Row_Num
-FROM @insertedParIds) i ON i.Row_Num = a.Row_Num;
-
 -- add stores
 DECLARE @insertedStrIds TABLE (Facility_ID INT);
 
@@ -240,7 +199,7 @@ INSERT INTO voa.dbo.AFZ_Ticket_Method (Method_Type) VALUES
 
 -- add Ticket Type
 INSERT INTO voa.dbo.AFZ_Ticket_Type (Ticket_Type) VALUES
-     (N'Child'),(N'Adult'),(N'Member'),(N'Senior');
+     (N'Child'),(N'Adult'),(N'Member'),(N'Senior'),(N'Child-Member'),(N'Senior-Member');
 
 -- add Visitor
 INSERT INTO afz_visitors (fname, lname, city, email, cell_number, birthdate, visitor_type_id)
@@ -261,6 +220,61 @@ VALUES
 ('Megan', 'Garcia', 'Austin', 'megan.garcia@example.com', 5555551234, '1997-03-05', 4),
 ('Robert', 'Perez', 'Las Vegas', 'robert.perez@example.com', 5555554680, '1982-08-08', 3);
 
--- TODO: DATA FOR activity: order, ticket, parking,
+-- TODO: DATA FOR activity: ticket, parking, Show pay
 --       data for payment.
 
+-- add order
+INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Facility_ID, Source_Type, Activity_Date)
+SELECT TOP 15 v.Visitor_ID, s.Facility_ID, 'Sto', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01')
+FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Store s
+ORDER BY NEWID();
+
+INSERT INTO voa.dbo.AFZ_Order (Activity_ID, Quantity, Order_Date, Item_ID, Store_Facility_ID)
+SELECT TOP 35 A.Activity_ID, (CAST((ABS(CHECKSUM(NewId())) % 10 + 1 )AS NUMERIC(5))), A.Activity_Date, AIS.Item_ID, AIS.Facility_ID
+FROM voa.dbo.AFZ_Item_Store AIS
+INNER JOIN voa.dbo.AFZ_Activity A ON AIS.Facility_ID = A.Facility_ID
+WHERE A.Source_Type = 'Sto'
+ORDER BY NEWID();
+
+-- ADD TICKET
+INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date)
+SELECT TOP 15 v.Visitor_ID, 'Tic', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 14), '2023-03-01')
+FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Store s
+ORDER BY NEWID();
+
+INSERT INTO voa.dbo.AFZ_Tickets (Activity_ID, Method_Type_ID, Ticket_Type_ID, Purchase_Date, Visit_Date, Price)
+SELECT TOP 15 A.Activity_ID,
+              (CAST((ABS(CHECKSUM(NewId())) % 2 + 1 )AS NUMERIC(5))),
+              2,
+              A.Activity_Date,
+              DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01'),
+              100
+FROM voa.dbo.AFZ_Activity A
+WHERE A.Source_Type = 'Tic'
+ORDER BY NEWID();
+
+-- add parking
+INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date)
+SELECT TOP 15 v.Visitor_ID, 'Par', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01')
+FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Store s
+ORDER BY NEWID();
+
+INSERT INTO voa.dbo.AFZ_Parking (Activity_ID, Time_In, Time_Out, Spot_Number, Parking_Section_ID, Fee)
+SELECT TOP 15 A.Activity_ID,
+              A.Activity_Date,
+              DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
+              (CAST((ABS(CHECKSUM(NewId())) % 50 + 1 )AS NUMERIC(2))),
+              (CAST((ABS(CHECKSUM(NewId())) % 4 + 1 )AS NUMERIC(2))),
+              1
+FROM voa.dbo.AFZ_Activity A
+WHERE A.Source_Type = 'Par'
+ORDER BY NEWID();
+
+-- add show invoice
+INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date, Facility_ID)
+SELECT TOP 15 v.Visitor_ID, 'Shw', s.Start_Time, s.Facility_ID
+FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Shows s
+ORDER BY NEWID();
+
+
+-- add payment

@@ -29,6 +29,7 @@
 <commentInRDBMS><![CDATA[The total amount due to the Activity.]]></commentInRDBMS>
 <generatorID>5C9DFF40-2AF8-E1E3-14FD-99707AC02F38</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
