@@ -288,13 +288,13 @@ ORDER BY NEWID();
 
 -- add payment
 INSERT INTO voa.dbo.AFZ_Payment (Activity_ID, Payment_Amount, Payment_Date, Payment_Method, Facility_ID)
-SELECT top 40 A.Activity_ID, A.Amount_Due, DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
+SELECT top 40 A.Activity_ID, ISNULL(A.Amount_Due, 0), DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
        'Card', a.Facility_ID
 FROM voa.dbo.AFZ_Activity A
 ORDER BY NEWID();
 
 INSERT INTO voa.dbo.AFZ_Payment (Activity_ID, Payment_Amount, Payment_Date, Payment_Method, Facility_ID)
-SELECT A.Activity_ID, A.Amount_Due, DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
+SELECT A.Activity_ID, ISNULL(A.Amount_Due, 0), DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
        'Cash', a.Facility_ID
 FROM voa.dbo.AFZ_Activity A
 ORDER BY NEWID()
