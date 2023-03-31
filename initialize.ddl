@@ -1223,40 +1223,63 @@ GO
 
 
 
- CREATE TRIGGER UpdateTicketAmountDue
+CREATE TRIGGER UpdateTicketAmountDue
      ON AFZ_Tickets
      AFTER INSERT
      AS
      BEGIN
 
-        DECLARE @maxMemberTicket int = 5;
-        DECLARE @remainMemberTicket int;
-        DECLARE @purchaseMemberTicketNum int;
+        DECLARE @pendingMemberTicketNum TABLE (Visitor_ID NUMERIC(5), RemainCount NUMERIC(1), PDate DATE);
 
-        SELECT @purchaseMemberTicketNum = COUNT(*)
-        from AFZ_Tickets
---         WHERE CAST(AFZ_Tickets.Purchase_Date AS DATE) = CAST('2023-04-02' AS DATE) -- replace the date with system date later
-           WHERE CAST(AFZ_Tickets.Purchase_Date AS DATE) = CAST(getutcdate() AS DATE)
-        group by CAST(AFZ_Tickets.Purchase_Date AS DATE)
-
-        SELECT @purchaseMemberTicketNum = COALESCE(@purchaseMemberTicketNum, 0)
-
-        SELECT @remainMemberTicket = @maxMemberTicket- @purchaseMemberTicketNum;
+        DECLARE @memDicNum TABLE (Visitor_ID NUMERIC(5), RemainCount NUMERIC(1), PDate DATE);
+        INSERT INTO @memDicNum
+        SELECT V.Visitor_ID,
+               (CASE WHEN COUNT(AA2.Activity_ID) > 5 THEN 5 ELSE COUNT(AA2.Activity_ID) END) AS Activity_Count,
+               CAST(AFZ_Tickets.Purchase_Date AS DATE)
+        FROM AFZ_Visitors V
+        LEFT JOIN AFZ_Activity AA2 ON V.Visitor_ID = AA2.Visitor_ID
+        LEFT JOIN AFZ_Tickets ON AA2.Activity_ID = AFZ_Tickets.Activity_ID
+        WHERE Ticket_Type_ID IN (3, 5, 6)
+        GROUP BY V.Visitor_ID, CAST(AFZ_Tickets.Purchase_Date AS DATE)
+        IF OBJECT_ID('tempdb..@memDicNum') IS NOT NULL
+        BEGIN
+            INSERT INTO @pendingMemberTicketNum
+            SELECT AA2.Visitor_ID, CASE WHEN COUNT(AA2.Activity_ID) > 5 - COUNT(MU.RemainCount) THEN 5 - COUNT(MU.RemainCount) ELSE COUNT(AA2.Activity_ID) END, CAST(AFZ_Tickets.Purchase_Date AS DATE)
+            FROM AFZ_Activity AA2
+            INNER JOIN AFZ_Tickets ON AA2.Activity_ID = AFZ_Tickets.Activity_ID
+            INNER JOIN AFZ_Visitors V ON V.Visitor_ID = AA2.Visitor_ID
+            INNER JOIN @memDicNum MU ON MU.Visitor_ID = AA2.Visitor_ID
+            WHERE V.Visitor_Type_ID = 3 AND Ticket_Type_ID NOT IN (3, 5, 6)
+            GROUP BY AA2.Visitor_ID, CAST(AFZ_Tickets.Purchase_Date AS DATE);
+        END
+        ELSE
+        BEGIN
+            INSERT INTO @pendingMemberTicketNum
+            SELECT AA2.Visitor_ID, CASE WHEN COUNT(AA2.Activity_ID) > 5 THEN 5 ELSE COUNT(AA2.Activity_ID) END, CAST(AFZ_Tickets.Purchase_Date AS DATE)
+            FROM AFZ_Activity AA2
+            INNER JOIN AFZ_Tickets ON AA2.Activity_ID = AFZ_Tickets.Activity_ID
+            INNER JOIN AFZ_Visitors V ON V.Visitor_ID = AA2.Visitor_ID
+            WHERE V.Visitor_Type_ID = 3 AND Ticket_Type_ID NOT IN (3, 5, 6)
+            GROUP BY AA2.Visitor_ID, CAST(AFZ_Tickets.Purchase_Date AS DATE);
+        END
 
 
         UPDATE AFZ_Tickets
         SET AFZ_Tickets.Ticket_Type_ID = 3
         FROM (
-          SELECT Activity_ID,
+          SELECT AA.Activity_ID,
                  AA.Visitor_ID,
                  CAST(Activity_Date AS DATE) as PDate,
                  ROW_NUMBER() OVER (PARTITION BY CAST(Activity_Date AS DATE), AA.Visitor_ID ORDER BY CAST(Activity_Date AS DATE) DESC) AS RowNum
           FROM AFZ_Activity AA
+          INNER JOIN AFZ_Tickets ON AA.Activity_ID = AFZ_Tickets.Activity_ID
           INNER JOIN AFZ_Visitors AV on AV.Visitor_ID= AA.Visitor_ID
-          WHERE Source_Type = 'Tic' and Visitor_Type_ID = 3
+          WHERE Source_Type = 'Tic' and Visitor_Type_ID = 3 AND Ticket_Type_ID NOT IN (3, 5, 6)
         ) AS Subquery
+        INNER JOIN @pendingMemberTicketNum RM ON RM.Visitor_ID = Subquery.Visitor_ID
+        INNER JOIN inserted i on i.Activity_ID = Subquery.Activity_ID
         WHERE Subquery.Activity_ID = AFZ_Tickets.Activity_ID
-          AND Subquery.RowNum <= @remainMemberTicket -- select only the top-ranked row in each group
+          AND Subquery.RowNum <= RM.RemainCount -- select only the top-ranked row in each group
 
 
         UPDATE AFZ_Tickets
@@ -1291,7 +1314,11 @@ GO
         INNER JOIN AFZ_Activity ON NA.Activity_ID = AFZ_Activity.Activity_ID
         INNER JOIN inserted i ON AFZ_Activity.Activity_ID = i.Activity_ID
      END
-GO
+go
+
+
+
+
 
 CREATE TRIGGER UpdateParkAmountDue
      ON AFZ_Parking

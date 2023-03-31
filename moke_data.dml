@@ -200,7 +200,7 @@ INSERT INTO voa.dbo.AFZ_Visitor_Type (Visitor_Type) VALUES
 
 -- add Ticket Method
 INSERT INTO voa.dbo.AFZ_Ticket_Method (Method_Type, Discount) VALUES
-     (N'Online' ,1),(N'Onsite', 0.95);
+     (N'Online' , 0.95),(N'Onsite', 1);
 
 -- add Ticket Type
 INSERT INTO voa.dbo.AFZ_Ticket_Type (Ticket_Type, Discount)
@@ -220,13 +220,13 @@ VALUES
 ('Bob', 'Smith', 'Chicago', 'bob.smith@example.com', 5555552468, '1980-12-31', 3),
 ('Alice', 'Johnson', 'Houston', 'alice.johnson@example.com', 5555553691, '1985-08-15', 1),
 ('David', 'Brown', 'Philadelphia', 'david.brown@example.com', 5555557890, '1998-11-11', 4),
-('Sarah', 'Wilson', 'Phoenix', 'sarah.wilson@example.com', 5555551357, '1975-02-28', 3),
+('Sarah', 'Wilson', 'Phoenix', 'sarah.wilson@example.com', 5555551357, '2020-02-28', 3),
 ('Michael', 'Taylor', 'San Diego', 'michael.taylor@example.com', 5555552468, '1992-07-17', 4),
-('Emily', 'Davis', 'Dallas', 'emily.davis@example.com', 5555558024, '1996-04-30', 2),
+('Emily', 'Davis', 'Dallas', 'emily.davis@example.com', 5555558024, '2018-04-30', 2),
 ('Daniel', 'Miller', 'San Francisco', 'daniel.miller@example.com', 5555554680, '1999-09-22', 3),
-('Linda', 'Clark', 'Miami', 'linda.clark@example.com', 5555551357, '1988-03-15', 4),
+('Linda', 'Clark', 'Miami', 'linda.clark@example.com', 5555551357, '1955-03-15', 4),
 ('James', 'Martinez', 'Seattle', 'james.martinez@example.com', 5555558024, '1983-06-12', 2),
-('Karen', 'Lee', 'Denver', 'karen.lee@example.com', 5555557890, '1979-09-04', 3),
+('Karen', 'Lee', 'Denver', 'karen.lee@example.com', 5555557890, '1960-09-04', 3),
 ('Steven', 'Wright', 'Boston', 'steven.wright@example.com', 5555553691, '1994-12-25', 1),
 ('Megan', 'Garcia', 'Austin', 'megan.garcia@example.com', 5555551234, '1997-03-05', 4),
 ('Robert', 'Perez', 'Las Vegas', 'robert.perez@example.com', 5555554680, '1982-08-08', 3);
@@ -246,7 +246,7 @@ ORDER BY NEWID();
 
 -- ADD TICKET
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date)
-SELECT TOP 15 v.Visitor_ID, 'Tic', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 14), '2023-03-01')
+SELECT TOP 15 v.Visitor_ID, 'Tic', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-03-01')
 FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Store s
 ORDER BY NEWID();
 
@@ -258,8 +258,7 @@ SELECT TOP 15 A.Activity_ID,
               DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01'),
               100
 FROM voa.dbo.AFZ_Activity A
-WHERE A.Source_Type = 'Tic'
-ORDER BY NEWID();
+WHERE A.Source_Type = 'Tic';
 
 -- add parking
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date)
@@ -275,8 +274,7 @@ SELECT TOP 15 A.Activity_ID,
               (CAST((ABS(CHECKSUM(NewId())) % 4 + 1 )AS NUMERIC(2))),
               1
 FROM voa.dbo.AFZ_Activity A
-WHERE A.Source_Type = 'Par'
-ORDER BY NEWID();
+WHERE A.Source_Type = 'Par';
 
 -- add show invoice
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date, Facility_ID)
