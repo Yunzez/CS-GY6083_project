@@ -266,8 +266,10 @@ WHERE A.Source_Type = 'Tic';
 
 -- add parking
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date)
-SELECT TOP 15 v.Visitor_ID, 'Par', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01')
-FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Store s
+SELECT TOP 15 v.Visitor_ID, 'Par', Visit_Date
+FROM voa.dbo.AFZ_Visitors v
+JOIN AFZ_Activity AA on v.Visitor_ID = AA.Visitor_ID
+JOIN AFZ_Tickets A on AA.Activity_ID = A.Activity_ID
 ORDER BY NEWID();
 
 INSERT INTO voa.dbo.AFZ_Parking (Activity_ID, Time_In, Time_Out, Spot_Number, Parking_Section_ID, Fee)
@@ -286,18 +288,27 @@ SELECT TOP 25 v.Visitor_ID, 'Shw', s.Start_Time, s.Facility_ID
 FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Shows s
 ORDER BY NEWID();
 
+INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date, Facility_ID)
+SELECT TOP 25 v.Visitor_ID, 'Att', DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 2 + 1 )AS NUMERIC(2))), Visit_Date), AATT.Facility_ID
+FROM voa.dbo.AFZ_Visitors v
+INNER JOIN AFZ_Activity AA on v.Visitor_ID = AA.Visitor_ID
+INNER JOIN AFZ_Tickets ATs ON ATS.Activity_ID = AA.Activity_ID
+CROSS JOIN voa.dbo.AFZ_Attractions AATT
+ORDER BY NEWID();
 
 -- add payment
 INSERT INTO voa.dbo.AFZ_Payment (Activity_ID, Payment_Amount, Payment_Date, Payment_Method, Facility_ID)
-SELECT top 40 A.Activity_ID, ISNULL(A.Amount_Due, 0), DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
+SELECT top 40 A.Activity_ID, A.Amount_Due, DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
        'Card', a.Facility_ID
 FROM voa.dbo.AFZ_Activity A
+WHERE Amount_Due IS NOT NULL
 ORDER BY NEWID();
 
 INSERT INTO voa.dbo.AFZ_Payment (Activity_ID, Payment_Amount, Payment_Date, Payment_Method, Facility_ID)
-SELECT A.Activity_ID, ISNULL(A.Amount_Due, 0), DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
+SELECT A.Activity_ID, A.Amount_Due, DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 24 + 1 )AS NUMERIC(2))), A.Activity_Date),
        'Cash', a.Facility_ID
 FROM voa.dbo.AFZ_Activity A
+WHERE Amount_Due IS NOT NULL
 ORDER BY NEWID()
 OFFSET 40 ROWS
 FETCH NEXT 40 ROWS ONLY;
