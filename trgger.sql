@@ -48,7 +48,6 @@ CREATE TRIGGER UpdateOrderAmountDue
 GO
 
 
-
 CREATE TRIGGER UpdateTicketAmountDue
      ON AFZ_Tickets
      AFTER INSERT
@@ -121,8 +120,8 @@ CREATE TRIGGER UpdateTicketAmountDue
                          END
                  WHEN DATEDIFF(year, AV.Birthdate, getutcdate()) >= 60
                     THEN CASE WHEN T.Ticket_Type_ID = 3
-                            THEN 6 -- child-member ticket
-                         ELSE 4 -- child ticket
+                            THEN 6 -- senior-member ticket
+                         ELSE 4 -- senior ticket
                          END
                  ELSE T.Ticket_Type_ID
             END
@@ -131,30 +130,30 @@ CREATE TRIGGER UpdateTicketAmountDue
         INNER JOIN AFZ_Activity A on A.Activity_ID = NA.Activity_ID
         INNER JOIN AFZ_Visitors AV on A.Visitor_ID = AV.Visitor_ID
 
-        UPDATE AFZ_Tickets
-        SET AFZ_Tickets.Price =
-            CASE WHEN (DATENAME(WEEKDAY, NA.Purchase_Date) IN ('Saturday', 'Sunday')) -- weekend
+        DECLARE @DisPrice TABLE (Ticket_ID NUMERIC(5), After_Price NUMERIC(10,2))
+
+        INSERT INTO @DisPrice
+        SELECT
+           NA.Ticket_ID,
+           (CASE WHEN (DATENAME(WEEKDAY, NA.Purchase_Date) IN ('Saturday', 'Sunday')) -- weekend
                     OR (EXISTS (SELECT * FROM AFZ_Holidays WHERE Holiday_Date = NA.Purchase_Date)) -- holiday
                 THEN NA.Price -- NO Discount on weekend or holiday
-            ELSE NA.Price * TT.Discount * TM.Discount
-            END
+                ELSE NA.Price * TT.Discount * TM.Discount END) AS After_Price
         FROM inserted NA
         INNER JOIN AFZ_Tickets T ON NA.Ticket_ID = T.Ticket_ID
         INNER JOIN AFZ_Ticket_Type TT ON T.Ticket_Type_ID = TT.Ticket_Type_ID
         INNER JOIN AFZ_Ticket_Method Tm ON T.Method_Type_ID = TM.Method_Type_ID
 
         UPDATE AFZ_Activity
-        SET AFZ_Activity.Amount_Due = T.TotalPrice
-        FROM (
-            SELECT Activity_ID, SUM(Price) AS TotalPrice
-            FROM AFZ_Tickets
-            GROUP BY Activity_ID
-        ) AS T
-        INNER JOIN AFZ_Activity ON T.Activity_ID = AFZ_Activity.Activity_ID
-        INNER JOIN inserted NA on NA.Activity_ID = T.Activity_ID
+        SET AFZ_Activity.Amount_Due = T.After_Price
+        FROM @DisPrice AS T
+        INNER JOIN inserted NA on NA.Ticket_ID = T.Ticket_ID
+        INNER JOIN AFZ_Activity AA ON NA.Activity_ID = AA.Activity_ID
 
      END
 go
+
+
 
 
 
