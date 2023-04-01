@@ -15,7 +15,7 @@ const Signup: React.FC = () => {
   const [showProcess, setShowProcess] = useState(false)
   const [showDone, setShowDone] = useState(false)
   const imagePaths = ['/asset_img/1.jpg', '/asset_img/2.jpg', '/asset_img/3.jpg', '/asset_img/4.jpg', '/asset_img/5.jpg'];
-
+  const [showError, setShowError] = useState(false)
   useEffect(() => {
 
     let count = 1
@@ -42,32 +42,38 @@ const Signup: React.FC = () => {
 
   }, []);
 
-  let unfilled = [];
+  const [unfilled, setUnfilled] = useState<string>([]);
   const checkInfo = (): boolean => {
-
-    if (firstName.legnth != 0 && lastName.length != 0 && email.length != 0 && password.length != 0) {
+    setUnfilled([])
+    if (firstName.length != 0 && lastName.length != 0 && email.length != 0 && password.length != 0) {
       return true
     } else {
-      if (firstName.legnth == 0) {
-        unfilled.push('firstname')
+      let updateList = []
+      console.log(firstName, lastName, password, email)
+      if (firstName.length == 0) {
+        updateList.push('firstname')
       }
-      if (lastName.legnth == 0) {
-        unfilled.push('lastName')
+      if (lastName.length == 0) {
+        updateList.push('lastName')
       }
-      if (password.legnth == 0) {
-        unfilled.push('password')
+      if (email.length == 0) {
+        updateList.push('email')
       }
-      if (password.legnth == 0) {
-        unfilled.push('password')
+      if (password.length == 0) {
+        updateList.push('password')
       }
-
+      setShowError(true)
+      setUnfilled(updateList)
+      console.log(unfilled)
     }
-    return true
+    return false
   }
 
 
   const handleSignUp = async () => {
-    checkInfo()
+    if (!checkInfo()) {
+      return
+    }
     console.log('signing up')
     setShowProcess(true)
     await delay(3000)
@@ -160,6 +166,22 @@ const Signup: React.FC = () => {
                     </label>
                   </div>
                 </div>
+
+                <div className={`bg-red-100 text-red-700 px-2 py-2 rounded relative transition-opacity duration-500 shadow-md mt-5 ${showError ? 'opacity-1 h-100' : 'opacity-0 h-0'}`} role="alert">
+                  <div className={`${showError ? 'opacity-1 h-100 d-inline' : 'opacity-0 h-0 d-none'}`}>
+                    <div><strong className="font-bold ">{"Uh oh :("}</strong></div>
+                    <small className="block font-bold flex">You forgot to write:
+                      {unfilled.map((str, index) => (
+                        <p className='ml-1'>{str}</p>
+                      ))}
+                    </small>
+                    <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                      <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" onClick={async () => { setShowError(false); await delay(500); setUnfilled([]); }}><title>Close</title><path d="M14.348 5.652a1 1 0 010 1.414L11.414 10l2.934 2.934a1 1 0 11-1.414 1.414L10 11.414l-2.934 2.934a1 1 0 11-1.414-1.414L8.586 10 5.652 7.066a1 1 0 011.414-1.414L10 8.586l2.934-2.934a1 1 0 011.414 0z" /></svg>
+                    </span>
+                  </div>
+                </div>
+
+
                 <div className='flex justify-end mt-5'>
                   <Button className='mt-5 mx-left' onClick={() => handleSignUp()}>Sign up</Button>
                 </div>
