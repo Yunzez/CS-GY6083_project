@@ -34,6 +34,7 @@
 <Attribute name="Category_ID" id="3EADC8C7-2A7B-2E02-EDBD-2BE400CAA309">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:54:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[Category Store ID.]]></commentInRDBMS>
 <generatorID>3A6CEB89-3035-514B-2613-D2FEA07B366C</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -44,7 +45,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
-<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 </Entity>

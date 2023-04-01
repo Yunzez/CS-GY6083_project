@@ -43,6 +43,21 @@
 <dataTypeSize>32</dataTypeSize>
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Discount" id="A5FB37E7-847D-89B3-3617-94A5D8307B06">
+<createdBy>black</createdBy>
+<createdTime>2023-03-31 17:04:48 UTC</createdTime>
+<commentInRDBMS><![CDATA[The discount of this type]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<ownDataTypeParameters>,3,2</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="6780EDB9-CAFD-F371-CAFB-B0D1B1794898" name="Ticket_Type PK">

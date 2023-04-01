@@ -8,21 +8,20 @@
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
 <columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
-<Column name="Activity_ID" id="370FAA1C-8F8B-A1AC-4CC5-FC3E97A704E4">
+<Column name="Ticket_ID" id="370FAA1C-8F8B-A1AC-4CC5-FC3E97A704E4">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[The UID of the activity]]></commentInRDBMS>
+<commentInRDBMS><![CDATA[The UID of the Ticket]]></commentInRDBMS>
 <generatorID>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="89583F4C-AEAC-264E-6D27-C926A1F7F6C6" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
-</associations>
 </Column>
 <Column name="Method_Type_ID" id="2C94AF69-6625-1801-7BA4-125D5432FE1B">
 <createdBy>black</createdBy>
@@ -88,7 +87,7 @@
 <commentInRDBMS><![CDATA[This is a computed column. Only be 1 while the system date is same to the visit date.]]></commentInRDBMS>
 <generatorID>79A88C82-7442-27E5-7EC9-A3854EBA2DAE</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
-<formulaDesc>as case when CAST(visit_date as DATE) = CAST(getutcdate() as DATE) then 1 else 0 end</formulaDesc>
+<formulaDesc>case when CAST(visit_date as DATE) = CAST(getutcdate() as DATE) then 1 else 0 end</formulaDesc>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
@@ -110,19 +109,22 @@
 <ownDataTypeParameters>,10,2</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Discount" id="2075C69E-AB90-29CA-CEBC-035E9AD9334A">
+<Column name="Activity_ID" id="33E0FD90-C557-F1B9-6ACC-4398EB4BAF2D">
 <createdBy>black</createdBy>
-<createdTime>2023-03-31 02:42:08 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Discount that applied on this ticket.(In decimal)]]></commentInRDBMS>
+<createdTime>2023-03-31 16:53:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the purchase activity
+]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>3</dataTypePrecision>
-<dataTypeScale>2</dataTypeScale>
-<defaultValue>1</defaultValue>
-<ownDataTypeParameters>,3,2</ownDataTypeParameters>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0E2069B0-FC65-3C04-2099-0DA088EBB2EA" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
+</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -133,17 +135,6 @@
 <ownerDesignName>VOA</ownerDesignName>
 <pk>true</pk>
 <indexState>Primary Constraint</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="370FAA1C-8F8B-A1AC-4CC5-FC3E97A704E4"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="3B33DAF1-2C61-A99D-8B29-D09551FCC039" name="Tickets_Activity_FK">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<generatorID>78096908-A308-9BE7-FC49-CABEFDF2F6E8</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<indexState>Foreign Key</indexState>
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="370FAA1C-8F8B-A1AC-4CC5-FC3E97A704E4"/>
@@ -169,6 +160,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="BD7673FF-D349-8928-0828-7847F93631F6"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D3D5DC16-A417-B312-7AEC-6C2E571AD6DE" name="AFZ_Tickets_AFZ_Activity_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-03-31 16:53:43 UTC</createdTime>
+<generatorID>AD236288-FE69-2311-0C25-D0059968A430</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="33E0FD90-C557-F1B9-6ACC-4398EB4BAF2D"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

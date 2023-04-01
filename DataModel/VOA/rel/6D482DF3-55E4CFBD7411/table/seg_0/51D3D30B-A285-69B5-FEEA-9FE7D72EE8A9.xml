@@ -65,6 +65,7 @@
 <Column name="Facility_ID" id="1D459B21-4FF7-E7E5-1F69-C476E7A1FDF5">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the facility.]]></commentInRDBMS>
 <generatorID>FBCE0685-AC03-D2C8-97FF-0BF5A75A5C77</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <nullsAllowed>true</nullsAllowed>
@@ -82,6 +83,7 @@
 <Column name="Activity_ID" id="5890CADA-695F-0AA4-4CEF-AA52DB4AB6C2">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 21:02:52 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the activity]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>

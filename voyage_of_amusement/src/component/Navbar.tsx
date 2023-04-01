@@ -3,6 +3,7 @@ import Button from './Button';
 import { useRouter } from 'next/router';
 import avator from '../../public/user.png'
 import { useAppContext } from '@/contexts/GlobaclContext';
+import Image from "next/image";
 const Navbar: React.FC = () => {
     const router = useRouter();
     const [firstLoad, setFirstLoad] = useState(true)
@@ -49,10 +50,16 @@ const Navbar: React.FC = () => {
             </div>
 
             <div className="inset-x-0 top-0 bg-slate-100 text-white py-2 border-2 shadow-lg flex flex-col md:flex-row justify-between md:items-center w-full">
-                <div className="ml-5 hidden md:flex">
-                    <h3 className="cursor-pointer bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 border-b-4 border-indigo-500 hover:border-indigo-700 rounded transition-colors">
+                <div className="ml-5 hidden md:flex cursor-pointer">
+                    <Image
+                        src="/logo.png"
+                        alt="Logo"
+                        width={90}
+                        height={90}
+                    />
+                    {/* <h3 className="cursor-pointer bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 border-b-4 border-indigo-500 hover:border-indigo-700 rounded transition-colors">
                         VOA
-                    </h3>
+                    </h3> */}
                 </div>
                 <div className="hidden md:flex items-center justify-end md:flex-1 mr-5">
                     <Button className="mx-4" onClick={() => router.push('/')}>

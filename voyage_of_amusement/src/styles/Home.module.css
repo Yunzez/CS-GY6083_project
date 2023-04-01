@@ -1,9 +1,11 @@
 .attractionCard:hover {
   outline: var(--b) solid var(--c);
   outline-offset: var(--g);
+
+  transition: all 1s ease-in-out
 }
 
-.hoverEffect p {
+.hoverEffect-disable p {
   --b: 0.2em;   /* the thickness of the line */
   --c: rgb(30 41 59);; /* the color */
   
@@ -16,7 +18,16 @@
           background-clip: text,padding-box;
   transition: .3s var(--_s,0s) linear,background-size .3s calc(.3s - var(--_s,0s));
 }
-.hoverEffect:hover {
-  --_p: 100%;
-  --_s: .3s;
+
+.card{
+  box-shadow: 1px 3px 1px 2px rgb(99, 99, 99, 0.2);
+  transition: all 0.3s ease-in-out;
 }
+
+.hoverEffect:hover {
+  /* --_p: 100%;
+  --_s: .3s; */
+  box-shadow: 6px 6px 5px 5px rgb(99, 99, 99, 0.3);
+  scale: 1.01;
+}
+

@@ -9,33 +9,15 @@ const Signup: React.FC = () => {
   const { isLoggedIn } = useAppContext();
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [currentImage, setCurrentImage] = useState(0);
   const [showProcess, setShowProcess] = useState(false)
   const [showDone, setShowDone] = useState(false)
   const imagePaths = ['/asset_img/1.jpg', '/asset_img/2.jpg', '/asset_img/3.jpg', '/asset_img/4.jpg', '/asset_img/5.jpg'];
-
-  const handleFocus = (labelId) => {
-    // event.target.classList.add('border-cyan-500')
-    // event.target.classList.add('border-4')
-    console.log(document.getElementById(labelId))
-    document.getElementById(labelId)?.classList.remove('hidden')
-    document.getElementById(labelId)?.classList.add('text-indigo-500')
-    document.getElementById(labelId)?.classList.add('top-0')
-    document.getElementById(labelId)?.classList.add('tex-sm')
-  }
-
-  const handleBlur = (labelId) => {
-    console.log(document.getElementById(labelId))
-    document.getElementById(labelId)?.classList.add('hidden')
-    document.getElementById(labelId)?.classList.remove('text-indigo-500')
-    document.getElementById(labelId)?.classList.remove('top-0')
-    document.getElementById(labelId)?.classList.remove('tex-sm')
-    // event.target.classList.remove('border-cyan-500')
-    // event.target.classList.remove('border-4')
-  }
-
+  const [showError, setShowError] = useState(false)
   useEffect(() => {
-   
+
     let count = 1
     const intervalId = setInterval(() => {
       // img.classList.add('w-0')
@@ -59,18 +41,46 @@ const Signup: React.FC = () => {
     return () => { clearInterval(intervalId) };
 
   }, []);
- 
-  
 
-  const handleSignUp = async() => {
+  const [unfilled, setUnfilled] = useState<string>([]);
+  const checkInfo = (): boolean => {
+    setUnfilled([])
+    if (firstName.length != 0 && lastName.length != 0 && email.length != 0 && password.length != 0) {
+      return true
+    } else {
+      let updateList = []
+      console.log(firstName, lastName, password, email)
+      if (firstName.length == 0) {
+        updateList.push('firstname')
+      }
+      if (lastName.length == 0) {
+        updateList.push('lastName')
+      }
+      if (email.length == 0) {
+        updateList.push('email')
+      }
+      if (password.length == 0) {
+        updateList.push('password')
+      }
+      setShowError(true)
+      setUnfilled(updateList)
+      console.log(unfilled)
+    }
+    return false
+  }
+
+
+  const handleSignUp = async () => {
+    if (!checkInfo()) {
+      return
+    }
     console.log('signing up')
     setShowProcess(true)
     await delay(3000)
     setShowProcess(false)
     setShowDone(true)
-
-    // await delay(3000)
-    // router.push('/')
+    await delay(3000)
+    router.push('/')
   }
 
   return (
@@ -91,11 +101,11 @@ const Signup: React.FC = () => {
         <div className="flex flex-col items-center mt-4 w-1/2">
           <div className='border-4 border-slate-50  px-5 py-5 mt-5'>
 
-            
 
-            {showProcess == false && showDone == false && 
+
+            {showProcess == false && showDone == false &&
               <>
-              <h1 className="text-2xl font-bold mb-4">Sign up</h1>
+                <h1 className="text-2xl font-bold mb-4">Sign up</h1>
                 <p className="text-gray-500 mb-4">
                   Create a new account to access all the features of our app.
                 </p>
@@ -107,8 +117,10 @@ const Signup: React.FC = () => {
                       onInput=
                       {(event) => { setFirstName(event.target?.value); }
                       }
-                      type="text" id="floating_filled" className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
-                    <label htmlFor="floating_filled" className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                      type="text" id="floating_filled"
+                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
+                    <label htmlFor="floating_filled"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                       First Name
                     </label>
                   </div>
@@ -116,10 +128,12 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput=
-                      {(event) => { setFirstName(event.target?.value); }
+                      {(event) => { setLastName(event.target?.value); }
                       }
-                      type="text" id="floating_filled" className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
-                    <label htmlFor="floating_filled" className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                      type="text" id="floating_filled"
+                      className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${unfilled.includes('lastname') ? 'bg-red-500' : "bg-gray-50"} border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`} placeholder=" " />
+                    <label htmlFor="floating_filled"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                       Last Name
                     </label>
                   </div>
@@ -129,10 +143,12 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput=
-                      {(event) => { setFirstName(event.target?.value); }
+                      {(event) => { setEmail(event.target?.value); }
                       }
-                      type="email" id="floating_filled" className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
-                    <label htmlFor="floating_filled" className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                      type="email" id="floating_filled"
+                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
+                    <label htmlFor="floating_filled"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                       Email
                     </label>
                   </div>
@@ -140,14 +156,32 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput=
-                      {(event) => { setFirstName(event.target?.value); }
+                      {(event) => { setPassword(event.target?.value); }
                       }
-                      type="email" id="floating_filled" className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
-                    <label htmlFor="floating_filled" className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
+                      type="email" id="floating_filled"
+                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
+                    <label htmlFor="floating_filled"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                       Password
                     </label>
                   </div>
                 </div>
+
+                <div className={`bg-red-100 text-red-700 px-2 py-2 rounded relative transition-opacity duration-500 shadow-md mt-5 ${showError ? 'opacity-1 h-100' : 'opacity-0 h-0'}`} role="alert">
+                  <div className={`${showError ? 'opacity-1 h-100 d-inline' : 'opacity-0 h-0 d-none'}`}>
+                    <div><strong className="font-bold ">{"Uh oh :("}</strong></div>
+                    <small className="block font-bold flex">You forgot to write:
+                      {unfilled.map((str, index) => (
+                        <p key={index} className='ml-1'>{str}</p>
+                      ))}
+                    </small>
+                    <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                      <svg className="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" onClick={async () => { setShowError(false); await delay(500); setUnfilled([]); }}><title>Close</title><path d="M14.348 5.652a1 1 0 010 1.414L11.414 10l2.934 2.934a1 1 0 11-1.414 1.414L10 11.414l-2.934 2.934a1 1 0 11-1.414-1.414L8.586 10 5.652 7.066a1 1 0 011.414-1.414L10 8.586l2.934-2.934a1 1 0 011.414 0z" /></svg>
+                    </span>
+                  </div>
+                </div>
+
+
                 <div className='flex justify-end mt-5'>
                   <Button className='mt-5 mx-left' onClick={() => handleSignUp()}>Sign up</Button>
                 </div>
@@ -176,11 +210,11 @@ const Signup: React.FC = () => {
 
             {showDone && <>
               <h3 className="text-4xl flex justify-center font-bold mb-4">
-                 You are all set!
-                </h3>
-                <p className="text-gray-500 mb-4">
-                 You will be redirect to  home page in 3 seconds, view my <b>user profile</b>
-                </p>
+                You are all set!
+              </h3>
+              <p className="text-gray-500 mb-4">
+                You will be redirect to  home page in 3 seconds, view my <button onClick={() => { router.push('/user') }}><b>user profile</b></button>
+              </p>
             </>}
 
 

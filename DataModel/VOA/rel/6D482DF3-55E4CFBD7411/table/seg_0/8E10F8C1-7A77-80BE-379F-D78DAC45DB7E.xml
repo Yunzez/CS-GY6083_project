@@ -40,13 +40,14 @@
 <Column name="Category_ID" id="A42A17FF-A6D4-D8FD-AB27-62B1008890F7">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[Category Store ID.]]></commentInRDBMS>
 <generatorID>3EADC8C7-2A7B-2E02-EDBD-2BE400CAA309</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
-<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>

@@ -76,6 +76,7 @@
 <Attribute name="Facility_ID" id="FBCE0685-AC03-D2C8-97FF-0BF5A75A5C77">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 03:04:12 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of facility.]]></commentInRDBMS>
 <generatorID>BC18E481-0F67-C509-7617-2A19C0DB5665</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -87,11 +88,12 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 <Attribute name="Activity_ID" id="645F16B1-73C6-A1C9-CB68-5B0F9F55E074">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 22:12:21 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the activity.]]></commentInRDBMS>
 <generatorID>98010DE1-2EE0-8BBC-16CF-BC3C1EE6970B</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
@@ -102,7 +104,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
