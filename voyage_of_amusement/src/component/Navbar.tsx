@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
 
     return (
         <>
-            <div id="sideNav" className={`${showMenu ? "show" : (firstLoad ? "" : "close")} side-nav`}>
+            <div id="sideNav" className={`${showMenu ? "show" : (firstLoad ? "" : "close")} side-nav `}>
                 <Button className="absolute top-2 right-2" onClick={() => {
                     toggleMenu()
                 }}>
@@ -49,7 +49,7 @@ const Navbar: React.FC = () => {
                 </div>
             </div>
 
-            <div className="inset-x-0 top-0 bg-slate-100 text-white py-2 border-2 shadow-lg flex flex-col md:flex-row justify-between md:items-center w-full">
+            <div className="inset-x-0 top-0 bg-slate-100 text-white py-2 border-2 shadow-lg flex flex-col md:flex-row justify-between md:items-center w-full z-50">
                 <div className="ml-5 hidden md:flex cursor-pointer">
                     <Image
                         src="/logo.png"

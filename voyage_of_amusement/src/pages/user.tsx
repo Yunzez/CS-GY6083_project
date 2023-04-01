@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import SettingCard from '@/component/settingCard';
 
 const parkingTextContent = [
@@ -13,62 +13,75 @@ const UserSettings: React.FC = () => {
 
     const [selectedId, setSelectedId] = useState(null);
 
+
+    const [rightCardPosition, setRightCardPosition] = useState(0);
+
+    const mainContentRef = useRef(null);
+    const cardRef = useRef(null);
     useEffect(() => {
         function handleScroll() {
-            const sections = document.querySelectorAll('.section');
+            const sections = document.querySelectorAll(".section");
             const selected = Array.from(sections).find((section) => {
-                const rect = section.getBoundingClientRect();
-                return rect.top <= 100 && rect.bottom >= 100;
+              const rect = section.getBoundingClientRect();
+              return rect.top <= 100 && rect.bottom >= 100;
             });
-
+      
             setSelectedId(selected ? selected.id : null);
-            console.log(selectedId)
-        }
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => window.removeEventListener('scroll', handleScroll);
+      
+            // Calculate the position of the right card based on the scroll position
+            // const mainContentRect = mainContentRef.current.getBoundingClientRect();
+            // const cardRect = rightCardRef.current.getBoundingClientRect();
+      
+            // const top = cardRect.top - mainContentRect.top;
+            // const maxTop = mainContentRect.height - rightCardRect.height;
+      
+            // setRightCardPosition(Math.max(0, Math.min(maxTop, top)));
+          }
+      
+          window.addEventListener("scroll", handleScroll);
+      
+          return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
 
     return (
-        <div className="flex">
+        <div className="flex" ref={cardRef} >
             {/* Sidebar */}
-            <div className="w-1/5 h-screen bg-gray-100 p-4 border-r border-gray-200 fixed top-0 left-0  top-[64px]">
-                <ul className="space-y-2 max-h-screen overflow-y-auto">
-                    <li
-                        className={`cursor-pointer ${selectedId === 'payment-history' ? 'font-bold bg-gray-300' : ''
+            <div className="w-1/6 ml-5 rounded-md border-slate-100 shadow-lg border-4 flex flex-col items-center mt-[10%] fixed bg-gray-50 p-4 border-slate-200 border-gray-200 h-72">
+                <div className="space-y-2 max-h-screen flex flex-col items-centers w-100">
+                    <div
+                        className={`cursor-pointer p-3 border border-slate-300 rounded-lg hover:border-slate-700 text-center ${selectedId === 'payment-history' ? 'font-bold bg-gray-300' : ''
                             }`}
                         onClick={() => document.getElementById('payment-history')?.scrollIntoView()}
                     >
-                        Payment History
-                    </li>
-                    <li
-                        className={`cursor-pointer ${selectedId === 'parking-history' ? 'font-bold bg-gray-300' : ''
+                        Payment 
+                    </div>
+                    <div
+                        className={`cursor-pointer p-3 border border-slate-300 rounded-lg hover:border-slate-700 text-center ${selectedId === 'parking-history' ? 'font-bold bg-gray-300' : ''
                             }`}
                         onClick={() => document.getElementById('parking-history')?.scrollIntoView()}
                     >
-                        Parking History
-                    </li>
-                    <li
-                        className={`cursor-pointer ${selectedId === 'shows-visited' ? 'font-bold bg-gray-300' : ''
+                        Parking
+                    </div>
+                    <div
+                        className={`cursor-pointer p-3 border border-slate-300 rounded-lg hover:border-slate-700 text-center ${selectedId === 'shows-visited' ? 'font-bold bg-gray-300' : ''
                             }`}
                         onClick={() => document.getElementById('shows-visited')?.scrollIntoView()}
                     >
-                        Shows Visited
-                    </li>
-                    <li
-                        className={`cursor-pointer ${selectedId === 'shops-visited' ? 'font-bold bg-gray-300' : ''
+                        Shows
+                    </div>
+                    <div
+                        className={`cursor-pointer p-3 border border-slate-300 rounded-lg hover:border-slate-700 text-center ${selectedId === 'shops-visited' ? 'font-bold bg-gray-300' : ''
                             }`}
                         onClick={() => document.getElementById('shops-visited')?.scrollIntoView()}
                     >
-                        Shops Visited
-                    </li>
-                </ul>
+                        Shops
+                    </div>
+                </div>
             </div>
 
             {/* Main Content */}
-            <div className="w-4/5 h-screen bg-white p-4 right-0 ml-[20%]">
+            <div className="w-5/6 h-screen bg-white p-4 right-0 mt-5 ml-[20%]">
                 <div id="payment-history" className="py-8 px-4">
                     <SettingCard title={'Payment History'} content={parkingTextContent} />
 

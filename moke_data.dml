@@ -233,7 +233,7 @@ VALUES
 
 -- add order
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Facility_ID, Source_Type, Activity_Date)
-SELECT TOP 15 v.Visitor_ID, s.Facility_ID, 'Sto', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01')
+SELECT TOP 25 v.Visitor_ID, s.Facility_ID, 'Sto', DATEADD(second, ABS(CHECKSUM(NEWID())) % (86400 * 7), '2023-04-01')
 FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Item_Store s
 ORDER BY NEWID();
 
@@ -282,7 +282,7 @@ WHERE A.Source_Type = 'Par';
 
 -- add show invoice
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date, Facility_ID)
-SELECT TOP 15 v.Visitor_ID, 'Shw', s.Start_Time, s.Facility_ID
+SELECT TOP 25 v.Visitor_ID, 'Shw', s.Start_Time, s.Facility_ID
 FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Shows s
 ORDER BY NEWID();
 
