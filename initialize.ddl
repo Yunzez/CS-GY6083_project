@@ -113,6 +113,9 @@ GO
 EXEC sp_addextendedproperty 'MS_Description' , 'Unique attraction type.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Attraction_Type' , 'COLUMN' , 'Attraction_Type_ID' 
 GO
 
+EXEC sp_addextendedproperty 'MS_Description' , 'Attraction type:roller coaster, water ride, dark ride, kid ride etc' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Attraction_Type' , 'COLUMN' , 'Attraction_Type'
+GO
+
 ALTER TABLE AFZ_Attraction_Type ADD CONSTRAINT AFZ_Attraction_Type_PK PRIMARY KEY CLUSTERED (Attraction_Type_ID)
      WITH (
      ALLOW_PAGE_LOCKS = ON , 
@@ -344,7 +347,8 @@ GO
 EXEC sp_addextendedproperty 'MS_Description' , 'The primary key of this table.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Order' , 'COLUMN' , 'Order_ID' 
 GO
 
-
+EXEC sp_addextendedproperty 'MS_Description' , 'The ID of the activity' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Order' , 'COLUMN' , 'Activity_ID'
+GO
 
 EXEC sp_addextendedproperty 'MS_Description' , 'Item quantity in order. ' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Order' , 'COLUMN' , 'Quantity' 
 GO
@@ -471,6 +475,17 @@ GO
 
 EXEC sp_addextendedproperty 'MS_Description' , 'The code of  payment method.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Payment' , 'COLUMN' , 'Payment_Method' 
 GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description' , 'The ID of the facility.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Payment' , 'COLUMN' , 'Facility_ID'
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description' , 'The ID of the activity' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Payment' , 'COLUMN' , 'Activity_ID'
+GO
+
 
 ALTER TABLE AFZ_Payment ADD CONSTRAINT AFZ_Payment_PK PRIMARY KEY CLUSTERED (Payment_ID)
      WITH (
@@ -599,6 +614,11 @@ GO
 
 
 EXEC sp_addextendedproperty 'MS_Description' , 'Store Name.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Store' , 'COLUMN' , 'Store_Name' 
+GO
+
+
+
+EXEC sp_addextendedproperty 'MS_Description' , 'Category Store ID.' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Store' , 'COLUMN' , 'Category_ID'
 GO
 
 ALTER TABLE AFZ_Store ADD CONSTRAINT AFZ_Store_PK PRIMARY KEY CLUSTERED (Facility_ID)

@@ -75,7 +75,9 @@
 <Attribute name="Activity_ID" id="72922CE0-9BC3-428C-9FAD-609B2C5EDA8C">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 02:28:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the activity.]]></commentInRDBMS>
 <generatorID>CC064B88-C1FA-F0C3-C297-C3404A62B413</generatorID>
+<notes><![CDATA[The UID of the activity.]]></notes>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>
 <item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
@@ -85,7 +87,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>10</dataTypePrecision>
-<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

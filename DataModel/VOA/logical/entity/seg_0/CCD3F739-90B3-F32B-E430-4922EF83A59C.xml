@@ -32,6 +32,7 @@
 <Attribute name="Attraction_Type" id="D48E9892-B95B-C5CC-CA92-91CA88702652">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:43:45 UTC</createdTime>
+<commentInRDBMS><![CDATA[Attraction type:roller coaster, water ride, dark ride, kid ride etc]]></commentInRDBMS>
 <notes><![CDATA[Attraction type: roller coaster, water ride, dark ride, kid ride etc.]]></notes>
 <ownerDesignName>VOA</ownerDesignName>
 <engineerTo>

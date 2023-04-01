@@ -26,6 +26,7 @@
 <Column name="Activity_ID" id="B3F56299-98B6-E93E-1624-875EBADBA055">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the activity]]></commentInRDBMS>
 <generatorID>72922CE0-9BC3-428C-9FAD-609B2C5EDA8C</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
