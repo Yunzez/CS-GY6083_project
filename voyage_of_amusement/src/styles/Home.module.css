@@ -24,6 +24,10 @@
   transition: all 0.3s ease-in-out;
 }
 
+.backgroundBlur{
+  background-color: rgb(99, 99, 99, 0.7);
+}
+
 .hoverEffect:hover {
   /* --_p: 100%;
   --_s: .3s; */

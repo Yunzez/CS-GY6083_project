@@ -81,7 +81,7 @@ const UserSettings: React.FC = () => {
             </div>
 
             {/* Main Content */}
-            <div className="w-5/6 h-screen bg-white p-4 right-0 mt-5 ml-[20%]">
+            <div className="w-5/6 h-screen bg-white p-4 right-0 mt-5 ml-[10%]">
                 <div id="payment-history" className="py-8 px-4">
                     <SettingCard title={'Payment History'} content={parkingTextContent} />
 

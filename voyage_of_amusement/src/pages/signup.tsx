@@ -78,7 +78,28 @@ const Signup: React.FC = () => {
     setShowProcess(true)
     await delay(3000)
     setShowProcess(false)
-    setShowDone(true)
+
+    const data = {
+      firstname: 'John',
+      lastname: 'Doe',
+      email: 'john.doe@example.com',
+      password: 'password123',
+    };
+
+    fetch('/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        setShowDone(true)
+      })
+      .catch(error => console.error(error));
+
     await delay(3000)
     router.push('/')
   }
