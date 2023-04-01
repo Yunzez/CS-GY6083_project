@@ -62,12 +62,12 @@ export default function Home() {
         </div>
         <div className="bg-gray-100 py-10">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-6">Our Attractions</h2>
-          <div className="flex flex-col md:flex-row justify-around max-w-7xl mx-auto">
-
-          <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/2 lg:w-1/3 bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
+          {/* <div className="flex flex-col md:flex-row justify-around max-w-7xl mx-auto"> */}
+          <div className='flex flex-col md:flex-row justify-center flex-wrap'>
+            <div className={`${styles.hoverEffect} ${styles.card} md:w-1/3 lg:w-1/4 w-full bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 box-border  m-4`}>
               <div className="w-full relative">
                 <Image
-                priority={true} // Add this line
+                  priority={true} // Add this line
                   className='object-cover cus_max_25vh rounded-md'
                   src="/home_img/rollercoaster.jpg"
                   width={1920}
@@ -85,11 +85,11 @@ export default function Home() {
               }}>Learn More</button>
             </div>
 
-            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/2 lg:w-1/3  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
+            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/3 lg:w-1/4  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 box-border m-4 `}>
 
               <div className="w-full relative transition-opacity">
-                <Image 
-                priority={true} // Add this line
+                <Image
+                  priority={true} // Add this line
                   className='object-cover cus_max_25vh rounded-md'
                   src="/home_img/store.jpg"
                   alt="Store Icon"
@@ -104,13 +104,13 @@ export default function Home() {
               </p>
               <button className="px-4 py-2 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {
                 router.push(`/attractions?type=store`);
-               
+
               }}>Learn More</button>
             </div>
-            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/2 lg:w-1/3  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
+            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/3 lg:w-1/4  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 box-border m-4` }>
               <div className="w-full relative transition-opacity">
                 <Image
-                priority={true} // Add this line
+                  priority={true} // Add this line
                   className='object-cover cus_max_25vh rounded-md'
                   src="/home_img/restaurant.jpg"
                   alt="Store Icon"
@@ -126,15 +126,15 @@ export default function Home() {
               </p>
               <button className="px-4 py-2 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {
                 router.push(`/attractions?type=restaurants`);
-               
+
               }}>Learn More</button>
             </div>
-          </div>
-          <div className=" flex flex-col md:flex-row justify-around max-w-7xl mx-auto">
-          <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/2 lg:w-1/3  bg-white rounded-lg p-8 mb-8 md:mb-0 m-4`}>
+            {/* </div> */}
+            {/* <div className=" flex flex-col md:flex-row justify-around max-w-7xl mx-auto"> */}
+            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/3 lg:w-1/4  bg-white rounded-lg p-8 mb-8 md:mb-0 box-border m-4 `}>
               <div className="w-full relative transition-opacity">
                 <Image
-                priority={true} // Add this line
+                  priority={true} // Add this line
                   className='object-cover cus_max_25vh rounded-md'
                   src="/home_img/parking.jpg"
                   alt="Parking Icon"
@@ -149,15 +149,15 @@ export default function Home() {
               </p>
               <button className="px-4 py-2 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {
                 router.push(`/attractions?type=parking`);
-               
+
               }}>Learn More</button>
             </div>
 
 
-            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/2 lg:w-1/3  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
+            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/3 lg:w-1/4  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 box-border m-4 `}>
               <div className="w-full relative transition-opacity">
                 <Image
-                priority={true} // Add this line
+                  priority={true} // Add this line
                   className='object-cover cus_max_25vh rounded-md'
                   src="/home_img/show.jpg"
                   alt="show Icon"
@@ -173,15 +173,15 @@ export default function Home() {
                 From music and dancing to acrobatics and comedy, you won't want to miss our shows!
               </p>
               <button className="px-4 py-2 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {
-                 router.push(`/attractions?type=shows`);
+                router.push(`/attractions?type=shows`);
               }}>View Details</button>
             </div>
 
 
-            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/2 lg:w-1/3  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 m-4`}>
+            <div className={`${styles.hoverEffect} ${styles.card} w-full md:w-1/3 lg:w-1/4  bg-white rounded-lg shadow-md p-8 mb-8 md:mb-0 box-border  m-4`}>
               <div className="w-full relative transition-opacity">
                 <Image
-                priority={true} // Add this line
+                  priority={true} // Add this line
                   className='object-cover cus_max_25vh rounded-md'
                   src="/home_img/show.jpg"
                   alt="show Icon"
@@ -193,14 +193,14 @@ export default function Home() {
 
               <h3 className="text-2xl font-bold mt-4 mb-2">Others</h3>
               <p className="text-lg mb-6">
-               View all of our fancy facilities that can facilitate your experience to an upper level!
+                View all of our fancy facilities that can facilitate your experience to an upper level!
               </p>
               <button className="px-4 py-2 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {
-                 router.push(`/attractions?type=shows`);
+                router.push(`/attractions?type=shows`);
               }}>Learn More</button>
             </div>
-
           </div>
+          {/* </div> */}
         </div>
       </div>
     </>
