@@ -1,4 +1,9 @@
 CREATE PROCEDURE get_summary_data_by_date (@input_date DATE) AS
+    IF (@input_date >= GETDATE())
+BEGIN
+    RAISERROR('Input date cannot be larger than or equal to today''s date', 16, 1);
+    RETURN;
+END
 BEGIN
     SELECT AA.Visitor_ID, (AA.Source_Type + '-' +
     CAST(
