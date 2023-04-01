@@ -172,7 +172,7 @@ const Signup: React.FC = () => {
                     <div><strong className="font-bold ">{"Uh oh :("}</strong></div>
                     <small className="block font-bold flex">You forgot to write:
                       {unfilled.map((str, index) => (
-                        <p className='ml-1'>{str}</p>
+                        <p key={index} className='ml-1'>{str}</p>
                       ))}
                     </small>
                     <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
