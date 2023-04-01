@@ -191,6 +191,7 @@ CREATE TRIGGER UpdateShowAmountDue
         SELECT i.Activity_ID, SUM(S.Price)
         FROM AFZ_Shows S
         INNER JOIN inserted i ON i.Facility_ID = S.Facility_ID
+        where i.Source_Type = 'Shw'
         GROUP BY i.Activity_ID
 
         UPDATE AFZ_Activity
