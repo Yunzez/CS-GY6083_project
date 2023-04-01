@@ -1,39 +1,38 @@
-export default function handler(req, res) {
-    if (req.method !== 'POST') {
-        res.status(405).json({ message: 'Method not allowed' });
-        return;
-    }
+import { NextApiRequest, NextApiResponse } from 'next';
 
-    const { firstname, lastname, email, password } = req.body;
-    console.log(req.body)
-    if (!firstname || !lastname || !email || !password) {
-        const missingFields = [];
+function validateRequest(req: NextApiRequest, res: NextApiResponse, next: () => void) {
+  const { firstname, lastname, email, password } = req.body;
 
-        if (!firstname) {
-            missingFields.push('firstname');
-        }
+  if (!firstname || !lastname || !email || !password) {
+    return res.status(400).json({ message: 'Missing required fields' });
+  }
+  console.log('email', email)
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    return res.status(400).json({ message: 'Invalid email address' });
+  }
 
-        if (!lastname) {
-            missingFields.push('lastname');
-        }
+  next();
+}
 
-        if (!email) {
-            missingFields.push('email');
-        }
+async function createUser(req: NextApiRequest, res: NextApiResponse, next: () => void) {
+  const { firstname, lastname, email, password } = req.body;
 
-        if (!password) {
-            missingFields.push('password');
-        }
+  // TODO: Implement user creation logic here.
 
-        if (missingFields.length > 0) {
-            res.status(400).json({ message: `Missing fields: ${missingFields.join(', ')}` });
-            return;
-        }
-        res.status(400).json({ message: 'unknown error' });
-        return;
-    }
+  next();
+}
 
-    // TODO: Implement user signup logic here.
+function sendResponse(req: NextApiRequest, res: NextApiResponse) {
+  res.status(200).json({ message: 'User created successfully' });
+}
 
-    res.status(200).json({ message: 'User signed up successfully' });
+export default function handler(req: NextApiRequest, res: NextApiResponse) {
+  const pipeline = [validateRequest, createUser, sendResponse];
+
+  pipeline.reduce((prev, curr) => {
+    return () => curr(req, res, prev);
+  }, (error) => {
+    console.error(error);
+    res.status(500).json({ message: 'Internal server error' });
+  })();
 }
