@@ -801,7 +801,7 @@ CREATE TABLE AFZ_Visitors
      Email VARCHAR (32) NOT NULL , 
      Cell_Number VARCHAR (10) NOT NULL , 
      Birthdate DATE NOT NULL , 
-     Visitor_Type_ID NUMERIC (1) NOT NULL 
+     Visitor_Type_ID NUMERIC (1) NOT NULL DEFAULT 2
     )
 GO 
 
