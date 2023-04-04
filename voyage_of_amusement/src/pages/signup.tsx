@@ -86,7 +86,7 @@ const Signup: React.FC = () => {
       password: 'password123',
     };
 
-    fetch('/api/signup', {
+    fetch('/api/authenticate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

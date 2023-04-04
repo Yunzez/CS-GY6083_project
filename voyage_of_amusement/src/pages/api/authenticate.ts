@@ -22,17 +22,33 @@ async function createUser(req: NextApiRequest, res: NextApiResponse, next: () =>
   next();
 }
 
+async function fetchUser(req: NextApiRequest, res: NextApiResponse, next: () => void) {
+  console.log('fetch user data')
+  next()
+}
+
 function sendResponse(req: NextApiRequest, res: NextApiResponse) {
   res.status(200).json({ message: 'User created successfully' });
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  const pipeline = [validateRequest, createUser, sendResponse];
+  const { type } = req.query;
+  let pipeline = [];
+
+  if (type === 'signup') {
+    pipeline = [validateRequest, createUser, fetchUser, sendResponse];
+  } else if (type === 'login') {
+    pipeline = [validateRequest, fetchUser, sendResponse];
+  } else {
+    res.status(400).json({ message: 'Invalid authentication type' });
+    return;
+  }
 
   pipeline.reduce((prev, curr) => {
     return () => curr(req, res, prev);
-  }, (error) => {
-    console.error(error);
-    res.status(500).json({ message: 'Internal server error' });
-  })();
+  }, () => {
+    // this function is called as the final "next" function
+    // when all the middleware functions in the pipeline have been executed
+    res.status(200).json({ message: 'Authentication successful' });
+  })(); // call the reduce function immediately to start the pipeline
 }
