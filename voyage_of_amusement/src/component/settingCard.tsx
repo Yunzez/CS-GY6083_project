@@ -41,7 +41,7 @@ function SettingCard(props: ParkingHistoryProps): JSX.Element {
                             } bg-white rounded-md shadow-md overflow-hidden`}
                     >
                         {content.map((str, index) => (
-                            <p key={index} className='ml-1'>{str}</p>
+                            <p key={index} className='my-2 px-4'>{str}</p>
                         ))}
 
                     </div>

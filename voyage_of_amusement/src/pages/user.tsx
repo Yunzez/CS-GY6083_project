@@ -47,7 +47,7 @@ const UserSettings: React.FC = () => {
     return (
         <div className="flex" ref={cardRef} >
             {/* Sidebar */}
-            <div className="w-1/6 ml-5 rounded-md border-slate-100 shadow-lg border-4 flex flex-col items-center mt-[10%] fixed bg-gray-50 p-4 border-slate-200 border-gray-200 h-72">
+            <div className="w-1/6 ml-5 rounded-md border-slate-100 shadow-lg border-4 flex flex-col items-center mt-[10%] w-[20vw] fixed bg-gray-50 p-4 border-slate-200 border-gray-200 h-72">
                 <div className="space-y-2 max-h-screen flex flex-col items-centers w-100">
                     <div
                         className={`cursor-pointer p-3 border border-slate-300 rounded-lg hover:border-slate-700 text-center ${selectedId === 'payment-history' ? 'font-bold bg-gray-300' : ''
@@ -81,7 +81,7 @@ const UserSettings: React.FC = () => {
             </div>
 
             {/* Main Content */}
-            <div className="w-5/6 h-screen bg-white p-4 right-0 mt-5 ml-[10%]">
+            <div className="w-5/6 h-screen bg-white p-4 right-0 mt-5 ml-[20vw]">
                 <div id="payment-history" className="py-8 px-4">
                     <SettingCard title={'Payment History'} content={parkingTextContent} />
 
@@ -89,7 +89,7 @@ const UserSettings: React.FC = () => {
 
                 <div id="parking-history" className="py-8 px-4">
 
-                    <SettingCard title={'Parkig Record'} content={parkingTextContent} />
+                    <SettingCard title={'Parking Record'} content={parkingTextContent} />
                 </div>
 
 
