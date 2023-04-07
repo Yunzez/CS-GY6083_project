@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 interface Attraction {
     type: string;
@@ -52,6 +52,20 @@ const Attractions = () => {
     const { type } = router.query;
     const [searchTerm, setSearchTerm] = useState('');
 
+    const [cardData, setCardData] = useState([])
+
+    useEffect(() => {
+        if (type) {
+            const url = '/api/attractions?type=' + type;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.data);
+                    setCardData(data.data);
+                })
+                .catch(error => console.log(error));
+        }
+    }, [type]);
     return (
         <div className="flex flex-col items-center p-4 md:p-8">
             <h1 className="text-3xl md:text-5xl font-bold mb-8">
@@ -64,7 +78,15 @@ const Attractions = () => {
                     Search...
                 </label>
             </div>
-
+            <div>
+                {cardData.map(((data, key) => {
+                    return (
+                        <div key={key}>
+                            {data.Store_Name}
+                        </div>
+                    )
+                }))}
+            </div>
 
         </div>
     );
