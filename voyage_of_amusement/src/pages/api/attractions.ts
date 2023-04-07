@@ -37,21 +37,6 @@ async function createUser(req: NextApiRequest, res: NextApiResponse, next: () =>
 
 }
 
-async function fetchUser(req: NextApiRequest, res: NextApiResponse, next: () => void) {
-    console.log('fetch user data')
-
-    next()
-}
-
-function sendResponse(req: NextApiRequest, res: NextApiResponse) {
-    res.status(200).json({ message: 'Authentication successful', 'data': data });
-
-}
-
-function closeDB(req: NextApiRequest, res: NextApiResponse, next: () => void) {
-    pool.close();
-    next()
-}
 
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -63,7 +48,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             tableName = 'AFZ_Store'
             break;
         case 'parking':
-            tableName = 'AFZ_Parking'
+            tableName = 'AFZ_Parking_Sections'
             break;
         case 'shows':
             tableName = 'AFZ_Shows'

@@ -422,12 +422,13 @@ ALTER TABLE AFZ_Parking ADD CONSTRAINT AFZ_Parking_PK PRIMARY KEY CLUSTERED (Act
      ALLOW_ROW_LOCKS = ON )
 GO
 
-CREATE TABLE AFZ_Parking_Sections 
+CREATE TABLE AFZ_Parking_Sections
     (
-     Parking_Section_ID NUMERIC (2) NOT NULL IDENTITY NOT FOR REPLICATION , 
-     Parking_Section VARCHAR (1) NOT NULL 
+     Parking_Section_ID NUMERIC (2) NOT NULL IDENTITY NOT FOR REPLICATION ,
+     Parking_Section VARCHAR (1) NOT NULL,
+     Description        VARCHAR(255) NOT NULL
     )
-GO 
+GO
 
 
 
@@ -437,6 +438,10 @@ GO
 
 
 EXEC sp_addextendedproperty 'MS_Description' , 'Location Section UID' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Parking_Sections' , 'COLUMN' , 'Parking_Section' 
+GO
+
+
+EXEC sp_addextendedproperty 'MS_Description' , 'the description of this parking lot' , 'USER' , 'dbo' , 'TABLE' , 'AFZ_Parking_Sections' , 'COLUMN' , 'Description'
 GO
 
 ALTER TABLE AFZ_Parking_Sections ADD CONSTRAINT AFZ_Parking_Locations_PK PRIMARY KEY CLUSTERED (Parking_Section_ID)
