@@ -86,7 +86,7 @@ const Signup: React.FC = () => {
       password: 'password123',
     };
 
-    fetch('/api/authenticate', {
+    fetch('/api/authenticate?type=signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -98,7 +98,7 @@ const Signup: React.FC = () => {
         console.log(data)
         setShowDone(true)
       })
-      .catch(error => console.error(error));
+      .catch(error => console.log(error));
 
     await delay(3000)
     router.push('/')
