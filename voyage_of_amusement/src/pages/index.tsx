@@ -58,7 +58,7 @@ export default function Home() {
               Our park is the perfect place for a day of fun and excitement. With a wide range of attractions
               including stores, restaurants, parking, shows, and roller coasters, there's something for everyone!
             </p>
-            <button className="px-8 py-4 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300">Buy Tickets</button>
+            <button className="px-8 py-4 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {router.push('/ticket')}}>Buy Tickets</button>
           </div>
         </div>
         <div className="bg-gray-100 py-10">
