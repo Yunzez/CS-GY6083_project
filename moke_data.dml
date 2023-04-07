@@ -19,8 +19,8 @@ INSERT INTO voa.dbo.AFZ_Show_Type (Show_Type) VALUES
      (N'drama'),(N'musical'),(N'comedy'),(N'horror'),(N'adventure');
 
 -- add Parking Locations
-INSERT INTO voa.dbo.AFZ_Parking_Sections (Parking_Section)
-    VALUES (N'A'), (N'B'), (N'C'), (N'D');
+INSERT INTO voa.dbo.AFZ_Parking_Sections (Parking_Section, Description)
+    VALUES (N'A','Main Entrance Parking'), (N'B','Central Parking'), (N'C','Overflow Parking'), (N'D','Employee Parking');
 
 -- add Store Category
 INSERT INTO voa.dbo.AFZ_Store_Category (Category)
