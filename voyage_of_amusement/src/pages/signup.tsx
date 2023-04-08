@@ -8,7 +8,7 @@ import Link from 'next/link';
 const Signup: React.FC = () => {
   const delay = (ms: number | undefined) => new Promise(res => setTimeout(res, ms));
   const router = useRouter();
-  const { isLoggedIn } = useAppContext();
+  const { isLoggedIn, setLoggedIn } = useAppContext();
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
@@ -99,6 +99,7 @@ const Signup: React.FC = () => {
       .then(data => {
         console.log(data)
         setShowDone(true)
+        setLoggedIn(true)
       })
       .catch(error => console.log(error));
 

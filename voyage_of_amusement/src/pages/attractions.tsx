@@ -80,10 +80,11 @@ const Attractions = () => {
             console.log('perform search')
         }
     }, [searchTerm])
+    
     return (
         <div className="flex flex-col items-center p-4 md:p-8">
             <h1 className="text-3xl md:text-5xl font-bold mb-8">
-                {type} Attractions
+                {type?.charAt(0).toUpperCase() + type?.slice(1)} Attractions
             </h1>
             <div className="relative mb-5 w-full ml-5 mr-5 container">
                 <input
