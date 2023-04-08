@@ -18,7 +18,7 @@ type AppProviderProps = {
   children: React.ReactNode;
 };
 
-type FacilityType = {
+export type FacilityType = {
   facility_id?: number,
   facility_name?: string,
   url?: string,
@@ -33,6 +33,8 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [facility, setFacility] = useState<FacilityType[]>([] as FacilityType[])
   fetch('/api/facility').then(res => res.json()).then(data => {
     console.log(data)
+    setFacility(data)
+    setReady(true)
   })
 
   const contextValue: AppContextType = {

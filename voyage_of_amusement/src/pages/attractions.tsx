@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
-
+import { FacilityType, useAppContext } from '@/contexts/GlobaclContext';
 interface Attraction {
     name: string;
     description: string;
@@ -48,24 +48,38 @@ const attractionlist: Attraction[] = [
 ];
 
 const Attractions = () => {
+    const { isLoggedIn, ready, facility } = useAppContext();
     const router = useRouter();
     const { type } = router.query;
     const [searchTerm, setSearchTerm] = useState('');
+    const [cardData, setCardData] = useState([] as FacilityType)
+ 
+  
+    useEffect(() => {
+        if(ready){
+            setCardData(facility)
+        }
 
-    const [cardData, setCardData] = useState([])
+        
+        // if (type) {
+        //     const url = '/api/attractions?type=' + type;
+        //     fetch(url)
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             console.log(data.data);
+        //             setCardData(data.data);
+        //         })
+        //         .catch(error => console.log(error));
+        // }
+    }, [ready,facility]);
+
 
     useEffect(() => {
-        if (type) {
-            const url = '/api/attractions?type=' + type;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data.data);
-                    setCardData(data.data);
-                })
-                .catch(error => console.log(error));
+        console.log(searchTerm)
+        if(searchTerm.length >0) {
+            console.log('perform search')
         }
-    }, [type]);
+    }, [searchTerm])
     return (
         <div className="flex flex-col items-center p-4 md:p-8">
             <h1 className="text-3xl md:text-5xl font-bold mb-8">
@@ -73,7 +87,10 @@ const Attractions = () => {
             </h1>
             <div className="relative mb-5 w-full ml-5 mr-5 container">
                 <input
-                    type="email" id="floating_filled" className=" block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
+                    onInput={(e)=>{
+                        setSearchTerm(e.currentTarget.value)
+                    }}
+                    type="text" id="floating_filled" className=" block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
                 <label htmlFor="floating_filled" className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
                     Search...
                 </label>
