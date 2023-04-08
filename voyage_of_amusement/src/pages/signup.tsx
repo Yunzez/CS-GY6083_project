@@ -3,6 +3,8 @@ import { useAppContext } from '@/contexts/GlobaclContext'
 import Image from 'next/image'
 import Button from '@/component/Button';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+
 const Signup: React.FC = () => {
   const delay = ms => new Promise(res => setTimeout(res, ms));
   const router = useRouter();

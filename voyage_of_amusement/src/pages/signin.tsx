@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useAppContext } from '@/contexts/GlobaclContext';
 
 const SigninPage = () => {
@@ -77,7 +78,7 @@ const SigninPage = () => {
 
             <>
               <p className="text-gray-500 mb-4">
-                We're glad to have you here
+                We&apos;re glad to have you here
               </p>
               <hr
                 className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
@@ -110,7 +111,7 @@ const SigninPage = () => {
             <hr
               className="my-8 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
             <p className="text-gray-500 mt-5 mb-4">
-              Don't have an account? <a href="/signup" className="text-blue-500 underline">Sign up</a>.
+              Don&apos;t have an account? <Link href="/signup" className="text-blue-500 underline">Sign up</Link >.
             </p>
 
           </div>

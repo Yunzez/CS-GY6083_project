@@ -56,7 +56,7 @@ export default function Home() {
             <h3 className="text-3xl md:text-2xl font-bold mb-4 flex justify-end"> --- Where joy has no bound</h3>
             <p className="text-xl md:text-2xl font-medium text-center max-w-3xl mb-8">
               Our park is the perfect place for a day of fun and excitement. With a wide range of attractions
-              including stores, restaurants, parking, shows, and roller coasters, there's something for everyone!
+              including stores, restaurants, parking, shows, and roller coasters, there&apos;s something for everyone!
             </p>
             <button className="px-8 py-4 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {router.push('/ticket')}}>Buy Tickets</button>
           </div>
@@ -123,7 +123,7 @@ export default function Home() {
               <h3 className="text-2xl font-bold mt-4 mb-2">Restaurants</h3>
               <p className="text-lg mb-6">
                 Our restaurants offer a wide range of food options, from quick bites to sit-down meals.
-                With options for all tastes and diets, you're sure to find something you love.
+                With options for all tastes and diets, you&apos;re sure to find something you love.
               </p>
               <button className="px-4 py-2 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {
                 router.push(`/attractions?type=restaurants`);
@@ -171,7 +171,7 @@ export default function Home() {
               <h3 className="text-2xl font-bold mt-4 mb-2">Shows</h3>
               <p className="text-lg mb-6">
                 Our shows offer entertainment for all ages, with a variety of acts and performances.
-                From music and dancing to acrobatics and comedy, you won't want to miss our shows!
+                From music and dancing to acrobatics and comedy, you won&apos;t want to miss our shows!
               </p>
               <button className="px-4 py-2 bg-yellow-500 text-white rounded-full hover:bg-yellow-600 transition-colors duration-300" onClick={() => {
                 router.push(`/attractions?type=shows`);
