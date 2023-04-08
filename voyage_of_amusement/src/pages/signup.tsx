@@ -44,7 +44,7 @@ const Signup: React.FC = () => {
 
   }, []);
 
-  const [unfilled, setUnfilled] = useState<string>([]);
+  const [unfilled, setUnfilled] = useState<Array<String>>([]);
   const checkInfo = (): boolean => {
     setUnfilled([])
     if (firstName.length != 0 && lastName.length != 0 && email.length != 0 && password.length != 0) {
@@ -211,7 +211,7 @@ const Signup: React.FC = () => {
                 <hr
                   className="my-8 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
                 <p className="text-gray-500 mt-5 mb-4">
-                  You already have an account. <a href="/signin" className="text-blue-500 underline">Sign in</a>.
+                  You already have an account. <Link href="/signin" className="text-blue-500 underline">Sign in</Link>.
                 </p>
               </>
 
