@@ -3,10 +3,10 @@ import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 interface Attraction {
-    type: string;
     name: string;
     description: string;
     options: string[];
+    image: string;
 }
 
 const attractionlist: Attraction[] = [
@@ -79,10 +79,10 @@ const Attractions = () => {
                 </label>
             </div>
             <div>
-                {cardData.map(((data, key) => {
+                {cardData && cardData.map(((data, key) => {
                     return (
                         <div key={key}>
-                            {data.Store_Name}
+                            {/* {data.Store_Name} */}
                         </div>
                     )
                 }))}

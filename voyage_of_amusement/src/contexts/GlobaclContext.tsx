@@ -10,9 +10,13 @@ const AppContext = createContext<AppContextType>({
   setLoggedIn: () => {},
 });
 
+type AppProviderProps = {
+  children: React.ReactNode;
+};
+
 export const useAppContext = () => useContext(AppContext);
 
-const AppProvider: React.FC = ({ children }) => {
+const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
 
   const contextValue: AppContextType = {

@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 
 const Signup: React.FC = () => {
-  const delay = ms => new Promise(res => setTimeout(res, ms));
+  const delay = (ms: number | undefined) => new Promise(res => setTimeout(res, ms));
   const router = useRouter();
   const { isLoggedIn } = useAppContext();
   const [firstName, setFirstName] = useState('')
@@ -138,7 +138,7 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput=
-                      {(event) => { setFirstName(event.target?.value); }
+                      {(event) => { setFirstName((event.target as HTMLInputElement)?.value); }
                       }
                       type="text" id="floating_filled"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
@@ -151,7 +151,7 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput=
-                      {(event) => { setLastName(event.target?.value); }
+                      {(event) => { setLastName((event.target as HTMLInputElement)?.value); }
                       }
                       type="text" id="floating_filled"
                       className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${unfilled.includes('lastname') ? 'bg-red-500' : "bg-gray-50"} border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`} placeholder=" " />
@@ -166,7 +166,7 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput=
-                      {(event) => { setEmail(event.target?.value); }
+                      {(event) => { setEmail((event.target as HTMLInputElement)?.value); }
                       }
                       type="email" id="floating_filled"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
@@ -179,7 +179,7 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput=
-                      {(event) => { setPassword(event.target?.value); }
+                      {(event) => { setPassword((event.target as HTMLInputElement)?.value); }
                       }
                       type="email" id="floating_filled"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
