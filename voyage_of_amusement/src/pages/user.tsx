@@ -11,7 +11,7 @@ const UserSettings: React.FC = () => {
     const router = useRouter();
     const [isOpen, setIsOpen] = useState(false);
 
-    const [selectedId, setSelectedId] = useState(null);
+    const [selectedId, setSelectedId] = useState<string|null>(null);
 
 
     const [rightCardPosition, setRightCardPosition] = useState(0);

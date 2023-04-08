@@ -1,7 +1,8 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { pool } from './server';
+import sql, { ConnectionPool } from 'mssql';
 
-let connection
+let connection:  sql.ConnectionPool;
 async function connectToDatabase(req: NextApiRequest, res: NextApiResponse, next: () => void) {
   try {
     await pool.connect().then(newConnection => { connection = newConnection });

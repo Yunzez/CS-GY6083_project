@@ -4,7 +4,13 @@ import { useRouter } from 'next/router';
 import avator from '../../public/user.png'
 import { useAppContext } from '@/contexts/GlobaclContext';
 import Image from "next/image";
-const Navbar: React.FC = () => {
+
+type LayoutProps = {
+    className?: string;
+  };
+
+
+const Navbar: React.FC<LayoutProps> = ({className}) => {
     const router = useRouter();
     const [firstLoad, setFirstLoad] = useState(true)
     const [showMenu, setShowMenu] = useState(false);
@@ -18,7 +24,7 @@ const Navbar: React.FC = () => {
     };
 
     return (
-        <>
+        <div className={className}>
             <div id="sideNav" className={`${showMenu ? "show" : (firstLoad ? "" : "close")} side-nav `}>
                 <Button className="absolute top-2 right-2" onClick={() => {
                     toggleMenu()
@@ -104,7 +110,7 @@ const Navbar: React.FC = () => {
 
             </div>
 
-        </>
+        </ div>
 
 
 

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 
-interface ParkingHistoryProps {
-    //
+type ParkingHistoryProps = {
+    content: Array<String>,
+    title: String,
 }
 
 function SettingCard(props: ParkingHistoryProps): JSX.Element {

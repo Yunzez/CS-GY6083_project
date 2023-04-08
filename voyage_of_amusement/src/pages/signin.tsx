@@ -87,7 +87,7 @@ const SigninPage = () => {
                 <div className="relative mb-5">
                   <input
                     onInput=
-                    {(event) => { setFirstName(event.target?.value); }
+                    {(event) => { setFirstName((event.target as HTMLInputElement)?.value); }
                     }
                     type="email" id="floating_filled" className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
                   <label htmlFor="floating_filled" className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">
@@ -98,7 +98,7 @@ const SigninPage = () => {
                 <div className="relative">
                   <input
                     onInput=
-                    {(event) => { setFirstName(event.target?.value); }
+                    {(event) => { setFirstName((event.target as HTMLInputElement)?.value); }
                     }
                     type="email" id="floating_filled" className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
                   <label htmlFor="floating_filled" className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">

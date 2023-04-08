@@ -1,6 +1,15 @@
 import { useState } from 'react'
 
-function Modal(props) {
+type ModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  title: string;
+  description: string;
+  confirmLabel: string;
+  cancelLabel: string;
+};
+
+function Modal(props: ModalProps) {
  console.log('render modal')
   return (
     <div>
