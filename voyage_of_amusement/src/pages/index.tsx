@@ -12,17 +12,10 @@ const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   const router = useRouter();
-  const { isLoggedIn, setLoggedIn } = useAppContext();
+  const { isLoggedIn, setLoggedIn, facility } = useAppContext();
   const [isOpen, setIsOpen] = useState(false)
-
-  function openModal() {
-    setIsOpen(true)
-  }
-
-  function closeModal() {
-    setIsOpen(false)
-  }
-
+  console.log('facility',facility)
+ 
   const [currentImage, setCurrentImage] = useState(0);
   const imagePaths = [
     '/home_img/rollercoaster.jpg',

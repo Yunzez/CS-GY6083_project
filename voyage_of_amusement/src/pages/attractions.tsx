@@ -2,6 +2,9 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import { FacilityType, useAppContext } from '@/contexts/GlobaclContext';
+import { CSSTransition } from 'react-transition-group';
+import FacilityCard from '@/component/AttractionCard';
+import styles from '@/styles/attraction.module.css';
 interface Attraction {
     name: string;
     description: string;
@@ -53,34 +56,36 @@ const Attractions = () => {
     const { type } = router.query;
     const [searchTerm, setSearchTerm] = useState('');
     const [cardData, setCardData] = useState([] as FacilityType)
- 
-  
-    useEffect(() => {
-        if(ready){
-            setCardData(facility)
-        }
 
-        
-        // if (type) {
-        //     const url = '/api/attractions?type=' + type;
-        //     fetch(url)
-        //         .then(response => response.json())
-        //         .then(data => {
-        //             console.log(data.data);
-        //             setCardData(data.data);
-        //         })
-        //         .catch(error => console.log(error));
-        // }
-    }, [ready,facility]);
 
 
     useEffect(() => {
-        console.log(searchTerm)
-        if(searchTerm.length >0) {
-            console.log('perform search')
+        if (ready) {
+            setCardData(facility.data.map((item) => ({ ...item, visible: true })));
+            console.log(cardData)
         }
-    }, [searchTerm])
-    
+    }, [ready, facility]);
+
+
+    useEffect(() => {
+        if (searchTerm.length > 0) {
+
+
+            const newCardData = cardData.map((item) => {
+                const visible = item.Facility_Name.toLowerCase().includes(searchTerm.toLowerCase());
+                console.log(`Setting visibility of ${item.Facility_Name} to ${visible}`);
+                return { ...item, visible };
+            })
+
+            setCardData(newCardData)
+            console.log(cardData)
+        } else {
+            setCardData((prevCardData) =>
+                prevCardData.map((item) => ({ ...item, visible: true }))
+            );
+        }
+
+    }, [searchTerm]);
     return (
         <div className="flex flex-col items-center p-4 md:p-8">
             <h1 className="text-3xl md:text-5xl font-bold mb-8">
@@ -88,7 +93,7 @@ const Attractions = () => {
             </h1>
             <div className="relative mb-5 w-full ml-5 mr-5 container">
                 <input
-                    onInput={(e)=>{
+                    onInput={(e) => {
                         setSearchTerm(e.currentTarget.value)
                     }}
                     type="text" id="floating_filled" className=" block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer" placeholder=" " />
@@ -96,15 +101,22 @@ const Attractions = () => {
                     Search...
                 </label>
             </div>
-            <div>
-                {cardData && cardData.map(((data, key) => {
-                    return (
-                        <div key={key}>
-                            {/* {data.Store_Name} */}
-                        </div>
-                    )
-                }))}
+
+            <div className={`container mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-3 pb-5 ${styles.cardContainer}`}>
+                {cardData &&
+                    cardData.map((data, key) => {
+                        return (
+                            data.visible && (
+                                <div key={key} className={`${styles.card} ${styles.cardAnimation}`}>
+                                   
+                                    <FacilityCard facility={data} />
+                                    
+                                </div>
+                            )
+                        );
+                    })}
             </div>
+
 
         </div>
     );

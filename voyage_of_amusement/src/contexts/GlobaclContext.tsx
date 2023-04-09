@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
 
 type AppContextType = {
   isLoggedIn: boolean;
@@ -7,12 +8,8 @@ type AppContextType = {
   facility: FacilityType[];
 };
 
-const AppContext = createContext<AppContextType>({
-  isLoggedIn: false,
-  setLoggedIn: () => { },
-  ready: false,
-  facility: []
-});
+const AppContext = createContext<AppContextType>(null!);
+
 
 type AppProviderProps = {
   children: React.ReactNode;
@@ -31,12 +28,19 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [ready, setReady] = useState(false)
   const [facility, setFacility] = useState<FacilityType[]>([] as FacilityType[])
-  fetch('/api/facility').then(res => res.json()).then(data => {
-    console.log(data)
-    setFacility(data)
-    setReady(true)
-  })
-
+  useEffect(() => {
+    fetch('/api/facility')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setFacility(data);
+        setReady(true);
+      })
+      .catch(error => {
+        console.error('Error fetching facility data:', error);
+      });
+  }, []);
+  
   const contextValue: AppContextType = {
     isLoggedIn,
     setLoggedIn,
