@@ -17,9 +17,44 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     try {
         const result = await connection?.request().query(`select * from AFZ_Facility`)
-        res.status(200).send({data: result.recordset});
+
+        const facilities = await Promise.all(
+            result.recordset.map(async (row) => {
+                if (row.Source_Type === 'Att') {
+                    // Fetch additional data for the 'attr' category from the AFZ_Attraction table
+                    const result = await pool.request().query(`
+                        SELECT *
+                        FROM AFZ_Attractions
+                        WHERE facility_id = ${row.Facility_ID}
+                    `);
+                    const additionalData = result.recordset[0];
+                    return { ...row, ...additionalData };
+                } else if (row.attraction_type === 'show') {
+                    // Fetch additional data for the 'show' category from the AFZ_Show table
+                    const result = await pool.request().query(`
+                        SELECT *
+                        FROM AFZ_Show
+                        WHERE facility_id = ${row.id}
+                    `);
+                    const additionalData = result.recordset[0];
+                    return {
+                        id: row.id,
+                        name: row.name,
+                        description: row.description,
+                        additionalData,
+                    };
+                } else {
+                    return {
+                        id: row.id,
+                        name: row.name,
+                        description: row.description,
+                    };
+                }
+            })
+        );
+        res.status(200).send({ data: facilities });
         pool.close();
-        console.log('result', result, res)
+        console.log('result', facilities)
 
     } catch (err) {
         console.error(err);

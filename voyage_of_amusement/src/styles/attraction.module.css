@@ -17,17 +17,22 @@
 }
 
 .card {
-  transform: scale(1);
-  transition: all 0.3s ease-in-out;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
 }
 
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+.cardAnimation:hover {
+  border: 1px solid lightgrey;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
 }
 
 .cardContainer {
   transition: all 0.3s ease-in-out;
+  margin-bottom: 30px;
 }
 
 .cardAnimation {
@@ -46,6 +51,6 @@
   to {
     opacity: 1;
     width: 100%;
-    transform: scale(1);
+    transform: scale(1) rotate(0deg);
   }
 }
