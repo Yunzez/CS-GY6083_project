@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="cs6083.database.windows.net" uuid="98705e13-4ac2-4d64-ba60-d5ab0c9aefcb">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://cs6083.database.windows.net:1433;database=voa</jdbc-url>
+    </data-source>
+  </component>
+</project>

@@ -126,7 +126,22 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>1</dataTypePrecision>
 <defaultValue>2</defaultValue>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Passowrd" id="A5E53BC4-408C-87C5-B199-AB83BE9EFB44">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 15:19:57 UTC</createdTime>
+<commentInRDBMS><![CDATA[The password of the visitor.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">

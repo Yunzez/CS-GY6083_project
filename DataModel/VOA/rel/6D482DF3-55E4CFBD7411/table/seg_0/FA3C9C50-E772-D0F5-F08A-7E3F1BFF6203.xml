@@ -48,6 +48,58 @@
 <colAssociation fkAssociation="EDE34262-3192-758B-B355-10634230AFC0" referredColumn="3563057A-95F1-E0A3-76D5-37BF68724A1D"/>
 </associations>
 </Column>
+<Column name="Facility_URL" id="09145662-775F-E3F0-562B-E6E820AFFBBE">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 06:55:20 UTC</createdTime>
+<commentInRDBMS><![CDATA[The URL of the image of the Facility.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Facility_Description" id="C6A22D44-A3B4-9D9A-7D36-BB2391ACCA36">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 06:55:20 UTC</createdTime>
+<commentInRDBMS><![CDATA[the Description of the Facility.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Facility_Name" id="91267F54-6319-6354-F950-AEEA43EE63D9">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 06:56:03 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Name of the Facility.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100</dataTypeSize>
+<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Location_Section_ID" id="300136AE-DC88-7DCC-EF34-DB10B2B4A3F0">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:24:05 UTC</createdTime>
+<commentInRDBMS><![CDATA[The id of the Facfility location]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="A14E9466-7BFE-D7F8-28CD-352DC6B2CF66" referredColumn="0BAB989F-3F08-E44C-212D-0E22793FD87E"/>
+</associations>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="95CA1B62-1F15-46BB-C02A-AE671EB685CE" name="AFZ_Facility_PK">
@@ -71,6 +123,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="045613B4-DC9B-80B5-0305-4C8822AD0B6A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="25B98E6C-9650-2893-141B-37F6589BEDE6" name="Facility_Locations_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:24:05 UTC</createdTime>
+<generatorID>F813704B-D1B3-F481-78F2-B7EE81AC3049</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="300136AE-DC88-7DCC-EF34-DB10B2B4A3F0"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

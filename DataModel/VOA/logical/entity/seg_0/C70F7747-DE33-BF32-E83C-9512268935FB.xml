@@ -17,20 +17,6 @@
 <normalForm>Third</normalForm>
 <discriminatorValue>Sto</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Store_Name" id="319F0CBF-88DB-1B09-9EA3-AA8292C308D3">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:21:14 UTC</createdTime>
-<commentInRDBMS><![CDATA[Store Name.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>32</dataTypeSize>
-<ownDataTypeParameters>32,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Category_ID" id="3EADC8C7-2A7B-2E02-EDBD-2BE400CAA309">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:54:15 UTC</createdTime>
@@ -45,6 +31,32 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Open_Time" id="E6D47F30-747E-BC24-B025-6ED2A7471008">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:19:35 UTC</createdTime>
+<commentInRDBMS><![CDATA[The open time of the store.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Close_Time" id="8B8CDC9D-F1F2-9584-28FB-E16660E90E34">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:19:35 UTC</createdTime>
+<commentInRDBMS><![CDATA[The close time of the store.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>

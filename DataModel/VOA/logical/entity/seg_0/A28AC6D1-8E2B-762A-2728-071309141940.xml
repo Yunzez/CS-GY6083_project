@@ -17,34 +17,6 @@
 <normalForm>Third</normalForm>
 <discriminatorValue>Shw</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Name" id="695B9440-9186-5FAA-5017-183C38ABFDBF">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:11:23 UTC</createdTime>
-<commentInRDBMS><![CDATA[The Show Name.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>32</dataTypeSize>
-<ownDataTypeParameters>32,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Description" id="08BBB9E6-CDFE-C7BD-0A0E-2DE55EB67F5A">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:17:51 UTC</createdTime>
-<commentInRDBMS><![CDATA[The description of the show.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>128</dataTypeSize>
-<ownDataTypeParameters>128,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Accessibility" id="DD8926A3-D0C1-740C-C5A8-967DABA93D66">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:12:40 UTC</createdTime>
@@ -74,32 +46,6 @@
 <dataTypeScale>2</dataTypeScale>
 <ownDataTypeParameters>,8,2</ownDataTypeParameters>
 </Attribute>
-<Attribute name="Start_Time" id="66AD0AE7-D5BB-BC8C-3765-926C9A674F50">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:17:06 UTC</createdTime>
-<commentInRDBMS><![CDATA[Start time of the show.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="End_Time" id="E926FBB1-A9F3-DDF4-0C5F-CB9FF05E2031">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:19:28 UTC</createdTime>
-<commentInRDBMS><![CDATA[End Time of the show.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT007</logicalDatatype>
-<ownDataTypeParameters>,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Show_Type_ID" id="9670D618-2949-1187-467B-A997AAE5E1BB">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-29 01:55:24 UTC</createdTime>
@@ -115,6 +61,20 @@
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
 <ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Duration" id="72B08B33-C7F1-56A6-8004-E393CEB0C967">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:24:54 UTC</createdTime>
+<commentInRDBMS><![CDATA[The duration of the show in minutes.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 </Entity>

@@ -19,6 +19,18 @@
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Holiday_Name" id="58C0CAF3-EA45-A8FA-E92D-D17190F6CD57">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 15:22:17 UTC</createdTime>
+<commentInRDBMS><![CDATA[The holiday name.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="F60D0689-36E2-3992-7B31-3070E13841FB" name="AFZ_Holidays_PK">

@@ -119,6 +119,18 @@
 <colAssociation fkAssociation="33ED108F-CB59-A29C-D7EA-2ECEF52D458F" referredColumn="3CEC031C-5383-AC62-7AF4-94FE59FC7AC3"/>
 </associations>
 </Column>
+<Column name="Password" id="B92C30F8-C0CD-37BF-8980-81E552F2B600">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 15:19:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[The password of the user.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="091D9089-1112-2090-F5BD-F3FE106345BE" name="AFZ_Visitors_PK">

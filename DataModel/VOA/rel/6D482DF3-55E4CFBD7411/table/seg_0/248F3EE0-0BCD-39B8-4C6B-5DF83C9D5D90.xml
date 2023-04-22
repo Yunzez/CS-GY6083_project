@@ -1,9 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="248F3EE0-0BCD-39B8-4C6B-5DF83C9D5D90" name="AFZ_Attraction_Locations">
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="248F3EE0-0BCD-39B8-4C6B-5DF83C9D5D90" name="AFZ_Locations">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
 <generatorID>40C8628C-26E1-46D1-EE6B-1E08A9C39DF2</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
+<ordsAlias>afz_attraction_locations</ordsAlias>
 <allowColumnReorder>false</allowColumnReorder>
 <existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
 <parsed>true</parsed>
@@ -16,29 +17,52 @@
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>2</dataTypePrecision>
-<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>2</dataTypeSize>
+<ownDataTypeParameters>2,,</ownDataTypeParameters>
 <autoIncrementColumn>true</autoIncrementColumn>
 <identityColumn>true</identityColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Location_Section" id="546D6C9E-5F7F-8252-7587-018C1C16E49C">
+<Column name="Location_Description" id="1C7BD7FF-1EA7-277C-9DE2-D8653E037742">
 <createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[Location Section: A,  B, C, D etc.]]></commentInRDBMS>
-<generatorID>8EFA6241-0320-DB2E-F0F3-C0EBF5EC5BA6</generatorID>
+<createdTime>2023-04-08 07:26:23 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Description of the Location Section.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Location_URL" id="FBE476DC-F65A-0F89-A1D7-A7B83E0B6B05">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:29:09 UTC</createdTime>
+<commentInRDBMS><![CDATA[The URL of the image of this Section.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Location_Name" id="395EFB20-7F72-3856-DC7B-0636CFB5D86A">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:30:58 UTC</createdTime>
+<commentInRDBMS><![CDATA[The Name of the section.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
-<ind_PK_UK id="F2A05C6A-9585-9CB3-109C-87AE25096C15" name="AFZ_Attraction_Locations_PK">
+<ind_PK_UK id="F2A05C6A-9585-9CB3-109C-87AE25096C15" name="AFZ_Locations_PK">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
 <generatorID>F813704B-D1B3-F481-78F2-B7EE81AC3049</generatorID>

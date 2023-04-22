@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="571A8328-8B0D-838F-B3F7-46776CC9D3AC" name="AFZ_Show_Schedule">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 16:55:51 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<ordsAlias>table_26</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="SS_ID" id="6AC83563-3E12-87F0-A550-2F298C008F72">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 16:56:25 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the Show Schedule]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<identityColumn>true</identityColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Start_Time" id="4EB8F20F-8A9F-A687-B80A-1D56FA9EF28E">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 16:56:36 UTC</createdTime>
+<commentInRDBMS><![CDATA[Start time of the show.]]></commentInRDBMS>
+<generatorID>66AD0AE7-D5BB-BC8C-3765-926C9A674F50</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="End_Time" id="D5CDAF06-922E-A299-3A5E-A1627DFD7ED8">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 16:56:36 UTC</createdTime>
+<commentInRDBMS><![CDATA[End Time of the show.]]></commentInRDBMS>
+<generatorID>E926FBB1-A9F3-DDF4-0C5F-CB9FF05E2031</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Show_Facility_ID" id="8D7C7F7D-B8DA-637F-F560-79EFD3897EEE">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 16:57:06 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the show.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="26B6AD59-8A79-977A-F0CA-C6752432DC58" referredColumn="75866DB0-31EB-6DFA-AD1D-378BD08868EE"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="2A136B89-4A51-5FEB-68D1-69E77D25A605" name="AFZ_Show_Schedule_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 16:56:25 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6AC83563-3E12-87F0-A550-2F298C008F72"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="748B7D80-48BA-204C-9BF0-3D0A4D59CE04" name="AFZ_Show_Schedule_AFZ_Shows_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 16:57:06 UTC</createdTime>
+<generatorID>14A63DF6-1D25-8F24-B818-03C16DCDD9B8</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8D7C7F7D-B8DA-637F-F560-79EFD3897EEE"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

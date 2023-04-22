@@ -1,10 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="5FC1A8C6-E26E-D17A-97DC-9F5EE8ECC59B" containerWithKeyObject="FF7A7B5F-A332-178D-EB8D-E69E55511A0C" localFKIndex="9CDDF51B-AB62-8D89-1710-E663ACA52E32" name="Att_Locations_FK">
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="A14E9466-7BFE-D7F8-28CD-352DC6B2CF66" containerWithKeyObject="FA3C9C50-E772-D0F5-F08A-7E3F1BFF6203" localFKIndex="25B98E6C-9650-2893-141B-37F6589BEDE6" name="Facility_Locations_FK">
 <createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<generatorID>2F479C1E-68DA-7F58-55DA-72E2280666A2</generatorID>
+<createdTime>2023-04-08 07:24:05 UTC</createdTime>
+<generatorID>F813704B-D1B3-F481-78F2-B7EE81AC3049</generatorID>
 <ownerDesignName>VOA</ownerDesignName>
-<referredTableLongName>AFZ_Attraction_Locations</referredTableLongName>
+<referredTableLongName>AFZ_Locations</referredTableLongName>
 <deleteRule>NO ACTION</deleteRule>
 <referredTableID>248F3EE0-0BCD-39B8-4C6B-5DF83C9D5D90</referredTableID>
 <keyObject>F2A05C6A-9585-9CB3-109C-87AE25096C15</keyObject>
@@ -13,5 +13,6 @@
 <refColNames>Location_Section_ID</refColNames>
 <transferable>true</transferable>
 <rely>false</rely>
+<discriminatorColumn>0BAB989F-3F08-E44C-212D-0E22793FD87E</discriminatorColumn>
 <columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
 </FKIndexAssociation>

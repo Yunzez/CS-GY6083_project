@@ -24,32 +24,6 @@
 <colAssociation fkAssociation="8A6F1A7D-B739-CBA7-9E57-A1FACDF1E575" referredColumn="100D71D6-726E-A975-4CD9-F45E5CBAA132"/>
 </associations>
 </Column>
-<Column name="Attraction_Name" id="8A5BE57B-4BC6-4D56-71B7-7B1BD2B3CEF1">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[The name of Attraction.]]></commentInRDBMS>
-<generatorID>410DA806-E357-CEE9-8449-94049BCA8BF1</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>128</dataTypeSize>
-<ownDataTypeParameters>128,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
-<Column name="Att_Description" id="47ADE0C8-9260-0CC3-7916-05101A628287">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[The description of the attraction.]]></commentInRDBMS>
-<generatorID>25AFAD5D-CC5E-0AD8-7BAA-20162E2AF8FC</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>128</dataTypeSize>
-<ownDataTypeParameters>128,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="Minimum_Height" id="8C17CA91-69CD-2C94-1C42-16AE6C38D3FD">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -86,7 +60,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>2</dataTypePrecision>
-<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -103,28 +77,11 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>1</dataTypePrecision>
-<ownDataTypeParameters>,1,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
 <colAssociation fkAssociation="038FC3AE-0079-BC3D-E7F6-E1DD297BB83E" referredColumn="E6A9FBEE-CFF3-5331-A9F5-CD9003C62D4B"/>
-</associations>
-</Column>
-<Column name="Location_Section_ID" id="C2F04DD3-370A-9CD6-C2F5-B1A7C40E8427">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[The location of the attraction]]></commentInRDBMS>
-<generatorID>47039E4A-FCD3-3872-28DC-FD30C743DC89</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT019</logicalDatatype>
-<dataTypePrecision>2</dataTypePrecision>
-<ownDataTypeParameters>,2,</ownDataTypeParameters>
-<previousColumn>false</previousColumn>
-<autoIncrementCycle>false</autoIncrementCycle>
-<associations>
-<colAssociation fkAssociation="5FC1A8C6-E26E-D17A-97DC-9F5EE8ECC59B" referredColumn="0BAB989F-3F08-E44C-212D-0E22793FD87E"/>
 </associations>
 </Column>
 </columns>
@@ -172,17 +129,6 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="0243F1FA-FD91-9055-7111-26E0B75A7934"/>
-</indexColumnUsage>
-</ind_PK_UK>
-<ind_PK_UK id="9CDDF51B-AB62-8D89-1710-E663ACA52E32" name="Att_Locations_FK">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<generatorID>2F479C1E-68DA-7F58-55DA-72E2280666A2</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<indexState>Foreign Key</indexState>
-<isSurrogateKey>false</isSurrogateKey>
-<indexColumnUsage>
-<colUsage columnID="C2F04DD3-370A-9CD6-C2F5-B1A7C40E8427"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

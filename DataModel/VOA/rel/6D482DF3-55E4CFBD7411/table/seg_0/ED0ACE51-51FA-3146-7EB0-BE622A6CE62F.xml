@@ -36,6 +36,18 @@
 <ownDataTypeParameters>16,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Description" id="0F3182F4-45EC-9B81-FA14-2AF1DD70DE8A">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:27:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of the Type of Show.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="C7711DA9-89E9-A4D6-765F-88C583A7D066" name="AFZ_Show_Type_PK">
