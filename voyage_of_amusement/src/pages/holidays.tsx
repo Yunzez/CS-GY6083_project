@@ -16,15 +16,23 @@ type holidayProp = {
 };
 
 const Holidays = () => {
-  const [holidays, setHolidays] = useState<holidayProp>({});
+  const [holidays, setHolidays] = useState<holidayProp>({
+    Holiday_Name: 'Cannot Load Holidays',
+    Holiday_Date: 'Please Try Again Later'
+});
+  
   useEffect(() => {
+    console.log(holidays)
     fetch("/api/getHolidays")
-      .then((res) => res.json())
+      .then((res) => {
+        console.log(res)
+           return res.json()
+    })
       .then((data) => {
-        console.log(data);
         setHolidays(data.data);
       });
   }, []);
+  
   return (
     <div className="bg-gray-100 px-8 py-12">
       <h2 className="text-4xl font-bold mb-8">Our Holidays:</h2>
@@ -33,7 +41,7 @@ const Holidays = () => {
           <div className="text-gray-600 font-bold">Holiday</div>
           <div className="text-gray-600 font-bold">Date</div>
         </div>
-        {holidays.map((holiday, index) => (
+        { holidays && holidays.map((holiday, index) => (
           <div
             key={index}
             className={`flex justify-between px-4 py-2 ${
@@ -49,7 +57,9 @@ const Holidays = () => {
               })}
             </div>
           </div>
-        ))}
+        ))
+        }
+        
       </div>
     </div>
   );

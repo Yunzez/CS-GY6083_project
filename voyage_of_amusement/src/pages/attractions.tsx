@@ -6,6 +6,7 @@ import { CSSTransition } from "react-transition-group";
 import FacilityCard from "@/component/AttractionCard";
 import styles from "@/styles/attraction.module.css";
 import Modal from "@/component/Modal";
+import { Transition } from "@headlessui/react";
 interface Attraction {
   name: string;
   description: string;
@@ -61,6 +62,55 @@ const Attractions = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({});
   const [numTickets, setNumTickets] = useState(0);
+
+  const [selected, setSelected] = useState("");
+
+  const attractions = [
+    "Roller Coaster",
+    "Water Ride",
+    "Dark Rides",
+    "Kid Ride",
+  ];
+  const stores = ["Clothing", "Toys", "Food", "Souvenirs"];
+  const shows = ["Musical", "Comedy", "Magic", "Acrobatics"];
+  const handleFilterClick = (type: string) => {
+    setSelected(type);
+  };
+
+  const renderSubtypes = () => {
+    switch (selected) {
+      case "Attractions":
+        return attractions.map((subtype) => (
+          <div
+            key={subtype}
+            className="cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 hover:bg-violet-500 hover:text-white transition-colors duration-300"
+          >
+            {subtype}
+          </div>
+        ));
+      case "Stores":
+        return stores.map((subtype) => (
+          <div
+            key={subtype}
+            className="cursor-pointer border-2 border-amber-500 px-4 py-2 rounded-full text-gray-500 hover:bg-amber-500 hover:text-white transition-colors duration-300"
+          >
+            {subtype}
+          </div>
+        ));
+      case "Shows":
+        return shows.map((subtype) => (
+          <div
+            key={subtype}
+            className="border-2 border-lime-500 px-4 py-2 rounded-full text-gray-500 hover:bg-lime-500 hover:text-white transition-colors duration-300"
+          >
+            {subtype}
+          </div>
+        ));
+      default:
+        return null;
+    }
+  };
+
   useEffect(() => {
     if (ready) {
       setCardData(facility.data.map((item) => ({ ...item, visible: true })));
@@ -73,9 +123,6 @@ const Attractions = () => {
       const newCardData = cardData.map((item) => {
         const visible = item.Facility_Name.toLowerCase().includes(
           searchTerm.toLowerCase()
-        );
-        console.log(
-          `Setting visibility of ${item.Facility_Name} to ${visible}`
         );
         return { ...item, visible };
       });
@@ -120,6 +167,44 @@ const Attractions = () => {
           Search...
         </label>
       </div>
+      <div className="flex flex-col items-center space-y-4">
+       
+          <div className="flex justify-center space-x-4 w-full">
+            {selected === "Attractions" ? (
+              renderSubtypes()
+            ) : (
+              <div
+                className={`d-flex cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 hover:bg-violet-500 transition-colors duration-300 `}
+                onClick={() => handleFilterClick("Attractions")}
+              >
+                Attractions
+              </div>
+            )}
+
+            {selected === "Stores" ? (
+              renderSubtypes()
+            ) : (
+              <div
+                className={`d-flex cursor-pointer border-2 border-amber-500 px-4 py-2 rounded-full text-gray-500 hover:bg-amber-500 transition-colors duration-300 `}
+                onClick={() => handleFilterClick("Stores")}
+              >
+                Stores
+              </div>
+            )}
+
+            {selected === "Shows" ? (
+              renderSubtypes()
+            ) : (
+              <div
+                className={`d-flex cursor-pointer border-2 border-lime-500 px-4 py-2 rounded-full text-gray-500 hover:bg-lime-500 transition-colors duration-300 `}
+                onClick={() => handleFilterClick("Shows")}
+              >
+                Shows
+              </div>
+            )}
+          </div>
+       
+      </div>
 
       <div
         className={`container mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-3 pb-5 ${styles.cardContainer}`}
@@ -159,7 +244,7 @@ const Attractions = () => {
                     ? "Open to public"
                     : "Closed for maintenance"}
                 </h5>
-                <hr className="my-2"/>
+                <hr className="my-2" />
                 <h5 className="text-gray-600">
                   Minimum Height: {modalData.Minimum_Height} inches
                 </h5>

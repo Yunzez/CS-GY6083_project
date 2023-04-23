@@ -29,25 +29,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                     `);
                     const additionalData = result.recordset[0];
                     return { ...row, ...additionalData };
-                } else if (row.attraction_type === 'show') {
+                } else if (row.attraction_type === 'Sto') {
                     // Fetch additional data for the 'show' category from the AFZ_Show table
                     const result = await pool.request().query(`
                         SELECT *
-                        FROM AFZ_Show
+                        FROM AFZ_Shows
                         WHERE facility_id = ${row.id}
                     `);
                     const additionalData = result.recordset[0];
                     return {
-                        id: row.id,
-                        name: row.name,
-                        description: row.description,
-                        additionalData,
+                        ...row, ...additionalData 
                     };
                 } else {
                     return {
-                        id: row.id,
-                        name: row.name,
-                        description: row.description,
+                     ...row
                     };
                 }
             })
