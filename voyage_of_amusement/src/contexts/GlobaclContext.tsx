@@ -4,6 +4,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 type AppContextType = {
   isLoggedIn: boolean;
   setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
+  user: any,
+  setUser:  React.Dispatch<React.SetStateAction<any>>;
   ready: boolean;
   facility: FacilityType[];
 };
@@ -26,6 +28,7 @@ export const useAppContext = () => useContext(AppContext);
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(false);
   const [ready, setReady] = useState(false)
   const [facility, setFacility] = useState<FacilityType[]>([] as FacilityType[])
   useEffect(() => {
@@ -40,10 +43,13 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         console.error('Error fetching facility data:', error);
       });
   }, []);
+
   
   const contextValue: AppContextType = {
     isLoggedIn,
     setLoggedIn,
+    user, 
+    setUser,
     ready,
     facility
   };
