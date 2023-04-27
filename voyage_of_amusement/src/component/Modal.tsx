@@ -28,10 +28,10 @@ const Modal = ({ onClose, children }: ModalProps) => {
 
     return (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50">
-            <div className="bg-white rounded-lg shadow-lg w-full md:max-w-md mx-auto">
+            <div className="bg-white rounded-lg shadow-lg w-full md:max-w-lg mx-100">
                 <div className="flex justify-end pt-4 pr-4">
                     <button onClick={onClose} className="text-gray-400 hover:text-gray-600 transition ease-in-out duration-150">
-                        <svg className="h-6 w-6 fill-current" viewBox="0 0 24 24">
+                        <svg className="h-8 w-8 fill-current" viewBox="0 0 24 24">
                             <path
                                 fillRule="evenodd"
                                 d="M18.3 5.7a1 1 0 0 1 0 1.4L13.42 12l4.88 4.88a1 1 0 0 1-1.42 1.42L12 13.42l-4.88 4.88a1 1 0 0 1-1.42-1.42L10.58 12 5.7 7.12a1 1 0 0 1 1.42-1.42L12 10.58l4.88-4.88a1 1 0 0 1 1.42 0z"

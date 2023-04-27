@@ -14,7 +14,7 @@ export default function Home() {
   const router = useRouter();
   const { isLoggedIn, setLoggedIn, facility } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
-  console.log("facility", facility);
+
 
   const [currentImage, setCurrentImage] = useState(0);
   const imagePaths = [
