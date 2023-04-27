@@ -14,48 +14,13 @@ interface Attraction {
   image: string;
 }
 
-const attractionlist: Attraction[] = [
-  {
-    name: "Roller Coaster",
-    description:
-      "Experience the thrill of our roller coasters, with twists, turns, and drops that will leave you breathless!",
-    options: ["Option 1", "Option 2", "Option 3"],
-    image: "https://source.unsplash.com/random/800x600?rollercoaster",
-  },
-  {
-    name: "Parking",
-    description:
-      "Our parking lot offers ample space for your vehicle, with easy access to the park entrance. Plus, with our secure parking, you can have peace of mind while you enjoy your day.",
-    options: ["Option 1", "Option 2", "Option 3"],
-    image: "https://source.unsplash.com/random/800x600?parking",
-  },
-  {
-    name: "Shows",
-    description:
-      "Enjoy a variety of acts and performances, from music and dancing to acrobatics and comedy. You won't want to miss our shows!",
-    options: ["Option 1", "Option 2", "Option 3"],
-    image: "https://source.unsplash.com/random/800x600?shows",
-  },
-  {
-    name: "Stores",
-    description:
-      "Visit our store for a range of souvenirs, snacks, and gifts for you to take home and remember your day at the park.",
-    options: ["Option 1", "Option 2", "Option 3"],
-    image: "https://source.unsplash.com/random/800x600?stores",
-  },
-  {
-    name: "Restaurant",
-    description:
-      "Our restaurants offer a wide range of food options, from quick bites to sit-down meals. With options for all tastes and diets, you're sure to find something you love.",
-    options: ["Option 1", "Option 2", "Option 3"],
-    image: "https://source.unsplash.com/random/800x600?restaurant",
-  },
-];
-
 const Attractions = () => {
+    const delay = (ms: number | undefined) => new Promise(res => setTimeout(res, ms));
   const { isLoggedIn, ready, facility } = useAppContext();
   const router = useRouter();
   const { type } = router.query;
+  const [hasCheckout, setHasCheckout] = useState(false);
+  const [checkoutProcess, setCheckoutProcess] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [cardData, setCardData] = useState([] as FacilityType);
 
@@ -143,7 +108,24 @@ const Attractions = () => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    console.log(modalData);
+    setHasCheckout(false);
+    setCheckoutProcess(false);
+  };
+
+  const handleCheckout = async(modalData) => {
+    console.log("checkout", modalData);
+    setCheckoutProcess(true)
+    setHasCheckout(true);
+    if(numTickets == 0) {
+        return 
+    }
+    await fetch(`/api/transaction?facilityId=${modalData.Facility_ID}&num=${numTickets}'`).then(res => res.json()).then(data => {
+        console.log(data)
+        delay(2000)
+        setCheckoutProcess(false)
+    })
+   
+
   };
   return (
     <div className="flex flex-col items-center p-4 md:p-8">
@@ -168,42 +150,40 @@ const Attractions = () => {
         </label>
       </div>
       <div className="flex flex-col items-center space-y-4">
-       
-          <div className="flex justify-center space-x-4 w-full">
-            {selected === "Attractions" ? (
-              renderSubtypes()
-            ) : (
-              <div
-                className={`d-flex cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 hover:bg-violet-500 transition-colors duration-300 `}
-                onClick={() => handleFilterClick("Attractions")}
-              >
-                Attractions
-              </div>
-            )}
+        <div className="flex justify-center space-x-4 w-full">
+          {selected === "Attractions" ? (
+            renderSubtypes()
+          ) : (
+            <div
+              className={`d-flex cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 hover:bg-violet-500 transition-colors duration-300 `}
+              onClick={() => handleFilterClick("Attractions")}
+            >
+              Attractions
+            </div>
+          )}
 
-            {selected === "Stores" ? (
-              renderSubtypes()
-            ) : (
-              <div
-                className={`d-flex cursor-pointer border-2 border-amber-500 px-4 py-2 rounded-full text-gray-500 hover:bg-amber-500 transition-colors duration-300 `}
-                onClick={() => handleFilterClick("Stores")}
-              >
-                Stores
-              </div>
-            )}
+          {selected === "Stores" ? (
+            renderSubtypes()
+          ) : (
+            <div
+              className={`d-flex cursor-pointer border-2 border-amber-500 px-4 py-2 rounded-full text-gray-500 hover:bg-amber-500 transition-colors duration-300 `}
+              onClick={() => handleFilterClick("Stores")}
+            >
+              Stores
+            </div>
+          )}
 
-            {selected === "Shows" ? (
-              renderSubtypes()
-            ) : (
-              <div
-                className={`d-flex cursor-pointer border-2 border-lime-500 px-4 py-2 rounded-full text-gray-500 hover:bg-lime-500 transition-colors duration-300 `}
-                onClick={() => handleFilterClick("Shows")}
-              >
-                Shows
-              </div>
-            )}
-          </div>
-       
+          {selected === "Shows" ? (
+            renderSubtypes()
+          ) : (
+            <div
+              className={`d-flex cursor-pointer border-2 border-lime-500 px-4 py-2 rounded-full text-gray-500 hover:bg-lime-500 transition-colors duration-300 `}
+              onClick={() => handleFilterClick("Shows")}
+            >
+              Shows
+            </div>
+          )}
+        </div>
       </div>
 
       <div
@@ -229,68 +209,102 @@ const Attractions = () => {
       </div>
       {isModalOpen && (
         <Modal onClose={handleCloseModal}>
-          <div className="p-8 bg-white rounded-lg shadow-lg">
-            {modalData.Source_Type == "Att" && (
-              <div>
-                <h2 className="text-xl font-bold mb-4">
-                  {modalData.Facility_Name}
-                </h2>
-                <p className="text-gray-600 mb-4 font-semibold">
-                  {modalData.Facility_Description}
-                </p>
+          {!hasCheckout && (
+            <div className="p-8 bg-white rounded-lg shadow-lg">
+              {modalData.Source_Type == "Att" && (
+                <div>
+                  <h2 className="text-xl font-bold mb-4">
+                    {modalData.Facility_Name}
+                  </h2>
+                  <p className="text-gray-600 mb-4 font-semibold">
+                    {modalData.Facility_Description}
+                  </p>
 
-                <h5 className="text-gray-600 my-2 font-semibold">
-                  {modalData.visible
-                    ? "Open to public"
-                    : "Closed for maintenance"}
-                </h5>
-                <hr className="my-2" />
-                <h5 className="text-gray-600">
-                  Minimum Height: {modalData.Minimum_Height} inches
-                </h5>
+                  <h5 className="text-gray-600 my-2 font-semibold">
+                    {modalData.visible
+                      ? "Open to public"
+                      : "Closed for maintenance"}
+                  </h5>
+                  <hr className="my-2" />
+                  <h5 className="text-gray-600">
+                    Minimum Height: {modalData.Minimum_Height} inches
+                  </h5>
 
-                <h5 className="text-gray-600">
-                  Duration: {modalData.Durations}
-                </h5>
-              </div>
-            )}
-
-            <div className="text-gray-600 mr-2 flex mt-5 justify-center">
-              Number of tickets:
-            </div>
-            <div className="flex items-center justify-center my-4">
-              <div className="flex items-center border rounded-lg overflow-hidden">
-                <button
-                  type="button"
-                  className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
-                  onClick={() =>
-                    setNumTickets(numTickets > 0 ? numTickets - 1 : 1)
-                  }
-                >
-                  -
-                </button>
-                <div className="bg-gray-200 px-3 py-2 text-gray-600 font-bold">
-                  {numTickets}
+                  <h5 className="text-gray-600">
+                    Duration: {modalData.Durations}
+                  </h5>
                 </div>
+              )}
+
+              <div className="text-gray-600 mr-2 flex mt-5 justify-center">
+                Number of tickets:
+              </div>
+              <div className="flex items-center justify-center my-4">
+                <div className="flex items-center border rounded-lg overflow-hidden">
+                  <button
+                    type="button"
+                    className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
+                    onClick={() =>
+                      setNumTickets(numTickets > 0 ? numTickets - 1 : 1)
+                    }
+                  >
+                    -
+                  </button>
+                  <div className="bg-gray-200 px-3 py-2 text-gray-600 font-bold">
+                    {numTickets}
+                  </div>
+                  <button
+                    type="button"
+                    className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
+                    onClick={() => setNumTickets(numTickets + 1)}
+                  >
+                    +
+                  </button>
+                </div>
+              </div>
+              <div className="flex justify-end">
                 <button
                   type="button"
-                  className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
-                  onClick={() => setNumTickets(numTickets + 1)}
+                  className="bg-gray-300 text-gray-600 px-3 py-2 ml-auto rounded-lg transition-colors duration-300 hover:bg-gray-400 hover:text-white"
+                  onClick={() => {
+                    handleCheckout(modalData);
+                  }}
                 >
-                  +
+                  Checkout
                 </button>
               </div>
             </div>
-            <div className="flex justify-end">
-              <button
-                type="button"
-                className="bg-gray-300 text-gray-600 px-3 py-2 ml-auto rounded-lg transition-colors duration-300 hover:bg-gray-400 hover:text-white"
-                onClick={() => console.log("checkout")}
-              >
-                Checkout
-              </button>
+          )}
+          {hasCheckout &&
+            (checkoutProcess ? (
+               
+              <div className='flex flex-col'>
+              <h3 className="text-gray-500 mb-4 ">
+                {`We are processing your order :)`}
+              </h3>
+              <div role="status " className='animate-bounce flex justify-center mt-5'>
+                <svg aria-hidden="true" className="w-14 h-14 mr-2 text-gray-200 animate-spin dark:text-slate-300 fill-indigo-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="currentColor" />
+                  <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentFill" />
+                </svg>
+                <span className="sr-only">Loading...</span>
+              </div>
             </div>
-          </div>
+            ) : (
+                <div>
+                <h5>You have not checked out.</h5>
+                <button
+                  onClick={() => {
+                    setIsModalOpen(false);
+                    setHasCheckout(false);
+                    setCheckoutProcess(false);
+                  }}
+                >
+                  Sick
+                </button>
+              </div>
+              
+            ))}
         </Modal>
       )}
     </div>
