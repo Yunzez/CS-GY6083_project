@@ -61,3 +61,18 @@ BEGIN
 EXECUTE get_summary_data_by_date '2023-04-03';
 
 -- DROP PROCEDURE get_summary_data_by_date;
+
+CREATE PROCEDURE get_summary_data_by_user_id (@input_id NUMERIC(10)) AS
+BEGIN
+    SELECT * FROM AFZ_Visitors AV
+    JOIN AFZ_Visitor_Type AVT on AV.Visitor_Type_ID = AVT.Visitor_Type_ID
+    JOIN AFZ_Activity AA on AV.Visitor_ID = AA.Visitor_ID
+    LEFT JOIN AFZ_Facility AF on AA.Facility_ID = AF.Facility_ID
+    LEFT JOIN AFZ_Parking AP on AA.Activity_ID = AP.Activity_ID
+    LEFT JOIN AFZ_Tickets A on AA.Activity_ID = A.Activity_ID
+    LEFT JOIN AFZ_Ticket_Method ATM on A.Method_Type_ID = ATM.Method_Type_ID
+    LEFT JOIN AFZ_Ticket_Type ATT on A.Ticket_Type_ID = ATT.Ticket_Type_ID
+    WHERE AV.Visitor_ID = @input_id
+END
+
+EXECUTE get_summary_data_by_user_id 2;
