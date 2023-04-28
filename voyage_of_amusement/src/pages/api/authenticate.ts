@@ -29,15 +29,15 @@ function validateRequest(
   const { type } = req.query;
   if (type === "signup") {
     if (!firstname || !lastname || !email || !password) {
-      return res.status(400).json({ message: "Missing required fields" });
+      return res.status(400).json({ error: "Missing required fields" });
     }
     console.log("email", email);
     if (!/^\S+@\S+\.\S+$/.test(email)) {
-      return res.status(400).json({ message: "Invalid email address" });
+      return res.status(400).json({ error: "Invalid email address" });
     }
   } else if (type === "login") {
     if (!email || !password) {
-      return res.status(400).json({ message: "Missing required fields" });
+      return res.status(400).json({ error: "Missing required fields" });
     }
   }
 
@@ -78,7 +78,7 @@ async function createUser(
       (@firstname, @lastname,@City, @email, @BirthDay,@Cell_Number, @hashedPassword)`;
 
     const result = await request.query(query);
-    res.status(200).json({ data: result });
+    
     next();
   } catch (err) {
     console.error(err);
@@ -157,8 +157,7 @@ export default async function handler(
       connectToDatabase,
       validateRequest,
       createUser,
-      closeDB,
-      sendResponse,
+      fetchUser
     ];
     // pipeline = [connectToDatabase, validateRequest, createUser]
   } else if (type === "login") {

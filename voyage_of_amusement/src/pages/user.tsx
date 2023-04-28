@@ -3,6 +3,20 @@ import { useEffect, useRef, useState } from "react";
 import SettingCard from "@/component/settingCard";
 import styles from "@/styles/user.module.css";
 import { useAppContext } from "@/contexts/GlobaclContext";
+import { userInfo } from "os";
+import styled from "styled-components";
+
+// Define the styled component for the information div
+const CardDiv = styled.div`
+  border-radius: 10px;
+  background: white;
+  box-shadow: rgba(50, 50, 93, 0.1) 0px 20px 30px -12px inset,
+    rgba(0, 0, 0, 0.1) 0px 15px 26px -15px inset;
+  margin-left: 2.25rem;
+  margin-right: 2.25rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+`;
 
 const parkingTextContent = [
   "  You can view your payment history for all transactions made on our platform",
@@ -12,7 +26,7 @@ const parkingTextContent = [
 const UserSettings: React.FC = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoggedIn, setLoggedIn, user, setUser } = useAppContext();
+  const { isLoggedIn, setLoggedIn, user, setUser, userInfo } = useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const mainContentRef = useRef(null);
@@ -95,7 +109,7 @@ const UserSettings: React.FC = () => {
             className={`cursor-pointer p-3 m-3 bg-red-100 border border-red-300 rounded-lg hover:text-white hover:border-red-600 hover:font-bold  hover:bg-red-600 text-center transition duration-300 ease-in-out `}
             onClick={() => {
               setLoggedIn(false);
-              setUser({})
+              setUser({});
               router.push("/");
             }}
           >
@@ -106,20 +120,52 @@ const UserSettings: React.FC = () => {
 
       {/* Main Content */}
       <div className={styles.mainPanel}>
-        <div id="payment-history" className="py-8 px-4">
+        <div id="payment-history" className="py-2 px-4 mt-6">
+        <CardDiv>
           <SettingCard title={"Payment History"} content={parkingTextContent} />
+        
+            {userInfo?.payment.length === 0 ? (
+              <p className="text-red-500">You have no information yet</p>
+            ) : (
+              <p className="text-green-500">You have info</p>
+            )}
+          </CardDiv>
         </div>
-
-        <div id="parking-history" className="py-8 px-4">
+        <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+        <div id="parking-history" className="py-2 px-4">
+        <CardDiv>
           <SettingCard title={"Parking Record"} content={parkingTextContent} />
+          
+            {userInfo.parking.length === 0 ? (
+              <p className="text-red-500">You have no information yet</p>
+            ) : (
+              <p className="text-green-500">You have info</p>
+            )}
+          </CardDiv>
         </div>
-
-        <div id="shows-visited" className=" h-80 section">
+        <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+        <div id="shows-visited" className="py-2 px-4">
+        <CardDiv>
           <SettingCard title={"Visited Shows"} content={parkingTextContent} />
+         
+            {userInfo.show.length === 0 ? (
+              <p className="text-red-500">You have no information yet</p>
+            ) : (
+              <p className="text-green-500">You have info</p>
+            )}
+          </CardDiv>
         </div>
-
-        <div id="shops-visited" className=" h-80 section">
+        <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+        <div id="shops-visited" className="py-2 px-4">
+        <CardDiv>
           <SettingCard title={"Visited Shops"} content={parkingTextContent} />
+         
+            {userInfo.shop.length === 0 ? (
+              <p className="text-red-500">You have no information yet</p>
+            ) : (
+              <p className="text-green-500">You have info</p>
+            )}
+          </CardDiv>
         </div>
       </div>
     </div>

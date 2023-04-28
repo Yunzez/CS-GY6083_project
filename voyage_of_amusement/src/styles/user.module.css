@@ -15,6 +15,7 @@
   .mainPanel {
     margin-left: calc( 22vw + 20px);
     flex-grow: 1;
+    margin-bottom: 90px;
   }
   
   @media (min-width: 1800px) {

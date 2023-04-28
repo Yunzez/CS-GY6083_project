@@ -4,14 +4,14 @@ import Link from "next/link";
 import { useAppContext } from "@/contexts/GlobaclContext";
 import Button from "@/component/Button";
 import { useRouter } from "next/router";
-
+import { summarizeUserInfo } from "@/util/userUtil";
 const SigninPage = () => {
   const delay = (ms: number | undefined) =>
     new Promise((res) => setTimeout(res, ms));
   const router = useRouter();
   const [showProcess, setShowProcess] = useState(false);
   const [showDone, setShowDone] = useState(false);
-  const { isLoggedIn, setLoggedIn, user, setUser } = useAppContext();
+  const { isLoggedIn, setLoggedIn, user, setUser, userInfo, setUserInfo } = useAppContext();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -87,7 +87,7 @@ const SigninPage = () => {
       .then((data) => {
         console.log(data)
         if(data !== undefined) {
-          
+          setUserInfo( summarizeUserInfo(data.summary))
           setUser(data.user);
           setLoggedIn(true);
           setShowProcess(false);
@@ -99,6 +99,7 @@ const SigninPage = () => {
       })
 
   };
+
 
   return (
     <div className="mt-5 flex items-center justify-center rounded-lg">

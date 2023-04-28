@@ -4,12 +4,13 @@ import Image from "next/image";
 import Button from "@/component/Button";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { summarizeUserInfo } from "@/util/userUtil";
 
 const Signup: React.FC = () => {
   const delay = (ms: number | undefined) =>
     new Promise((res) => setTimeout(res, ms));
   const router = useRouter();
-  const { isLoggedIn, setLoggedIn } = useAppContext();
+  const { isLoggedIn, setLoggedIn, setUser, setUserInfo } = useAppContext();
   const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -118,6 +119,9 @@ const Signup: React.FC = () => {
       })
       .then(async(data) => {
         if(data !== undefined) {
+          console.log(data)
+          setUser(data.user)
+          setUserInfo(summarizeUserInfo(data.summary))
           setShowProcess(false);
           setShowDone(true);
           setLoggedIn(true);

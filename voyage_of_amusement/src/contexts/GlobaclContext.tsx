@@ -9,6 +9,8 @@ type AppContextType = {
   facility: FacilityType[];
   notification: NotificationType[];
   setNotification: React.Dispatch<React.SetStateAction<NotificationType[]>>;
+  userInfo: any;
+  setUserInfo: React.Dispatch<React.SetStateAction<any>>;
 };
 
 const AppContext = createContext<AppContextType>(null!);
@@ -34,7 +36,13 @@ export const useAppContext = () => useContext(AppContext);
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState({});
+  const [userInfo, setUserInfo] = useState({
+    parking: [],
+    show: [],
+    payment: [],
+    shop: [],
+  });
   const [ready, setReady] = useState(false);
   const [facility, setFacility] = useState<FacilityType[]>(
     [] as FacilityType[]
@@ -51,6 +59,19 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       url: "/attractions",
     },
   ]);
+
+  useEffect(() => {
+    // Save data to session storage
+    if (sessionStorage.getItem("isLoggedIn") &&  sessionStorage.getItem("isLoggedIn") == "true") {
+      setUser(JSON.parse(sessionStorage.getItem("user") ?? ""));
+      setLoggedIn(true)
+    } else {
+      sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+      sessionStorage.setItem("user", JSON.stringify(user));
+    }
+
+    console.log("Is logged in:", isLoggedIn);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     console.log("refresh");
@@ -71,6 +92,8 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     setLoggedIn,
     user,
     setUser,
+    userInfo,
+    setUserInfo,
     ready,
     facility,
     notification,
