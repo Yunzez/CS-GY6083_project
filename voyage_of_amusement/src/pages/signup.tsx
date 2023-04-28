@@ -82,10 +82,10 @@ const Signup: React.FC = () => {
     setShowProcess(false)
 
     const data = {
-      firstname: 'John',
-      lastname: 'Doe',
-      email: 'john.doe@example.com',
-      password: 'password123',
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
     };
 
     fetch('/api/authenticate?type=signup', {

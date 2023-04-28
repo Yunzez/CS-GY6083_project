@@ -12,12 +12,13 @@ const parkingTextContent = [
 const UserSettings: React.FC = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
-  const { isLoggedIn, setLoggedIn } = useAppContext();
+  const { isLoggedIn, setLoggedIn, user, setUser } = useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const mainContentRef = useRef(null);
   const cardRef = useRef(null);
   useEffect(() => {
+    console.log(user);
     function handleScroll() {
       const sections = document.querySelectorAll(".section");
       const selected = Array.from(sections).find((section) => {
@@ -38,29 +39,18 @@ const UserSettings: React.FC = () => {
       {/* Sidebar */}
       <div className={styles.sidePanel}>
         <div className="bg-white rounded-lg p-6">
-          <h2 className="text-xl font-bold mb-4">Welcome User</h2>
-          <div className="mb-4 flex justify-around">
-            <h5 className="block font-bold mb-2" for="first-name">
-              FirstName
-            </h5>
-            <h5 className="block font-bold mb-2" for="last-name">
-              LastName
-            </h5>
+          <h2 className="text-xl font-bold mb-4">
+            Welcome {user.Fname} {user.Lname}
+          </h2>
+          <div className="mb-4 flex ">
+            <h5 className="font-bold mb-2 me-2">Email:</h5>
+            <p>{user.Email}</p>
+          </div>
+          <div className="mb-4 flex">
+            <h5 className="font-bold mb-2 me-2">User Type:</h5>
+            <p>{user.Visitor_Type}</p>
           </div>
 
-          
-          <div className="mb-4">
-            <h5 className="block font-bold mb-2" for="email">
-              Email:
-            </h5>
-            <h5>Test</h5>
-          </div>
-          <div className="mb-4">
-            <h5 className="block font-bold mb-2" for="user-type">
-              User Type:
-            </h5>
-            <h5>Dope Visitor</h5>
-          </div>
           <div
             className={`cursor-pointer p-3 m-3 bg-gray-100 border border-slate-300 rounded-lg hover:text-white hover:font-bold hover:border-slate-600 hover:bg-slate-600 text-center transition duration-300 ease-in-out ${
               selectedId === "payment-history" ? "font-bold bg-gray-300" : ""

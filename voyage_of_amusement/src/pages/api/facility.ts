@@ -49,7 +49,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         );
         res.status(200).send({ data: facilities });
         pool.close();
-        console.log('result', facilities)
 
     } catch (err) {
         console.error(err);

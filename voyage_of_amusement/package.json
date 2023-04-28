@@ -15,6 +15,7 @@
     "@types/node": "18.15.9",
     "@types/react": "18.0.29",
     "@types/react-dom": "18.0.11",
+    "bcryptjs": "^2.4.3",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.12.4",
@@ -28,6 +29,7 @@
     "typescript": "5.0.2"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/mssql": "^8.1.2",
     "@types/react-lazy-load-image-component": "^1.5.3",
     "@types/react-transition-group": "^4.4.5",
