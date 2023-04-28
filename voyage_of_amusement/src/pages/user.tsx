@@ -95,6 +95,7 @@ const UserSettings: React.FC = () => {
             className={`cursor-pointer p-3 m-3 bg-red-100 border border-red-300 rounded-lg hover:text-white hover:border-red-600 hover:font-bold  hover:bg-red-600 text-center transition duration-300 ease-in-out `}
             onClick={() => {
               setLoggedIn(false);
+              setUser({})
               router.push("/");
             }}
           >

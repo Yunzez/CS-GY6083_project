@@ -13,7 +13,7 @@ const Navbar: React.FC<LayoutProps> = ({ className }) => {
   const router = useRouter();
   const [firstLoad, setFirstLoad] = useState(true);
   const [showMenu, setShowMenu] = useState(false);
-  const { isLoggedIn, setLoggedIn, notification } = useAppContext();
+  const { isLoggedIn, setLoggedIn, notification, setUser } = useAppContext();
   const toggleMenu = () => {
     setShowMenu(!showMenu);
     if (firstLoad) {
@@ -56,12 +56,27 @@ const Navbar: React.FC<LayoutProps> = ({ className }) => {
             >
               About
             </Button>
-            <Button
-              className="text-lg font-bold text-gray-800 my-4"
-              onClick={() => router.push("/signup")}
-            >
-              Sign Up
-            </Button>
+            {!isLoggedIn && (
+              <Button
+                className="text-lg font-bold text-gray-800 my-4"
+                onClick={() => router.push("/signup")}
+              >
+                Sign Up
+              </Button>
+            )}
+
+            {isLoggedIn && (
+              <Button
+                className="text-lg font-bold text-gray-800 my-4"
+                onClick={() => {
+                  setLoggedIn(false);
+                  setUser({});
+                  router.push("/");
+                }}
+              >
+                Logout
+              </Button>
+            )}
           </div>
         </div>
       </div>
@@ -96,7 +111,7 @@ const Navbar: React.FC<LayoutProps> = ({ className }) => {
                 <div
                   className="absolute bg-white p-5 text-black py-2 px-4 mt-5 rounded-lg shadow-lg translate-x-[-100px] z-[999] animate-fade-in"
                   style={{
-                   top: "40px",
+                    top: "40px",
                     maxHeight: "400px",
                     overflowY: "auto",
                   }}
@@ -131,9 +146,27 @@ const Navbar: React.FC<LayoutProps> = ({ className }) => {
           <Button className="mx-2" onClick={() => router.push("/about")}>
             About
           </Button>
-          <Button className="mx-2" onClick={() => router.push("/signup")}>
-            Sign Up
-          </Button>
+          {!isLoggedIn && (
+              <Button
+              className="mx-2"
+                onClick={() => router.push("/signup")}
+              >
+                Sign Up
+              </Button>
+            )}
+
+            {isLoggedIn && (
+              <Button
+              className="mx-2"
+                onClick={() => {
+                  setLoggedIn(false);
+                  setUser({});
+                  router.push("/");
+                }}
+              >
+                Logout
+              </Button>
+            )}
           {isLoggedIn && (
             <>
               <Button

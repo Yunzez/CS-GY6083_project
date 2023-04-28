@@ -140,9 +140,43 @@ const SigninPage = () => {
           {showProcess == false && showDone == false && (
             <div className="border-4 border-slate-50  px-5 py-5 mt-5">
               {error.length > 0 && (
-                <div className="bg-red-200 text-red-800 px-4 py-2 rounded-md mb-4">
-                  <h1 className="text-xl font-bold">{error}</h1>
+                <div
+                className={`bg-red-100 text-red-700 px-2 py-6 mb-4 rounded relative transition-opacity duration-500 shadow-md mt-5 ${
+                  error.length > 0 ? "opacity-1 h-100" : "opacity-0 h-0"
+                }`}
+                role="alert"
+              >
+                <div
+                  className={`${
+                    error.length > 0
+                      ? "opacity-1 h-100 d-inline"
+                      : "opacity-0 h-0 d-none"
+                  }`}
+                >
+                  <small className="block font-bold flex">
+                 
+                      <h1 className="ml-1">
+                      {error}
+                      </h1>
+                 
+                  </small>
+                  <span className="absolute top-0 bottom-0 right-0 px-4 py-3">
+                    <svg
+                      className="fill-current h-6 w-6 text-red-500"
+                      role="button"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      onClick={async () => {
+                        setError('');
+                      }}
+                    >
+                      <title>Close</title>
+                      <path d="M14.348 5.652a1 1 0 010 1.414L11.414 10l2.934 2.934a1 1 0 11-1.414 1.414L10 11.414l-2.934 2.934a1 1 0 11-1.414-1.414L8.586 10 5.652 7.066a1 1 0 011.414-1.414L10 8.586l2.934-2.934a1 1 0 011.414 0z" />
+                    </svg>
+                  </span>
                 </div>
+              </div>
+               
               )}
               <h1 className="text-2xl font-bold mb-4">Welcome back</h1>
 
