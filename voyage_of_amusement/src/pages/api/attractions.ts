@@ -1,9 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { pool } from './server';
-import sql, { ConnectionPool } from 'mssql';
 
-let connection:  sql.ConnectionPool;
-
+let connection
 async function connectToDatabase(req: NextApiRequest, res: NextApiResponse, next: () => void) {
     try {
         await pool.connect().then(newConnection => { connection = newConnection });
@@ -69,11 +67,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             const result = await connection?.request().query(`SELECT * FROM ${tableName} `)
             res.status(200).send({data: result.recordset});
             pool.close();
-            console.log('result', result, res)
         } else {
             res.status(500).send('No such data');
         }
        
+        console.log('result', result, res)
 
     } catch (err) {
         console.error(err);

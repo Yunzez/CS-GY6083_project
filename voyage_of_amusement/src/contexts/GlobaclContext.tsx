@@ -1,3 +1,4 @@
+import { summarizeUserInfo } from "@/util/userUtil";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
 type AppContextType = {
@@ -38,7 +39,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [user, setUser] = useState({});
   const [userInfo, setUserInfo] = useState({
-    parking: [],
+    attraction: [],
     show: [],
     payment: [],
     shop: [],
@@ -62,9 +63,19 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   useEffect(() => {
     // Save data to session storage
-    if (sessionStorage.getItem("isLoggedIn") &&  sessionStorage.getItem("isLoggedIn") == "true") {
+    if (
+      sessionStorage.getItem("isLoggedIn") &&
+      sessionStorage.getItem("isLoggedIn") == "true"
+    ) {
       setUser(JSON.parse(sessionStorage.getItem("user") ?? ""));
-      setLoggedIn(true)
+      setLoggedIn(true);
+      fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.summary) {
+            setUserInfo(summarizeUserInfo(data.summary));
+          } 
+        });
     } else {
       sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
       sessionStorage.setItem("user", JSON.stringify(user));
@@ -85,7 +96,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       .catch((error) => {
         console.error("Error fetching facility data:", error);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   const contextValue: AppContextType = {
     isLoggedIn,

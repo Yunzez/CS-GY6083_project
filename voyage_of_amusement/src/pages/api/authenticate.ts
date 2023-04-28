@@ -112,21 +112,21 @@ async function fetchUser(
 
     // Compare the provided password with the hashed password from the database
 
-    bcrypt.compare(password, user.Password, function (err, isValid) {
+    bcrypt.compare(password, user.Password, async function (err, isValid) {
       console.log(password, user.Password, isValid, err);
       if (!isValid) {
-        // Incorrect password
+        // Incorrect password 
         return res.status(401).json({ error: "Incorrect password" });
       } else {
         const userId = user.ID; // Replace 'ID' with the actual column name for the user ID
         const request = connection?.request();
         // Run the stored procedure with the user ID
      
-          const result = connection?.request()
+          const result = await connection?.request()
           .input('input_id', userId)
           .execute(`dbo.get_summary_data_by_user_id`);
         console.log(result, user)
-          res.status(200).send({user:user, summary: result});
+          res.status(200).send({user:user, summary:  result.recordset});
       }
     }); // Pass err, isValid, and res to the callback function
     // Password matches, continue with the next middleware or handler

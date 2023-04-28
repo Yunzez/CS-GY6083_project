@@ -16,12 +16,16 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        // const result = await connection?.request().query(`select * from AFZ_Facility`)
-        const { facilityId, num } = req.query;
-        console.log(facilityId, num)
-        res.status(200).send({ data: {id: facilityId, num: num} });
+        const {userId} = req.query
+        if(!userId) {
+            res.status(400).json({ message: "Invalid userID" });
+            return;
+          }
+        const result = await connection?.request()
+          .input('input_id', userId)
+          .execute(`dbo.get_summary_data_by_user_id`);
+          res.status(200).send({ summary: result.recordset});
         pool.close();
-        console.log('result')
 
     } catch (err) {
         console.error(err);

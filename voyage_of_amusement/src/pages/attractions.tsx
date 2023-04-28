@@ -7,6 +7,7 @@ import FacilityCard from "@/component/AttractionCard";
 import styles from "@/styles/attraction.module.css";
 import Modal from "@/component/Modal";
 import { Transition } from "@headlessui/react";
+import { summarizeUserInfo } from "@/util/userUtil";
 interface Attraction {
   name: string;
   description: string;
@@ -17,7 +18,7 @@ interface Attraction {
 const Attractions = () => {
   const delay = (ms: number | undefined) =>
     new Promise((res) => setTimeout(res, ms));
-  const { isLoggedIn, ready, facility } = useAppContext();
+  const { isLoggedIn, ready, facility, user, setUserInfo } = useAppContext();
   const router = useRouter();
   const { type } = router.query;
   const [hasCheckout, setHasCheckout] = useState(false);
@@ -112,7 +113,7 @@ const Attractions = () => {
     setHasCheckout(false);
     setCheckoutProcess(false);
   };
-
+  console.log(facility)
   const handleCheckout = async (modalData) => {
     console.log("checkout", modalData);
     setCheckoutProcess(true);
@@ -120,12 +121,26 @@ const Attractions = () => {
     if (numTickets == 0) {
       return;
     }
+   const data = {
+        facilityId: modalData.Facility_ID,
+        num: numTickets,
+        visitorId: user.Visitor_ID,
+        sourceType:  modalData.Source_Type
+    }
+    console.log(data)
     await fetch(
-      `/api/transaction?facilityId=${modalData.Facility_ID}&num=${numTickets}'`
+      `/api/makeTransaction?visitorId=${user.Visitor_ID}'`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
     )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        setUserInfo(summarizeUserInfo(data.summary))
         delay(2000);
         setCheckoutProcess(false);
       });
@@ -134,7 +149,7 @@ const Attractions = () => {
   return (
     <div className="flex flex-col items-center p-4 md:p-8">
       <h1 className="text-3xl md:text-5xl font-bold mb-8">
-        {type?.charAt(0).toUpperCase() + type?.slice(1)} Attractions
+       Attractions
       </h1>
       <div className="relative mb-5 w-full ml-5 mr-5 container">
         <input

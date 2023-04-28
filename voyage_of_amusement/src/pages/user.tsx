@@ -23,6 +23,50 @@ const parkingTextContent = [
   "To view the details of a specific transaction, click on the transaction in the list.",
   " If you have any questions about a transaction or notice any discrepancies, please contact our support team.",
 ];
+
+const CardContainer = styled.div`
+  cursor: pointer;
+  margin: 10px;
+  background: rgb(255, 255, 255);
+  border-radius: 15px;
+  border: 2px solid rgb(100 116 139);
+  transition: all 0.2s;
+  box-shadow: 12px 12px 2px 1px rgb(100 116 139);
+
+  &:hover {
+    box-shadow: -12px 12px 2px -1px rgb(100 116 139);
+  }
+`;
+
+const CardContent = styled.div`
+  padding: 16px;
+
+  p {
+    margin-bottom: 8px;
+  }
+`;
+
+const CardTitle = styled.p`
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 16px;
+`;
+
+const CardDescription = styled.p`
+  color: #777777;
+`;
+
+const CardInfoRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+`;
+
+const CardInfoItem = styled.p`
+  &:not(:last-child) {
+    margin-right: 16px;
+  }
+`;
 const UserSettings: React.FC = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +76,7 @@ const UserSettings: React.FC = () => {
   const mainContentRef = useRef(null);
   const cardRef = useRef(null);
   useEffect(() => {
-    console.log(user);
+    console.log(user, userInfo);
     function handleScroll() {
       const sections = document.querySelectorAll(".section");
       const selected = Array.from(sections).find((section) => {
@@ -121,9 +165,12 @@ const UserSettings: React.FC = () => {
       {/* Main Content */}
       <div className={styles.mainPanel}>
         <div id="payment-history" className="py-2 px-4 mt-6">
-        <CardDiv>
-          <SettingCard title={"Payment History"} content={parkingTextContent} />
-        
+          <CardDiv>
+            <SettingCard
+              title={"Payment History"}
+              content={parkingTextContent}
+            />
+
             {userInfo?.payment.length === 0 ? (
               <p className="text-red-500">You have no information yet</p>
             ) : (
@@ -133,21 +180,52 @@ const UserSettings: React.FC = () => {
         </div>
         <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
         <div id="parking-history" className="py-2 px-4">
-        <CardDiv>
-          <SettingCard title={"Parking Record"} content={parkingTextContent} />
-          
-            {userInfo.parking.length === 0 ? (
+          <CardDiv>
+            <SettingCard
+              title={"Attraction visited"}
+              content={parkingTextContent}
+            />
+
+            {userInfo.attraction.length === 0 ? (
               <p className="text-red-500">You have no information yet</p>
             ) : (
-              <p className="text-green-500">You have info</p>
+              <div className="text-slate-700">
+                <p className="font-bold text-2xl">Your recent record: </p>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                  {userInfo.attraction.map((item, index) => (
+                    <CardContainer key={index}>
+                      <CardContent>
+                        <CardTitle>{item.Facility_Name}</CardTitle>
+                        <CardDescription>
+                          {item.Facility_Description}
+                        </CardDescription>
+                        <CardInfoRow>
+                          <CardInfoItem>
+                            Activity Date: {item.Activity_Date}
+                          </CardInfoItem>
+                          <CardInfoItem>Discount: {item.Discount}</CardInfoItem>
+                        </CardInfoRow>
+                        <CardInfoRow>
+                          <CardInfoItem>
+                            Method Type: {item.Method_Type}
+                          </CardInfoItem>
+                          <CardInfoItem>
+                            Location Section ID: {item.Location_Section_ID}
+                          </CardInfoItem>
+                        </CardInfoRow>
+                      </CardContent>
+                    </CardContainer>
+                  ))}
+                </div>
+              </div>
             )}
           </CardDiv>
         </div>
         <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
         <div id="shows-visited" className="py-2 px-4">
-        <CardDiv>
-          <SettingCard title={"Visited Shows"} content={parkingTextContent} />
-         
+          <CardDiv>
+            <SettingCard title={"Visited Shows"} content={parkingTextContent} />
+
             {userInfo.show.length === 0 ? (
               <p className="text-red-500">You have no information yet</p>
             ) : (
@@ -157,9 +235,9 @@ const UserSettings: React.FC = () => {
         </div>
         <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
         <div id="shops-visited" className="py-2 px-4">
-        <CardDiv>
-          <SettingCard title={"Visited Shops"} content={parkingTextContent} />
-         
+          <CardDiv>
+            <SettingCard title={"Visited Shops"} content={parkingTextContent} />
+
             {userInfo.shop.length === 0 ? (
               <p className="text-red-500">You have no information yet</p>
             ) : (
