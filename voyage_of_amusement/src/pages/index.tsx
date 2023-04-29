@@ -7,6 +7,7 @@ import { useAppContext } from "@/contexts/GlobaclContext";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Modal from "@/component/Modal";
+import styled, { keyframes } from 'styled-components';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -64,6 +65,21 @@ export default function Home() {
   const nextImage = () => {
     setCurrentImage((currentImage + 1) % imagePaths.length);
   };
+
+
+
+const Card = styled.div`
+  background: rgb(236, 236, 236);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  transition: all 0.3s ease;
+  padding: 10px;
+  &:hover {
+    padding: 30px;
+    border-radius: 100px;
+  }
+`;
 
   return (
     <>
@@ -147,8 +163,25 @@ export default function Home() {
             </button>
           </div>
         </div>
+        <div className="flex justify-center">
+          <Card >
+            <div className="flex justify-center" onClick={() => router.push('/entranceTicket')}>
+              <button className="flex flex-col relative bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-6 px-12 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
+                <div className=" ml-auto me-auto flex-grow bg-white p-4 rounded-lg shadow mr-2 animate-bounce">
+                  🎢
+                </div>
 
-        <div className={`flex flex-wrap justify-center mx-4 py-5 ${styles.awayFromFooter}`}>
+                <div className="ml-4 text-2xl text-center">
+                  Get Your Thrill Ticket!
+                </div>
+              </button>
+            </div>
+          </Card>
+        </div>
+
+        <div
+          className={`flex flex-wrap justify-center mx-4 py-5 ${styles.awayFromFooter}`}
+        >
           <div
             className={`lg:w-1/3 bg-blue-200 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
           >
@@ -205,7 +238,6 @@ export default function Home() {
               Learn More
             </button>
           </div>
-
           <div
             className={`lg:w-1/3 bg-yellow-00 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
           >
@@ -218,7 +250,7 @@ export default function Home() {
             <button
               className="px-8 py-4 bg-gradient-to-r from-yellow-600 via-red-400 to-blue-300 text-white rounded-full hover:bg-yellow-500 hover:opacity-90 transition-all duration-300"
               onClick={() => {
-                router.push(`/parking`);  
+                router.push(`/parking`);
               }}
             >
               Reserve Now

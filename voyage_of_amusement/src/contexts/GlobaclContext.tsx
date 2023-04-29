@@ -62,41 +62,37 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   ]);
 
   useEffect(() => {
-    // Save data to session storage
-    if (
-      sessionStorage.getItem("isLoggedIn") &&
-      sessionStorage.getItem("isLoggedIn") == "true"
-    ) {
-      setUser(JSON.parse(sessionStorage.getItem("user") ?? ""));
-      setLoggedIn(true);
-      fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.summary) {
-            setUserInfo(summarizeUserInfo(data.summary));
-          } 
-        });
-    } else {
-      sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
-      sessionStorage.setItem("user", JSON.stringify(user));
-    }
-
-    console.log("Is logged in:", isLoggedIn);
-  }, [isLoggedIn]);
-
-  useEffect(() => {
-    console.log("refresh");
     fetch("/api/facility")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setFacility(data);
         setReady(true);
+  
+        // Check login status after getting facility data
+        if (
+          sessionStorage.getItem("isLoggedIn") &&
+          sessionStorage.getItem("isLoggedIn") === "true"
+        ) {
+          setUser(JSON.parse(sessionStorage.getItem("user") ?? ""));
+          setLoggedIn(true);
+          fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.summary) {
+                setUserInfo(summarizeUserInfo(data.summary));
+              }
+            });
+        } else {
+          sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+          sessionStorage.setItem("user", JSON.stringify(user));
+        }
       })
       .catch((error) => {
         console.error("Error fetching facility data:", error);
       });
-  }, [isLoggedIn]);
+  }, []);
+  
 
   const contextValue: AppContextType = {
     isLoggedIn,

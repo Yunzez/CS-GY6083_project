@@ -91,6 +91,15 @@ const UserSettings: React.FC = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  let showTotalAmount;
+  
+if(userInfo.show.length > 0) {
+    const showAmount = userInfo.show.map((activity) => activity.Amount_Due);
+    showTotalAmount  = showAmount.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+}
+// Using the reduce() method to combine all the 'Amount_Due' values
+
+
 
   return (
     <div className="flex" ref={cardRef}>
@@ -229,7 +238,37 @@ const UserSettings: React.FC = () => {
             {userInfo.show.length === 0 ? (
               <p className="text-red-500">You have no information yet</p>
             ) : (
-              <p className="text-green-500">You have info</p>
+                <div className="text-slate-700">
+                <p className="font-bold text-2xl">Your recent record: </p>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                  {userInfo.show.map((item, index) => (
+                    <CardContainer key={index}>
+                      <CardContent>
+                        <CardTitle>{item.Facility_Name}</CardTitle>
+                        <CardDescription>
+                          {item.Facility_Description}
+                        </CardDescription>
+                        <CardInfoRow>
+                          <CardInfoItem>
+                            Activity Date: {item.Activity_Date}
+                          </CardInfoItem>
+                          <CardInfoItem>Discount: {item.Discount}</CardInfoItem>
+                        </CardInfoRow>
+                        <CardInfoRow>
+                          <CardInfoItem>
+                            Method Type: {item.Method_Type}
+                          </CardInfoItem>
+                          <CardInfoItem>
+                            Location Section ID: {item.Location_Section_ID}
+                          </CardInfoItem>
+                        </CardInfoRow>
+                      </CardContent>
+                    </CardContainer>
+                  ))}
+                </div>
+              <h2 className=" text-slate-900 mt-3 text-2xl">You better pay ${showTotalAmount} before we beat your ass off</h2>
+              <button className=" text-slate-900 mt-3 text-2xl border shadow p-3 rounded hover:bg-slate-900 hover:text-white transition">PAY</button>
+              </div>
             )}
           </CardDiv>
         </div>

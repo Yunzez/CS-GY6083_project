@@ -22,19 +22,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             result.recordset.map(async (row) => {
                 if (row.Source_Type === 'Att') {
                     // Fetch additional data for the 'attr' category from the AFZ_Attraction table
-                    const result = await pool.request().query(`
+                    const result = await pool.request().input('id',row.Facility_ID).query(`
                         SELECT *
                         FROM AFZ_Attractions
-                        WHERE facility_id = ${row.Facility_ID}
+                        WHERE facility_id = @id
                     `);
                     const additionalData = result.recordset[0];
                     return { ...row, ...additionalData };
                 } else if (row.attraction_type === 'Sto') {
                     // Fetch additional data for the 'show' category from the AFZ_Show table
-                    const result = await pool.request().query(`
+                    const result = await pool.request().input('id',row.id).query(`
                         SELECT *
                         FROM AFZ_Shows
-                        WHERE facility_id = ${row.id}
+                        WHERE facility_id = @id
                     `);
                     const additionalData = result.recordset[0];
                     return {

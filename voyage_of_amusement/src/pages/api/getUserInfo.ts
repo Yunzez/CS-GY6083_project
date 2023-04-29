@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             return;
           }
         const result = await connection?.request()
-          .input('input_id', userId)
+          .input('input_id', Number(userId))
           .execute(`dbo.get_summary_data_by_user_id`);
           res.status(200).send({ summary: result.recordset});
         pool.close();
