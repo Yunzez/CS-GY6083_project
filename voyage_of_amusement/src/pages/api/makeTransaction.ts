@@ -61,9 +61,9 @@ export default async function handler(
 
     amount = amountResult?.recordset[0]?.Amount_Due;
 
-    if (sourceType == "Tik") {
+    if (sourceType == "Tic") {
       console.log("insert entrance ticket");
-      const{Visit_Date} = req.body
+      const{visitDate} = req.body
       let iteration = num;  
       while (iteration > 0) {
         iteration--;
@@ -74,7 +74,7 @@ export default async function handler(
           .input("ticketMethod", 2)
           .input("purchaseDate", today)
           .input("price", 100)
-          .input("visitDate", Visit_Date).query(`
+          .input("visitDate", visitDate).query(`
         INSERT INTO AFZ_Tickets (Method_Type_ID, Ticket_Type_ID, Purchase_Date, Visit_Date, Price, Activity_ID)
         VALUES (@ticketMethod, @ticketTypeId, @purchaseDate, @visitDate, @price, @activityId)
       `);

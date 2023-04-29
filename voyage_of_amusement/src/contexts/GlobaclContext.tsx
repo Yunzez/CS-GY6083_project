@@ -73,28 +73,29 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         console.log(data);
         setFacility(data);
         setReady(true);
-
-        // Check login status after getting facility data
-        if (
-          sessionStorage.getItem("isLoggedIn") &&
-          sessionStorage.getItem("isLoggedIn") === "true"
-        ) {
-          setUser(JSON.parse(sessionStorage.getItem("user") ?? ""));
-          setLoggedIn(true);
-        } else {
-          sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
-          sessionStorage.setItem("user", JSON.stringify(user));
-        }
       })
       .catch((error) => {
         console.error("Error fetching facility data:", error);
       });
   }, []);
 
-
-  useEffect(()=> {
-    if (isLoggedIn && user) {
-      fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
+  useEffect(() => {
+    if (
+      sessionStorage.getItem("isLoggedIn") &&
+      sessionStorage.getItem("isLoggedIn") === "true"
+    ) {
+      setUser(JSON.parse(sessionStorage.getItem("user") ?? ""));
+      setLoggedIn(true);
+    } else {
+      sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+      sessionStorage.setItem("user", JSON.stringify(user));
+    }
+    const currUser = JSON.parse(sessionStorage.getItem("user") ?? '')
+    const currLoginStatus = Boolean(sessionStorage.getItem("isLoggedIn"));
+    console.log("check user", currUser, currLoginStatus);
+    if (currLoginStatus && currUser) {
+      console.log("fetch user", currUser);
+      fetch(`/api/getUserInfo?userId=${currUser.Visitor_ID}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.summary) {
@@ -105,7 +106,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
           console.error("Error fetching user info:", error);
         });
     }
-  }, [user])
+  }, []);
 
   const contextValue: AppContextType = {
     isLoggedIn,
