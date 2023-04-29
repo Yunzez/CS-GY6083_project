@@ -113,7 +113,6 @@ const Attractions = () => {
     setHasCheckout(false);
     setCheckoutProcess(false);
   };
-  console.log(facility)
   const handleCheckout = async (modalData) => {
     console.log("checkout", modalData);
     setCheckoutProcess(true);

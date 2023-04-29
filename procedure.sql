@@ -75,4 +75,4 @@ BEGIN
     WHERE AV.Visitor_ID = @input_id
 END
 
-EXECUTE get_summary_data_by_user_id 2;
+EXECUTE dbo.get_summary_data_by_user_id 2;

@@ -228,21 +228,21 @@ DECLARE @insertedStrIds TABLE (Facility_ID INT);
 INSERT INTO voa.dbo.AFZ_Facility (Source_Type, Facility_URL, Facility_Description, Facility_Name, Location_Section_ID)
 OUTPUT inserted.Facility_ID INTO @insertedStrIds
 VALUES
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheHungryPanda.png', '','The Hungry Panda', N'AR'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/SweetTreats.png', '','Sweet Treats', N'FC'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/CasadiPizza.png', '','Casa di Pizza', N'SF'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheSouvenirShop.png', '','The Souvenir Shop', N'FC'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/Fashionista.png', '','Fashionista', N'SF'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/BurgersN''Fries.png', '','Burgers N'' Fries', N'WK'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheIceCreamShoppe.png', '','The Ice Cream Shoppe', N'AR'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/LaCantina.png', '','La Cantina', N'FC'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheToyChest.png', '','The Toy Chest', N'SF'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/ShoeEmporium.png', '','Shoe Emporium', N'FC'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TacoStop.png', '','Taco Stop', N'SF'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/SundaeFunday.png', '','Sundae Funday', N'WK'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/PastaPalace.png', '','Pasta Palace', N'AR'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheBoutique.png', '','The Boutique', N'AR'),
-    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheTradingPost.png', '','The Trading Post', N'AR');
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheHungryPanda.png', 'Our Asian-inspired cuisine will take your taste buds on a culinary journey filled with bold flavors and delicious surprises','The Hungry Panda', N'AR'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/SweetTreats.png', 'Indulge in a world of sweetness with our decadent desserts and confections that will satisfy your sweet tooth','Sweet Treats', N'FC'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/CasadiPizza.png', 'Experience a slice of Italy with our handmade pizzas topped with fresh, flavorful ingredients that will transport you to the streets of Naples.','Casa di Pizza', N'SF'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheSouvenirShop.png', 'Discover unique and one-of-a-kind treasures from around the world that will be the perfect memento of your travels','The Souvenir Shop', N'FC'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/Fashionista.png', 'Be a trendsetter and explore our chic and stylish collection of clothing and accessories that will make you stand out from the crowd','Fashionista', N'SF'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/BurgersN''Fries.png', 'Sink your teeth into our juicy burgers and crispy fries that will leave you craving more','Burgers N'' Fries', N'WK'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheIceCreamShoppe.png', 'Chill out with our creamy and dreamy ice cream flavors that will take you on a nostalgic journey down memory lane','The Ice Cream Shoppe', N'AR'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/LaCantina.png', 'Savor the authentic flavors of Mexico with our handcrafted dishes and refreshing cocktails that will transport you to a Mexican fiesta','La Cantina', N'FC'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheToyChest.png', 'Unlock your inner child with our playful and imaginative collection of toys and games that will spark your creativity','The Toy Chest', N'SF'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/ShoeEmporium.png', 'Step up your shoe game with our curated selection of trendy and comfortable footwear that will take you from day to night in style','Shoe Emporium', N'FC'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TacoStop.png', 'Get ready for a flavor explosion with our authentic and spicy Mexican cuisine that will have your taste buds dancing.','Taco Stop', N'SF'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/SundaeFunday.png', 'Make every day a sundae fun day with our delicious and colorful array of ice cream treats that will add a little sweetness to your life','Sundae Funday', N'WK'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/PastaPalace.png', 'Mangia! Satisfy your pasta cravings with our flavorful and comforting pasta dishes that will have you saying ''delizioso.','Pasta Palace', N'AR'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheBoutique.png', 'Elevate your style and indulge in our curated collection of unique and fashionable clothing and accessories that will make you feel confident and fabulous.','The Boutique', N'AR'),
+    ('Sto','https://afzvoa.blob.core.windows.net/img/voa_img/TheTradingPost.png', 'Uncover treasures from around the world at our eclectic and adventurous store that will ignite your sense of wanderlust and curiosity','The Trading Post', N'AR');
 
 
 

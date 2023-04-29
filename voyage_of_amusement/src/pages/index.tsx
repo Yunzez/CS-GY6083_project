@@ -14,7 +14,7 @@ export default function Home() {
   const router = useRouter();
   const { isLoggedIn, setLoggedIn, facility } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
-
+  console.log("facility", facility);
 
   const [currentImage, setCurrentImage] = useState(0);
   const imagePaths = [
@@ -150,7 +150,7 @@ export default function Home() {
 
         <div className={`flex flex-wrap justify-center mx-4 py-5 ${styles.awayFromFooter}`}>
           <div
-            className={`lg:w-1/3 bg-blue-100 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+            className={`lg:w-1/3 bg-blue-200 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
           >
             <h2 className="text-3xl font-bold mb-8">
               Discover Our Attractions
@@ -171,7 +171,7 @@ export default function Home() {
             </button>
           </div>
           <div
-            className={`lg:w-1/3 bg-red-100 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+            className={`lg:w-1/3 bg-red-200 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
           >
             <h2 className="text-3xl font-bold mb-8">Login</h2>
             <p className="text-lg font-medium text-center max-w-3xl mb-8">
@@ -188,7 +188,7 @@ export default function Home() {
             </button>
           </div>
           <div
-            className={`lg:w-1/3 bg-green-100 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+            className={`lg:w-1/3 bg-green-200 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
           >
             <h2 className="text-3xl font-bold mb-8">Holidays</h2>
             <p className="text-lg font-medium text-center max-w-3xl mb-8">
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
 
           <div
-            className={`lg:w-1/3 bg-yellow-100 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+            className={`lg:w-1/3 bg-yellow-00 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
           >
             <h2 className="text-3xl font-bold mb-8">Parking</h2>
             <p className="text-lg font-medium text-center max-w-3xl mb-8">
