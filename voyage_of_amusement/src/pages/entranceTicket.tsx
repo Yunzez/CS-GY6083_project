@@ -3,10 +3,37 @@ import { delay } from "@/util/generalUtil";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/contexts/GlobaclContext";
 import { summarizeUserInfo } from "@/util/userUtil";
+import styled from "styled-components";
 interface EntranceTicketProps {
   ticketPrice: number;
 }
+const Gobtn = styled.div`
+    margin-bottom: 35px;
+    margin-top: 35px;
+    font-size: 1.2rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    background-color: rgb(14, 14, 26);
+    color: rgb(234, 234, 234);
+    font-weight: 700;
+    transition: 0.6s;
+    box-shadow: 0px 0px 60px #1f4c65;
+    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
 
+  
+  &:active {
+    scale: 0.92;
+  }
+  
+  &:hover {
+    background: rgb(2,29,78);
+    background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%);
+    color: rgb(4, 4, 38);
+  }`
 export const EntranceTicket: React.FC<EntranceTicketProps> = ({
   ticketPrice,
 }) => {
@@ -48,9 +75,10 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
       num: ticketCount,
       visitorId: user.Visitor_ID,
       sourceType: "Tic",
+      visitDate: visitDate
     };
     console.log(data);
-    await fetch(`/api/makeTransaction'`, {
+    await fetch(`/api/makeTransaction?visitorId=${user.Visitor_ID}'`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,6 +88,8 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
       .then((res) => {
         if (res.ok) {
           return res.json();
+        } else {
+            res.json().then(data => console.log(data))
         }
       })
       .then((data) => {
@@ -224,14 +254,13 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
               the various facilities and experiences our amusement park has to
               offer!
             </h5>
-            <button
+            <Gobtn
               onClick={() => {
                 router.push("/attractions");
               }}
-              className="px-6 py-3 text-lg font-bold rounded-lg bg-purple-500 hover:bg-purple-600 text-white shadow-lg transition-colors duration-300"
-            >
+             >
               Go to explore
-            </button>
+            </Gobtn>
           </div>
         )}
       </div>

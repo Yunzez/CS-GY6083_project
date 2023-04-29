@@ -92,14 +92,15 @@ const UserSettings: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   let showTotalAmount;
-  
-if(userInfo.show.length > 0) {
+
+  if (userInfo.show.length > 0) {
     const showAmount = userInfo.show.map((activity) => activity.Amount_Due);
-    showTotalAmount  = showAmount.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-}
-// Using the reduce() method to combine all the 'Amount_Due' values
-
-
+    showTotalAmount = showAmount.reduce(
+      (accumulator, currentValue) => accumulator + currentValue,
+      0
+    );
+  }
+  // Using the reduce() method to combine all the 'Amount_Due' values
 
   return (
     <div className="flex" ref={cardRef}>
@@ -175,15 +176,44 @@ if(userInfo.show.length > 0) {
       <div className={styles.mainPanel}>
         <div id="payment-history" className="py-2 px-4 mt-6">
           <CardDiv>
-            <SettingCard
-              title={"Payment History"}
-              content={parkingTextContent}
-            />
+            <SettingCard title={"Tickets"} content={parkingTextContent} />
 
-            {userInfo?.payment.length === 0 ? (
+            {userInfo?.ticket.length === 0 ? (
               <p className="text-red-500">You have no information yet</p>
             ) : (
-              <p className="text-green-500">You have info</p>
+              <div className="text-slate-700">
+                <p className="font-bold text-2xl">Your recent record: </p>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                  {userInfo.ticket.map((item, index) => (
+                    <CardContainer key={index}>
+                      <CardContent>
+                        <CardInfoRow>
+                          <CardInfoItem>
+                             Date:{" "}
+                            {new Date(item.Activity_Date).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              }
+                            )}
+                          </CardInfoItem>
+                          <CardInfoItem>Discount: {item.Discount}</CardInfoItem>
+                        </CardInfoRow>
+                        <CardInfoRow>
+                          <CardInfoItem>
+                            Method Type: {item.Method_Type}
+                          </CardInfoItem>
+                          <CardInfoItem>
+                            Location Section ID: {item.Location_Section_ID}
+                          </CardInfoItem>
+                        </CardInfoRow>
+                      </CardContent>
+                    </CardContainer>
+                  ))}
+                </div>
+              </div>
             )}
           </CardDiv>
         </div>
@@ -210,13 +240,20 @@ if(userInfo.show.length > 0) {
                         </CardDescription>
                         <CardInfoRow>
                           <CardInfoItem>
-                            Activity Date: {item.Activity_Date}
+                             Date: {new Date(item.Activity_Date).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              }
+                            )}
                           </CardInfoItem>
-                          <CardInfoItem>Discount: {item.Discount}</CardInfoItem>
+                          <CardInfoItem>{item.Discount? 'Discounted': '' }</CardInfoItem>
                         </CardInfoRow>
                         <CardInfoRow>
                           <CardInfoItem>
-                            Method Type: {item.Method_Type}
+                            Method Type: {item.Method_Type == 2 ? 'Online': 'Onsite'}
                           </CardInfoItem>
                           <CardInfoItem>
                             Location Section ID: {item.Location_Section_ID}
@@ -238,7 +275,7 @@ if(userInfo.show.length > 0) {
             {userInfo.show.length === 0 ? (
               <p className="text-red-500">You have no information yet</p>
             ) : (
-                <div className="text-slate-700">
+              <div className="text-slate-700">
                 <p className="font-bold text-2xl">Your recent record: </p>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                   {userInfo.show.map((item, index) => (
@@ -250,7 +287,14 @@ if(userInfo.show.length > 0) {
                         </CardDescription>
                         <CardInfoRow>
                           <CardInfoItem>
-                            Activity Date: {item.Activity_Date}
+                            Date: {new Date(item.Activity_Date).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              }
+                            )}
                           </CardInfoItem>
                           <CardInfoItem>Discount: {item.Discount}</CardInfoItem>
                         </CardInfoRow>
@@ -266,8 +310,12 @@ if(userInfo.show.length > 0) {
                     </CardContainer>
                   ))}
                 </div>
-              <h2 className=" text-slate-900 mt-3 text-2xl">You better pay ${showTotalAmount} before we beat your ass off</h2>
-              <button className=" text-slate-900 mt-3 text-2xl border shadow p-3 rounded hover:bg-slate-900 hover:text-white transition">PAY</button>
+                <h2 className=" text-slate-900 mt-3 text-2xl">
+                  You better pay ${showTotalAmount} before we beat your ass off
+                </h2>
+                <button className=" text-slate-900 mt-3 text-2xl border shadow p-3 rounded hover:bg-slate-900 hover:text-white transition">
+                  PAY
+                </button>
               </div>
             )}
           </CardDiv>

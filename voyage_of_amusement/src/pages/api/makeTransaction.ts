@@ -21,16 +21,21 @@ export default async function handler(
 
   try {
     const { facilityId, num, visitorId, sourceType } = req.body;
-    if (!facilityId || !num || !visitorId || !sourceType) {
+    if(sourceType!=='Tic' && !facilityId) {
+        return res
+        .status(401)
+        .send({ error: "incorrect information, missing facilityId" });
+    }
+    if ( !num || !visitorId || !sourceType) {
       return res
         .status(401)
-        .send({ error: "incorrect information, missing facilityId or num" });
+        .send({ error: "incorrect information, missing visitorId, num, or sourceType" });
     }
     let amount = null;
     const today = new Date();
     const activityResult = await connection
       ?.request()
-      .input("facilityId", Number(facilityId))
+      .input("facilityId", facilityId)
       .input("visitorId", visitorId)
       .input("sourceType", sourceType)
       .input("date", today).query(`
@@ -58,7 +63,8 @@ export default async function handler(
 
     if (sourceType == "Tik") {
       console.log("insert entrance ticket");
-      let iteration = num;
+      const{Visit_Date} = req.body
+      let iteration = num;  
       while (iteration > 0) {
         iteration--;
         await connection
@@ -67,10 +73,10 @@ export default async function handler(
           .input("ticketTypeId", 2)
           .input("ticketMethod", 2)
           .input("purchaseDate", today)
-          .input("price", amount)
-          .input("date", new Date()).query(`
+          .input("price", 100)
+          .input("visitDate", Visit_Date).query(`
         INSERT INTO AFZ_Tickets (Method_Type_ID, Ticket_Type_ID, Purchase_Date, Visit_Date, Price, Activity_ID)
-        VALUES (@ticketMethod, @ticketTypeId, @purchaseDate, @purchaseDate, @price, @activityId)
+        VALUES (@ticketMethod, @ticketTypeId, @purchaseDate, @visitDate, @price, @activityId)
       `);
       }
     }

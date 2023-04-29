@@ -12,12 +12,14 @@ const groupedData = summary.reduce((acc, item) => {
   console.log(groupedData)
       const attraction = groupedData.Att ?? []
       const show = groupedData.Shw ?? []
-      const shop = groupedData.sto ?? []
+      const shop = groupedData.Sto ?? []
       const payment =  groupedData.payment ?? []
+      const ticket =  groupedData.Tic ?? []
     return {
     attraction: attraction,
       show: show,
       shop: shop,
-      payment: payment
+      payment: payment,
+      ticket: ticket
     }
   }

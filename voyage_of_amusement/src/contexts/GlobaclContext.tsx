@@ -43,6 +43,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     show: [],
     payment: [],
     shop: [],
+    ticket: [],
   });
   const [ready, setReady] = useState(false);
   const [facility, setFacility] = useState<FacilityType[]>(
@@ -62,13 +63,17 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   ]);
 
   useEffect(() => {
+    console.log(
+      sessionStorage.getItem("isLoggedIn"),
+      sessionStorage.getItem("isLoggedIn") === "true"
+    );
     fetch("/api/facility")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
         setFacility(data);
         setReady(true);
-  
+
         // Check login status after getting facility data
         if (
           sessionStorage.getItem("isLoggedIn") &&
@@ -76,13 +81,6 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         ) {
           setUser(JSON.parse(sessionStorage.getItem("user") ?? ""));
           setLoggedIn(true);
-          fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.summary) {
-                setUserInfo(summarizeUserInfo(data.summary));
-              }
-            });
         } else {
           sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
           sessionStorage.setItem("user", JSON.stringify(user));
@@ -92,7 +90,22 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         console.error("Error fetching facility data:", error);
       });
   }, []);
-  
+
+
+  useEffect(()=> {
+    if (isLoggedIn && user) {
+      fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.summary) {
+            setUserInfo(summarizeUserInfo(data.summary));
+          }
+        })
+        .catch((error) => {
+          console.error("Error fetching user info:", error);
+        });
+    }
+  }, [user])
 
   const contextValue: AppContextType = {
     isLoggedIn,
