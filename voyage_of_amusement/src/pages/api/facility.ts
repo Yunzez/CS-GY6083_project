@@ -35,7 +35,8 @@ export default async function handler(
             return { ...row, ...additionalData };
           } else if (row.attraction_type === "Sto") {
             // Fetch additional data for the 'show' category from the AFZ_Show table
-            const result = await pool.request().input("id", row.id).query(`
+            const result = await pool.request().input("id", row.Facility_ID)
+              .query(`
                             SELECT *
                             FROM AFZ_Shows
                             WHERE facility_id = @id
@@ -45,6 +46,22 @@ export default async function handler(
               ...row,
               ...additionalData,
             };
+          } else if (row.Source_Type === "Sto") {
+            console.log("store id", row);
+            const result = await pool.request().input("id", row.Facility_ID)
+              .query(`
+            select Unit_Price, Item_Name, Item_Des,Category, Open_Time, Close_Time from AFZ_Store "[AS]"
+            join AFZ_Item_Store AIS on "[AS]".Facility_ID = AIS.Facility_ID
+            join AFZ_Item AI on AIS.Item_ID = AI.Item_ID
+            join AFZ_Store_Category A on "[AS]".Category_ID = A.Category_ID
+            where "[AS]".Facility_ID = @id
+            `);
+            const additionalData = result.recordset;
+            console.log("store result", result, additionalData);
+            return {
+                ...row,
+                additionalData,
+              };
           } else {
             return {
               ...row,
@@ -53,15 +70,14 @@ export default async function handler(
         })
       );
       return res.status(200).send({ data: facilities });
-      
     } catch (err) {
-        console.log(err)
+      console.log(err);
       console.error(err);
       res.status(500).send("Internal server error");
     }
     pool.close();
   } catch (err) {
-    console.log(err)
+    console.log(err);
     console.error(err);
     res.status(500).send("Internal server error");
   }

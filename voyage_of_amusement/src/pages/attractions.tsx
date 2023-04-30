@@ -120,26 +120,24 @@ const Attractions = () => {
     if (numTickets == 0) {
       return;
     }
-   const data = {
-        facilityId: modalData.Facility_ID,
-        num: numTickets,
-        visitorId: user.Visitor_ID,
-        sourceType:  modalData.Source_Type
-    }
-    console.log(data)
-    await fetch(
-      `/api/makeTransaction?visitorId=${user.Visitor_ID}'`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    )
+    const data = {
+      facilityId: modalData.Facility_ID,
+      num: numTickets,
+      visitorId: user.Visitor_ID,
+      sourceType: modalData.Source_Type,
+    };
+    console.log(data);
+    await fetch(`/api/makeTransaction?visitorId=${user.Visitor_ID}'`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        setUserInfo(summarizeUserInfo(data.summary))
+        setUserInfo(summarizeUserInfo(data.summary));
         delay(2000);
         setCheckoutProcess(false);
       });
@@ -147,9 +145,7 @@ const Attractions = () => {
 
   return (
     <div className="flex flex-col items-center p-4 md:p-8">
-      <h1 className="text-3xl md:text-5xl font-bold mb-8">
-       Attractions
-      </h1>
+      <h1 className="text-3xl md:text-5xl font-bold mb-8">Attractions</h1>
       <div className="relative mb-5 w-full ml-5 mr-5 container">
         <input
           onInput={(e) => {
@@ -204,9 +200,7 @@ const Attractions = () => {
         </div>
       </div>
 
-      <div
-        className={` ${styles.cardContainer}`}
-      >
+      <div className={` ${styles.cardContainer}`}>
         {cardData &&
           cardData.map((data, key) => {
             return (
@@ -252,6 +246,57 @@ const Attractions = () => {
                     <h5 className="text-gray-600">
                       Duration: {modalData.Durations}
                     </h5>
+                  </div>
+                )}
+
+                {modalData.Source_Type == "Sto" && (
+                  <div>
+                    <h2 className="text-xl font-bold mb-4">
+                      {modalData.Facility_Name}
+                    </h2>
+                    <p className="text-gray-600 mb-4 font-semibold">
+                      {modalData.Facility_Description}
+                    </p>
+
+                    <h5 className="text-gray-600 my-2 font-semibold">
+                      {modalData.visible
+                        ? "Open to public"
+                        : "Closed for maintenance"}
+                    </h5>
+                    
+                    {(modalData.additionalData !==undefined && modalData.additionalData.length >0) ? 
+                    <div className="flex justify-between mt-2">
+                            <p className="text-sm text-gray-600">
+                              Open Time: {new Date(modalData.additionalData[0].Open_Time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              Close Time: {new Date(modalData.additionalData[0].Close_Time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                            </p>
+                          </div> : 
+                          <p>Under maintenance</p>
+                          }
+                    <hr className="my-2" />
+                    <div>
+                      {modalData.additionalData.length>0 && modalData.additionalData.map((item, index) => (
+                        <div
+                          key={index}
+                          className="bg-white rounded-lg p-4 mb-4"
+                        >
+                          <h3 className="text-xl font-bold mb-2">
+                            {item.Item_Name}
+                          </h3>
+                          <p className="text-gray-700">{item.Item_Des}</p>
+                          <div className="flex justify-between mt-2">
+                            <p className="text-sm text-gray-600">
+                              Category: {item.Category}
+                            </p>
+                            <p className="text-sm text-gray-600">
+                              Price: ${item.Unit_Price.toFixed(2)}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
 
@@ -350,37 +395,35 @@ const Attractions = () => {
             ) : (
               <div className=" p-4 rounded-lg">
                 <h5 className="text-xl font-semibold mb-3 text-center">
-                  Thank you for your purchase! 
+                  Thank you for your purchase!
                 </h5>
                 <h5 className="text-xl font-semibold mb-5 pb-4 text-center">
-                You can view your tickets in your
-                  user page
+                  You can view your tickets in your user page
                 </h5>
-                
+
                 <div className="flex justify-end">
-                <button
-                  className="px-6 py-3 me-4 bg-slate-500 text-white rounded-full hover:bg-slate-600 transition-colors duration-300"
-                  onClick={() => {
-                    setIsModalOpen(false);
-                    setHasCheckout(false);
-                    setCheckoutProcess(false);
-                  }}
-                >
-                  Sick
-                </button>
-                <button
-                  className="px-6 py-3 bg-slate-500 text-white rounded-full hover:bg-slate-600 transition-colors duration-300"
-                  onClick={() => {
-                    setIsModalOpen(false);
-                    setHasCheckout(false);
-                    setCheckoutProcess(false);
-                    router.push('/user')
-                  }}
-                >
-                  Check it out
-                </button>
+                  <button
+                    className="px-6 py-3 me-4 bg-slate-500 text-white rounded-full hover:bg-slate-600 transition-colors duration-300"
+                    onClick={() => {
+                      setIsModalOpen(false);
+                      setHasCheckout(false);
+                      setCheckoutProcess(false);
+                    }}
+                  >
+                    Sick
+                  </button>
+                  <button
+                    className="px-6 py-3 bg-slate-500 text-white rounded-full hover:bg-slate-600 transition-colors duration-300"
+                    onClick={() => {
+                      setIsModalOpen(false);
+                      setHasCheckout(false);
+                      setCheckoutProcess(false);
+                      router.push("/user");
+                    }}
+                  >
+                    Check it out
+                  </button>
                 </div>
-                
               </div>
             ))}
         </Modal>
