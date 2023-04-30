@@ -7,6 +7,7 @@ import FacilityCard from "@/component/AttractionCard";
 import styles from "@/styles/attraction.module.css";
 import Modal from "@/component/Modal";
 import { Transition } from "@headlessui/react";
+import styled from "styled-components";
 import { summarizeUserInfo } from "@/util/userUtil";
 interface Attraction {
   name: string;
@@ -30,60 +31,101 @@ const Attractions = () => {
   const [modalData, setModalData] = useState({});
   const [numTickets, setNumTickets] = useState(0);
 
-  const [selected, setSelected] = useState("");
+  const [selected, setSelected] = useState("Attractions");
+  const [targetFacility, setTargetFacility] = useState([]);
 
-  const attractions = [
-    "Roller Coaster",
-    "Water Ride",
-    "Dark Rides",
-    "Kid Ride",
-  ];
-  const stores = ["Clothing", "Toys", "Food", "Souvenirs"];
-  const shows = ["Musical", "Comedy", "Magic", "Acrobatics"];
+  const FilterDiv = styled.div`
+    padding: 25px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    width: 96vw;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    background-color: #f8fbfe;
+    border-radius: 8px;
+    z-index: 1;
+
+    .tools {
+      display: flex;
+      align-items: center;
+      padding: 9px;
+    }
+
+    .circle {
+      padding: 0 4px;
+    }
+
+    .box {
+      display: inline-block;
+      align-items: center;
+      width: 10px;
+      height: 10px;
+      padding: 1px;
+      border-radius: 50%;
+    }
+
+    .red {
+      background-color: #ff605c;
+    }
+
+    .yellow {
+      background-color: #ffbd44;
+    }
+
+    .green {
+      background-color: #00ca4e;
+    }
+  `;
+
+  const SqureSep = styled.hr`
+ 
+    background: rgb(71 85 105);
+    width: 30vw;
+    margin-bottom:30px;
+    
+  }`;
   const handleFilterClick = (type: string) => {
     setSelected(type);
-  };
-
-  const renderSubtypes = () => {
-    switch (selected) {
+    console.log(facility.data);
+    let abbreviation: string;
+    switch (type) {
       case "Attractions":
-        return attractions.map((subtype) => (
-          <div
-            key={subtype}
-            className="cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 hover:bg-violet-500 hover:text-white transition-colors duration-300"
-          >
-            {subtype}
-          </div>
-        ));
-      case "Stores":
-        return stores.map((subtype) => (
-          <div
-            key={subtype}
-            className="cursor-pointer border-2 border-amber-500 px-4 py-2 rounded-full text-gray-500 hover:bg-amber-500 hover:text-white transition-colors duration-300"
-          >
-            {subtype}
-          </div>
-        ));
+        abbreviation = "Att";
+        break;
       case "Shows":
-        return shows.map((subtype) => (
-          <div
-            key={subtype}
-            className="border-2 border-lime-500 px-4 py-2 rounded-full text-gray-500 hover:bg-lime-500 hover:text-white transition-colors duration-300"
-          >
-            {subtype}
-          </div>
-        ));
+        abbreviation = "Shw";
+        break;
+      case "Stores":
+        abbreviation = "Sto";
+        break;
       default:
-        return null;
+        abbreviation = "";
+        break;
     }
+
+    const newTargetFacility = facility.data.filter((item) => {
+      if (item.Source_Type == abbreviation) return item;
+    });
+    setTargetFacility(newTargetFacility);
+    console.log(newTargetFacility);
   };
 
   useEffect(() => {
     if (ready) {
-      setCardData(facility.data.map((item) => ({ ...item, visible: true })));
+      setTargetFacility(
+        facility.data.filter((item) => {
+          if (item.Source_Type == "Att") return item;
+        })
+      );
+      setCardData(targetFacility.map((item) => ({ ...item, visible: true })));
       console.log(cardData);
     }
   }, [ready, facility]);
+
+  useEffect(() => {
+    setCardData(targetFacility.map((item) => ({ ...item, visible: true })));
+  }, [targetFacility]);
 
   useEffect(() => {
     if (searchTerm.length > 0) {
@@ -145,59 +187,89 @@ const Attractions = () => {
 
   return (
     <div className="flex flex-col items-center p-4 md:p-8">
-      <h1 className="text-3xl md:text-5xl font-bold mb-8">Attractions</h1>
-      <div className="relative mb-5 w-full ml-5 mr-5 container">
-        <input
-          onInput={(e) => {
-            setSearchTerm(e.currentTarget.value);
-          }}
-          type="text"
-          id="floating_filled"
-          className=" block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
-          placeholder=" "
-        />
-        <label
-          htmlFor="floating_filled"
-          className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
-        >
-          Search...
-        </label>
-      </div>
       <div className="flex flex-col items-center space-y-4">
-        <div className="flex justify-center space-x-4 w-full">
-          {selected === "Attractions" ? (
-            renderSubtypes()
-          ) : (
-            <div
-              className={`d-flex cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 hover:bg-violet-500 transition-colors duration-300 `}
-              onClick={() => handleFilterClick("Attractions")}
-            >
-              Attractions
+        <FilterDiv>
+          <div className="tools">
+            <div className="circle">
+              <span className="red box"></span>
             </div>
-          )}
+            <div className="circle">
+              <span className="yellow box"></span>
+            </div>
+            <div className="circle">
+              <span className="green box"></span>
+            </div>
+          </div>
+          <div className="card__content">
+            <div className="container flex text-center relative mb-5 pt-5  mt-5 container mx-auto justify-center w-screen ">
+              <div className="flex flex-col">
+                <h1 className="  text-3xl md:text-5xl font-bold mb-4 ms-8 text-indigo-900">
+                  {" "}
+                  Browse Our Attractions
+                </h1>
 
-          {selected === "Stores" ? (
-            renderSubtypes()
-          ) : (
-            <div
-              className={`d-flex cursor-pointer border-2 border-amber-500 px-4 py-2 rounded-full text-gray-500 hover:bg-amber-500 transition-colors duration-300 `}
-              onClick={() => handleFilterClick("Stores")}
-            >
-              Stores
+                <h6 className=" ext-3xl md:text-xl font-semibold mb-8 ms-8 text-indigo-800">
+                  {" "}
+                  Selected Filter to View Different Attractions
+                </h6>
+              </div>
             </div>
-          )}
 
-          {selected === "Shows" ? (
-            renderSubtypes()
-          ) : (
-            <div
-              className={`d-flex cursor-pointer border-2 border-lime-500 px-4 py-2 rounded-full text-gray-500 hover:bg-lime-500 transition-colors duration-300 `}
-              onClick={() => handleFilterClick("Shows")}
-            >
-              Shows
+            <div className="flex justify-center w-full relative mb-20 pt-5  mt-5 container mx-auto">
+              <input
+                onInput={(e) => {
+                  setSearchTerm(e.currentTarget.value);
+                }}
+                type="text"
+                id="floating_filled"
+                className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                placeholder=" "
+              />
+              <label
+                htmlFor="floating_filled"
+                className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+              >
+                Search...
+              </label>
             </div>
-          )}
-        </div>
+
+
+            <div className="flex justify-center space-x-4 w-full">
+              <div
+                className={`cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 ${
+                  selected === "Attractions"
+                    ? "bg-violet-500 text-white"
+                    : "hover:bg-violet-500 hover:text-white"
+                } transition-colors duration-300`}
+                onClick={() => handleFilterClick("Attractions")}
+              >
+                Attractions
+              </div>
+
+              <div
+                className={`cursor-pointer border-2 border-amber-500 px-4 py-2 rounded-full text-gray-500 ${
+                  selected === "Stores"
+                    ? "bg-amber-500 text-white"
+                    : "hover:bg-amber-500 hover:text-white"
+                } transition-colors duration-300`}
+                onClick={() => handleFilterClick("Stores")}
+              >
+                Stores
+              </div>
+
+              <div
+                className={`cursor-pointer border-2 border-lime-500 px-4 py-2 rounded-full text-gray-500 ${
+                  selected === "Shows"
+                    ? "bg-lime-500 text-white"
+                    : "hover:bg-lime-500 hover:text-white"
+                } transition-colors duration-300`}
+                onClick={() => handleFilterClick("Shows")}
+              >
+                Shows
+              </div>
+            </div>
+          </div>
+        </FilterDiv>
       </div>
 
       <div className={` ${styles.cardContainer}`}>
@@ -263,80 +335,103 @@ const Attractions = () => {
                         ? "Open to public"
                         : "Closed for maintenance"}
                     </h5>
-                    
-                    {(modalData.additionalData !==undefined && modalData.additionalData.length >0) ? 
-                    <div className="flex justify-between mt-2">
-                            <p className="text-sm text-gray-600">
-                              Open Time: {new Date(modalData.additionalData[0].Open_Time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                            </p>
-                            <p className="text-sm text-gray-600">
-                              Close Time: {new Date(modalData.additionalData[0].Close_Time).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                            </p>
-                          </div> : 
-                          <p>Under maintenance</p>
-                          }
+
+                    {modalData.additionalData !== undefined &&
+                    modalData.additionalData.length > 0 ? (
+                      <div className="flex justify-between mt-2 font-semibold">
+                        <p className="text-lg text-gray-600">
+                          Open Time:{" "}
+                          {new Date(
+                            modalData.additionalData[0].Open_Time
+                          ).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </p>
+                        <p className="text-lg text-gray-600">
+                          Close Time:{" "}
+                          {new Date(
+                            modalData.additionalData[0].Close_Time
+                          ).toLocaleTimeString([], {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                          })}
+                        </p>
+                      </div>
+                    ) : (
+                      <p>Under maintenance</p>
+                    )}
                     <hr className="my-2" />
                     <div>
-                      {modalData.additionalData.length>0 && modalData.additionalData.map((item, index) => (
-                        <div
-                          key={index}
-                          className="bg-white rounded-lg p-4 mb-4"
-                        >
-                          <h3 className="text-xl font-bold mb-2">
-                            {item.Item_Name}
-                          </h3>
-                          <p className="text-gray-700">{item.Item_Des}</p>
-                          <div className="flex justify-between mt-2">
-                            <p className="text-sm text-gray-600">
-                              Category: {item.Category}
+                      {modalData.additionalData.length > 0 &&
+                        modalData.additionalData.map((item, index) => (
+                          <div
+                            key={index}
+                            className="bg-white rounded-lg p-4 mb-4"
+                          >
+                            <h3 className="text-xl font-bold mb-2">
+                              {item.Item_Name}
+                            </h3>
+                            <p className="text-gray-700  font-semibold">
+                              {item.Item_Des}
                             </p>
-                            <p className="text-sm text-gray-600">
-                              Price: ${item.Unit_Price.toFixed(2)}
-                            </p>
+                            <div className="flex justify-between mt-2">
+                              <p className="text-lg text-gray-600  font-semibold">
+                                Price: ${item.Unit_Price.toFixed(2)}
+                              </p>
+                            </div>
+                            <hr />
                           </div>
-                        </div>
-                      ))}
+                        ))}
                     </div>
                   </div>
                 )}
-
-                <div className="text-gray-600 mr-2 flex mt-5 justify-center">
-                  Number of tickets:
-                </div>
-                <div className="flex items-center justify-center my-4">
-                  <div className="flex items-center border rounded-lg overflow-hidden">
-                    <button
-                      type="button"
-                      className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
-                      onClick={() =>
-                        setNumTickets(numTickets > 0 ? numTickets - 1 : 1)
-                      }
-                    >
-                      -
-                    </button>
-                    <div className="bg-gray-200 px-3 py-2 text-gray-600 font-bold">
-                      {numTickets}
+                {modalData.Source_Type !== "Sto" ? (
+                  <>
+                    <div className="text-gray-600 mr-2 flex mt-5 justify-center">
+                      Number of tickets:
                     </div>
-                    <button
-                      type="button"
-                      className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
-                      onClick={() => setNumTickets(numTickets + 1)}
-                    >
-                      +
-                    </button>
-                  </div>
-                </div>
-                <div className="flex justify-end">
-                  <button
-                    type="button"
-                    className="bg-gray-300 text-gray-600 px-3 py-2 ml-auto rounded-lg transition-colors duration-300 hover:bg-gray-400 hover:text-white"
-                    onClick={() => {
-                      handleCheckout(modalData);
-                    }}
-                  >
-                    Checkout
-                  </button>
-                </div>
+                    <div className="flex items-center justify-center my-4">
+                      <div className="flex items-center border rounded-lg overflow-hidden">
+                        <button
+                          type="button"
+                          className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
+                          onClick={() =>
+                            setNumTickets(numTickets > 0 ? numTickets - 1 : 1)
+                          }
+                        >
+                          -
+                        </button>
+                        <div className="bg-gray-200 px-3 py-2 text-gray-600 font-bold">
+                          {numTickets}
+                        </div>
+                        <button
+                          type="button"
+                          className="bg-gray-300 text-gray-600 px-3 py-2 hover:bg-gray-400 hover:text-white"
+                          onClick={() => setNumTickets(numTickets + 1)}
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+                    <div className="flex justify-end">
+                      <button
+                        type="button"
+                        className="bg-gray-300 text-gray-600 px-3 py-2 ml-auto rounded-lg transition-colors duration-300 hover:bg-gray-400 hover:text-white"
+                        onClick={() => {
+                          handleCheckout(modalData);
+                        }}
+                      >
+                        Checkout
+                      </button>
+                    </div>
+                  </>
+                ) : (
+                  <h5 className="text-xl mt-2">
+                    Please visit the store in our amusement park and make
+                    purchase{" "}
+                  </h5>
+                )}
               </div>
             ) : (
               <div className="flex flex-col items-center justify-center h-96">
