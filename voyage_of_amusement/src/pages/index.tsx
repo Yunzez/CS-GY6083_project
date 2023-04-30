@@ -7,7 +7,7 @@ import { useAppContext } from "@/contexts/GlobaclContext";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Modal from "@/component/Modal";
-import styled, { keyframes } from 'styled-components';
+import styled, { keyframes } from "styled-components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -66,20 +66,164 @@ export default function Home() {
     setCurrentImage((currentImage + 1) % imagePaths.length);
   };
 
+  const Card = styled.div`
+    background: rgb(236, 236, 236);
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: all 0.3s ease;
+    padding: 10px;
+    &:hover {
+      padding: 30px;
+      border-radius: 100px;
+    }
+  `;
 
+  const ActionBtn = styled.button`
+    position: relative;
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    outline-offset: 4px;
+    transition: filter 250ms;
+    user-select: none;
+    touch-action: manipulation;
 
-const Card = styled.div`
-  background: rgb(236, 236, 236);
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-    rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-  transition: all 0.3s ease;
-  padding: 10px;
+    .shadow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: hsl(0deg 0% 0% / 0.25);
+      will-change: transform;
+      transform: translateY(2px);
+      transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+    }
+
+    .edge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(
+        to left,
+        hsl(340deg 100% 16%) 0%,
+        hsl(340deg 100% 32%) 8%,
+        hsl(340deg 100% 32%) 92%,
+        hsl(340deg 100% 16%) 100%
+      );
+    }
+
+    .front {
+      display: block;
+      position: relative;
+      padding: 12px 27px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      color: white;
+      background: hsl(345deg 100% 47%);
+      will-change: transform;
+      transform: translateY(-4px);
+      transition: transform 600ms cubic-bezier(0.3, 0.7, 0.4, 1);
+    }
+
+    &:hover {
+      filter: brightness(110%);
+    }
+
+    &:hover .front {
+      transform: translateY(-6px);
+      transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+    }
+
+    &:active .front {
+      transform: translateY(-2px);
+      transition: transform 34ms;
+    }
+
+    &:hover .shadow {
+      transform: translateY(4px);
+      transition: transform 250ms cubic-bezier(0.3, 0.7, 0.4, 1.5);
+    }
+
+    &:active .shadow {
+      transform: translateY(1px);
+      transition: transform 34ms;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+  `;
+
+  type IntroCardProps = {
+    circle1Top: number;
+    circle1Left: number;
+    circle2Bottom: number;
+    circle2Right: number;
+    circle1Color: string;
+    circle2Color: string;
+  };
+
+  
+  const IntroCard = styled.div<IntroCardProps>`
+  transition: all 0.2s;
+  position: relative;
+  cursor: pointer;
+  margin: 20px;
+
+  .card-inner {
+    width: inherit;
+    height: inherit;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+  }
+
   &:hover {
-    padding: 30px;
-    border-radius: 100px;
+    transform: scale(1.04) rotate(1deg);
+  }
+
+  .circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    animation: move-up6 2s ease-in infinite alternate-reverse;
+  }
+
+  .circle:nth-child(1) {
+    top: ${({ circle1Top }) => circle1Top}px;
+    left: ${({ circle1Left }) => circle1Left}px;
+    background: ${({ circle1Color }) => circle1Color};
+  }
+
+  .circle:nth-child(2) {
+    bottom: ${({ circle2Bottom }) => circle2Bottom}px;
+    right: ${({ circle2Right }) => circle2Right}px;
+    background: ${({ circle2Color }) => circle2Color};
+    animation-name: move-down1;
+  }
+
+  @keyframes move-up6 {
+    to {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes move-down1 {
+    to {
+      transform: translateY(10px);
+    }
   }
 `;
+
 
   return (
     <>
@@ -164,8 +308,11 @@ const Card = styled.div`
           </div>
         </div>
         <div className="flex justify-center">
-          <Card >
-            <div className="flex justify-center" onClick={() => router.push('/entranceTicket')}>
+          <Card>
+            <div
+              className="flex justify-center"
+              onClick={() => router.push("/entranceTicket")}
+            >
               <button className="flex flex-col relative bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-6 px-12 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
                 <div className=" ml-auto me-auto flex-grow bg-white p-4 rounded-lg shadow mr-2 animate-bounce">
                   🎢
@@ -182,80 +329,134 @@ const Card = styled.div`
         <div
           className={`flex flex-wrap justify-center mx-4 py-5 ${styles.awayFromFooter}`}
         >
-          <div
-            className={`lg:w-1/3 bg-blue-200 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+          <IntroCard
+            circle1Top={-25}
+            circle1Left={525}
+            circle2Bottom={25}
+            circle2Right={25}
+            circle1Color="rgb(63 98 18)"
+            circle2Color="rgb(77 124 15)"
           >
-            <h2 className="text-3xl font-bold mb-8">
-              Discover Our Attractions
-            </h2>
-            <p className="text-lg font-medium text-center max-w-3xl mb-8">
-              We offer a variety of attractions that will suit every interest
-              and age. From thrilling roller coasters to delicious dining
-              options, there's something for everyone. Explore our attractions
-              below to plan your visit!
-            </p>
-            <button
-              className="px-8 py-4 bg-gradient-to-r from-blue-500 via-violet-400 to-red-300 text-white rounded-full hover:bg-blue-500 transition-colors duration-300 hover:opacity-90 transition-all duration-300"
-              onClick={() => {
-                router.push(`/attractions`);
-              }}
-            >
-              View All Attractions
-            </button>
-          </div>
-          <div
-            className={`lg:w-1/3 bg-red-200 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="card-inner">
+              <div className=" px-4 py-8 flex flex-col items-center mx-3 my-8">
+                <h2 className="text-3xl font-bold mb-8">
+                  Discover Our Attractions
+                </h2>
+                <p className="text-lg font-medium text-center max-w-3xl mb-8">
+                  We offer a variety of attractions that will suit every
+                  interest and age. From thrilling roller coasters to delicious
+                  dining options, there's something for everyone. Explore our
+                  attractions below to plan your visit!
+                </p>
+
+                <ActionBtn
+                  onClick={() => {
+                    router.push(`/attractions`);
+                  }}
+                >
+                  <span className="shadow"></span>
+                  <span className="edge"></span>
+                  <span className="front text"> View All Attractions</span>
+                </ActionBtn>
+              </div>
+            </div>
+          </IntroCard>
+
+          <IntroCard
+            circle1Top={-20}
+            circle1Left={120}
+            circle2Bottom={40}
+            circle2Right={425}
+            circle1Color="rgb(148 163 184)"
+            circle2Color="rgb(55 65 81)"
           >
-            <h2 className="text-3xl font-bold mb-8">Login</h2>
-            <p className="text-lg font-medium text-center max-w-3xl mb-8">
-              Sign in to your account and enjoy exclusive benefits, such as
-              early access to new attractions, special discounts, and more.
-            </p>
-            <button
-              className="px-8 py-4 bg-gradient-to-r from-red-400 via-green-400 to-blue-400 text-white rounded-full hover:bg-red-500 transition-colors duration-300 hover:opacity-90 transition-all duration-300"
-              onClick={() => {
-                router.push(`/signin`);
-              }}
-            >
-              Login Now
-            </button>
-          </div>
-          <div
-            className={`lg:w-1/3 bg-green-200 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="card-inner">
+              <div className=" px-4 py-8 flex flex-col items-center mx-3 my-8">
+                <h2 className="text-3xl font-bold mb-8">Login</h2>
+                <p className="text-lg font-medium text-center max-w-3xl mb-8">
+                  Sign in to your account and enjoy exclusive benefits, such as
+                  early access to new attractions, special discounts, and more.
+                </p>
+
+                <ActionBtn
+                  onClick={() => {
+                    router.push(`/signin`);
+                  }}
+                >
+                  <span className="shadow"></span>
+                  <span className="edge"></span>
+                  <span className="front text"> Login Now</span>
+                </ActionBtn>
+              </div>
+            </div>
+          </IntroCard>
+
+          <IntroCard
+            circle1Top={-25}
+            circle1Left={-25}
+            circle2Bottom={-25}
+            circle2Right={-25}
+            circle1Color=" rgb(248 113 113)"
+            circle2Color="rgb(239 68 68)"
           >
-            <h2 className="text-3xl font-bold mb-8">Holidays</h2>
-            <p className="text-lg font-medium text-center max-w-3xl mb-8">
-              Spend your holidays with us and create unforgettable memories with
-              your family and friends. We offer a variety of holiday packages
-              that include accommodations, attractions, and dining options.
-            </p>
-            <button
-              className="px-8 py-4 bg-gradient-to-r from-green-600 via-blue-500 to-violet-300 text-white rounded-full hover:bg-red-500 transition-colors duration-300"
-              onClick={() => {
-                router.push(`/holidays`);
-              }}
-            >
-              Learn More
-            </button>
-          </div>
-          <div
-            className={`lg:w-1/3 bg-yellow-00 px-4 py-8 flex flex-col items-center mx-3 my-8 ${styles.card}`}
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="card-inner">
+              <div className=" px-4 py-8 flex flex-col items-center mx-3 my-8">
+                <h2 className="text-3xl font-bold mb-8">Holidays</h2>
+                <p className="text-lg font-medium text-center max-w-3xl mb-8">
+                  Spend your holidays with us and create unforgettable memories
+                  with your family and friends. We offer a variety of holiday
+                  packages that include accommodations, attractions, and dining
+                  options.
+                </p>
+                <ActionBtn
+                  onClick={() => {
+                    router.push(`/holidays`);
+                  }}
+                >
+                  <span className="shadow"></span>
+                  <span className="edge"></span>
+                  <span className="front text"> Learn More</span>
+                </ActionBtn>
+              </div>
+            </div>
+          </IntroCard>
+
+          <IntroCard
+            circle1Top={-30}
+            circle1Left={485}
+            circle2Bottom={-25}
+            circle2Right={50}
+            circle1Color="rgb(251 191 36)"
+            circle2Color="rgb(245 158 11)"
           >
-            <h2 className="text-3xl font-bold mb-8">Parking</h2>
-            <p className="text-lg font-medium text-center max-w-3xl mb-8">
-              Park your car with ease and convenience at our parking lot. We
-              offer a variety of parking options, including covered and
-              uncovered parking, as well as valet parking.
-            </p>
-            <button
-              className="px-8 py-4 bg-gradient-to-r from-yellow-600 via-red-400 to-blue-300 text-white rounded-full hover:bg-yellow-500 hover:opacity-90 transition-all duration-300"
-              onClick={() => {
-                router.push(`/parking`);
-              }}
-            >
-              Reserve Now
-            </button>
-          </div>
+            <div className="circle"></div>
+            <div className="circle"></div>
+            <div className="card-inner">
+              <div className=" px-4 py-8 flex flex-col items-center mx-3 my-8">
+                <h2 className="text-3xl font-bold mb-8">Parking</h2>
+                <p className="text-lg font-medium text-center max-w-3xl mb-8">
+                  Park your car with ease and convenience at our parking lot. We
+                  offer a variety of parking options, including covered and
+                  uncovered parking, as well as valet parking.
+                </p>
+                <ActionBtn
+                  onClick={() => {
+                    router.push(`/parking`);
+                  }}
+                >
+                  <span className="shadow"></span>
+                  <span className="edge"></span>
+                  <span className="front text">Reserve Now</span>
+                </ActionBtn>
+              </div>
+            </div>
+          </IntroCard>
         </div>
       </div>
     </>

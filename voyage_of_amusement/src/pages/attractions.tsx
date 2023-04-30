@@ -205,7 +205,7 @@ const Attractions = () => {
       </div>
 
       <div
-        className={`container mx-auto grid gap-4 md:grid-cols-2 lg:grid-cols-3 pb-5 ${styles.cardContainer}`}
+        className={` ${styles.cardContainer}`}
       >
         {cardData &&
           cardData.map((data, key) => {

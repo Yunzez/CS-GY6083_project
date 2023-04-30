@@ -17,6 +17,7 @@
 }
 
 .card {
+  max-width: 600px;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   border-radius: 8px;
   cursor: pointer;
@@ -31,6 +32,9 @@
 }
 
 .cardContainer {
+  display:flex; 
+  justify-content: space-around;
+  flex-wrap: wrap;
   transition: all 0.3s ease-in-out;
   margin-bottom: 30px;
 }

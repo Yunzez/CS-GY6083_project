@@ -89,7 +89,6 @@ const SigninPage = () => {
         if(data !== undefined) {
           setUserInfo( summarizeUserInfo(data.summary))
           setUser(data.user);
-          sessionStorage.setItem('user', JSON.stringify(data.user) )
           setLoggedIn(true);
           setShowProcess(false);
           setShowDone(true);

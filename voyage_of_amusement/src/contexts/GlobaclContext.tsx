@@ -80,6 +80,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
+
     if (
       sessionStorage.getItem("isLoggedIn") &&
       sessionStorage.getItem("isLoggedIn") === "true"
@@ -90,12 +91,31 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
       sessionStorage.setItem("user", JSON.stringify(user));
     }
-    const currUser = JSON.parse(sessionStorage.getItem("user") ?? '')
-    const currLoginStatus = Boolean(sessionStorage.getItem("isLoggedIn"));
-    console.log("check user", currUser, currLoginStatus);
-    if (currLoginStatus && currUser) {
-      console.log("fetch user", currUser);
-      fetch(`/api/getUserInfo?userId=${currUser.Visitor_ID}`)
+    // const currUser = JSON.parse(sessionStorage.getItem("user"))
+    // const currLoginStatus = Boolean(sessionStorage.getItem("isLoggedIn"));
+    // console.log("check user", currUser, currLoginStatus);
+    // if (currLoginStatus && currUser) {
+    //   console.log("fetch user", currUser);
+    //   fetch(`/api/getUserInfo?userId=${currUser.Visitor_ID}`)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //       if (data.summary) {
+    //         setUserInfo(summarizeUserInfo(data.summary));
+    //       }
+    //     })
+    //     .catch((error) => {
+    //       console.error("Error fetching user info:", error);
+    //     });
+    // }
+  }, []);
+
+  useEffect(()=> {
+    console.log('run')
+    sessionStorage.setItem('user', JSON.stringify(user))
+    sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
+    if (isLoggedIn && user) {
+      console.log("fetch user", user);
+      fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
         .then((res) => res.json())
         .then((data) => {
           if (data.summary) {
@@ -106,7 +126,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
           console.error("Error fetching user info:", error);
         });
     }
-  }, []);
+  },[user, isLoggedIn])
 
   const contextValue: AppContextType = {
     isLoggedIn,

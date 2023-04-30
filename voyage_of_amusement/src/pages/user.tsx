@@ -67,14 +67,27 @@ const CardInfoItem = styled.p`
     margin-right: 16px;
   }
 `;
+
+const Ticket = styled.div`
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  padding: 3em 2.8em 2.1em;
+  border: 2px dashed black;
+  border-radius: 15px;
+  background-color: rgb(203, 213, 225);
+  box-shadow: 0 0 0 4px rgb(203, 213, 225), 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
+  transition: 0.4s ease-in-out;
+  position: relative;
+`;
+
 const UserSettings: React.FC = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, setLoggedIn, user, setUser, userInfo } = useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
-  const mainContentRef = useRef(null);
-  const cardRef = useRef(null);
+  const cardRef = useRef(null); 
   useEffect(() => {
     console.log(user, userInfo);
     function handleScroll() {
@@ -107,17 +120,15 @@ const UserSettings: React.FC = () => {
       {/* Sidebar */}
       <div className={styles.sidePanel}>
         <div className="bg-white rounded-lg p-6">
-          <h2 className="text-xl font-bold mb-4">
-            Welcome {user.Fname} {user.Lname}
+          <h2 className="text-xl font-bold mb-4 text-center">
+            {user.Fname} {user.Lname}
           </h2>
-          <div className="mb-4 flex ">
-            <h5 className="font-bold mb-2 me-2">Email:</h5>
-            <p>{user.Email}</p>
-          </div>
-          <div className="mb-4 flex">
-            <h5 className="font-bold mb-2 me-2">User Type:</h5>
-            <p>{user.Visitor_Type}</p>
-          </div>
+
+          <h5 className="font-bold mb-2 me-2 text-center">{user.Email}</h5>
+
+          <p className="font-bold mb-2 me-2 text-center">
+            {user.Visitor_Type} Visitor
+          </p>
 
           <div
             className={`cursor-pointer p-3 m-3 bg-gray-100 border border-slate-300 rounded-lg hover:text-white hover:font-bold hover:border-slate-600 hover:bg-slate-600 text-center transition duration-300 ease-in-out ${
@@ -182,14 +193,21 @@ const UserSettings: React.FC = () => {
               <p className="text-red-500">You have no information yet</p>
             ) : (
               <div className="text-slate-700">
-                <p className="font-bold text-2xl">Your recent record: </p>
-                <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                <p className="font-bold  text-2xl m-4  ">
+                  {" "}
+                  Your ticket history:
+                </p>
+                <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3">
                   {userInfo.ticket.map((item, index) => (
-                    <CardContainer key={index}>
-                      <CardContent>
-                        <CardInfoRow>
-                          <CardInfoItem>
-                             Date:{" "}
+                    <Ticket key={index}>
+                      <div className="innerCard">
+                        <CardTitle>Voyage of Amusement</CardTitle>
+                        <small className="text-muted text-md-xl">
+                          Admission Ticket
+                        </small>
+                        <div className="flex text-md-xl">
+                          <div className="me-3">
+                            Purchased on:{" "}
                             {new Date(item.Activity_Date).toLocaleDateString(
                               "en-US",
                               {
@@ -198,19 +216,29 @@ const UserSettings: React.FC = () => {
                                 year: "numeric",
                               }
                             )}
-                          </CardInfoItem>
-                          <CardInfoItem>Discount: {item.Discount}</CardInfoItem>
-                        </CardInfoRow>
-                        <CardInfoRow>
+                          </div>
+                          <div>{item.Discount ? "Discounted" : ""}</div>
+                        </div>
+                        <div className="text-md-xl">
                           <CardInfoItem>
-                            Method Type: {item.Method_Type}
+                            Purchased {item.Method_Type ?? "Online"}
                           </CardInfoItem>
-                          <CardInfoItem>
-                            Location Section ID: {item.Location_Section_ID}
-                          </CardInfoItem>
-                        </CardInfoRow>
-                      </CardContent>
-                    </CardContainer>
+                        </div>
+                      </div>
+                      <div className="text-gray-800 text-xl">
+                        <p>Entrance:</p>
+                        {item.Visit_Date
+                          ? new Date(item.Visit_Date).toLocaleDateString(
+                              "en-US",
+                              {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              }
+                            )
+                          : "dd/mm/yyyy"}
+                      </div>
+                    </Ticket>
                   ))}
                 </div>
               </div>
@@ -229,7 +257,9 @@ const UserSettings: React.FC = () => {
               <p className="text-red-500">You have no information yet</p>
             ) : (
               <div className="text-slate-700">
-                <p className="font-bold text-2xl">Your recent record: </p>
+                <p className="font-bold text-2xl  m-4 ">
+                  Your attraction record:{" "}
+                </p>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                   {userInfo.attraction.map((item, index) => (
                     <CardContainer key={index}>
@@ -240,7 +270,8 @@ const UserSettings: React.FC = () => {
                         </CardDescription>
                         <CardInfoRow>
                           <CardInfoItem>
-                             Date: {new Date(item.Activity_Date).toLocaleDateString(
+                            Date:{" "}
+                            {new Date(item.Activity_Date).toLocaleDateString(
                               "en-US",
                               {
                                 month: "2-digit",
@@ -249,11 +280,14 @@ const UserSettings: React.FC = () => {
                               }
                             )}
                           </CardInfoItem>
-                          <CardInfoItem>{item.Discount? 'Discounted': '' }</CardInfoItem>
+                          <CardInfoItem>
+                            {item.Discount ? "Discounted" : ""}
+                          </CardInfoItem>
                         </CardInfoRow>
                         <CardInfoRow>
                           <CardInfoItem>
-                            Method Type: {item.Method_Type == 2 ? 'Online': 'Onsite'}
+                            Method Type:{" "}
+                            {item.Method_Type == 2 ? "Online" : "Onsite"}
                           </CardInfoItem>
                           <CardInfoItem>
                             Location Section ID: {item.Location_Section_ID}
@@ -276,7 +310,7 @@ const UserSettings: React.FC = () => {
               <p className="text-red-500">You have no information yet</p>
             ) : (
               <div className="text-slate-700">
-                <p className="font-bold text-2xl">Your recent record: </p>
+                <p className="font-bold text-2xl m-4">Your recent shows: </p>
                 <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                   {userInfo.show.map((item, index) => (
                     <CardContainer key={index}>
@@ -287,7 +321,8 @@ const UserSettings: React.FC = () => {
                         </CardDescription>
                         <CardInfoRow>
                           <CardInfoItem>
-                            Date: {new Date(item.Activity_Date).toLocaleDateString(
+                            Date:{" "}
+                            {new Date(item.Activity_Date).toLocaleDateString(
                               "en-US",
                               {
                                 month: "2-digit",
