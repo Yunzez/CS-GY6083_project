@@ -198,6 +198,7 @@ const Signup: React.FC = () => {
                       id="floating_filled"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
+                      pattern="^[a-zA-Z0-9]*$"
                     />
                     <label
                       htmlFor="floating_filled"
@@ -220,6 +221,7 @@ const Signup: React.FC = () => {
                           : "bg-gray-50"
                       } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
+                      pattern="^[a-zA-Z0-9]*$"
                     />
                     <label
                       htmlFor="floating_filled"
@@ -240,6 +242,7 @@ const Signup: React.FC = () => {
                       id="floating_filled"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
+                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     />
                     <label
                       htmlFor="floating_filled"
@@ -254,7 +257,7 @@ const Signup: React.FC = () => {
                       onInput={(event) => {
                         setPassword((event.target as HTMLInputElement)?.value);
                       }}
-                      type="email"
+                      type="password"
                       id="floating_filled"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "

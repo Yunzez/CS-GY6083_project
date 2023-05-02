@@ -217,6 +217,7 @@ const Attractions = () => {
 
             <div className="flex justify-center w-full relative mb-20 pt-5  mt-5 container mx-auto">
               <input
+                pattern="^[a-zA-Z0-9]*$" // only allow letters and numbers
                 onInput={(e) => {
                   setSearchTerm(e.currentTarget.value);
                 }}
