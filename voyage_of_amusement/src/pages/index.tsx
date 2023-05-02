@@ -227,7 +227,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="relative  py-5 mb-5 mt-2">
+      <div className="relative mb-5">
         <div className="relative md:h-96  py-5  h-full mb-5">
           <Image
             src={imagePaths[currentImage].src}

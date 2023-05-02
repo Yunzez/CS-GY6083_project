@@ -61,11 +61,15 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     );
 
     if (ticketCount == 0) {
+      setShowProcess(false);
+      setShowDone(false);
       setError("please select at least one ticket to purchase ");
       return;
     }
 
     if (visitDate.length == 0) {
+        setShowProcess(false);
+        setShowDone(false);
         setError("please tell us when are you vsiting ");
         return;
       }
@@ -77,6 +81,13 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
       sourceType: "Tic",
       visitDate: visitDate
     };
+    
+    if (!data.visitorId) {
+      setShowProcess(false);
+      setShowDone(false);
+      setError("please login first");
+      return;
+    }
     console.log(data);
     await fetch(`/api/makeTransaction?visitorId=${user.Visitor_ID}'`, {
       method: "POST",

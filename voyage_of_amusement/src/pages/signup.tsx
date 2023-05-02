@@ -14,8 +14,10 @@ const Signup: React.FC = () => {
   const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [dob , setDob] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [vType, setVType] = useState(1);
   const [currentImage, setCurrentImage] = useState(0);
   const [showProcess, setShowProcess] = useState(false);
   const [showDone, setShowDone] = useState(false);
@@ -98,6 +100,8 @@ const Signup: React.FC = () => {
       lastname: lastName,
       email: email,
       password: password,
+      dob: dob,
+      vType, vType
     };
 
     fetch("/api/authenticate?type=signup", {
@@ -195,13 +199,13 @@ const Signup: React.FC = () => {
                         setFirstName((event.target as HTMLInputElement)?.value);
                       }}
                       type="text"
-                      id="floating_filled"
+                      id="floating_filled_fname"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
                       pattern="^[a-zA-Z0-9]*$"
                     />
                     <label
-                      htmlFor="floating_filled"
+                      htmlFor="floating_filled_fname"
                       className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
                     >
                       First Name
@@ -214,7 +218,7 @@ const Signup: React.FC = () => {
                         setLastName((event.target as HTMLInputElement)?.value);
                       }}
                       type="text"
-                      id="floating_filled"
+                      id="floating_filled_lname"
                       className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
                         unfilled.includes("lastname")
                           ? "bg-red-500"
@@ -224,7 +228,7 @@ const Signup: React.FC = () => {
                       pattern="^[a-zA-Z0-9]*$"
                     />
                     <label
-                      htmlFor="floating_filled"
+                      htmlFor="floating_filled_lname"
                       className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
                     >
                       Last Name
@@ -239,13 +243,13 @@ const Signup: React.FC = () => {
                         setEmail((event.target as HTMLInputElement)?.value);
                       }}
                       type="email"
-                      id="floating_filled"
+                      id="floating_filled_email"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
                       pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     />
                     <label
-                      htmlFor="floating_filled"
+                      htmlFor="floating_filled_email"
                       className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
                     >
                       Email
@@ -258,15 +262,58 @@ const Signup: React.FC = () => {
                         setPassword((event.target as HTMLInputElement)?.value);
                       }}
                       type="password"
-                      id="floating_filled"
+                      id="floating_filled_password"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
                     />
                     <label
-                      htmlFor="floating_filled"
+                      htmlFor="floating_filled_password"
                       className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
                     >
                       Password
+                    </label>
+                  </div>
+                </div>
+
+                <div className="flex justify-around mt-3">
+                  <div className="relative">
+                    <input
+                      onInput={(event) => {
+                        setDob((event.target as HTMLInputElement)?.value);
+                      }}
+                      type="date"
+                      id="floating_filled_dob"
+                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                      placeholder=" "
+                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                    />
+                    <label
+                      htmlFor="floating_filled_dob"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                    >
+                      Date of Birth
+                    </label>
+                  </div>
+
+                  <div className="relative">
+                    <select
+                      onChange={(event) => {
+                        setVType((parseInt(event.target as HTMLInputElement)?.value));
+                      }}
+                      id="floating_filled_visitor_type"
+                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                      placeholder=" "
+                    >
+                      <option value={1}>Individual</option>
+                      <option value={2}>Group</option>
+                      <option value={3}>Member</option>
+                      <option value={4}>Student</option>
+                    </select>
+                    <label
+                      htmlFor="floating_filled_visitor_type"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                    >
+                      Type
                     </label>
                   </div>
                 </div>
@@ -313,6 +360,8 @@ const Signup: React.FC = () => {
                     </span>
                   </div>
                 </div>
+
+                
 
                 <div className="flex justify-end mt-5">
                   <Button

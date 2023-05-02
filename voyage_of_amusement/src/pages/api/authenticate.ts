@@ -50,7 +50,7 @@ async function createUser(
   res: NextApiResponse,
   next: () => void
 ) {
-  const { firstname, lastname, email, password } = req.body;
+  const { firstname, lastname, email, password, dob, vType } = req.body;
   try {
     const request = connection?.request();
     request.input("email", email);
@@ -69,13 +69,14 @@ async function createUser(
     request.input("firstname", firstname);
     request.input("lastname", lastname);
     request.input("hashedPassword", hashedPassword);
-    request.input("BirthDay", "1900-01-01");
+    request.input("BirthDay", dob);
     request.input("Cell_Number", "1112223456");
+    request.input("Visitor_Type_ID", vType);
     request.input("City", "Seattle");
     const query = `INSERT INTO AFZ_Visitors 
-      (Fname, Lname, City, Email,Birthdate, Cell_Number, Password) 
+      (Fname, Lname, City, Email,Birthdate, Cell_Number, Password, Visitor_Type_ID) 
       VALUES 
-      (@firstname, @lastname,@City, @email, @BirthDay,@Cell_Number, @hashedPassword)`;
+      (@firstname, @lastname,@City, @email, @BirthDay,@Cell_Number, @hashedPassword, @Visitor_Type_ID)`;
 
     const result = await request.query(query);
     

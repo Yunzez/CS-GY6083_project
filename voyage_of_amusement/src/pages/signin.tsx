@@ -196,12 +196,12 @@ const SigninPage = () => {
                       }}
                       type="email"
                       pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
-                      id="floating_filled"
+                      id="floating_filled_email"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
                     />
                     <label
-                      htmlFor="floating_filled"
+                      htmlFor="floating_filled_email"
                       className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
                     >
                       Email
@@ -215,12 +215,12 @@ const SigninPage = () => {
                         setPassword((event.target as HTMLInputElement)?.value);
                       }}
                       type="password"
-                      id="floating_filled"
+                      id="floating_filled_password"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
                     />
                     <label
-                      htmlFor="floating_filled"
+                      htmlFor="floating_filled_password"
                       className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
                     >
                       Password
