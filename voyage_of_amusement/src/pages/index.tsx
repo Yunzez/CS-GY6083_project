@@ -314,12 +314,8 @@ export default function Home() {
               onClick={() => router.push("/entranceTicket")}
             >
               <button className="flex flex-col relative bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-6 px-12 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
-                <div className=" ml-auto me-auto flex-grow bg-white p-4 rounded-lg shadow mr-2 animate-bounce">
-                  🎢
-                </div>
-
                 <div className="ml-4 text-2xl text-center">
-                  Get Your Thrill Ticket!
+                  Get Your Ticket!
                 </div>
               </button>
             </div>
@@ -342,13 +338,13 @@ export default function Home() {
             <div className="card-inner">
               <div className=" px-4 py-8 flex flex-col items-center mx-3 my-8">
                 <h2 className="text-3xl font-bold mb-8">
-                  Discover Our Attractions
+                  Discover Our Features
                 </h2>
                 <p className="text-lg font-medium text-center max-w-3xl mb-8">
-                  We offer a variety of attractions that will suit every
+                  We offer a variety of attractions rides, shows and store that will suit every
                   interest and age. From thrilling roller coasters to delicious
                   dining options, there's something for everyone. Explore our
-                  attractions below to plan your visit!
+                  park below to plan your visit!
                 </p>
 
                 <ActionBtn

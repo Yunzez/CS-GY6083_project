@@ -7,6 +7,7 @@ import Link from "next/link";
 import { summarizeUserInfo } from "@/util/userUtil";
 
 const Signup: React.FC = () => {
+  const today = new Date().toISOString().split('T')[0];
   const delay = (ms: number | undefined) =>
     new Promise((res) => setTimeout(res, ms));
   const router = useRouter();
@@ -17,7 +18,9 @@ const Signup: React.FC = () => {
   const [dob , setDob] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [vType, setVType] = useState(1);
+  const [vType, setVType] = useState('1');
+  const [phone, setPhone] = useState(0);
+  const [city, setCity] = useState("");
   const [currentImage, setCurrentImage] = useState(0);
   const [showProcess, setShowProcess] = useState(false);
   const [showDone, setShowDone] = useState(false);
@@ -58,11 +61,18 @@ const Signup: React.FC = () => {
   const [unfilled, setUnfilled] = useState<Array<String>>([]);
   const checkInfo = (): boolean => {
     setUnfilled([]);
+    if (phone <= 1000000000 || phone >= 9999999999) {
+      setError("Invalid Phone Number");
+      return false;
+    }
     if (
       firstName.length != 0 &&
       lastName.length != 0 &&
       email.length != 0 &&
-      password.length != 0
+      password.length != 0 &&
+      dob.length != 0 &&
+      phone != 0 &&
+      city.length != 0
     ) {
       return true;
     } else {
@@ -79,6 +89,15 @@ const Signup: React.FC = () => {
       }
       if (password.length == 0) {
         updateList.push("password");
+      }
+      if (dob.length == 0) {
+        updateList.push("dob");
+      }
+      if (phone == 0) {
+        updateList.push("phone");
+      }
+      if (city.length == 0) {
+        updateList.push("city");
       }
       setShowError(true);
       setUnfilled(updateList);
@@ -101,7 +120,9 @@ const Signup: React.FC = () => {
       email: email,
       password: password,
       dob: dob,
-      vType, vType
+      vType: vType,
+      phone: phone,
+      city: city,
     };
 
     fetch("/api/authenticate?type=signup", {
@@ -137,6 +158,7 @@ const Signup: React.FC = () => {
 
  
   };
+  
 
   return (
     <div className="mt-5 flex items-center justify-center rounded-lg">
@@ -192,17 +214,21 @@ const Signup: React.FC = () => {
                   Create a new account to access all the features of our app.
                 </p>
                 <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
-                <div className="flex justify-around">
-                  <div className="relative">
+
+                <div className="flex flex-col">
+                <div className="relative">
                     <input
                       onInput={(event) => {
                         setFirstName((event.target as HTMLInputElement)?.value);
                       }}
                       type="text"
                       id="floating_filled_fname"
-                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                      className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
+                        unfilled.includes("firstname")
+                          ? "bg-red-500"
+                          : "bg-gray-50"
+                      } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
-                      pattern="^[a-zA-Z0-9]*$"
                     />
                     <label
                       htmlFor="floating_filled_fname"
@@ -220,12 +246,11 @@ const Signup: React.FC = () => {
                       type="text"
                       id="floating_filled_lname"
                       className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
-                        unfilled.includes("lastname")
+                        unfilled.includes("lastName")
                           ? "bg-red-500"
                           : "bg-gray-50"
                       } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
-                      pattern="^[a-zA-Z0-9]*$"
                     />
                     <label
                       htmlFor="floating_filled_lname"
@@ -234,9 +259,6 @@ const Signup: React.FC = () => {
                       Last Name
                     </label>
                   </div>
-                </div>
-
-                <div className="flex justify-around mt-3">
                   <div className="relative">
                     <input
                       onInput={(event) => {
@@ -244,9 +266,12 @@ const Signup: React.FC = () => {
                       }}
                       type="email"
                       id="floating_filled_email"
-                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                      className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
+                        unfilled.includes("email")
+                          ? "bg-red-500"
+                          : "bg-gray-50"
+                      } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
-                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
                     />
                     <label
                       htmlFor="floating_filled_email"
@@ -259,11 +284,35 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput={(event) => {
+                        setPhone(parseInt((event.target as HTMLInputElement)?.value));
+                      }}
+                      type="number"
+                      id="floating_filled_phone"
+                      className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
+                        unfilled.includes("phone")
+                          ? "bg-red-500"
+                          : "bg-gray-50"
+                      } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
+                    />
+                    <label
+                      htmlFor="floating_filled_phone"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                    >
+                      Phone
+                    </label>
+                  </div>
+
+                  <div className="relative">
+                    <input
+                      onInput={(event) => {
                         setPassword((event.target as HTMLInputElement)?.value);
                       }}
                       type="password"
-                      id="floating_filled_password"
-                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                      id="floating_filled_password"className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
+                        unfilled.includes("password")
+                          ? "bg-red-500"
+                          : "bg-gray-50"
+                      } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
                     />
                     <label
@@ -273,9 +322,7 @@ const Signup: React.FC = () => {
                       Password
                     </label>
                   </div>
-                </div>
 
-                <div className="flex justify-around mt-3">
                   <div className="relative">
                     <input
                       onInput={(event) => {
@@ -283,9 +330,13 @@ const Signup: React.FC = () => {
                       }}
                       type="date"
                       id="floating_filled_dob"
-                      className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                      className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
+                        unfilled.includes("dob")
+                          ? "bg-red-500"
+                          : "bg-gray-50"
+                      } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
-                      pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+                      max={today}
                     />
                     <label
                       htmlFor="floating_filled_dob"
@@ -296,18 +347,40 @@ const Signup: React.FC = () => {
                   </div>
 
                   <div className="relative">
+                    <input
+                      onInput={(event) => {
+                        setCity((event.target as HTMLInputElement)?.value);
+                      }}
+                      type="text"
+                      id="floating_filled_city"
+                      className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
+                        unfilled.includes("city")
+                          ? "bg-red-500"
+                          : "bg-gray-50"
+                      } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
+                      placeholder=" "
+                    />
+                    <label
+                      htmlFor="floating_filled_city"
+                      className="absolute text-sm text-gray-400 duration-150 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                    >
+                      City
+                    </label>
+                  </div>
+
+                  <div className="relative">
                     <select
                       onChange={(event) => {
-                        setVType((parseInt(event.target as HTMLInputElement)?.value));
+                        setVType(event.target?.value);
                       }}
                       id="floating_filled_visitor_type"
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
                     >
-                      <option value={1}>Individual</option>
-                      <option value={2}>Group</option>
-                      <option value={3}>Member</option>
-                      <option value={4}>Student</option>
+                      <option value={'1'}>Individual</option>
+                      <option value={'2'}>Group</option>
+                      <option value={'3'}>Member</option>
+                      <option value={'4'}>Student</option>
                     </select>
                     <label
                       htmlFor="floating_filled_visitor_type"
