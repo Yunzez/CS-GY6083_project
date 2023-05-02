@@ -1,7 +1,7 @@
--- Éú³ÉÕßOracle SQL Developer Data Modeler 22.2.0.165.1149
---   Ê±¼ä:        2023-04-08 13:26:17 EDT
---   Õ¾µã:      SQL Server 2012
---   ÀàÐÍ:      SQL Server 2012
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Oracle SQL Developer Data Modeler 22.2.0.165.1149
+--   Ê±ï¿½ï¿½:        2023-04-08 13:26:17 EDT
+--   Õ¾ï¿½ï¿½:      SQL Server 2012
+--   ï¿½ï¿½ï¿½ï¿½:      SQL Server 2012
 
 
 
@@ -1329,9 +1329,12 @@ ALTER TABLE AFZ_Visitors
     ON UPDATE NO ACTION 
 GO
 
+create unique index AFZ_Visitors_Email_uindex
+	on AFZ_Visitors (Email)
+go
 
 
--- Oracle SQL Developer Data Modeler ¸ÅÒª±¨¸æ: 
+-- Oracle SQL Developer Data Modeler ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½: 
 -- 
 -- CREATE TABLE                            26
 -- CREATE INDEX                             0
