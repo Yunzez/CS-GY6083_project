@@ -65,9 +65,9 @@ CREATE TRIGGER UpdateTicketAmountDue
         LEFT JOIN AFZ_Activity AA2 ON V.Visitor_ID = AA2.Visitor_ID
         LEFT JOIN AFZ_Tickets T ON AA2.Activity_ID = T.Activity_ID
         WHERE Ticket_Type_ID IN (3, 5, 6)
-        GROUP BY V.Visitor_ID, CAST(T.Purchase_Date AS DATE)
+        GROUP BY V.Visitor_ID, CAST(T.Purchase_Date AS DATE);
 
-        SELECT * FROM @memDicNum
+        SELECT * FROM @memDicNum;
         IF OBJECT_ID('tempdb..@memDicNum') IS NOT NULL
         BEGIN
             INSERT INTO @pendingMemberTicketNum
@@ -108,7 +108,7 @@ CREATE TRIGGER UpdateTicketAmountDue
         INNER JOIN @pendingMemberTicketNum RM ON RM.Visitor_ID = Subquery.Visitor_ID
         INNER JOIN inserted i on i.Ticket_ID = Subquery.Ticket_ID
         WHERE Subquery.Ticket_ID = AFZ_Tickets.Ticket_ID
-          AND Subquery.RowNum <= RM.RemainCount -- select only the top-ranked row in each group
+          AND Subquery.RowNum <= RM.RemainCount; -- select only the top-ranked row in each group
 
 
         UPDATE AFZ_Tickets
@@ -128,9 +128,9 @@ CREATE TRIGGER UpdateTicketAmountDue
         FROM inserted NA
         INNER JOIN AFZ_Tickets T ON NA.Ticket_ID = T.Ticket_ID
         INNER JOIN AFZ_Activity A on A.Activity_ID = NA.Activity_ID
-        INNER JOIN AFZ_Visitors AV on A.Visitor_ID = AV.Visitor_ID
+        INNER JOIN AFZ_Visitors AV on A.Visitor_ID = AV.Visitor_ID;
 
-        DECLARE @DisPrice TABLE (Ticket_ID NUMERIC(5), After_Price NUMERIC(10,2))
+        DECLARE @DisPrice TABLE (Ticket_ID NUMERIC(5), After_Price NUMERIC(10,2));
 
         INSERT INTO @DisPrice
         SELECT
@@ -142,13 +142,20 @@ CREATE TRIGGER UpdateTicketAmountDue
         FROM inserted NA
         INNER JOIN AFZ_Tickets T ON NA.Ticket_ID = T.Ticket_ID
         INNER JOIN AFZ_Ticket_Type TT ON T.Ticket_Type_ID = TT.Ticket_Type_ID
-        INNER JOIN AFZ_Ticket_Method Tm ON T.Method_Type_ID = TM.Method_Type_ID
+        INNER JOIN AFZ_Ticket_Method Tm ON T.Method_Type_ID = TM.Method_Type_ID;
 
         UPDATE AFZ_Activity
-        SET AFZ_Activity.Amount_Due = T.After_Price
+        SET AFZ_Activity.Amount_Due = T.After_Price +
+            COALESCE(
+                (
+                    SELECT SUM(Prev.Amount_Due)
+                    FROM AFZ_Activity Prev
+                    WHERE Prev.Activity_ID = AA.Activity_ID
+                ), 0
+            )
         FROM @DisPrice AS T
         INNER JOIN inserted NA on NA.Ticket_ID = T.Ticket_ID
-        INNER JOIN AFZ_Activity AA ON NA.Activity_ID = AA.Activity_ID
+        INNER JOIN AFZ_Activity AA ON NA.Activity_ID = AA.Activity_ID;
 
      END
 go

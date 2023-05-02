@@ -71,7 +71,7 @@ export default async function handler(
           ?.request()
           .input("activityId", activityId)
           .input("ticketTypeId", 2)
-          .input("ticketMethod", 2)
+          .input("ticketMethod", 1) // 1 is online
           .input("purchaseDate", today)
           .input("price", 100)
           .input("visitDate", visitDate).query(`
