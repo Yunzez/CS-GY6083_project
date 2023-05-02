@@ -3,6 +3,7 @@ import { delay } from "@/util/generalUtil";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/contexts/GlobaclContext";
 import { summarizeUserInfo } from "@/util/userUtil";
+import PayForm from "@/component/PayForm";
 import styled from "styled-components";
 interface EntranceTicketProps {
   ticketPrice: number;
@@ -46,6 +47,8 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
   const [visitDate, setVisitDate] = useState("");
   const [showProcess, setShowProcess] = useState(false);
   const [showDone, setShowDone] = useState(false);
+  const [showPay, setShowPay] = useState(false);
+  const [unpaidTickets, setUnpaidTickets] = useState([]);
   const [error, setError] = useState("");
   const handleTicketCountChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -62,6 +65,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
 
     if (ticketCount == 0) {
       setShowProcess(false);
+      setShowPay(false);
       setShowDone(false);
       setError("please select at least one ticket to purchase ");
       return;
@@ -69,6 +73,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
 
     if (visitDate.length == 0) {
         setShowProcess(false);
+        setShowPay(false);
         setShowDone(false);
         setError("please tell us when are you vsiting ");
         return;
@@ -84,6 +89,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     
     if (!data.visitorId) {
       setShowProcess(false);
+      setShowPay(false);
       setShowDone(false);
       setError("please login first");
       return;
@@ -108,10 +114,13 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
           console.log(data);
           setUserInfo(summarizeUserInfo(data.summary));
           delay(2000);
+          setUnpaidTickets(data.ticketIDs);
           setShowProcess(false);
-          setShowDone(true);
+          setShowPay(true);
+          setShowDone(false);
         } else {
           setShowProcess(false);
+          setShowPay(false);
           setShowDone(false);
           setError("Some error occured, please try agan later");
         }
@@ -128,7 +137,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
   return (
     <div className="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen flex items-center justify-center ">
       <div className="bg-white p-10 rounded-lg shadow-lg text-center w-[70vw]">
-        {!showDone && !showProcess && (
+        {!showDone && !showPay && !showProcess && (
           <>
             <h1 className="text-5xl font-bold mb-6">
               Welcome to Voyage of Amusement!
@@ -263,6 +272,9 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
               <span className="sr-only">Loading...</span>
             </div>
           </div>
+        )}
+        {showPay && (
+          <PayForm children={(<>{JSON.stringify(unpaidTickets)}</>)}></PayForm>
         )}
         {showDone && (
           <div className="text-center">

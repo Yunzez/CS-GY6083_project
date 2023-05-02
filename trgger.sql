@@ -53,8 +53,8 @@ CREATE TRIGGER UpdateTicketAmountDue
      AFTER INSERT
      AS
      BEGIN
-
         DECLARE @pendingMemberTicketNum TABLE (Visitor_ID NUMERIC(5), RemainCount NUMERIC(1), PDate DATE);
+
 
         DECLARE @memDicNum TABLE (Visitor_ID NUMERIC(5), RemainCount NUMERIC(1), PDate DATE);
         INSERT INTO @memDicNum
@@ -67,7 +67,6 @@ CREATE TRIGGER UpdateTicketAmountDue
         WHERE Ticket_Type_ID IN (3, 5, 6)
         GROUP BY V.Visitor_ID, CAST(T.Purchase_Date AS DATE);
 
-        SELECT * FROM @memDicNum;
         IF OBJECT_ID('tempdb..@memDicNum') IS NOT NULL
         BEGIN
             INSERT INTO @pendingMemberTicketNum
@@ -130,6 +129,13 @@ CREATE TRIGGER UpdateTicketAmountDue
         INNER JOIN AFZ_Activity A on A.Activity_ID = NA.Activity_ID
         INNER JOIN AFZ_Visitors AV on A.Visitor_ID = AV.Visitor_ID;
 
+        SELECT NA.Ticket_ID, ATT.Ticket_Type, ATT.Discount, ATM.Method_Type, ATM.Discount
+        FROM AFZ_Tickets AT
+        JOIN inserted NA ON NA.Ticket_ID = AT.Ticket_ID
+        JOIN AFZ_Ticket_Type ATT on ATT.Ticket_Type_ID = AT.Ticket_Type_ID
+        JOIN AFZ_Ticket_Method ATM on AT.Method_Type_ID = ATM.Method_Type_ID;
+
+
         DECLARE @DisPrice TABLE (Ticket_ID NUMERIC(5), After_Price NUMERIC(10,2));
 
         INSERT INTO @DisPrice
@@ -144,6 +150,7 @@ CREATE TRIGGER UpdateTicketAmountDue
         INNER JOIN AFZ_Ticket_Type TT ON T.Ticket_Type_ID = TT.Ticket_Type_ID
         INNER JOIN AFZ_Ticket_Method Tm ON T.Method_Type_ID = TM.Method_Type_ID;
 
+
         UPDATE AFZ_Activity
         SET AFZ_Activity.Amount_Due = T.After_Price +
             COALESCE(
@@ -156,9 +163,10 @@ CREATE TRIGGER UpdateTicketAmountDue
         FROM @DisPrice AS T
         INNER JOIN inserted NA on NA.Ticket_ID = T.Ticket_ID
         INNER JOIN AFZ_Activity AA ON NA.Activity_ID = AA.Activity_ID;
-
      END
 go
+
+
 
 
 

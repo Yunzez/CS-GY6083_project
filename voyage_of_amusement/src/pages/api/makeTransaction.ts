@@ -60,6 +60,7 @@ export default async function handler(
     );
 
     amount = amountResult?.recordset[0]?.Amount_Due;
+    const ticketIDs = [];
 
     if (sourceType == "Tic") {
       console.log("insert entrance ticket");
@@ -67,7 +68,7 @@ export default async function handler(
       let iteration = num;  
       while (iteration > 0) {
         iteration--;
-        await connection
+        let ticketResult = await connection
           ?.request()
           .input("activityId", activityId)
           .input("ticketTypeId", 2)
@@ -75,9 +76,13 @@ export default async function handler(
           .input("purchaseDate", today)
           .input("price", 100)
           .input("visitDate", visitDate).query(`
+        DECLARE @InsertedTicketIDs TABLE (Ticket_ID INT);
         INSERT INTO AFZ_Tickets (Method_Type_ID, Ticket_Type_ID, Purchase_Date, Visit_Date, Price, Activity_ID)
-        VALUES (@ticketMethod, @ticketTypeId, @purchaseDate, @visitDate, @price, @activityId)
+        OUTPUT inserted.Ticket_ID INTO @InsertedTicketIDs
+        VALUES (@ticketMethod, @ticketTypeId, @purchaseDate, @visitDate, @price, @activityId);
+        select * from @InsertedTicketIDs;
       `);
+        ticketIDs.push(ticketResult?.recordset[0]);
       }
     }
 
@@ -86,7 +91,7 @@ export default async function handler(
       .input("input_id", visitorId)
       .execute(`dbo.get_summary_data_by_user_id`);
     console.log(result);
-    res.status(200).send({ success: "success", summary: result.recordset });
+    res.status(200).send({ success: "success", summary: result.recordset, ticketIDs: ticketIDs });
 
     pool.close();
   } catch (err) {
