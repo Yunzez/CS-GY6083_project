@@ -7,7 +7,7 @@ import Link from "next/link";
 import { summarizeUserInfo } from "@/util/userUtil";
 
 const Signup: React.FC = () => {
-  const today = new Date().toISOString().split('T')[0];
+  const today = new Date().toISOString().split("T")[0];
   const delay = (ms: number | undefined) =>
     new Promise((res) => setTimeout(res, ms));
   const router = useRouter();
@@ -15,10 +15,10 @@ const Signup: React.FC = () => {
   const [error, setError] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [dob , setDob] = useState("");
+  const [dob, setDob] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [vType, setVType] = useState('1');
+  const [vType, setVType] = useState("1");
   const [phone, setPhone] = useState(0);
   const [city, setCity] = useState("");
   const [currentImage, setCurrentImage] = useState(0);
@@ -142,11 +142,11 @@ const Signup: React.FC = () => {
           });
         }
       })
-      .then(async(data) => {
-        if(data !== undefined) {
-          console.log(data)
-          setUser(data.user)
-          setUserInfo(summarizeUserInfo(data.summary))
+      .then(async (data) => {
+        if (data !== undefined) {
+          console.log(data);
+          setUser(data.user);
+          setUserInfo(summarizeUserInfo(data.summary));
           setShowProcess(false);
           setShowDone(true);
           setLoggedIn(true);
@@ -155,10 +155,7 @@ const Signup: React.FC = () => {
         }
       })
       .catch((error) => console.log(error));
-
- 
   };
-  
 
   return (
     <div className="mt-5 flex items-center justify-center rounded-lg">
@@ -215,8 +212,8 @@ const Signup: React.FC = () => {
                 </p>
                 <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
 
-                <div className="flex flex-col">
-                <div className="relative">
+                <div className="grid grid-cols-1 gap-4 md:grid-cols-2 ">
+                  <div className="relative">
                     <input
                       onInput={(event) => {
                         setFirstName((event.target as HTMLInputElement)?.value);
@@ -267,9 +264,7 @@ const Signup: React.FC = () => {
                       type="email"
                       id="floating_filled_email"
                       className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
-                        unfilled.includes("email")
-                          ? "bg-red-500"
-                          : "bg-gray-50"
+                        unfilled.includes("email") ? "bg-red-500" : "bg-gray-50"
                       } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
                     />
@@ -284,14 +279,14 @@ const Signup: React.FC = () => {
                   <div className="relative">
                     <input
                       onInput={(event) => {
-                        setPhone(parseInt((event.target as HTMLInputElement)?.value));
+                        setPhone(
+                          parseInt((event.target as HTMLInputElement)?.value)
+                        );
                       }}
                       type="number"
                       id="floating_filled_phone"
                       className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
-                        unfilled.includes("phone")
-                          ? "bg-red-500"
-                          : "bg-gray-50"
+                        unfilled.includes("phone") ? "bg-red-500" : "bg-gray-50"
                       } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                     />
                     <label
@@ -308,7 +303,8 @@ const Signup: React.FC = () => {
                         setPassword((event.target as HTMLInputElement)?.value);
                       }}
                       type="password"
-                      id="floating_filled_password"className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
+                      id="floating_filled_password"
+                      className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
                         unfilled.includes("password")
                           ? "bg-red-500"
                           : "bg-gray-50"
@@ -331,9 +327,7 @@ const Signup: React.FC = () => {
                       type="date"
                       id="floating_filled_dob"
                       className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
-                        unfilled.includes("dob")
-                          ? "bg-red-500"
-                          : "bg-gray-50"
+                        unfilled.includes("dob") ? "bg-red-500" : "bg-gray-50"
                       } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
                       max={today}
@@ -354,9 +348,7 @@ const Signup: React.FC = () => {
                       type="text"
                       id="floating_filled_city"
                       className={`block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 ${
-                        unfilled.includes("city")
-                          ? "bg-red-500"
-                          : "bg-gray-50"
+                        unfilled.includes("city") ? "bg-red-500" : "bg-gray-50"
                       } border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer`}
                       placeholder=" "
                     />
@@ -377,10 +369,10 @@ const Signup: React.FC = () => {
                       className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
                       placeholder=" "
                     >
-                      <option value={'1'}>Individual</option>
-                      <option value={'2'}>Group</option>
-                      <option value={'3'}>Member</option>
-                      <option value={'4'}>Student</option>
+                      <option value={"1"}>Individual</option>
+                      <option value={"2"}>Group</option>
+                      <option value={"3"}>Member</option>
+                      <option value={"4"}>Student</option>
                     </select>
                     <label
                       htmlFor="floating_filled_visitor_type"
@@ -433,8 +425,6 @@ const Signup: React.FC = () => {
                     </span>
                   </div>
                 </div>
-
-                
 
                 <div className="flex justify-end mt-5">
                   <Button
