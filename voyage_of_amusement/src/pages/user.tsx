@@ -364,7 +364,6 @@ const UserSettings: React.FC = () => {
         });
     }
   }, [userInfo]);
-
   return (
     <div className="flex" ref={cardRef}>
       {/* Sidebar */}
@@ -550,19 +549,19 @@ const UserSettings: React.FC = () => {
                 key={visitor.Visitor_ID}
               >
                 <div className="w-1/6 text-center">
-                  {visitor.Fname ?? "Unkown"}{" "}
+                  {visitor.Fname ?? "Unknown"}{" "}
                 </div>
                 <div className="w-1/6 text-center">
-                  {visitor.Lname ?? "Unkown"}
+                  {visitor.Lname ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
-                  {visitor.City ?? "Unkown"}
+                  {visitor.City ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
-                  {visitor.Visitor_Type ?? "Unkown"}
+                  {visitor.Visitor_Type ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
-                  {visitor.Email ?? "Unkown"}
+                  {visitor.Email ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
                   {new Date(visitor.Birthdate).toLocaleDateString()}
@@ -596,7 +595,7 @@ const UserSettings: React.FC = () => {
                           <div className="flex text-md-xl">
                             <div className="me-3">
                               Purchased on:{" "}
-                              {new Date(item.Activity_Date).toLocaleDateString(
+                              {new Date(item.Activity_Date[0]).toLocaleDateString(
                                 "en-US",
                                 {
                                   month: "2-digit",
@@ -659,7 +658,7 @@ const UserSettings: React.FC = () => {
                           <CardInfoRow>
                             <CardInfoItem>
                               Date:{" "}
-                              {new Date(item.Activity_Date).toLocaleDateString(
+                              {new Date(item.Activity_Date[0]).toLocaleDateString(
                                 "en-US",
                                 {
                                   month: "2-digit",
@@ -673,10 +672,6 @@ const UserSettings: React.FC = () => {
                             </CardInfoItem>
                           </CardInfoRow>
                           <CardInfoRow>
-                            <CardInfoItem>
-                              Method Type:{" "}
-                              {item.Method_Type == 2 ? "Online" : "Onsite"}
-                            </CardInfoItem>
                             <CardInfoItem>
                               Location Section ID: {item.Location_Section_ID}
                             </CardInfoItem>
@@ -713,7 +708,7 @@ const UserSettings: React.FC = () => {
                           <CardInfoRow>
                             <CardInfoItem>
                               Date:{" "}
-                              {new Date(item.Activity_Date).toLocaleDateString(
+                              {new Date(item.Activity_Date[0]).toLocaleDateString(
                                 "en-US",
                                 {
                                   month: "2-digit",
@@ -728,9 +723,6 @@ const UserSettings: React.FC = () => {
                           </CardInfoRow>
                           <CardInfoRow>
                             <CardInfoItem>
-                              Method Type: {item.Method_Type}
-                            </CardInfoItem>
-                            <CardInfoItem>
                               Location Section ID: {item.Location_Section_ID}
                             </CardInfoItem>
                           </CardInfoRow>
@@ -738,13 +730,6 @@ const UserSettings: React.FC = () => {
                       </CardContainer>
                     ))}
                   </div>
-                  <h2 className=" text-slate-900 mt-3 text-2xl">
-                    You better pay ${showTotalAmount} before we beat your ass
-                    off
-                  </h2>
-                  <button className=" text-slate-900 mt-3 text-2xl border shadow p-3 rounded hover:bg-slate-900 hover:text-white transition">
-                    PAY
-                  </button>
                 </div>
               )}
             </CardDiv>
@@ -760,7 +745,39 @@ const UserSettings: React.FC = () => {
               {userInfo.shop.length === 0 ? (
                 <p className="text-red-500">You have no information yet</p>
               ) : (
-                <p className="text-green-500">You have info</p>
+                <div className="text-slate-700">
+                  <p className="font-bold text-2xl m-4">Recently visited shop: </p>
+                  <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                    {userInfo.shop.map((item, index) => (
+                      <CardContainer key={index}>
+                        <CardContent>
+                          <CardTitle>{item.Facility_Name}</CardTitle>
+                          <CardDescription>
+                            {item.Facility_Description}
+                          </CardDescription>
+                          <CardInfoRow>
+                            <CardInfoItem>
+                              Date:{" "}
+                              {new Date(item.Activity_Date[0]).toLocaleDateString(
+                                "en-US",
+                                {
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                  year: "numeric",
+                                }
+                              )}
+                            </CardInfoItem>
+                          </CardInfoRow>
+                          <CardInfoRow>
+                            <CardInfoItem>
+                              Location Section ID: {item.Location_Section_ID}
+                            </CardInfoItem>
+                          </CardInfoRow>
+                        </CardContent>
+                      </CardContainer>
+                    ))}
+                  </div>
+                </div>
               )}
             </CardDiv>
           </div>

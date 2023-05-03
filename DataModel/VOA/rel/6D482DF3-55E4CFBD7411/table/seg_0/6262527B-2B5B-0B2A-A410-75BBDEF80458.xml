@@ -50,7 +50,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>5</dataTypePrecision>
-<ownDataTypeParameters>,5,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -74,7 +74,7 @@
 <valueDef value="Par" description="entity AFZ_Parking"/>
 <valueDef value="Tic" description="entity AFZ_Tickets"/>
 </listOfValues>
-<ownDataTypeParameters>3,,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <isDiscriminatorColumn>true</isDiscriminatorColumn>
@@ -93,7 +93,7 @@
 <use>1</use>
 <logicalDatatype>LOGDT019</logicalDatatype>
 <dataTypePrecision>6</dataTypePrecision>
-<ownDataTypeParameters>,6,</ownDataTypeParameters>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 <previousColumn>false</previousColumn>
 <autoIncrementCycle>false</autoIncrementCycle>
 <associations>
@@ -111,6 +111,23 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Master_Activity_ID" id="BCDE4F56-6D0E-2969-4FC9-71CF30080690">
+<createdBy>black</createdBy>
+<createdTime>2023-05-03 19:35:34 UTC</createdTime>
+<commentInRDBMS><![CDATA[The id of the master activity]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4A3D4502-AAB7-06B6-A6EF-73521CE76B6C" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
+</associations>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
@@ -157,6 +174,17 @@
 <isSurrogateKey>false</isSurrogateKey>
 <indexColumnUsage>
 <colUsage columnID="EDA532E4-91AC-B251-E6A3-1B8190BC5528"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="0AABDF43-C553-EB08-C92E-719C93CE8BE8" name="AFZ_Activity_self_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-05-03 19:35:34 UTC</createdTime>
+<generatorID>AD236288-FE69-2311-0C25-D0059968A430</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BCDE4F56-6D0E-2969-4FC9-71CF30080690"/>
 </indexColumnUsage>
 </ind_PK_UK>
 </indexes>

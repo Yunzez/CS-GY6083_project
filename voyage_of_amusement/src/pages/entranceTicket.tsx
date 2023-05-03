@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { delay } from "@/util/generalUtil";
 import { useRouter } from "next/router";
 import { useAppContext } from "@/contexts/GlobaclContext";
@@ -8,6 +8,16 @@ import styled from "styled-components";
 interface EntranceTicketProps {
   ticketPrice: number;
 }
+
+type Row = {
+  id: number;
+  email: string;
+  phone: string;
+  fname: string;
+  lname: string;
+  dob: string;
+  city: string;
+};
 
 const Gobtn = styled.div`
   margin-bottom: 35px;
@@ -49,29 +59,54 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
   }
   const { user, setUserInfo } = useAppContext();
   const router = useRouter();
-  const [ticketCount, setTicketCount] = useState(0);
   const [visitDate, setVisitDate] = useState("");
   const [showProcess, setShowProcess] = useState(false);
   const [showDone, setShowDone] = useState(false);
   const [showPay, setShowPay] = useState(false);
   const [unpaidTickets, setUnpaidTickets] = useState([]);
   const [activityID, setActivityID] = useState(-1);
-  const [amount, setAmount] = useState(0);
   const [error, setError] = useState("");
-  const handleTicketCountChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const count = parseInt(event.target.value, 10);
-    setTicketCount(count);
+  const [rows, setRows] = useState<Row[]>([
+    {
+      id: 1,
+      email: "",
+      phone: "",
+      fname: "",
+      lname: "",
+      dob: "",
+      city: "",
+    }
+  ]);
+
+  const addRow = () => {
+    setRows([
+      ...rows,
+      {
+        id: rows.length + 1,
+        email: "",
+        phone: "",
+        fname: "",
+        lname: "",
+        dob: "",
+        city: "",
+      },
+    ]);
+  };
+
+  const updateRow = (id: number, field: keyof Row, value: string) => {
+    setRows(
+      rows.map((row) => (row.id === id ? { ...row, [field]: value } : row))
+    );
+  };
+
+  const removeRow = (id: number) => {
+    setRows(rows.filter((row) => row.id !== id));
   };
 
   const handlePurchaseClick = async () => {
-    const totalPrice = ticketCount * ticketPrice;
-    console.log(
-      `Purchasing ${ticketCount} ticket(s) for a total of $${totalPrice}`
-    );
+    console.log(rows);
 
-    if (ticketCount == 0) {
+    if (rows.length == 0) {
       setShowProcess(false);
       setShowPay(false);
       setShowDone(false);
@@ -80,63 +115,74 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     }
 
     if (visitDate.length == 0) {
-      setShowProcess(false);
-      setShowPay(false);
-      setShowDone(false);
-      setError("please tell us when are you vsiting ");
-      return;
-    }
-    setShowProcess(true);
-    const data = {
-      facilityId: null,
-      num: ticketCount,
-      visitorId: user.Visitor_ID,
-      sourceType: "Tic",
-      visitDate: visitDate,
-    };
-
-    if (!data.visitorId) {
+        setShowProcess(false);
+        setShowPay(false);
+        setShowDone(false);
+        setError("please tell us when are you vsiting ");
+        return;
+      }
+      
+    if (!user.Visitor_ID) {
       setShowProcess(false);
       setShowPay(false);
       setShowDone(false);
       setError("please login first");
       return;
     }
-    console.log(data);
-    await fetch(`/api/makeTransaction?visitorId=${user.Visitor_ID}'`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          res.json().then((data) => console.log(data));
-        }
+    setShowProcess(true);
+    let master_activity_id = -1;
+    let ticketList: any = [];
+    for (const row of rows) {
+      const data = {
+        visitor_id: master_activity_id == -1 ? user.Visitor_ID : null,
+        visit_date: visitDate,
+        email: row.email,
+        phone: row.phone,
+        fname: row.fname,
+        lname: row.lname,
+        dob: row.dob,
+        city: row.city,
+        master_activity_id: master_activity_id,
+      };
+      console.log(data);
+      await fetch(`/api/purchaseTicket`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       })
-      .then((data) => {
-        if (data != undefined) {
-          console.log(data);
-          setUserInfo(summarizeUserInfo(data.summary));
-          delay(2000);
-          setActivityID(data.activityId);
-          setUnpaidTickets(data.ticketIDs);
-          setAmount(data.amount);
-          setShowProcess(false);
-          setShowPay(true);
-          setShowDone(false);
-        } else {
-          setShowProcess(false);
-          setShowPay(false);
-          setShowDone(false);
-          setError("Some error occured, please try agan later");
-        }
-      });
-
-    // Perform purchase logic here...
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else {
+            res.json().then(data => console.log(data))
+          }
+        })
+        .then((data) => {
+          if (data != undefined) {
+            console.log(data);
+            setUserInfo(summarizeUserInfo(data.summary));
+            delay(2000);
+            if (master_activity_id == -1) {
+              master_activity_id = data.activity_id;
+            }
+            ticketList.push(data.ticket);
+          } else {
+            setShowProcess(false);
+            setShowPay(false);
+            setShowDone(false);
+            setError("Some error occurred, please try again later");
+          }
+        });
+    }
+    setUnpaidTickets(ticketList);
+    setActivityID(master_activity_id);
+    setShowProcess(false);
+    setShowPay(true);
+    setShowDone(false);
+    
+    
   };
   const handleVisitDateChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -144,6 +190,24 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     const selectedDate = event.target.value;
     setVisitDate(selectedDate);
   };
+
+  useEffect(() => {
+    if (user) {
+      setRows((prevState) => {
+        const firstRow = {
+          ...prevState[0],
+          email: user.Email,
+          phone: user.Cell_Number,
+          fname: user.Fname,
+          lname: user.Lname,
+          dob: user.Birthdate,
+          city: user.City,
+        };
+  
+        return [firstRow, ...prevState.slice(1)];
+      });
+    }
+  }, [user]);
   return (
     <div className="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen flex items-center justify-center ">
       <div className="bg-white p-10 rounded-lg shadow-lg text-center w-[70vw]">
@@ -212,35 +276,48 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
             <p className="text-sm mb-4 text-red-500">
               *Please note that no discounts apply on holidays.
             </p>
-
-            <p className="text-xl mb-4">Number of Tickets</p>
-            <div className="flex items-center justify-center mb-8">
-              <button
-                onClick={() => {
-                  if (ticketCount > 0) {
-                    setTicketCount(ticketCount - 1);
-                    setError("");
-                  }
-                }}
-                className="text-2xl font-bold px-4 py-2 rounded-full bg-purple-500 hover:bg-purple-600 text-white transition-colors duration-300"
-              >
-                -
-              </button>
-              <input
-                type="number"
-                value={ticketCount}
-                onChange={handleTicketCountChange}
-                className="w-20 mx-4 text-2xl font-semibold text-center border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500"
-              />
-              <button
-                onClick={() => {
-                  setTicketCount(ticketCount + 1);
-                  setError("");
-                }}
-                className="text-2xl font-bold px-4 py-2 rounded-full bg-purple-500 hover:bg-purple-600 text-white transition-colors duration-300"
-              >
-                +
-              </button>
+            <p className="text-sm mb-4">
+              **No discount can apply on holiday.**
+            </p>
+            <div>
+              <button onClick={addRow}>Add One More Visitor</button>
+              <table>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DOB</th>
+                    <th>City</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {rows.map((row) => (
+                    <tr key={row.id}>
+                      <td>{row.id}</td>
+                      {(["email", "phone", "fname", "lname", "dob", "city"] as Array<
+                        keyof Row
+                      >).map((field) => (
+                        <td key={field}>
+                          <input
+                            type={field === "dob" ? "date" : "text"}
+                            value={row[field]}
+                            onChange={(e) =>
+                              updateRow(row.id, field, e.target.value)
+                            }
+                          />
+                        </td>
+                      ))}
+                      <td>
+                        {rows.length > 1 && <button onClick={() => removeRow(row.id)}>Remove</button>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
             <p className="text-xl mb-4">When do you plan to visit?</p>
             <input

@@ -221,7 +221,6 @@ JOIN (SELECT Facility_ID, ROW_NUMBER() OVER (ORDER BY Facility_ID) AS Row_Num
 FROM @insertedShwIds) i ON i.Row_Num = a.row_number;
 
 
-
 -- add stores
 DECLARE @insertedStrIds TABLE (Facility_ID INT);
 
@@ -382,6 +381,12 @@ SELECT TOP 25 v.Visitor_ID, 'Shw', ss.Start_Time, s.Facility_ID
 FROM voa.dbo.AFZ_Visitors v CROSS JOIN voa.dbo.AFZ_Shows s
 Join voa.dbo.AFZ_Show_Schedule ss on s.Facility_ID = ss.Show_Facility_ID
 ORDER BY NEWID();
+
+INSERT INTO voa.dbo.AFZ_Show_Watch (Activity_ID, Watch_Time, SS_ID)
+SELECT TOP 25 AA.Activity_ID, ss.Start_Time, ss.SS_ID
+FROM voa.dbo.AFZ_Activity AA
+Join voa.dbo.AFZ_Show_Schedule ss on AA.Facility_ID = ss.Show_Facility_ID
+WHERE Source_Type = 'Shw';
 
 INSERT INTO voa.dbo.AFZ_Activity (Visitor_ID, Source_Type, Activity_Date, Facility_ID)
 SELECT TOP 25 v.Visitor_ID, 'Att', DATEADD(hour, (CAST((ABS(CHECKSUM(NewId())) % 2 + 1 )AS NUMERIC(2))), Visit_Date), AATT.Facility_ID

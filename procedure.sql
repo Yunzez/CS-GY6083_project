@@ -159,3 +159,67 @@ GO;
 -- EXECUTE dbo.online_pay_for_activity 'Zehua', 'Zhu', 1234123412341234, 123, '2023-05', 200;
 
 
+CREATE PROCEDURE buy_ticket
+    @email VARCHAR(255),
+    @phone varchar(10),
+    @fname varchar(10),
+    @lname varchar(10),
+    @dob date,
+    @city varchar(255),
+    @visitor_id numeric(5),
+    @method_id numeric(1),
+    @visit_date date,
+    @master_activity_id numeric(10) = NULL
+
+AS
+BEGIN
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        DECLARE @activity TABLE (Activity_ID NUMERIC(5))
+        IF EXISTS (SELECT * FROM AFZ_Visitors)
+        BEGIN
+            IF @visitor_id != (SELECT Visitor_ID FROM AFZ_Visitors WHERE Email = @email)
+            BEGIN
+                INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date, Master_Activity_ID)
+                OUTPUT inserted.Activity_ID INTO @activity
+                VALUES ('Tic', (SELECT Visitor_ID FROM AFZ_Visitors WHERE Email = @email), GETDATE(), @master_activity_id);
+            END
+            ELSE
+            BEGIN
+                INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date)
+                OUTPUT inserted.Activity_ID INTO @activity
+                VALUES ('Tic', @visitor_id, GETDATE());
+            END
+        END
+        ELSE
+        BEGIN
+            DECLARE @new_id TABLE (Visitor_ID NUMERIC(5));
+            INSERT INTO AFZ_Visitors (Fname, Lname, City, Email, Cell_Number, Birthdate, Visitor_Type_ID)
+            OUTPUT inserted.Visitor_ID INTO @new_id
+            VALUES (@fname, @lname, @city, @email, @phone, @dob, 2);
+
+            INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date, Master_Activity_ID)
+            OUTPUT inserted.Activity_ID INTO @activity
+            VALUES ('Tic', (SELECT Visitor_ID FROM @new_id), GETDATE(), @master_activity_id);
+        END
+        INSERT INTO AFZ_Tickets (Method_Type_ID, Purchase_Date, Visit_Date, Price, Activity_ID)
+        VALUES (@method_id, GETDATE(), @visit_date, 100, (select Activity_ID from @activity));
+        SELECT * FROM @activity;
+
+        -- Commit the transaction if everything is successful
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+
+        -- Log the error or re-raise it if necessary
+        SELECT 'Error encountered';
+        -- If there is an error, roll back the transaction
+        ROLLBACK TRANSACTION;
+
+        -- THROW;
+    END CATCH;
+END;
+go
+
+

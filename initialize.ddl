@@ -906,8 +906,8 @@ CREATE TABLE AFZ_Visitors
      Email VARCHAR (32) NOT NULL , 
      Cell_Number VARCHAR (10) NOT NULL , 
      Birthdate DATE NOT NULL , 
-     Visitor_Type_ID NUMERIC (1) NOT NULL DEFAULT 2 , 
-     Password VARCHAR (255) NOT NULL 
+     Visitor_Type_ID NUMERIC (1) NOT NULL DEFAULT 2 ,
+     Password VARCHAR (255)
     )
 GO 
 
@@ -1331,6 +1331,31 @@ GO
 
 create unique index AFZ_Visitors_Email_uindex
 	on AFZ_Visitors (Email)
+go
+
+alter table AFZ_Activity
+	add Master_Activity_ID NUMERIC(10)
+go
+
+alter table AFZ_Activity
+	add constraint AFZ_Activity_self_fk
+		foreign key (Master_Activity_ID) references AFZ_Activity
+go
+
+
+exec sp_addextendedproperty 'MS_Description', 'ID of the Master activity', 'SCHEMA', 'dbo', 'TABLE', 'AFZ_Activity', 'COLUMN', 'Master_Activity_ID'
+go
+
+
+alter table AFZ_Tickets add default 2 for Ticket_Type_ID
+go
+
+alter table AFZ_Show_Watch drop constraint AFZ_Show_Watch_PK
+go
+
+alter table AFZ_Show_Watch
+	add constraint AFZ_Show_Watch_pk
+		primary key nonclustered (Activity_ID, SS_ID)
 go
 
 

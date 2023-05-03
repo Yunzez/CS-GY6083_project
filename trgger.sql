@@ -208,8 +208,8 @@ CREATE TRIGGER UpdateParkAmountDue
 GO
 
 CREATE TRIGGER UpdateShowAmountDue
-     ON AFZ_Activity
-     AFTER INSERT, UPDATE
+     ON AFZ_Show_Watch
+     AFTER INSERT
      AS
      BEGIN
         DECLARE @newAmount TABLE (Activity_ID NUMERIC(5), Amount NUMERIC(10, 2))
@@ -217,8 +217,8 @@ CREATE TRIGGER UpdateShowAmountDue
         INSERT INTO @newAmount
         SELECT i.Activity_ID, SUM(S.Price)
         FROM AFZ_Shows S
-        INNER JOIN inserted i ON i.Facility_ID = S.Facility_ID
-        where i.Source_Type = 'Shw'
+        join AFZ_Show_Schedule ss on ss.Show_Facility_ID = s.Facility_ID
+        INNER JOIN inserted i ON i.SS_ID = ss.Show_Facility_ID
         GROUP BY i.Activity_ID
 
         UPDATE AFZ_Activity
@@ -231,3 +231,24 @@ CREATE TRIGGER UpdateShowAmountDue
         JOIN AFZ_Activity ON NA.Activity_ID = AFZ_Activity.Activity_ID
         INNER JOIN AFZ_Visitors AV on AFZ_Activity.Visitor_ID = AV.Visitor_ID
      END
+
+
+CREATE TRIGGER UpdateMasterActivity
+    ON AFZ_Activity
+    AFTER UPDATE, INSERT
+AS
+BEGIN
+    IF EXISTS (SELECT Master_Activity_ID FROM inserted)
+    BEGIN
+        UPDATE A
+        SET A.Amount_Due =
+            (SELECT SUM(COALESCE(B.Amount_Due, 0))
+             FROM AFZ_Activity B
+             WHERE B.Master_Activity_ID = I.Master_Activity_ID
+                OR B.Activity_ID = I.Master_Activity_ID)
+        FROM AFZ_Activity A
+        INNER JOIN inserted I ON A.Activity_ID = I.Master_Activity_ID;
+    END
+END
+GO;
+

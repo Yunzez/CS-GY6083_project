@@ -124,11 +124,25 @@
 <createdTime>2023-04-08 15:19:43 UTC</createdTime>
 <commentInRDBMS><![CDATA[The password of the user.]]></commentInRDBMS>
 <ownerDesignName>VOA</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT024</logicalDatatype>
 <dataTypeSize>255</dataTypeSize>
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Registered" id="B1ADFAA2-5EE1-3E22-BFC8-5DD4BB157CB7">
+<createdBy>black</createdBy>
+<createdTime>2023-05-03 04:49:16 UTC</createdTime>
+<commentInRDBMS><![CDATA[If this visitor registered via website.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<defaultValue>False</defaultValue>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
