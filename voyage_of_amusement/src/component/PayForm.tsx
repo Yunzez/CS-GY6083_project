@@ -67,6 +67,7 @@ const PayForm = (props: Props) => {
     return false;
   };
 
+  console.log()
   const handlePay = async () => {
     if (!checkInfo()) {
       return;
