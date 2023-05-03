@@ -114,3 +114,48 @@ go;
 
 EXECUTE dbo.get_unpaid_activity_by_user_id 7;
 
+
+CREATE PROCEDURE online_pay_for_activity
+    @FirstName VARCHAR(50),
+    @LastName VARCHAR(50),
+    @cardNumber NUMERIC(16),
+    @cvc NUMERIC(3),
+    @exp VARCHAR(10),
+    @Activity_ID NUMERIC(5)
+AS
+BEGIN
+    -- Start a new transaction
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        -- Insert a new customer
+        DECLARE @Payments TABLE (Payment_ID NUMERIC(5));
+        INSERT INTO AFZ_Payment (Payment_Amount, Payment_Date, Payment_Method, Facility_ID, Activity_ID)
+        OUTPUT INSERTED.Payment_ID INTO @Payments
+        SELECT Amount_Due, GETDATE(), 'Card', Facility_ID, @Activity_ID
+        FROM AFZ_Activity
+        WHERE Activity_ID = @Activity_ID;
+        DECLARE @date DATE = CAST(@exp + '-01' AS DATE);
+
+        INSERT INTO AFZ_Card_Payment (Payment_ID, Card_Number, Holder_FName, Holder_LName, CVV, Expiration_Date, Card_Type)
+        SELECT p.Payment_ID, @cardNumber, @FirstName, @LastName, @cvc, EOMONTH(@date), 'credit'
+        FROM @Payments p;
+
+        -- Commit the transaction if everything is successful
+
+        SELECT 'end';
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+
+        -- Log the error or re-raise it if necessary
+        SELECT 'Error encountered';
+        -- If there is an error, roll back the transaction
+        ROLLBACK TRANSACTION;
+
+        -- THROW;
+    END CATCH;
+END;
+GO;
+
+EXECUTE dbo.online_pay_for_activity 'Zehua', 'Zhu', 1234123412341234, 123, '2023-05', 200;

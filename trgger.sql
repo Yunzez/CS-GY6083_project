@@ -55,8 +55,7 @@ CREATE TRIGGER UpdateTicketAmountDue
      BEGIN
         DECLARE @pendingMemberTicketNum TABLE (Visitor_ID NUMERIC(5), RemainCount NUMERIC(1), PDate DATE);
 
-
-        DECLARE @memDicNum TABLE (Visitor_ID NUMERIC(5), RemainCount NUMERIC(1), PDate DATE);
+        DECLARE @memDicNum TABLE (Visitor_ID NUMERIC(5), usedCount NUMERIC(1), PDate DATE);
         INSERT INTO @memDicNum
         SELECT V.Visitor_ID,
                (CASE WHEN COUNT(T.Ticket_ID) > 5 THEN 5 ELSE COUNT(T.Ticket_ID) END) AS Activity_Count,
@@ -67,19 +66,35 @@ CREATE TRIGGER UpdateTicketAmountDue
         WHERE Ticket_Type_ID IN (3, 5, 6)
         GROUP BY V.Visitor_ID, CAST(T.Purchase_Date AS DATE);
 
-        IF OBJECT_ID('tempdb..@memDicNum') IS NOT NULL
+        IF EXISTS (SELECT m.*
+            FROM @memDicNum AS m
+            INNER JOIN AFZ_Activity AS a ON m.Visitor_ID = a.Visitor_ID
+            INNER JOIN inserted AS i ON i.Activity_ID = a.Activity_ID)
         BEGIN
             INSERT INTO @pendingMemberTicketNum
-            SELECT AA2.Visitor_ID, CASE WHEN COUNT(T.Ticket_ID) > 5 - COUNT(MU.RemainCount) THEN 5 - COUNT(MU.RemainCount) ELSE COUNT(T.Ticket_ID) END, CAST(T.Purchase_Date AS DATE)
-            FROM AFZ_Activity AA2
-            INNER JOIN AFZ_Tickets T ON AA2.Activity_ID = T.Activity_ID
-            INNER JOIN AFZ_Visitors V ON V.Visitor_ID = AA2.Visitor_ID
-            INNER JOIN @memDicNum MU ON MU.Visitor_ID = AA2.Visitor_ID
-            WHERE V.Visitor_Type_ID = 3 AND Ticket_Type_ID NOT IN (3, 5, 6)
-            GROUP BY AA2.Visitor_ID, CAST(T.Purchase_Date AS DATE);
+            SELECT
+                AA2.Visitor_ID,
+                CASE
+                    WHEN COUNT(T.Ticket_ID) > 5 - (SELECT MU.usedCount FROM @memDicNum MU WHERE MU.Visitor_ID = AA2.Visitor_ID)
+                        THEN 5 - (SELECT MU.usedCount FROM @memDicNum MU WHERE MU.Visitor_ID = AA2.Visitor_ID)
+                    ELSE COUNT(T.Ticket_ID)
+                END,
+                CAST(T.Purchase_Date AS DATE)
+            FROM
+                AFZ_Activity AA2
+                INNER JOIN AFZ_Tickets T ON AA2.Activity_ID = T.Activity_ID
+                INNER JOIN AFZ_Visitors V ON V.Visitor_ID = AA2.Visitor_ID
+            WHERE
+                V.Visitor_Type_ID = 3
+                AND Ticket_Type_ID NOT IN (3, 5, 6)
+            GROUP BY
+                AA2.Visitor_ID,
+                CAST(T.Purchase_Date AS DATE);
+
         END
         ELSE
         BEGIN
+            SELECT 'NOT';
             INSERT INTO @pendingMemberTicketNum
             SELECT AA2.Visitor_ID, CASE WHEN COUNT(T.Ticket_ID) > 5 THEN 5 ELSE COUNT(T.Ticket_ID) END, CAST(T.Purchase_Date AS DATE)
             FROM AFZ_Activity AA2
@@ -88,8 +103,6 @@ CREATE TRIGGER UpdateTicketAmountDue
             WHERE V.Visitor_Type_ID = 3 AND Ticket_Type_ID NOT IN (3, 5, 6)
             GROUP BY AA2.Visitor_ID, CAST(T.Purchase_Date AS DATE);
         END
-
-
 
 
         UPDATE AFZ_Tickets
@@ -135,6 +148,8 @@ CREATE TRIGGER UpdateTicketAmountDue
         JOIN AFZ_Ticket_Type ATT on ATT.Ticket_Type_ID = AT.Ticket_Type_ID
         JOIN AFZ_Ticket_Method ATM on AT.Method_Type_ID = ATM.Method_Type_ID;
 
+        SELECT inserted.Activity_ID FROM AFZ_Activity;
+
 
         DECLARE @DisPrice TABLE (Ticket_ID NUMERIC(5), After_Price NUMERIC(10,2));
 
@@ -165,6 +180,8 @@ CREATE TRIGGER UpdateTicketAmountDue
         INNER JOIN AFZ_Activity AA ON NA.Activity_ID = AA.Activity_ID;
      END
 go
+
+
 
 
 

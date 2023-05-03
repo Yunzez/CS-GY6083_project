@@ -8,6 +8,8 @@ import { summarizeUserInfo } from "@/util/userUtil";
 
 type Props = {
   children: ReactNode
+  activityID: Number
+  callBackFn: Function
 }
 
 const PayForm = (props: Props) => {
@@ -77,41 +79,36 @@ const PayForm = (props: Props) => {
       cardnumber: cardNumber,
       cvc: cvc,
       expdate: expDate,
+      activityID: props.activityID,
     };
     console.log("payment data", data);
 
 
 
-    // fetch("/api/authenticate?type=signup", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // })
-    //   .then((response) => {
-    //     if (response.ok) {
-    //       return response.json();
-    //     } else {
-    //       response.json().then((data) => {
-    //         setShowProcess(false);
-    //         setError(data.error);
-    //       });
-    //     }
-    //   })
-    //   .then(async(data) => {
-    //     if(data !== undefined) {
-    //       console.log(data)
-    //       setUser(data.user)
-    //       setUserInfo(summarizeUserInfo(data.summary))
-    //       setShowProcess(false);
-    //       setShowDone(true);
-    //       setLoggedIn(true);
-    //       await delay(3000);
-    //       router.push("/");
-    //     }
-    //   })
-    //   .catch((error) => console.log(error));
+    fetch("/api/makePayment", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          response.json().then((data) => {
+            setShowProcess(false);
+            setError(data.error);
+          });
+        }
+      })
+      .then(async(data) => {
+        if(data !== undefined) {
+          props.callBackFn();
+          console.log(data);
+        }
+      })
+      .catch((error) => console.log(error));
 
  
   };
@@ -119,17 +116,19 @@ const PayForm = (props: Props) => {
 
   return (
     <div className="mt-5 flex items-center justify-center rounded-lg">
-      <div className=" flex justify-center items-center bg-slate-50 p-5 w-3/5">
+      <div className=" flex justify-center items-start bg-slate-50 p-5 w-4/5">
         <div
           className={` flex flex-col cus_max_75vh flex max-h-min transform-all w-1/2 flex-grow`}
         >
-          <h1 className="text-2xl font-bold mb-4">Details</h1>
+          <div className="border-4 border-slate-50  px-5 py-5 mt-5">
+            <h1 className="text-2xl font-bold mb-4">Details</h1>
 
-          <p className="text-gray-500 mb-4">
-            Here is want you need to pay in this order.
-          </p>
-          <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
-          {props.children}
+            <p className="text-gray-500 mb-4">
+              Here is want you need to pay in this order.
+            </p>
+            <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+            {props.children}
+          </div>
         </div>
 
         <div className="flex flex-col items-center mt-4 w-1/2">

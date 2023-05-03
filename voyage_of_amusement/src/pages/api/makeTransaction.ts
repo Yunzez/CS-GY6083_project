@@ -91,7 +91,8 @@ export default async function handler(
       .input("input_id", visitorId)
       .execute(`dbo.get_summary_data_by_user_id`);
     console.log(result);
-    res.status(200).send({ success: "success", summary: result.recordset, ticketIDs: ticketIDs });
+    const sendBody = { success: "success", summary: result.recordset, activityId: activityId, amount: amount, ticketIDs: ticketIDs};
+    res.status(200).send(sendBody);
 
     pool.close();
   } catch (err) {

@@ -49,6 +49,8 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
   const [showDone, setShowDone] = useState(false);
   const [showPay, setShowPay] = useState(false);
   const [unpaidTickets, setUnpaidTickets] = useState([]);
+  const [activityID, setActivityID] = useState(-1);
+  const [amount, setAmount] = useState(0);
   const [error, setError] = useState("");
   const handleTicketCountChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -114,7 +116,9 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
           console.log(data);
           setUserInfo(summarizeUserInfo(data.summary));
           delay(2000);
+          setActivityID(data.activityId);
           setUnpaidTickets(data.ticketIDs);
+          setAmount(data.amount);
           setShowProcess(false);
           setShowPay(true);
           setShowDone(false);
@@ -274,7 +278,36 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
           </div>
         )}
         {showPay && (
-          <PayForm children={(<>{JSON.stringify(unpaidTickets)}</>)}></PayForm>
+          <PayForm 
+          callBackFn={() => {
+            setShowPay(false);
+            setShowDone(true);
+          }}
+          activityID={activityID}
+          children={(
+          <div className="grid grid-cols-1 gap-y-4">
+            <div className="grid grid-cols-3 items-center gap-y-4">
+              <p>Ticket ID</p>
+              <p>Discount</p>
+              <p>Ticket Price</p>
+            </div>
+            {unpaidTickets.map((ticket, index) => {
+              return (<div key={index} className="grid grid-cols-3 items-center gap-y-4">
+                <p>{ticket['Ticket_ID']}</p>
+                <div>
+                  <li>{ticket['Ticket_Type']} ({ticket['Discount'][0]})</li>
+                  <li>{ticket['Method_Type']} ({ticket['Discount'][1]})</li>
+                </div>
+                <p>Ticket price ${100 * ticket['Discount'][0] * ticket['Discount'][1]}</p>
+              </div>);
+            })}
+            <div className="grid grid-cols-3 items-center gap-y-4">
+              <p>Total</p>
+              <p></p>
+              <p>${unpaidTickets.reduce((acc, crr) => 100 * crr['Discount'][0] * crr['Discount'][1]+ acc, 0)}</p>
+            </div>
+            </div>
+          )} />
         )}
         {showDone && (
           <div className="text-center">
