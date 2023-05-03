@@ -431,7 +431,7 @@ const UserSettings: React.FC = () => {
           <TicketsContainer>
             {ticketChartData && PriceTicketChartData && (
               <div className="flex flex-wrap justify-between">
-                <div className="w-full md:w-1/3 p-4" style={{ height: "30vh" }}>
+                <div className="w-full md:w-1/3 p-4" style={{ height: "35vh" }}>
                   <Pie
                     data={ticketChartData}
                     options={{
@@ -517,7 +517,7 @@ const UserSettings: React.FC = () => {
                   className="w-full text-xl" // Adjust the height as needed
                 />
               </div>
-              <div className="w-full md:w-1/3 p-4" style={{ height: "30vh" }}>
+              <div className="w-full md:w-1/3 p-4" style={{ height: "35vh" }}>
                 <Pie
                   data={CityChartData}
                   options={{
