@@ -8,6 +8,8 @@ import styled from "styled-components";
 interface EntranceTicketProps {
   ticketPrice: number;
 }
+
+
 const Gobtn = styled.div`
     margin-bottom: 35px;
     margin-top: 35px;

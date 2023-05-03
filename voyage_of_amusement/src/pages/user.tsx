@@ -5,8 +5,8 @@ import styles from "@/styles/user.module.css";
 import { useAppContext } from "@/contexts/GlobaclContext";
 import { userInfo } from "os";
 import styled from "styled-components";
+import Chart from "chart.js/auto";
 import {
-  Chart as ChartJS,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -95,7 +95,7 @@ const TicketsContainer = styled.div`
   padding: 20px;
   margin-top: 50px;
 
-  max-height: 400px;
+  max-height: 40vh;
   overflow-y: auto;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -113,8 +113,52 @@ interface Ticket {
   Visit_Date?: string;
 }
 
+// Function to generate a random color
+function getRandomColor() {
+  const letters = "0123456789ABCDEF";
+  let color = "#";
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 const UserSettings: React.FC = () => {
   const router = useRouter();
+  Chart.register(CategoryScale);
+
+  const [ticketChartData, setTicketChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: "Tickets by Type", // <-- Add a comma after this line
+        data: [],
+        backgroundColor: [
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+        ],
+        borderWidth: 3,
+      },
+    ],
+  });
+
+  const [PriceTicketChartData, setPriceTicketChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: "Tickets by Type", // <-- Add a comma after this line
+        data: [],
+        backgroundColor: [
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+        ],
+        borderWidth: 3,
+      },
+    ],
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, setLoggedIn, user, setUser, userInfo } = useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -165,6 +209,23 @@ const UserSettings: React.FC = () => {
       0
     );
   }
+
+  const filterGraphData = (data, attribute) => {
+    const separatedData = [];
+    const labelData = [];
+    data.forEach((ticket) => {
+      const attrValue = ticket[attribute];
+      if (!separatedData[attrValue]) {
+        labelData.push(attrValue);
+        separatedData[attrValue] = [];
+      }
+      separatedData[attrValue].push(ticket);
+    });
+    const lengthsArray = Object.values(separatedData).map((arr) => arr.length);
+
+    console.log(lengthsArray, labelData);
+    return [lengthsArray, labelData];
+  };
   // Using the reduce() method to combine all the 'Amount_Due' values
   useEffect(() => {
     if (user.Email === "root@root.com") {
@@ -174,6 +235,49 @@ const UserSettings: React.FC = () => {
         .then((data) => {
           console.log(data);
           setSuperTickets(data.ticket);
+          const [lengthsArray, labelData] = filterGraphData(
+            data.ticket,
+            "Ticket_Type_ID"
+          );
+          const [priceLengthsArray, priceLabelData] = filterGraphData(
+            data.ticket,
+            "Price"
+          );
+
+          const randomColors = Array.from({ length: lengthsArray.length }, () =>
+            getRandomColor()
+          );
+          const newChartData = {
+            ...ticketChartData, // Copy the existing chart data
+            labels: labelData,
+            datasets: [
+              {
+                ...ticketChartData.datasets[0], // Copy the existing dataset
+                data: lengthsArray,
+                backgroundColor: randomColors,
+              },
+            ],
+          };
+
+          setTicketChartData(newChartData);
+
+          const pdrandomColors = Array.from(
+            { length: lengthsArray.length },
+            () => getRandomColor()
+          );
+          const newPDChartData = {
+            ...PriceTicketChartData, // Copy the existing chart data
+            labels: priceLabelData,
+            datasets: [
+              {
+                ...PriceTicketChartData.datasets[0], // Copy the existing dataset
+                data: priceLengthsArray,
+                backgroundColor: pdrandomColors,
+              },
+            ],
+          };
+          setPriceTicketChartData(newPDChartData);
+
           setSuperVisitors(data.user);
         });
     }
@@ -188,6 +292,9 @@ const UserSettings: React.FC = () => {
           <div className="bg-white rounded-lg p-6">
             <h2 className="text-xl font-bold mb-4 text-center">
               Super User Admin
+            </h2>
+            <h2 className="text-md font-smibold mb-4 text-center">
+              Refresh will empty admin data, please login again if you refresh
             </h2>
             <div
               className={`cursor-pointer p-3 m-3 bg-red-100 border border-red-300 rounded-lg hover:text-white hover:border-red-600 hover:font-bold  hover:bg-red-600 text-center transition duration-300 ease-in-out `}
@@ -240,7 +347,46 @@ const UserSettings: React.FC = () => {
       {user.Email === "root@root.com" ? (
         <div className={styles.mainPanel}>
           <TicketsContainer>
-            <h5 className="text-xl font-bold mb-4">Ticket Summary</h5>
+          <h5 className="text-2xl font-bold mb-4">Ticket Summary</h5>
+            {ticketChartData && PriceTicketChartData && (
+              <div className="flex flex-wrap justify-between">
+                <div className="w-full md:w-1/2 p-4">
+                  <Bar
+                    data={ticketChartData}
+                    options={{
+                      plugins: {
+                        title: {
+                          display: true,
+                          text: "Tickets sold by type",
+                        },
+                        legend: {
+                          display: false,
+                        },
+                      },
+                    }}
+                    className="w-full text-xl"
+                  />
+                </div>
+                <div className="w-full md:w-1/2 p-4">
+                  <Bar
+                    data={PriceTicketChartData}
+                    options={{
+                      plugins: {
+                        title: {
+                          display: true,
+                          text: "Ticket sold based on price ",
+                        },
+                        legend: {
+                          display: false,
+                        },
+                      },
+                    }}
+                    className="w-full text-xl"
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="flex items-center justify-between py-2 border-b border-gray-300">
               <div className="w-1/6 text-center">Ticket_ID</div>
               <div className="w-1/6 text-center">Activity_ID</div>
@@ -264,12 +410,11 @@ const UserSettings: React.FC = () => {
                   {new Date(ticket.Visit_Date).toLocaleDateString()}
                 </div>
                 <div className="w-1/6 text-center">
-                  {ticket.Validate === 0 ? "Unused" : "Used"}
+                  {ticket.Validate === 0 ? "Yes" : "No"}
                 </div>
               </div>
             ))}
           </TicketsContainer>
-          
 
           <TicketsContainer>
             <h5 className="text-xl font-bold mb-4">User Summary</h5>
@@ -284,17 +429,15 @@ const UserSettings: React.FC = () => {
             {superVisitors.map((visitor) => (
               <div
                 className="flex items-center justify-between py-2 border-b border-gray-300"
-                key={visitor.Fname}
+                key={visitor.Visitor_ID}
               >
-                <div className="w-1/6 text-center">{visitor.Lname}</div>
-                <div className="w-1/6 text-center">{visitor.City}</div>
-                <div className="w-1/6 text-center">{visitor.Visitor_Type}</div>
-                <div className="w-1/6 text-center">{visitor.Email}</div>
+                 <div className="w-1/6 text-center">{visitor.Fname ?? 'Unkown'} </div>
+                <div className="w-1/6 text-center">{visitor.Lname ?? 'Unkown'}</div>
+                <div className="w-1/6 text-center">{visitor.City ?? 'Unkown'}</div>
+                <div className="w-1/6 text-center">{visitor.Visitor_Type ?? 'Unkown'}</div>
+                <div className="w-1/6 text-center">{visitor.Email ?? 'Unkown'}</div>
                 <div className="w-1/6 text-center">
-                  {new Date(visitor.Birthdate).toLocaleDateString()}
-                </div>
-                <div className="w-1/6 text-center">
-                  {visitor.Validate === 0 ? "Unused" : "Used"}
+                  {new Date(visitor.Birthdate).toLocaleDateString()}        
                 </div>
               </div>
             ))}
