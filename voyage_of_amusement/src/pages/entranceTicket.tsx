@@ -9,34 +9,38 @@ interface EntranceTicketProps {
   ticketPrice: number;
 }
 
-
 const Gobtn = styled.div`
-    margin-bottom: 35px;
-    margin-top: 35px;
-    font-size: 1.2rem;
-    padding: 1rem 2.5rem;
-    border: none;
-    outline: none;
-    border-radius: 1rem;
-    cursor: pointer;
-    text-transform: uppercase;
-    background-color: rgb(14, 14, 26);
-    color: rgb(234, 234, 234);
-    font-weight: 700;
-    transition: 0.6s;
-    box-shadow: 0px 0px 60px #1f4c65;
-    -webkit-box-reflect: below 10px linear-gradient(to bottom, rgba(0,0,0,0.0), rgba(0,0,0,0.4));
+  margin-bottom: 35px;
+  margin-top: 35px;
+  font-size: 1.2rem;
+  padding: 1rem 2.5rem;
+  border: none;
+  outline: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  background-color: rgb(14, 14, 26);
+  color: rgb(234, 234, 234);
+  font-weight: 700;
+  transition: 0.6s;
+  box-shadow: 0px 0px 60px #1f4c65;
+  -webkit-box-reflect: below 10px
+    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4));
 
-  
   &:active {
     scale: 0.92;
   }
-  
+
   &:hover {
-    background: rgb(2,29,78);
-    background: linear-gradient(270deg, rgba(2, 29, 78, 0.681) 0%, rgba(31, 215, 232, 0.873) 60%);
+    background: rgb(2, 29, 78);
+    background: linear-gradient(
+      270deg,
+      rgba(2, 29, 78, 0.681) 0%,
+      rgba(31, 215, 232, 0.873) 60%
+    );
     color: rgb(4, 4, 38);
-  }`
+  }
+`;
 export const EntranceTicket: React.FC<EntranceTicketProps> = ({
   ticketPrice,
 }) => {
@@ -76,21 +80,21 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     }
 
     if (visitDate.length == 0) {
-        setShowProcess(false);
-        setShowPay(false);
-        setShowDone(false);
-        setError("please tell us when are you vsiting ");
-        return;
-      }
+      setShowProcess(false);
+      setShowPay(false);
+      setShowDone(false);
+      setError("please tell us when are you vsiting ");
+      return;
+    }
     setShowProcess(true);
     const data = {
       facilityId: null,
       num: ticketCount,
       visitorId: user.Visitor_ID,
       sourceType: "Tic",
-      visitDate: visitDate
+      visitDate: visitDate,
     };
-    
+
     if (!data.visitorId) {
       setShowProcess(false);
       setShowPay(false);
@@ -110,7 +114,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
         if (res.ok) {
           return res.json();
         } else {
-            res.json().then(data => console.log(data))
+          res.json().then((data) => console.log(data));
         }
       })
       .then((data) => {
@@ -191,22 +195,25 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
             <h2 className="text-3xl font-semibold mb-8">
               Ticket Price: ${ticketPrice}
               <br />
-              Child & Senior Price: ${ticketPrice * 0.85}
+              <span className="text-base text-gray-600">
+                Child & Senior Price: ${ticketPrice * 0.85}
+              </span>
             </h2>
             <p className="text-xl mb-4">
-              Attention: Member can enjoy additional <b>10%</b> discount for first five tickets everyday!
+              Hey there! As a valued member, you can enjoy an extra{" "}
+              <b className="text-green-500">10% discount</b> on the first five
+              tickets every day!
               <br />
-                    Online purchase can enjoy additional <b>5%</b> discount always!
+              Plus, when you purchase online, you'll get an additional{" "}
+              <b className="text-green-500">5% discount</b> all the time!
               <br />
-                    All discount are <b>STACKABLE</b>!
+              Best part? You can <b>STACK</b> these discounts together!
+            </p>
+            <p className="text-sm mb-4 text-red-500">
+              *Please note that no discounts apply on holidays.
+            </p>
 
-            </p>
-            <p className="text-sm mb-4">
-              **No discount can apply on holiday.**
-            </p>
-            <p className="text-xl mb-4">
-              How many tickets would you like to buy?
-            </p>
+            <p className="text-xl mb-4">Number of Tickets</p>
             <div className="flex items-center justify-center mb-8">
               <button
                 onClick={() => {
@@ -280,36 +287,68 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
           </div>
         )}
         {showPay && (
-          <PayForm 
-          callBackFn={() => {
-            setShowPay(false);
-            setShowDone(true);
-          }}
-          activityID={activityID}
-          children={(
-          <div className="grid grid-cols-1 gap-y-4">
-            <div className="grid grid-cols-3 items-center gap-y-4">
-              <p>Ticket ID</p>
-              <p>Discount</p>
-              <p>Ticket Price</p>
-            </div>
-            {unpaidTickets.map((ticket, index) => {
-              return (<div key={index} className="grid grid-cols-3 items-center gap-y-4">
-                <p>{ticket['Ticket_ID']}</p>
-                <div>
-                  <li>{ticket['Ticket_Type']} ({ticket['Discount'][0]})</li>
-                  <li>{ticket['Method_Type']} ({ticket['Discount'][1]})</li>
+          <PayForm
+            callBackFn={() => {
+              setShowPay(false);
+              setShowDone(true);
+            }}
+            activityID={activityID}
+          >
+            <>
+              <div className="grid grid-cols-1 gap-y-4">
+                <div className="grid grid-cols-3 items-center gap-y-4">
+                  <p className="font-bold">Ticket ID</p>
+                  <p className="font-bold">Discount</p>
+                  <p className="font-bold">Ticket Price</p>
                 </div>
-                <p>Ticket price ${100 * ticket['Discount'][0] * ticket['Discount'][1]}</p>
-              </div>);
-            })}
-            <div className="grid grid-cols-3 items-center gap-y-4">
-              <p>Total</p>
-              <p></p>
-              <p>${unpaidTickets.reduce((acc, crr) => 100 * crr['Discount'][0] * crr['Discount'][1]+ acc, 0)}</p>
-            </div>
-            </div>
-          )} />
+                {unpaidTickets.map((ticket, index) => {
+                  return (
+                    <div
+                      key={index}
+                      className="grid grid-cols-3 items-center gap-y-1 mb-1 border pb-1 pt-1 rounded-lg"
+                    >
+                      <p>{ticket["Ticket_ID"]}</p>
+                      <div className="flex flex-col">
+                        <div>
+                          {ticket["Ticket_Type"]}{" "}
+                          {ticket["Discount"][0] < 1 && (
+                            <>
+                              ({((1 - ticket["Discount"][0]) * 100).toFixed(0)}%
+                              off)
+                            </>
+                          )}
+                        </div>
+                        <div>
+                          {ticket["Method_Type"]}{" "}
+                          {ticket["Discount"][1] < 1 && (
+                            <>
+                              ({((1 - ticket["Discount"][1]) * 100).toFixed(0)}%
+                              off)
+                            </>
+                          )}
+                        </div>
+                      </div>
+                      <p>
+                        ${100 * ticket["Discount"][0] * ticket["Discount"][1]}
+                      </p>
+                    </div>
+                  );
+                })}
+                <div className="grid grid-cols-3 items-center gap-y-4 shadow rounded-lg p-4">
+                  <p className="font-bold">Total</p>
+                  <p></p>
+                  <p>
+                    $
+                    {unpaidTickets.reduce(
+                      (acc, crr) =>
+                        100 * crr["Discount"][0] * crr["Discount"][1] + acc,
+                      0
+                    )}
+                  </p>
+                </div>
+              </div>
+            </>
+          </PayForm>
         )}
         {showDone && (
           <div className="text-center">
@@ -329,7 +368,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
               onClick={() => {
                 router.push("/attractions");
               }}
-             >
+            >
               Go to explore
             </Gobtn>
           </div>
