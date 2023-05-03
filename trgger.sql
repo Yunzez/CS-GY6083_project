@@ -94,7 +94,6 @@ CREATE TRIGGER UpdateTicketAmountDue
         END
         ELSE
         BEGIN
-            SELECT 'NOT';
             INSERT INTO @pendingMemberTicketNum
             SELECT AA2.Visitor_ID, CASE WHEN COUNT(T.Ticket_ID) > 5 THEN 5 ELSE COUNT(T.Ticket_ID) END, CAST(T.Purchase_Date AS DATE)
             FROM AFZ_Activity AA2
@@ -148,8 +147,6 @@ CREATE TRIGGER UpdateTicketAmountDue
         JOIN AFZ_Ticket_Type ATT on ATT.Ticket_Type_ID = AT.Ticket_Type_ID
         JOIN AFZ_Ticket_Method ATM on AT.Method_Type_ID = ATM.Method_Type_ID;
 
-        SELECT inserted.Activity_ID FROM AFZ_Activity;
-
 
         DECLARE @DisPrice TABLE (Ticket_ID NUMERIC(5), After_Price NUMERIC(10,2));
 
@@ -180,7 +177,6 @@ CREATE TRIGGER UpdateTicketAmountDue
         INNER JOIN AFZ_Activity AA ON NA.Activity_ID = AA.Activity_ID;
      END
 go
-
 
 
 
