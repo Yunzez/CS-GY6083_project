@@ -189,7 +189,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
             <h2 className="text-3xl font-semibold mb-8">
               Ticket Price: ${ticketPrice}
               <br />
-              Chile & Senior Price: ${ticketPrice * 0.85}
+              Child & Senior Price: ${ticketPrice * 0.85}
             </h2>
             <p className="text-xl mb-4">
               Attention: Member can enjoy additional <b>10%</b> discount for first five tickets everyday!

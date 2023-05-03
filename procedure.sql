@@ -142,8 +142,6 @@ BEGIN
         FROM @Payments p;
 
         -- Commit the transaction if everything is successful
-
-        SELECT 'end';
         COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
@@ -158,4 +156,6 @@ BEGIN
 END;
 GO;
 
-EXECUTE dbo.online_pay_for_activity 'Zehua', 'Zhu', 1234123412341234, 123, '2023-05', 200;
+-- EXECUTE dbo.online_pay_for_activity 'Zehua', 'Zhu', 1234123412341234, 123, '2023-05', 200;
+
+
