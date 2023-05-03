@@ -14,3 +14,5 @@ password: m*#cf$fK2&RaS^
 ## Submissions
 - Part 1 link:
 [https://docs.google.com/document/d/14GpfHB2h1jTJDgKpOA4kUpnuX-826W8cNvVQ6i76ilM/edit?usp=sharing]
+- Part 2 link:
+[https://docs.google.com/document/d/1JVgqJyQ0KD1Pj0w8Q3t-bBQ9ugg-4th04ZzSHSLmCMI/edit?usp=sharing]
