@@ -14,7 +14,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Bar, Pie } from "react-chartjs-2";
 // Define the styled component for the information div
 const CardDiv = styled.div`
   border-radius: 10px;
@@ -94,10 +94,14 @@ const TicketsContainer = styled.div`
   margin: 20px;
   padding: 20px;
   margin-top: 50px;
-
+  background: #f4f6fb;
+  border: 1px solid white;
+  box-shadow: 10px 10px 64px 0px rgba(180, 180, 207, 0.75);
+  -webkit-box-shadow: 10px 10px 64px 0px rgba(186, 186, 202, 0.75);
+  -moz-box-shadow: 10px 10px 64px 0px rgba(208, 208, 231, 0.75);
   max-height: 40vh;
   overflow-y: auto;
-  border: 1px solid #e2e8f0;
+
   border-radius: 8px;
   padding: 1rem;
 `;
@@ -138,7 +142,7 @@ const UserSettings: React.FC = () => {
           "rgba(255, 255, 255, 0.6)",
           "rgba(255, 255, 255, 0.6)",
         ],
-        borderWidth: 3,
+        borderWidth: 1,
       },
     ],
   });
@@ -159,12 +163,45 @@ const UserSettings: React.FC = () => {
     ],
   });
 
+  const [VTChartData, setVTChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: "User by Visitor Type ", // <-- Add a comma after this line
+        data: [],
+        backgroundColor: [
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+        ],
+        borderWidth: 3,
+      },
+    ],
+  });
+
+  const [CityChartData, setCityChartData] = useState({
+    labels: [],
+    datasets: [
+      {
+        label: "User based on City", // <-- Add a comma after this line
+        data: [],
+        backgroundColor: [
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+          "rgba(255, 255, 255, 0.6)",
+        ],
+        borderWidth: 1,
+      },
+    ],
+  });
+
   const [isOpen, setIsOpen] = useState(false);
   const { isLoggedIn, setLoggedIn, user, setUser, userInfo } = useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [superTickets, setSuperTickets] = useState<Ticket[]>([]);
   const [superVisitors, setSuperVisitors] = useState<Ticket[]>([]);
   const [superTicketsData, setSuperTicketsData] = useState();
+
   const cardRef = useRef(null);
 
   const [showChart, setShowChart] = useState(false);
@@ -228,6 +265,7 @@ const UserSettings: React.FC = () => {
   };
   // Using the reduce() method to combine all the 'Amount_Due' values
   useEffect(() => {
+    
     if (user.Email === "root@root.com") {
       console.log("fetch super user data");
       fetch("/api/superUser")
@@ -242,6 +280,16 @@ const UserSettings: React.FC = () => {
           const [priceLengthsArray, priceLabelData] = filterGraphData(
             data.ticket,
             "Price"
+          );
+
+          const [VTLengthsArray, VTLabelData] = filterGraphData(
+            data.user,
+            "Visitor_Type"
+          );
+
+          const [CityLengthsArray, CityLabelData] = filterGraphData(
+            data.user,
+            "City"
           );
 
           const randomColors = Array.from({ length: lengthsArray.length }, () =>
@@ -262,7 +310,7 @@ const UserSettings: React.FC = () => {
           setTicketChartData(newChartData);
 
           const pdrandomColors = Array.from(
-            { length: lengthsArray.length },
+            { length: priceLengthsArray.length },
             () => getRandomColor()
           );
           const newPDChartData = {
@@ -278,10 +326,44 @@ const UserSettings: React.FC = () => {
           };
           setPriceTicketChartData(newPDChartData);
 
+          const vtrandomColors = Array.from(
+            { length: lengthsArray.length },
+            () => getRandomColor()
+          );
+          const newVTChartData = {
+            ...VTChartData, // Copy the existing chart data
+            labels: VTLabelData,
+            datasets: [
+              {
+                ...VTChartData.datasets[0], // Copy the existing dataset
+                data: VTLengthsArray,
+                backgroundColor: vtrandomColors,
+              },
+            ],
+          };
+          setVTChartData(newVTChartData);
+
+          const cityrandomColors = Array.from(
+            { length: lengthsArray.length },
+            () => getRandomColor()
+          );
+          const newCityChartData = {
+            ...CityChartData, // Copy the existing chart data
+            labels: CityLabelData,
+            datasets: [
+              {
+                ...VTChartData.datasets[0], // Copy the existing dataset
+                data: CityLengthsArray,
+                backgroundColor: cityrandomColors,
+              },
+            ],
+          };
+          setCityChartData(newCityChartData);
+
           setSuperVisitors(data.user);
         });
     }
-  }, []);
+  }, [userInfo]);
 
   return (
     <div className="flex" ref={cardRef}>
@@ -293,9 +375,7 @@ const UserSettings: React.FC = () => {
             <h2 className="text-xl font-bold mb-4 text-center">
               Super User Admin
             </h2>
-            <h2 className="text-md font-smibold mb-4 text-center">
-              Refresh will empty admin data, please login again if you refresh
-            </h2>
+            <hr className="mb-2"/>
             <div
               className={`cursor-pointer p-3 m-3 bg-red-100 border border-red-300 rounded-lg hover:text-white hover:border-red-600 hover:font-bold  hover:bg-red-600 text-center transition duration-300 ease-in-out `}
               onClick={() => {
@@ -346,12 +426,13 @@ const UserSettings: React.FC = () => {
       {/* Main Content */}
       {user.Email === "root@root.com" ? (
         <div className={styles.mainPanel}>
-          <TicketsContainer>
+          <hr className="mb-5 mt-5" />
           <h5 className="text-2xl font-bold mb-4">Ticket Summary</h5>
+          <TicketsContainer>
             {ticketChartData && PriceTicketChartData && (
               <div className="flex flex-wrap justify-between">
-                <div className="w-full md:w-1/2 p-4">
-                  <Bar
+                <div className="w-full md:w-1/3 p-4" style={{ height: "30vh" }}>
+                  <Pie
                     data={ticketChartData}
                     options={{
                       plugins: {
@@ -367,7 +448,7 @@ const UserSettings: React.FC = () => {
                     className="w-full text-xl"
                   />
                 </div>
-                <div className="w-full md:w-1/2 p-4">
+                <div className="w-full md:w-2/3 p-4">
                   <Bar
                     data={PriceTicketChartData}
                     options={{
@@ -415,9 +496,46 @@ const UserSettings: React.FC = () => {
               </div>
             ))}
           </TicketsContainer>
-
+          <hr className="mb-5" />
+          <h5 className="text-2xl font-bold mb-4">User Summary</h5>
           <TicketsContainer>
-            <h5 className="text-xl font-bold mb-4">User Summary</h5>
+            <div className="flex flex-wrap justify-between">
+              <div className="w-full md:w-2/3 p-4">
+                <Bar
+                  data={VTChartData}
+                  options={{
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: "Visitor based on type",
+                      },
+                      legend: {
+                        display: false,
+                      },
+                    },
+                  }}
+                  className="w-full text-xl" // Adjust the height as needed
+                />
+              </div>
+              <div className="w-full md:w-1/3 p-4" style={{ height: "30vh" }}>
+                <Pie
+                  data={CityChartData}
+                  options={{
+                    plugins: {
+                      title: {
+                        display: true,
+                        text: "Visitor based on type",
+                      },
+                      legend: {
+                        display: false,
+                      },
+                    },
+                  }}
+                  className="w-full text-xl h-20" // Adjust the height as needed
+                />
+              </div>
+            </div>
+
             <div className="flex items-center justify-between py-2 border-b border-gray-300">
               <div className="w-1/6 text-center">Fisrst Name</div>
               <div className="w-1/6 text-center">Last Name</div>
@@ -431,13 +549,23 @@ const UserSettings: React.FC = () => {
                 className="flex items-center justify-between py-2 border-b border-gray-300"
                 key={visitor.Visitor_ID}
               >
-                 <div className="w-1/6 text-center">{visitor.Fname ?? 'Unkown'} </div>
-                <div className="w-1/6 text-center">{visitor.Lname ?? 'Unkown'}</div>
-                <div className="w-1/6 text-center">{visitor.City ?? 'Unkown'}</div>
-                <div className="w-1/6 text-center">{visitor.Visitor_Type ?? 'Unkown'}</div>
-                <div className="w-1/6 text-center">{visitor.Email ?? 'Unkown'}</div>
                 <div className="w-1/6 text-center">
-                  {new Date(visitor.Birthdate).toLocaleDateString()}        
+                  {visitor.Fname ?? "Unkown"}{" "}
+                </div>
+                <div className="w-1/6 text-center">
+                  {visitor.Lname ?? "Unkown"}
+                </div>
+                <div className="w-1/6 text-center">
+                  {visitor.City ?? "Unkown"}
+                </div>
+                <div className="w-1/6 text-center">
+                  {visitor.Visitor_Type ?? "Unkown"}
+                </div>
+                <div className="w-1/6 text-center">
+                  {visitor.Email ?? "Unkown"}
+                </div>
+                <div className="w-1/6 text-center">
+                  {new Date(visitor.Birthdate).toLocaleDateString()}
                 </div>
               </div>
             ))}
