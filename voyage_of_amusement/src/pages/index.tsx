@@ -4,20 +4,18 @@ import { Inter } from "next/font/google";
 import styles from "@/styles/Home.module.css";
 import Button from "@/component/Button";
 import { useAppContext } from "@/contexts/GlobaclContext";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Modal from "@/component/Modal";
 import styled, { keyframes } from "styled-components";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const router = useRouter();
   const { isLoggedIn, setLoggedIn, facility } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
-  console.log("facility", facility);
 
-  const [currentImage, setCurrentImage] = useState(0);
+  const [currIndex, setcurrIndex] = useState(0);
   const imagePaths = [
     {
       src: "/home_img/rollercoaster.jpg",
@@ -51,20 +49,7 @@ export default function Home() {
     },
   ];
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCurrentImage((currentImage + 1) % imagePaths.length);
-    }, 3000);
-    return () => clearInterval(intervalId);
-  }, [currentImage]);
 
-  const prevImage = () => {
-    setCurrentImage((currentImage - 1 + imagePaths.length) % imagePaths.length);
-  };
-
-  const nextImage = () => {
-    setCurrentImage((currentImage + 1) % imagePaths.length);
-  };
 
   const Card = styled.div`
     background: rgb(236, 236, 236);
@@ -170,71 +155,66 @@ export default function Home() {
     circle2Color: string;
   };
 
-  
   const IntroCard = styled.div<IntroCardProps>`
-  transition: all 0.2s;
-  position: relative;
-  cursor: pointer;
-  margin: 20px;
+    transition: all 0.2s;
+    position: relative;
+    cursor: pointer;
+    margin: 20px;
 
-  .card-inner {
-    width: inherit;
-    height: inherit;
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(10px);
-    border-radius: 8px;
-  }
-
-  &:hover {
-    transform: scale(1.04) rotate(1deg);
-  }
-
-  .circle {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    position: absolute;
-    animation: move-up6 2s ease-in infinite alternate-reverse;
-  }
-
-  .circle:nth-child(1) {
-    top: ${({ circle1Top }) => circle1Top}px;
-    left: ${({ circle1Left }) => circle1Left}px;
-    background: ${({ circle1Color }) => circle1Color};
-  }
-
-  .circle:nth-child(2) {
-    bottom: ${({ circle2Bottom }) => circle2Bottom}px;
-    right: ${({ circle2Right }) => circle2Right}px;
-    background: ${({ circle2Color }) => circle2Color};
-    animation-name: move-down1;
-  }
-
-  @keyframes move-up6 {
-    to {
-      transform: translateY(-10px);
+    .card-inner {
+      width: inherit;
+      height: inherit;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
     }
-  }
 
-  @keyframes move-down1 {
-    to {
-      transform: translateY(10px);
+    &:hover {
+      transform: scale(1.04) rotate(1deg);
     }
-  }
-`;
 
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      position: absolute;
+      animation: move-up6 2s ease-in infinite alternate-reverse;
+    }
 
-  return (
-    <>
-      <div className="relative mb-5">
-        <div className="relative md:h-96  py-5  h-full mb-5">
+    .circle:nth-child(1) {
+      top: ${({ circle1Top }) => circle1Top}px;
+      left: ${({ circle1Left }) => circle1Left}px;
+      background: ${({ circle1Color }) => circle1Color};
+    }
+
+    .circle:nth-child(2) {
+      bottom: ${({ circle2Bottom }) => circle2Bottom}px;
+      right: ${({ circle2Right }) => circle2Right}px;
+      background: ${({ circle2Color }) => circle2Color};
+      animation-name: move-down1;
+    }
+
+    @keyframes move-up6 {
+      to {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes move-down1 {
+      to {
+        transform: translateY(10px);
+      }
+    }
+  `;
+const ImageComponent = () =>  (
+  <div className="relative md:h-96  py-5  h-full mb-5">
           <Image
-            src={imagePaths[currentImage].src}
+            src={imagePaths[currIndex].src}
             layout="fill"
             objectFit="cover"
             objectPosition="center"
-            alt={imagePaths[currentImage].title}
+            alt={imagePaths[currIndex].title}
             className="z-10"
           />
           <div className="absolute bottom-0 left-0 right-0 p-0 bg-white shadow-lg z-10">
@@ -242,13 +222,13 @@ export default function Home() {
               <div className="mx-5 px-5 flex flex-col ">
                 <div className="mx-5 px-5 ">
                   <h1 className="text-xl md:text-5xl font-bold mb-4 text-white mx-5 px-5 flex justify-center ">
-                    {imagePaths[currentImage].title}
+                    {imagePaths[currIndex ].title}
                   </h1>
                 </div>
 
                 <div className="mx-5 px-5 ">
                   <h5 className="w-100 md:text-xl text-base font-medium text-white mb-8 md:px-4  px-1 flex justify-center ">
-                    {imagePaths[currentImage].description}
+                    {imagePaths[currIndex].description}
                   </h5>
                 </div>
                 <div className="flex justify-center">
@@ -256,7 +236,7 @@ export default function Home() {
                     <span
                       key={index}
                       className={`w-3 h-3 rounded-full mx-2 ${
-                        index === currentImage ? "bg-gray-900" : "bg-gray-500"
+                        index === currIndex ? "bg-gray-900" : "bg-gray-500"
                       }`}
                     />
                   ))}
@@ -266,7 +246,7 @@ export default function Home() {
           </div>
           <div className="absolute left-4 top-3/4 transform -translate-y-1/2 flex items-center justify-center h-full z-20">
             <button
-              onClick={prevImage}
+              onClick={() => { setcurrIndex((currIndex - 1)% imagePaths.length);}}
               className="rounded-full lg:h-16 lg:w-16 md:h-12 md:w-12 h-8 w-8 bg-white text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-colors duration-300 focus:outline-none shadow-lg"
             >
               <svg
@@ -287,7 +267,7 @@ export default function Home() {
           </div>
           <div className="absolute right-4  top-3/4 transform -translate-y-1/2 flex items-center justify-center h-full z-20">
             <button
-              onClick={nextImage}
+              onClick={() => {setcurrIndex((currIndex + 1)% imagePaths.length);}}
               className="rounded-full lg:h-16 lg:w-16 md:h-12 md:w-12 h-8 w-8 bg-white text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-colors duration-300 focus:outline-none shadow-lg"
             >
               <svg
@@ -307,6 +287,12 @@ export default function Home() {
             </button>
           </div>
         </div>
+)
+
+  return (
+    <>
+      <div className="relative mb-5">
+       <ImageComponent/>
         <div className="flex justify-center">
           <Card>
             <div
@@ -341,10 +327,10 @@ export default function Home() {
                   Discover Our Features
                 </h2>
                 <p className="text-lg font-medium text-center max-w-3xl mb-8">
-                  We offer a variety of attractions rides, shows and store that will suit every
-                  interest and age. From thrilling roller coasters to delicious
-                  dining options, there's something for everyone. Explore our
-                  park below to plan your visit!
+                  We offer a variety of attractions rides, shows and store that
+                  will suit every interest and age. From thrilling roller
+                  coasters to delicious dining options, there's something for
+                  everyone. Explore our park below to plan your visit!
                 </p>
 
                 <ActionBtn
