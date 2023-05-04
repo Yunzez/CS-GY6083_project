@@ -284,23 +284,11 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
               >
                 Add One More Visitor
               </button>
-              <div className="flex">
-                {/* <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>DOB</th>
-                    <th>City</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead> */}
+              <div className="flex flex-wrap justify-center">
                 {rows.map((row) => (
                   <div
                     key={row.id}
-                    className="bg-white w-3/7 rounded-lg shadow-md p-4 mb-4"
+                    className="bg-white w-full sm:w-1/2 md:w-1/3 lg:w-1/4 rounded-lg shadow-md p-4 mb-4 m-2 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg"
                   >
                     <div className="flex items-center mb-2">
                       <div className="font-bold mr-2">ID:</div>
@@ -348,6 +336,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
                 ))}
               </div>
             </div>
+
             <p className="text-xl mb-4">When do you plan to visit?</p>
             <input
               type="date"

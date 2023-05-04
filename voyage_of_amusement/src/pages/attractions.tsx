@@ -25,15 +25,16 @@ const Attractions = () => {
   const [hasCheckout, setHasCheckout] = useState(false);
   const [checkoutProcess, setCheckoutProcess] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  //   let searchTerm = ''
   const [cardData, setCardData] = useState([] as FacilityType);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalData, setModalData] = useState({});
   const [numTickets, setNumTickets] = useState(0);
-
+  const [keyword, setKeyword] = useState("");
   const [selected, setSelected] = useState("Attractions");
   const [targetFacility, setTargetFacility] = useState([]);
-
+  const [filteredFacility, setFilteredFacility] = useState([]);
   const FilterDiv = styled.div`
     padding: 25px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
@@ -86,8 +87,11 @@ const Attractions = () => {
     
   }`;
   const handleFilterClick = (type: string) => {
-    setSelected(type);
-    console.log(facility.data);
+    console.log("trigger", type);
+    // console.log(facility.data);
+    if (!facility.data) {
+      return;
+    }
     let abbreviation: string;
     switch (type) {
       case "Attractions":
@@ -104,46 +108,50 @@ const Attractions = () => {
         break;
     }
 
-    const newTargetFacility = facility.data.filter((item) => {
-      if (item.Source_Type == abbreviation) return item;
-    });
-    setTargetFacility(newTargetFacility);
-    console.log(newTargetFacility);
+    setTargetFacility(
+      facility.data.filter((item) => item.Source_Type === abbreviation)
+    );
+    setFilteredFacility(
+      facility.data.filter((item) => item.Source_Type === abbreviation)
+    );
   };
 
   useEffect(() => {
+    console.log("trigger [ready, facility]");
     if (ready) {
+      console.log("ready");
       setTargetFacility(
-        facility.data.filter((item) => {
-          if (item.Source_Type == "Att") return item;
-        })
+        facility.data.filter((item) => item.Source_Type === "Att")
       );
-      setCardData(targetFacility.map((item) => ({ ...item, visible: true })));
-      console.log(cardData);
+      setFilteredFacility(targetFacility);
+      console.log(targetFacility);
     }
   }, [ready, facility]);
 
-  useEffect(() => {
-    setCardData(targetFacility.map((item) => ({ ...item, visible: true })));
-  }, [targetFacility]);
-
-  useEffect(() => {
+  console.log("refresh");
+  const handleSearchSubmit = (searchTerm: string) => {
     if (searchTerm.length > 0) {
-      const newCardData = cardData.map((item) => {
-        const visible = item.Facility_Name.toLowerCase().includes(
-          searchTerm.toLowerCase()
-        );
-        return { ...item, visible };
-      });
+      console.log("search", searchTerm);
 
-      setCardData(newCardData);
-      console.log(cardData);
-    } else {
-      setCardData((prevCardData) =>
-        prevCardData.map((item) => ({ ...item, visible: true }))
+      console.log(
+        "new resulte array",
+        targetFacility.filter((item) =>
+          item.Facility_Name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
       );
+
+      const currFacility = filteredFacility;
+      currFacility.splice(0, currFacility.length);
+      const newFacility = targetFacility.filter((item) =>
+        item.Facility_Name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      currFacility.push(...newFacility);
+      setFilteredFacility(newFacility);
+    } else {
+      handleFilterClick(selected);
+      setFilteredFacility(targetFacility);
     }
-  }, [searchTerm]);
+  };
 
   const handleAttractionClick = () => {
     setNumTickets(0);
@@ -186,8 +194,8 @@ const Attractions = () => {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 md:p-8">
-      <div className="flex flex-col items-center space-y-4">
+    <div className="flex flex-col items-center p-2 md:p-8">
+      <div className="flex flex-col items-center space-y-2">
         <FilterDiv>
           <div className="tools">
             <div className="circle">
@@ -215,26 +223,6 @@ const Attractions = () => {
               </div>
             </div>
 
-            <div className="flex justify-center w-full relative mb-20 pt-5  mt-5 container mx-auto">
-              <input
-                pattern="^[a-zA-Z0-9]*$" // only allow letters and numbers
-                onInput={(e) => {
-                  setSearchTerm(e.currentTarget.value);
-                }}
-                type="text"
-                id="floating_filled"
-                className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
-                placeholder=" "
-              />
-              <label
-                htmlFor="floating_filled"
-                className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
-              >
-                Search...
-              </label>
-            </div>
-
-
             <div className="flex justify-center space-x-4 w-full">
               <div
                 className={`cursor-pointer border-2 border-violet-500 px-4 py-2 rounded-full text-gray-500 ${
@@ -242,7 +230,10 @@ const Attractions = () => {
                     ? "bg-violet-500 text-white"
                     : "hover:bg-violet-500 hover:text-white"
                 } transition-colors duration-300`}
-                onClick={() => handleFilterClick("Attractions")}
+                onClick={() => {
+                  setSelected("Attractions");
+                  handleFilterClick("Attractions");
+                }}
               >
                 Attractions
               </div>
@@ -253,7 +244,10 @@ const Attractions = () => {
                     ? "bg-amber-500 text-white"
                     : "hover:bg-amber-500 hover:text-white"
                 } transition-colors duration-300`}
-                onClick={() => handleFilterClick("Stores")}
+                onClick={() => {
+                  setSelected("Stores");
+                  handleFilterClick("Stores");
+                }}
               >
                 Stores
               </div>
@@ -264,31 +258,57 @@ const Attractions = () => {
                     ? "bg-lime-500 text-white"
                     : "hover:bg-lime-500 hover:text-white"
                 } transition-colors duration-300`}
-                onClick={() => handleFilterClick("Shows")}
+                onClick={() => {
+                  setSelected("Shows");
+                  handleFilterClick("Shows");
+                }}
               >
                 Shows
               </div>
             </div>
           </div>
+          
+          
         </FilterDiv>
-      </div>
+        <div className=" w-full flex justify-content-end">
+          <div className="flex justify-center w-full relative mb-20 pt-5  m-2 container mx-auto ">
+            <input
+              pattern="^[a-zA-Z0-9]*$" // only allow letters and numbers
+              onChange={(e) => {
+                const value = e.currentTarget.value;
+                setSearchTerm(value);
 
+                handleSearchSubmit(value);
+              }}
+              type="text"
+              id="floating_filled"
+              className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+              placeholder=" "
+            />
+            <label
+              htmlFor="floating_filled"
+              className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+            >
+              Search...
+            </label>
+          </div>
+        </div>
+      </div>
+        
       <div className={` ${styles.cardContainer}`}>
-        {cardData &&
-          cardData.map((data, key) => {
+        {filteredFacility &&
+          filteredFacility.map((data, key) => {
             return (
-              data.visible && (
-                <div
-                  key={key}
-                  className={`${styles.card} ${styles.cardAnimation}`}
-                  onClick={() => {
-                    setModalData(data);
-                    handleAttractionClick();
-                  }}
-                >
-                  <FacilityCard facility={data} index={key} />
-                </div>
-              )
+              <div
+                key={key}
+                className={`${styles.card} ${styles.cardAnimation}`}
+                onClick={() => {
+                  setModalData(data);
+                  handleAttractionClick();
+                }}
+              >
+                <FacilityCard facility={data} index={key} />
+              </div>
             );
           })}
       </div>
