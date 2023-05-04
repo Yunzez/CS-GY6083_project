@@ -1329,9 +1329,7 @@ ALTER TABLE AFZ_Visitors
     ON UPDATE NO ACTION 
 GO
 
-create unique index AFZ_Visitors_Email_uindex
-	on AFZ_Visitors (Email)
-go
+
 
 alter table AFZ_Activity
 	add Master_Activity_ID NUMERIC(10)

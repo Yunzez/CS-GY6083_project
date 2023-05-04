@@ -248,7 +248,13 @@ BEGIN
                 OR B.Activity_ID = I.Master_Activity_ID)
         FROM AFZ_Activity A
         INNER JOIN inserted I ON A.Activity_ID = I.Master_Activity_ID;
+
+        UPDATE AFZ_Activity
+        SET Amount_Due = 0
+        FROM AFZ_Activity
+        INNER JOIN inserted I ON AFZ_Activity.Activity_ID = I.Activity_ID;
     END
 END
-GO;
+go
+
 
