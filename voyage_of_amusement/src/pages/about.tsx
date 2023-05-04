@@ -46,20 +46,20 @@ const About: React.FC = () => {
               <div className="px-4 py-6 md:p-12 text-center">
                 <h1 className="text-4xl font-bold mb-4">Voyage of Amusement</h1>
                 <p className="text-lg mb-4">
-                  Welcome to Voyage of Amusement, the most exciting and
+                  {`Welcome to Voyage of Amusement, the most exciting and
                   thrilling amusement park in the world! With dozens of rides,
-                  attractions, and shows, there's something for everyone here.
+                  attractions, and shows, there's something for everyone here.`}
                 </p>
                 <p className="text-lg mb-4">
-                  Take a ride on the rollercoaster, fly through the air on the
+                 {` Take a ride on the rollercoaster, fly through the air on the
                   swings, or get soaked on the water rides. And don't forget to
-                  check out our live shows and entertainment!
+                  check out our live shows and entertainment!`}
                 </p>
                 <p className="text-lg">
-                  At Voyage of Amusement, we're dedicated to providing the best
+                  {`At Voyage of Amusement, we're dedicated to providing the best
                   possible experience for our guests. That's why we're always
                   updating our park with new rides and attractions, so you can
-                  have a new adventure every time you visit.
+                  have a new adventure every time you visit.`}
                 </p>
               </div>
             )}
@@ -75,21 +75,21 @@ const About: React.FC = () => {
               <div className="px-4 py-6 md:p-12 text-center">
                 <h1 className="text-4xl font-bold mb-4">About the Project</h1>
                 <p className="text-lg mb-4">
-                  This website is a project built using Next.js and Azure DB. We
+                 {` This website is a project built using Next.js and Azure DB. We
                   created this site to showcase our skills in building modern,
-                  responsive web applications using the latest technologies.
+                  responsive web applications using the latest technologies.`}
                 </p>
                 <p className="text-lg mb-4">
-                  Our goal was to create a website that not only looks great,
+                 {` Our goal was to create a website that not only looks great,
                   but also provides a seamless user experience. That's why we
                   built in features like this slider, which allows you to switch
                   between the amusement park about page and the project about
-                  page with ease.
+                  page with ease.`}
                 </p>
                 <p className="text-lg">
-                  If you're interested in learning more about the technologies
+                 {` If you're interested in learning more about the technologies
                   we used to build this site, or if you'd like to work with us
-                  on your own web project, please get in touch!
+                  on your own web project, please get in touch!`}
                 </p>
               </div>
             )}

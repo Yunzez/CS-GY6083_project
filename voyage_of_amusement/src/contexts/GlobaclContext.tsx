@@ -7,7 +7,7 @@ type AppContextType = {
   user: any;
   setUser: React.Dispatch<React.SetStateAction<any>>;
   ready: boolean;
-  facility: FacilityType[];
+  facility: FacilityType;
   notification: NotificationType[];
   setNotification: React.Dispatch<React.SetStateAction<NotificationType[]>>;
   userInfo: any;
@@ -21,6 +21,10 @@ type AppProviderProps = {
 };
 
 export type FacilityType = {
+  data? : FacilityDetailType[];
+  [key: string]: any;
+};
+export type FacilityDetailType = {
   facility_id?: number;
   facility_name?: string;
   url?: string;
@@ -33,11 +37,22 @@ export type NotificationType = {
   url: string;
 };
 
+export type UserType = {
+  Visitor_ID?: string;
+  Email?: string;
+  Fname?: string;
+  Lname?: string;
+  Visitor_Type?: string;
+  Birthdate?: string;
+  Cell_Number?: string;
+  City?: string
+};
+
 export const useAppContext = () => useContext(AppContext);
 
 const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState<UserType>({});
   const [userInfo, setUserInfo] = useState({
     attraction: [],
     show: [],
@@ -80,7 +95,6 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-
     if (
       sessionStorage.getItem("isLoggedIn") &&
       sessionStorage.getItem("isLoggedIn") === "true"
@@ -109,9 +123,9 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     // }
   }, []);
 
-  useEffect(()=> {
-    console.log('run')
-    sessionStorage.setItem('user', JSON.stringify(user))
+  useEffect(() => {
+    console.log("run");
+    sessionStorage.setItem("user", JSON.stringify(user));
     sessionStorage.setItem("isLoggedIn", JSON.stringify(isLoggedIn));
     if (isLoggedIn && user) {
       console.log("fetch user", user);
@@ -126,7 +140,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
           console.error("Error fetching user info:", error);
         });
     }
-  },[user, isLoggedIn])
+  }, [user, isLoggedIn]);
 
   const contextValue: AppContextType = {
     isLoggedIn,

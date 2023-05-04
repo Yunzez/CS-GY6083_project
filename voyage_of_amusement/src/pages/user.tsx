@@ -15,6 +15,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar, Pie } from "react-chartjs-2";
+import { UserType } from "@/contexts/GlobaclContext";
 // Define the styled component for the information div
 const CardDiv = styled.div`
   border-radius: 10px;
@@ -117,6 +118,18 @@ interface Ticket {
   Visit_Date?: string;
 }
 
+type ChartDataType = 
+    {
+        labels: never[];
+        datasets: {
+          label: string;
+          data: never[];
+          backgroundColor: string[];
+          borderWidth: number;
+        }[];
+      }
+
+
 // Function to generate a random color
 function getRandomColor() {
   const letters = "0123456789ABCDEF";
@@ -199,7 +212,7 @@ const UserSettings: React.FC = () => {
   const { isLoggedIn, setLoggedIn, user, setUser, userInfo } = useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [superTickets, setSuperTickets] = useState<Ticket[]>([]);
-  const [superVisitors, setSuperVisitors] = useState<Ticket[]>([]);
+  const [superVisitors, setSuperVisitors] = useState<UserType[]>([]);
   const [superTicketsData, setSuperTicketsData] = useState();
 
   const cardRef = useRef(null);
@@ -240,19 +253,21 @@ const UserSettings: React.FC = () => {
   let showTotalAmount;
 
   if (userInfo.show.length > 0) {
-    const showAmount = userInfo.show.map((activity) => activity.Amount_Due);
+    const showAmount = userInfo.show.map(
+      (activity: { [key: string]: any }) => activity.Amount_Due
+    );
     showTotalAmount = showAmount.reduce(
-      (accumulator, currentValue) => accumulator + currentValue,
+      (accumulator: number, currentValue: number) => accumulator + currentValue,
       0
     );
   }
 
-  const filterGraphData = (data, attribute) => {
-    const separatedData = [];
-    const labelData = [];
-    data.forEach((ticket) => {
-      const attrValue = ticket[attribute];
-      if (!separatedData[attrValue]) {
+  const filterGraphData = (data: { [key: string]: any }, attribute: string) => {
+    const separatedData: { [key: string]: any } = [];
+    const labelData: { [key: string]: any } = [];
+    data.forEach((ticket: { [key: string]: any }) => {
+      const attrValue = ticket?.[attribute];
+      if (!separatedData?.[attrValue]) {
         labelData.push(attrValue);
         separatedData[attrValue] = [];
       }
@@ -265,7 +280,6 @@ const UserSettings: React.FC = () => {
   };
   // Using the reduce() method to combine all the 'Amount_Due' values
   useEffect(() => {
-    
     if (user.Email === "root@root.com") {
       console.log("fetch super user data");
       fetch("/api/superUser")
@@ -295,7 +309,7 @@ const UserSettings: React.FC = () => {
           const randomColors = Array.from({ length: lengthsArray.length }, () =>
             getRandomColor()
           );
-          const newChartData = {
+          const newChartData: { [key: string]: any } = {
             ...ticketChartData, // Copy the existing chart data
             labels: labelData,
             datasets: [
@@ -307,7 +321,9 @@ const UserSettings: React.FC = () => {
             ],
           };
 
-          setTicketChartData(newChartData);
+          setTicketChartData(
+            newChartData as ChartDataType
+          );
 
           const pdrandomColors = Array.from(
             { length: priceLengthsArray.length },
@@ -324,7 +340,9 @@ const UserSettings: React.FC = () => {
               },
             ],
           };
-          setPriceTicketChartData(newPDChartData);
+          setPriceTicketChartData(
+            newPDChartData as ChartDataType
+          );
 
           const vtrandomColors = Array.from(
             { length: lengthsArray.length },
@@ -341,7 +359,9 @@ const UserSettings: React.FC = () => {
               },
             ],
           };
-          setVTChartData(newVTChartData);
+          setVTChartData(
+            newVTChartData as ChartDataType
+          );
 
           const cityrandomColors = Array.from(
             { length: lengthsArray.length },
@@ -358,7 +378,7 @@ const UserSettings: React.FC = () => {
               },
             ],
           };
-          setCityChartData(newCityChartData);
+          setCityChartData(newCityChartData as ChartDataType);
 
           setSuperVisitors(data.user);
         });
@@ -374,7 +394,7 @@ const UserSettings: React.FC = () => {
             <h2 className="text-xl font-bold mb-4 text-center">
               Super User Admin
             </h2>
-            <hr className="mb-2"/>
+            <hr className="mb-2" />
             <div
               className={`cursor-pointer p-3 m-3 bg-red-100 border border-red-300 rounded-lg hover:text-white hover:border-red-600 hover:font-bold  hover:bg-red-600 text-center transition duration-300 ease-in-out `}
               onClick={() => {
@@ -484,10 +504,10 @@ const UserSettings: React.FC = () => {
                 <div className="w-1/6 text-center">{ticket.Activity_ID}</div>
                 <div className="w-1/6 text-center">${ticket.Price}</div>
                 <div className="w-1/6 text-center">
-                  {new Date(ticket.Purchase_Date).toLocaleDateString()}
+                  {new Date(ticket.Purchase_Date ?? "").toLocaleDateString()}
                 </div>
                 <div className="w-1/6 text-center">
-                  {new Date(ticket.Visit_Date).toLocaleDateString()}
+                  {new Date(ticket.Visit_Date ?? "").toLocaleDateString()}
                 </div>
                 <div className="w-1/6 text-center">
                   {ticket.Validate === 0 ? "Yes" : "No"}
@@ -555,7 +575,7 @@ const UserSettings: React.FC = () => {
                   {visitor.Lname ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
-                  {visitor.City ?? "Unknown"}
+                  {visitor?.City  ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
                   {visitor.Visitor_Type ?? "Unknown"}
@@ -564,7 +584,7 @@ const UserSettings: React.FC = () => {
                   {visitor.Email ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
-                  {new Date(visitor.Birthdate).toLocaleDateString()}
+                  {new Date(visitor?.Birthdate as string).toLocaleDateString()}
                 </div>
               </div>
             ))}
@@ -585,7 +605,7 @@ const UserSettings: React.FC = () => {
                     Your ticket history:
                   </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3">
-                    {userInfo.ticket.map((item, index) => (
+                    {userInfo.ticket.map((item:{[key:string]:any}, index:number) => (
                       <Ticket key={index}>
                         <div className="innerCard">
                           <CardTitle>Voyage of Amusement</CardTitle>
@@ -595,14 +615,13 @@ const UserSettings: React.FC = () => {
                           <div className="flex text-md-xl">
                             <div className="me-3">
                               Purchased on:{" "}
-                              {new Date(item.Activity_Date[0]).toLocaleDateString(
-                                "en-US",
-                                {
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  year: "numeric",
-                                }
-                              )}
+                              {new Date(
+                                item.Activity_Date[0]
+                              ).toLocaleDateString("en-US", {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              })}
                             </div>
                             <div>{item.Discount ? "Discounted" : ""}</div>
                           </div>
@@ -648,7 +667,7 @@ const UserSettings: React.FC = () => {
                     Your attraction record:{" "}
                   </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                    {userInfo.attraction.map((item, index) => (
+                    {userInfo.attraction.map((item:{[key:string]:any}, index:number) => (
                       <CardContainer key={index}>
                         <CardContent>
                           <CardTitle>{item.Facility_Name}</CardTitle>
@@ -658,14 +677,13 @@ const UserSettings: React.FC = () => {
                           <CardInfoRow>
                             <CardInfoItem>
                               Date:{" "}
-                              {new Date(item.Activity_Date[0]).toLocaleDateString(
-                                "en-US",
-                                {
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  year: "numeric",
-                                }
-                              )}
+                              {new Date(
+                                item.Activity_Date[0]
+                              ).toLocaleDateString("en-US", {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              })}
                             </CardInfoItem>
                             <CardInfoItem>
                               {item.Discount ? "Discounted" : ""}
@@ -698,7 +716,7 @@ const UserSettings: React.FC = () => {
                 <div className="text-slate-700">
                   <p className="font-bold text-2xl m-4">Your recent shows: </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                    {userInfo.show.map((item, index) => (
+                    {userInfo.show.map((item:{[key:string]:any}, index:number) => (
                       <CardContainer key={index}>
                         <CardContent>
                           <CardTitle>{item.Facility_Name}</CardTitle>
@@ -708,14 +726,13 @@ const UserSettings: React.FC = () => {
                           <CardInfoRow>
                             <CardInfoItem>
                               Date:{" "}
-                              {new Date(item.Activity_Date[0]).toLocaleDateString(
-                                "en-US",
-                                {
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  year: "numeric",
-                                }
-                              )}
+                              {new Date(
+                                item.Activity_Date[0]
+                              ).toLocaleDateString("en-US", {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              })}
                             </CardInfoItem>
                             <CardInfoItem>
                               Discount: {item.Discount}
@@ -746,9 +763,11 @@ const UserSettings: React.FC = () => {
                 <p className="text-red-500">You have no information yet</p>
               ) : (
                 <div className="text-slate-700">
-                  <p className="font-bold text-2xl m-4">Recently visited shop: </p>
+                  <p className="font-bold text-2xl m-4">
+                    Recently visited shop:{" "}
+                  </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                    {userInfo.shop.map((item, index) => (
+                    {userInfo.shop.map((item:{[key:string]:any}, index:number) => (
                       <CardContainer key={index}>
                         <CardContent>
                           <CardTitle>{item.Facility_Name}</CardTitle>
@@ -758,14 +777,13 @@ const UserSettings: React.FC = () => {
                           <CardInfoRow>
                             <CardInfoItem>
                               Date:{" "}
-                              {new Date(item.Activity_Date[0]).toLocaleDateString(
-                                "en-US",
-                                {
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  year: "numeric",
-                                }
-                              )}
+                              {new Date(
+                                item.Activity_Date[0]
+                              ).toLocaleDateString("en-US", {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              })}
                             </CardInfoItem>
                           </CardInfoRow>
                           <CardInfoRow>

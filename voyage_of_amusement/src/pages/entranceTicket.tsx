@@ -266,7 +266,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
               <b className="text-green-500">10% discount</b> on the first five
               tickets every day!
               <br />
-              Plus, when you purchase online, you'll get an additional{" "}
+            {`  Plus, when you purchase online, you'll get an additional`}{" "}
               <b className="text-green-500">5% discount</b> all the time!
               <br />
               Best part? You can <b>STACK</b> these discounts together!

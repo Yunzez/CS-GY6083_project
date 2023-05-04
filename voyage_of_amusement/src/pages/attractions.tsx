@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { FacilityType, useAppContext } from "@/contexts/GlobaclContext";
+import { FacilityType, useAppContext, FacilityDetailType } from "@/contexts/GlobaclContext";
 import { CSSTransition } from "react-transition-group";
 import FacilityCard from "@/component/AttractionCard";
 import styles from "@/styles/attraction.module.css";
@@ -21,24 +21,22 @@ const Attractions = () => {
     new Promise((res) => setTimeout(res, ms));
   const { isLoggedIn, ready, facility, user, setUserInfo } = useAppContext();
   const router = useRouter();
-  const { type } = router.query;
+
   const [hasCheckout, setHasCheckout] = useState(false);
   const [checkoutProcess, setCheckoutProcess] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  //   let searchTerm = ''
-  const [cardData, setCardData] = useState([] as FacilityType);
+
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState({});
+  const [modalData, setModalData] = useState<FacilityDetailType>({} );
   const [numTickets, setNumTickets] = useState(0);
-  const [keyword, setKeyword] = useState("");
   const [selected, setSelected] = useState("Attractions");
-  const [targetFacility, setTargetFacility] = useState([]);
+  const [targetFacility, setTargetFacility] = useState<FacilityDetailType>([]);
   const [filteredFacility, setFilteredFacility] = useState([]);
   const FilterDiv = styled.div`
     padding: 25px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,         
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 96vw;
     margin: 0 auto;
@@ -109,10 +107,10 @@ const Attractions = () => {
     }
 
     setTargetFacility(
-      facility.data.filter((item) => item.Source_Type === abbreviation)
+      facility.data.filter((item) => item.Source_Type === abbreviation ) as never[]
     );
     setFilteredFacility(
-      facility.data.filter((item) => item.Source_Type === abbreviation)
+      facility.data.filter((item) => item.Source_Type === abbreviation ) as never[]
     );
   };
 
@@ -121,9 +119,9 @@ const Attractions = () => {
     if (ready) {
       console.log("ready");
       setTargetFacility(
-        facility.data.filter((item) => item.Source_Type === "Att")
+        facility.data?.filter((item) => item.Source_Type === "Att") as never[]
       );
-      setFilteredFacility(targetFacility);
+      setFilteredFacility(targetFacility as never[]);
       console.log(targetFacility);
     }
   }, [ready, facility]);
@@ -131,25 +129,14 @@ const Attractions = () => {
   console.log("refresh");
   const handleSearchSubmit = (searchTerm: string) => {
     if (searchTerm.length > 0) {
-      console.log("search", searchTerm);
 
-      console.log(
-        "new resulte array",
-        targetFacility.filter((item) =>
-          item.Facility_Name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      );
-
-      const currFacility = filteredFacility;
-      currFacility.splice(0, currFacility.length);
-      const newFacility = targetFacility.filter((item) =>
+      const newFacility = targetFacility.filter((item:FacilityDetailType) =>
         item.Facility_Name.toLowerCase().includes(searchTerm.toLowerCase())
       );
-      currFacility.push(...newFacility);
       setFilteredFacility(newFacility);
     } else {
       handleFilterClick(selected);
-      setFilteredFacility(targetFacility);
+      setFilteredFacility(targetFacility as never[]);
     }
   };
 
@@ -163,7 +150,7 @@ const Attractions = () => {
     setHasCheckout(false);
     setCheckoutProcess(false);
   };
-  const handleCheckout = async (modalData) => {
+  const handleCheckout = async (modalData: FacilityDetailType) => {
     console.log("checkout", modalData);
     setCheckoutProcess(true);
     setHasCheckout(true);
@@ -171,10 +158,10 @@ const Attractions = () => {
       return;
     }
     const data = {
-      facilityId: modalData.Facility_ID,
+      facilityId: modalData?.Facility_ID,
       num: numTickets,
       visitorId: user.Visitor_ID,
-      sourceType: modalData.Source_Type,
+      sourceType: modalData?.Source_Type,
     };
     console.log(data);
     await fetch(`/api/makeTransaction?visitorId=${user.Visitor_ID}'`, {
@@ -385,7 +372,11 @@ const Attractions = () => {
                     <hr className="my-2" />
                     <div>
                       {modalData.additionalData.length > 0 &&
-                        modalData.additionalData.map((item, index) => (
+                        modalData.additionalData.map((item: {
+                            Item_Name: string;
+                            Item_Des: string;
+                            Unit_Price: string
+                        }, index: number) => (
                           <div
                             key={index}
                             className="bg-white rounded-lg p-4 mb-4"
@@ -398,7 +389,7 @@ const Attractions = () => {
                             </p>
                             <div className="flex justify-between mt-2">
                               <p className="text-lg text-gray-600  font-semibold">
-                                Price: ${item.Unit_Price.toFixed(2)}
+                                Price: ${Number(item.Unit_Price).toFixed(2)}
                               </p>
                             </div>
                             <hr />

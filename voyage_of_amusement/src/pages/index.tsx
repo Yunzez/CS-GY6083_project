@@ -327,10 +327,10 @@ const ImageComponent = () =>  (
                   Discover Our Features
                 </h2>
                 <p className="text-lg font-medium text-center max-w-3xl mb-8">
-                  We offer a variety of attractions rides, shows and store that
+                  {`We offer a variety of attractions rides, shows and store that
                   will suit every interest and age. From thrilling roller
                   coasters to delicious dining options, there's something for
-                  everyone. Explore our park below to plan your visit!
+                  everyone. Explore our park below to plan your visit!`}
                 </p>
 
                 <ActionBtn
