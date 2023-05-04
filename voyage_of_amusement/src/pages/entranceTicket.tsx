@@ -75,7 +75,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
       lname: "",
       dob: "",
       city: "",
-    }
+    },
   ]);
 
   const addRow = () => {
@@ -115,13 +115,13 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     }
 
     if (visitDate.length == 0) {
-        setShowProcess(false);
-        setShowPay(false);
-        setShowDone(false);
-        setError("please tell us when are you vsiting ");
-        return;
-      }
-      
+      setShowProcess(false);
+      setShowPay(false);
+      setShowDone(false);
+      setError("please tell us when are you vsiting ");
+      return;
+    }
+
     if (!user.Visitor_ID) {
       setShowProcess(false);
       setShowPay(false);
@@ -156,7 +156,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
           if (res.ok) {
             return res.json();
           } else {
-            res.json().then(data => console.log(data))
+            res.json().then((data) => console.log(data));
           }
         })
         .then((data) => {
@@ -181,8 +181,6 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     setShowProcess(false);
     setShowPay(true);
     setShowDone(false);
-    
-    
   };
   const handleVisitDateChange = (
     event: React.ChangeEvent<HTMLInputElement>
@@ -203,17 +201,17 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
           dob: user.Birthdate,
           city: user.City,
         };
-  
+
         return [firstRow, ...prevState.slice(1)];
       });
     }
   }, [user]);
   return (
     <div className="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen flex items-center justify-center ">
-      <div className="bg-white p-10 rounded-lg shadow-lg text-center w-[70vw]">
+      <div className="bg-white  md:p-10 p-2 rounded-lg shadow-lg text-center md:w-[70vw] w-[90vw]">
         {!showDone && !showPay && !showProcess && (
           <>
-            <h1 className="text-5xl font-bold mb-6">
+            <h1 className="text-md-5xl text-xl font-bold mb-6">
               Welcome to Voyage of Amusement!
             </h1>
             {error.length > 0 && (
@@ -250,20 +248,20 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
                 </div>
               </div>
             )}
-            <p className="text-lg mb-8 max-w-[70vw]">
+            <p className="md:text-lg  text-md mb-8 max-w-[70vw]">
               Discover a world of wonder and excitement at Voyage of Amusement!
               Immerse yourself in thrilling rides, captivating shows, and a
               myriad of delightful stores. Prepare for an unforgettable
               experience that will create lasting memories.
             </p>
-            <h2 className="text-3xl font-semibold mb-8">
+            <h2 className="md:text-3xl text-lg font-semibold mb-8">
               Ticket Price: ${ticketPrice}
               <br />
               <span className="text-base text-gray-600">
                 Child & Senior Price: ${ticketPrice * 0.85}
               </span>
             </h2>
-            <p className="text-xl mb-4">
+            <p className="md:text-xl text-md mb-4">
               Hey there! As a valued member, you can enjoy an extra{" "}
               <b className="text-green-500">10% discount</b> on the first five
               tickets every day!
@@ -280,9 +278,14 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
               **No discount can apply on holiday.**
             </p>
             <div>
-              <button onClick={addRow}>Add One More Visitor</button>
-              <table>
-                <thead>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-4 rounded"
+                onClick={addRow}
+              >
+                Add One More Visitor
+              </button>
+              <div className="flex">
+                {/* <thead>
                   <tr>
                     <th>ID</th>
                     <th>Email</th>
@@ -293,31 +296,57 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
                     <th>City</th>
                     <th>Actions</th>
                   </tr>
-                </thead>
-                <tbody>
-                  {rows.map((row) => (
-                    <tr key={row.id}>
-                      <td>{row.id}</td>
-                      {(["email", "phone", "fname", "lname", "dob", "city"] as Array<
-                        keyof Row
-                      >).map((field) => (
-                        <td key={field}>
+                </thead> */}
+                {rows.map((row) => (
+                  <div
+                    key={row.id}
+                    className="bg-white w-3/7 rounded-lg shadow-md p-4 mb-4"
+                  >
+                    <div className="flex items-center mb-2">
+                      <div className="font-bold mr-2">ID:</div>
+                      <div>{row.id}</div>
+                    </div>
+                    <div className="grid md:grid-cols-2 md:gap-4 gap-2">
+                      {(
+                        [
+                          "fname",
+                          "lname",
+                          "email",
+                          "phone",
+                          "dob",
+                          "city",
+                        ] as Array<keyof Row>
+                      ).map((field) => (
+                        <div key={field} className="flex flex-col">
+                          <label
+                            htmlFor={`${field}-${row.id}`}
+                            className="font-bold text-md-md text-sm mb-1"
+                          >
+                            {field.charAt(0).toUpperCase() + field.slice(1)}:
+                          </label>
                           <input
+                            className="border border-gray-300 rounded py-2 px-3"
                             type={field === "dob" ? "date" : "text"}
+                            id={`${field}-${row.id}`}
                             value={row[field]}
                             onChange={(e) =>
                               updateRow(row.id, field, e.target.value)
                             }
                           />
-                        </td>
+                        </div>
                       ))}
-                      <td>
-                        {rows.length > 1 && <button onClick={() => removeRow(row.id)}>Remove</button>}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                    </div>
+                    {rows.length > 1 && (
+                      <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 mt-4 rounded"
+                        onClick={() => removeRow(row.id)}
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
             <p className="text-xl mb-4">When do you plan to visit?</p>
             <input
