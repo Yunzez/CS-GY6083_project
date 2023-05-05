@@ -543,7 +543,7 @@ const UserSettings: React.FC = () => {
                     plugins: {
                       title: {
                         display: true,
-                        text: "Visitor based on type",
+                        text: "Visitor based on city",
                       },
                       legend: {
                         display: false,

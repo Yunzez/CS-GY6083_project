@@ -1,7 +1,7 @@
-export const summarizeUserInfo = (summary) => {
+export const summarizeUserInfo = (summary: {[key: string]: any}) => {
     
     // Group the data based on Source_Type
-const groupedData = summary.reduce((acc, item) => {
+const groupedData = summary.reduce((acc:{[key: string]: any}, item:{[key: string]: any}) => {
     const sourceType = item.Source_Type[0]; // Taking the first element as Source_Type
     if (!acc[sourceType]) {
       acc[sourceType] = [];
