@@ -12,6 +12,7 @@ type AppContextType = {
   setNotification: React.Dispatch<React.SetStateAction<NotificationType[]>>;
   userInfo: any;
   setUserInfo: React.Dispatch<React.SetStateAction<any>>;
+  refetchFacility: () => void
 };
 
 const AppContext = createContext<AppContextType>(null!);
@@ -142,6 +143,18 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     }
   }, [user, isLoggedIn]);
 
+  const refetchFacility = async () => {
+    console.log('refetch facility')
+    await fetch("/api/facility")
+    .then((res) => res.json())
+    .then((data) => {
+      setFacility(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching facility data:", error);
+    });
+  }
+
   const contextValue: AppContextType = {
     isLoggedIn,
     setLoggedIn,
@@ -153,6 +166,7 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     facility,
     notification,
     setNotification,
+    refetchFacility
   };
 
   return (
