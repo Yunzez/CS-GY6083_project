@@ -1,9 +1,4 @@
 CREATE PROCEDURE get_summary_data_by_date (@input_date DATE) AS
-    IF (@input_date >= GETDATE())
-BEGIN
-    RAISERROR('Input date cannot be larger than or equal to today''s date', 16, 1);
-    RETURN;
-END
 BEGIN
     SELECT AA.Visitor_ID, (AA.Source_Type + '-' +
     CAST(
@@ -56,17 +51,14 @@ BEGIN
         JOIN AFZ_Visitors AV on AA.Visitor_ID = AV.Visitor_ID
         where cast(AA.Activity_Date as Date) = @input_date
     END
-go;
-
-EXECUTE get_summary_data_by_date '2023-04-03';
-
--- DROP PROCEDURE get_summary_data_by_date;
+go
 
 CREATE PROCEDURE get_summary_data_by_user_id (@input_id NUMERIC(10)) AS
 BEGIN
     SELECT * FROM AFZ_Visitors AV
     JOIN AFZ_Visitor_Type AVT on AV.Visitor_Type_ID = AVT.Visitor_Type_ID
     JOIN AFZ_Activity AA on AV.Visitor_ID = AA.Visitor_ID
+    LEFT JOIN AFZ_Activity AA2 ON AA.Activity_ID = AA2.Master_Activity_ID
     LEFT JOIN AFZ_Facility AF on AA.Facility_ID = AF.Facility_ID
     LEFT JOIN AFZ_Parking AP on AA.Activity_ID = AP.Activity_ID
     LEFT JOIN AFZ_Tickets A on AA.Activity_ID = A.Activity_ID
@@ -74,10 +66,18 @@ BEGIN
     LEFT JOIN AFZ_Ticket_Type ATT on A.Ticket_Type_ID = ATT.Ticket_Type_ID
     WHERE AV.Visitor_ID = @input_id
 END
-go;
-EXECUTE dbo.get_summary_data_by_user_id 2;
+go
 
-
+CREATE PROCEDURE get_unpaid_activity_by_user_id (@input_id NUMERIC(10)) AS
+BEGIN
+    SELECT AA.Activity_ID, AA.Amount_Due, AA.Activity_Date, AST.Source_Type_Name, AA.Facility_ID, AF.Facility_Name
+    FROM AFZ_Activity AA WITH (UPDLOCK)
+    LEFT JOIN AFZ_Payment AP on AA.Activity_ID = AP.Activity_ID
+    LEFT JOIN AFZ_Source_Type AST on AA.Source_Type = AST.Source_Type
+    left join AFZ_Facility AF on AA.Facility_ID = AF.Facility_ID
+    WHERE Amount_Due IS NOT NULL AND Payment_Amount IS NULL and AA.Visitor_ID = @input_id
+END
+go
 
 CREATE PROCEDURE get_expenditure_summary_data_by_user_id (@input_id NUMERIC(10)) AS
 BEGIN
@@ -96,24 +96,79 @@ BEGIN
     WHERE AV.Visitor_ID = @input_id
     order by Payment_Date;
 END
-go;
+go
 
-EXECUTE dbo.get_expenditure_summary_data_by_user_id 7;
+CREATE PROCEDURE buy_ticket
+    @email VARCHAR(255),
+    @phone varchar(10),
+    @fname varchar(10),
+    @lname varchar(10),
+    @dob date,
+    @city varchar(255),
+    @visitor_id numeric(5) = NULL,
+    @method_id numeric(1),
+    @visit_date date,
+    @master_activity_id numeric(10) = NULL
 
-CREATE PROCEDURE get_unpaid_activity_by_user_id (@input_id NUMERIC(10)) AS
+AS
 BEGIN
-    SET LOCK_TIMEOUT 5000; -- Set the lock timeout to 5 seconds to prevent timeout
-    SELECT AA.Activity_ID, AA.Amount_Due, AA.Activity_Date, AST.Source_Type_Name, AA.Facility_ID, AF.Facility_Name
-    FROM AFZ_Activity AA WITH (ROWLOCK, UPDLOCK)  --  use ROWLOCK hint to ensure that only the required rows are locked, rather than the entire table
-    LEFT JOIN AFZ_Payment AP on AA.Activity_ID = AP.Activity_ID
-    LEFT JOIN AFZ_Source_Type AST on AA.Source_Type = AST.Source_Type
-    left join AFZ_Facility AF on AA.Facility_ID = AF.Facility_ID
-    WHERE Amount_Due IS NOT NULL AND Payment_Amount IS NULL and AA.Visitor_ID = @input_id
-END
-go;
+    BEGIN TRANSACTION;
 
-EXECUTE dbo.get_unpaid_activity_by_user_id 7;
+    BEGIN TRY
+        DECLARE @activity TABLE (Activity_ID NUMERIC(5))
+        IF @visitor_id IS NOT NULL AND EXISTS (SELECT * FROM AFZ_Visitors WHERE Visitor_ID = @visitor_id)
+        BEGIN
+            IF @master_activity_id IS NOT NULL
+            BEGIN
+                INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date, Master_Activity_ID)
+                OUTPUT inserted.Activity_ID INTO @activity
+                VALUES ('Tic', (SELECT Visitor_ID FROM AFZ_Visitors WHERE Email = @email), GETDATE(), @master_activity_id);
+            END
+            ELSE
+            BEGIN
+                INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date)
+                OUTPUT inserted.Activity_ID INTO @activity
+                VALUES ('Tic', @visitor_id, GETDATE());
+            END
+        END
+        ELSE
+        BEGIN
+            DECLARE @new_id TABLE (Visitor_ID NUMERIC(5));
+            IF NOT EXISTS (SELECT * FROM AFZ_Visitors WHERE Email = @email)
+            BEGIN
+                INSERT INTO AFZ_Visitors (Fname, Lname, City, Email, Cell_Number, Birthdate, Visitor_Type_ID)
+                OUTPUT inserted.Visitor_ID INTO @new_id
+                VALUES (@fname, @lname, @city, @email, @phone, @dob, 2);
+            END
+            ELSE
+            BEGIN
+                INSERT INTO @new_id
+                SELECT Visitor_ID FROM AFZ_Visitors WHERE Email = @email
+            END
 
+            INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date, Master_Activity_ID)
+            OUTPUT inserted.Activity_ID INTO @activity
+            VALUES ('Tic', (SELECT Visitor_ID FROM @new_id), GETDATE(), @master_activity_id);
+        END
+
+        INSERT INTO AFZ_Tickets (Method_Type_ID, Purchase_Date, Visit_Date, Price, Activity_ID)
+        VALUES (@method_id, GETDATE(), @visit_date, 100, (select Activity_ID from @activity));
+        SELECT * FROM @activity;
+
+        -- Commit the transaction if everything is successful
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+
+        -- Log the error or re-raise it if necessary
+        SELECT 'Error encountered';
+        -- If there is an error, roll back the transaction
+        ROLLBACK TRANSACTION;
+
+        -- THROW;
+    END CATCH;
+END;
+go
 
 CREATE PROCEDURE online_pay_for_activity
     @FirstName VARCHAR(50),
@@ -142,72 +197,8 @@ BEGIN
         FROM @Payments p;
 
         -- Commit the transaction if everything is successful
-        COMMIT TRANSACTION;
-    END TRY
-    BEGIN CATCH
 
-        -- Log the error or re-raise it if necessary
-        SELECT 'Error encountered';
-        -- If there is an error, roll back the transaction
-        ROLLBACK TRANSACTION;
-
-        -- THROW;
-    END CATCH;
-END;
-GO;
-
--- EXECUTE dbo.online_pay_for_activity 'Zehua', 'Zhu', 1234123412341234, 123, '2023-05', 200;
-
-
-CREATE PROCEDURE buy_ticket
-    @email VARCHAR(255),
-    @phone varchar(10),
-    @fname varchar(10),
-    @lname varchar(10),
-    @dob date,
-    @city varchar(255),
-    @visitor_id numeric(5),
-    @method_id numeric(1),
-    @visit_date date,
-    @master_activity_id numeric(10) = NULL
-
-AS
-BEGIN
-    BEGIN TRANSACTION;
-
-    BEGIN TRY
-        DECLARE @activity TABLE (Activity_ID NUMERIC(5))
-        IF EXISTS (SELECT * FROM AFZ_Visitors)
-        BEGIN
-            IF @visitor_id != (SELECT Visitor_ID FROM AFZ_Visitors WHERE Email = @email)
-            BEGIN
-                INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date, Master_Activity_ID)
-                OUTPUT inserted.Activity_ID INTO @activity
-                VALUES ('Tic', (SELECT Visitor_ID FROM AFZ_Visitors WHERE Email = @email), GETDATE(), @master_activity_id);
-            END
-            ELSE
-            BEGIN
-                INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date)
-                OUTPUT inserted.Activity_ID INTO @activity
-                VALUES ('Tic', @visitor_id, GETDATE());
-            END
-        END
-        ELSE
-        BEGIN
-            DECLARE @new_id TABLE (Visitor_ID NUMERIC(5));
-            INSERT INTO AFZ_Visitors (Fname, Lname, City, Email, Cell_Number, Birthdate, Visitor_Type_ID)
-            OUTPUT inserted.Visitor_ID INTO @new_id
-            VALUES (@fname, @lname, @city, @email, @phone, @dob, 2);
-
-            INSERT INTO AFZ_Activity (Source_Type, Visitor_ID, Activity_Date, Master_Activity_ID)
-            OUTPUT inserted.Activity_ID INTO @activity
-            VALUES ('Tic', (SELECT Visitor_ID FROM @new_id), GETDATE(), @master_activity_id);
-        END
-        INSERT INTO AFZ_Tickets (Method_Type_ID, Purchase_Date, Visit_Date, Price, Activity_ID)
-        VALUES (@method_id, GETDATE(), @visit_date, 100, (select Activity_ID from @activity));
-        SELECT * FROM @activity;
-
-        -- Commit the transaction if everything is successful
+        SELECT 'end';
         COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
@@ -221,5 +212,4 @@ BEGIN
     END CATCH;
 END;
 go
-
 
