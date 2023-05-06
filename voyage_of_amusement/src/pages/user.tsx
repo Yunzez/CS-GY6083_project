@@ -118,17 +118,15 @@ interface Ticket {
   Visit_Date?: string;
 }
 
-type ChartDataType = 
-    {
-        labels: never[];
-        datasets: {
-          label: string;
-          data: never[];
-          backgroundColor: string[];
-          borderWidth: number;
-        }[];
-      }
-
+type ChartDataType = {
+  labels: never[];
+  datasets: {
+    label: string;
+    data: never[];
+    backgroundColor: string[];
+    borderWidth: number;
+  }[];
+};
 
 // Function to generate a random color
 function getRandomColor() {
@@ -143,7 +141,7 @@ function getRandomColor() {
 const UserSettings: React.FC = () => {
   const router = useRouter();
   Chart.register(CategoryScale);
-
+  const [isOpen, setIsOpen] = useState(false);
   const [ticketChartData, setTicketChartData] = useState({
     labels: [],
     datasets: [
@@ -207,14 +205,21 @@ const UserSettings: React.FC = () => {
       },
     ],
   });
-
-  const [isOpen, setIsOpen] = useState(false);
+  const ResetStep = {
+    VERIFY: "verify",
+    VERIFYING: "verifying",
+    NEW_PASSWORD: "newPassword",
+    SUCCESS: "success",
+    FAIL: "FUCK",
+  };
+  const [step, setStep] = useState(ResetStep.VERIFY);
   const { isLoggedIn, setLoggedIn, user, setUser, userInfo } = useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [superTickets, setSuperTickets] = useState<Ticket[]>([]);
   const [superVisitors, setSuperVisitors] = useState<UserType[]>([]);
   const [superTicketsData, setSuperTicketsData] = useState();
-
+  const [inputPW, setInputPW] = useState("");
+  const [inputNewPW, setInputNewPW] = useState("");
   const cardRef = useRef(null);
 
   const [showChart, setShowChart] = useState(false);
@@ -278,6 +283,60 @@ const UserSettings: React.FC = () => {
     console.log(lengthsArray, labelData);
     return [lengthsArray, labelData];
   };
+
+  const [unmatch, setUnmatch] = useState(true);
+  const [shortPW, setShortPW] = useState(true);
+  const handleVerify = () => {
+    setStep(ResetStep.VERIFYING);
+    const email = user.Email;
+    const password = inputPW;
+    const data = {
+      email: email,
+      password: password,
+    };
+    fetch("/api/verifyPassword", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((success) => {
+        console.log(success);
+        if (success) {
+          setStep(ResetStep.NEW_PASSWORD);
+        } else {
+          setStep(ResetStep.FAIL);
+        }
+      });
+  };
+
+  const handleChangePW = () => {
+    if (doubleInput.trim() !== inputNewPW.trim()) {
+      setUnmatch(true);
+    }
+
+    if (inputNewPW.trim().length <= 4) {
+      setShortPW(true);
+      return;
+    }
+    console.log("change password");
+    const data = { email: user.Email, password: inputNewPW.trim() };
+    console.log(data);
+    fetch("api/changePassword", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }).then((response) => {
+      if (response.ok) {
+        console.log("set success");
+        setStep(ResetStep.SUCCESS);
+      }
+    });
+  };
   // Using the reduce() method to combine all the 'Amount_Due' values
   useEffect(() => {
     if (user.Email === "root@root.com") {
@@ -321,9 +380,7 @@ const UserSettings: React.FC = () => {
             ],
           };
 
-          setTicketChartData(
-            newChartData as ChartDataType
-          );
+          setTicketChartData(newChartData as ChartDataType);
 
           const pdrandomColors = Array.from(
             { length: priceLengthsArray.length },
@@ -340,9 +397,7 @@ const UserSettings: React.FC = () => {
               },
             ],
           };
-          setPriceTicketChartData(
-            newPDChartData as ChartDataType
-          );
+          setPriceTicketChartData(newPDChartData as ChartDataType);
 
           const vtrandomColors = Array.from(
             { length: lengthsArray.length },
@@ -359,9 +414,7 @@ const UserSettings: React.FC = () => {
               },
             ],
           };
-          setVTChartData(
-            newVTChartData as ChartDataType
-          );
+          setVTChartData(newVTChartData as ChartDataType);
 
           const cityrandomColors = Array.from(
             { length: lengthsArray.length },
@@ -384,9 +437,214 @@ const UserSettings: React.FC = () => {
         });
     }
   }, [userInfo]);
+
+  const [doubleInput, setDoubleInput] = useState("");
+
+  useEffect(() => {
+    setShortPW(false)
+    if (doubleInput.trim() !== inputNewPW.trim()) {
+      setUnmatch(true);
+    } else {
+      setUnmatch(false);
+    }
+  }, [inputNewPW, doubleInput]);
   return (
     <div className="flex" ref={cardRef}>
-      {/* Sidebar */}
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-gray-100 rounded-lg p-4 w-[90vw] md:w-auto relative">
+            {step !== ResetStep.SUCCESS && (
+              <button
+                className="absolute top-0 px-3 right-0 m-3 p-1 rounded-full bg-red-500 text-white hover:bg-red-700"
+                onClick={() => {
+                  setIsOpen(false);
+                  setStep(ResetStep.VERIFY);
+                  setUnmatch(false);
+                }}
+              >
+                X
+              </button>
+            )}
+
+            {step === ResetStep.VERIFY && (
+              <div className="p-5">
+                <h2 className="text-lg font-bold mb-2">Change password</h2>
+                <p className="text-gray-700 mb-4 pt-5">
+                  Please input you current password:
+                </p>
+                <div className="flex justify-center w-full relative mb-20 pt-5  m-2 container mx-auto ">
+                  <input
+                    pattern="^[a-zA-Z0-9]*$" // only allow letters and numbers
+                    onChange={(e) => {
+                      const value = e.currentTarget.value;
+                      setInputPW(e.currentTarget.value);
+                    }}
+                    type="text"
+                    id="floating_filled"
+                    className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    htmlFor="floating_filled"
+                    className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                  >
+                    Current password
+                  </label>
+                </div>
+                <button
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => handleVerify()}
+                >
+                  Verify
+                </button>
+              </div>
+            )}
+            {step === ResetStep.VERIFYING && (
+              <div className="p-5">
+                <div className="flex flex-col">
+                  <h3 className="text-gray-500 mb-4 pt-5 text-center">
+                    {`Verifying your password with email `}
+                    <b>{user.Email}</b>
+                    {` :)`}
+                  </h3>
+                  <div
+                    role="status "
+                    className="animate-bounce flex justify-center mt-5"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="w-14 h-14 mr-2 text-gray-200 animate-spin dark:text-slate-300 fill-indigo-600"
+                      viewBox="0 0 100 101"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                        fill="currentColor"
+                      />
+                      <path
+                        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                        fill="currentFill"
+                      />
+                    </svg>
+                    <span className="sr-only">Loading...</span>
+                  </div>
+                </div>
+              </div>
+            )}
+            {step === ResetStep.FAIL && (
+              <div className="p-5">
+                <div
+                  className="bg-red-100 m-10 p-3 border border-red-400 text-red-700 px-4 py-3 rounded relative"
+                  role="alert"
+                >
+                  <strong className="font-bold me-4">Oops! </strong>
+                  <span className="block sm:inline">
+                    The password does not match, please try again.
+                  </span>
+                </div>
+              </div>
+            )}
+            {step === ResetStep.NEW_PASSWORD && (
+              <div className="p-5">
+                <div className="mb-2 mt-2 text-lg font-semibold">
+                  Please enter your new password
+                </div>
+                <div className="flex justify-center w-80 relative   m-2 container mx-auto ">
+                  <input
+                    pattern="^[a-zA-Z0-9]*$" // only allow letters and numbers
+                    onInput={(e) => {
+                      const value = e.currentTarget.value;
+                      setInputNewPW(e.currentTarget.value);
+                    }}
+                    type="text"
+                    id="floating_filled"
+                    className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    htmlFor="floating_filled"
+                    className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                  >
+                    New password
+                  </label>
+                </div>
+                <div className="flex justify-center w-80 relative  m-2 container mx-auto ">
+                  <input
+                    pattern="^[a-zA-Z0-9]*$" // only allow letters and numbers
+                    onInput={(e) => {
+                      const value = e.currentTarget.value;
+                      setDoubleInput(value);
+                      console.log(doubleInput, inputNewPW);
+                    }}
+                    type="text"
+                    id="floating_filled"
+                    className="block rounded-t-md px-3 pb-2 pt-5 w-full text-sm text-gray-900 bg-gray-50 border-0 border-b-2 border-gray-100 appearance-none focus:outline-none focus:bg-indigo-50 focus:ring-0 focus:border-indigo-500 peer"
+                    placeholder=" "
+                  />
+                  <label
+                    htmlFor="floating_filled"
+                    className="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-indigo-500  peer-focus:font-semibold peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4"
+                  >
+                    Please reenter your password
+                  </label>
+                </div>
+                {unmatch ? (
+                  <div
+                    className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4"
+                    role="alert"
+                  >
+                    <strong className="font-bold">Oops!</strong>
+                    <span className="block sm:inline">
+                      Your two passwords do not match.
+                    </span>
+                  </div>
+                ) : (
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
+                    onClick={() => handleChangePW()}
+                  >
+                    Change my password
+                  </button>
+                )}
+                {shortPW && (
+                  <div
+                    className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mt-4"
+                    role="alert"
+                  >
+                    <span className="block sm:inline">
+                      Password length less than 4 characters 
+                    </span>
+                  </div>
+                )}
+              </div>
+            )}
+            {step === ResetStep.SUCCESS && (
+              <div className="p-5">
+                <div
+                  className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mt-4"
+                  role="alert"
+                >
+                  <strong className="font-bold me-3">Success!</strong>
+                  <span className="block sm:inline">
+                    Please login to your account again.
+                  </span>
+                </div>
+                <button
+                  className="mt-3 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  onClick={() => {
+                    setLoggedIn(false);
+                    setUser({});
+                    router.push("/");
+                  }}
+                >
+                  Okay
+                </button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       <div className={styles.sidePanel}>
         {user.Email === "root@root.com" ? (
@@ -415,7 +673,7 @@ const UserSettings: React.FC = () => {
             <h5 className="font-bold mb-2 me-2 text-center  mb-2">
               {user.Email}
             </h5>
-
+            <hr className="mb-3" />
             <p className="font-bold mb-2 me-2 text-start">
               {user.Visitor_Type} Visitor
             </p>
@@ -437,6 +695,14 @@ const UserSettings: React.FC = () => {
               }}
             >
               Logout
+            </div>
+            <div
+              className={`cursor-pointer p-3 m-3 bg-blue-100 border border-blue-300 rounded-lg hover:text-white hover:border-blue-600 hover:font-bold  hover:bg-blue-600 text-center transition duration-300 ease-in-out `}
+              onClick={() => {
+                setIsOpen(true);
+              }}
+            >
+              Change my password
             </div>
           </div>
         )}
@@ -575,7 +841,7 @@ const UserSettings: React.FC = () => {
                   {visitor.Lname ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
-                  {visitor?.City  ?? "Unknown"}
+                  {visitor?.City ?? "Unknown"}
                 </div>
                 <div className="w-1/6 text-center">
                   {visitor.Visitor_Type ?? "Unknown"}
@@ -605,47 +871,49 @@ const UserSettings: React.FC = () => {
                     Your ticket history:
                   </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3">
-                    {userInfo.ticket.map((item:{[key:string]:any}, index:number) => (
-                      <Ticket key={index}>
-                        <div className="innerCard">
-                          <CardTitle>Voyage of Amusement</CardTitle>
-                          <small className="text-muted text-md-xl">
-                            Admission Ticket
-                          </small>
-                          <div className="flex text-md-xl">
-                            <div className="me-3">
-                              Purchased on:{" "}
-                              {new Date(
-                                item.Activity_Date[0]
-                              ).toLocaleDateString("en-US", {
-                                month: "2-digit",
-                                day: "2-digit",
-                                year: "numeric",
-                              })}
-                            </div>
-                            <div>{item.Discount ? "Discounted" : ""}</div>
-                          </div>
-                          <div className="text-md-xl">
-                            <CardInfoItem>
-                              Purchased {item.Method_Type ?? "Online"}
-                            </CardInfoItem>
-                          </div>
-                        </div>
-                        <div className="text-gray-800 text-xl">
-                          <p>Entrance:</p>
-                          {item.Visit_Date
-                            ? new Date(item.Visit_Date).toLocaleDateString(
-                                "en-US",
-                                {
+                    {userInfo.ticket.map(
+                      (item: { [key: string]: any }, index: number) => (
+                        <Ticket key={index}>
+                          <div className="innerCard">
+                            <CardTitle>Voyage of Amusement</CardTitle>
+                            <small className="text-muted text-md-xl">
+                              Admission Ticket
+                            </small>
+                            <div className="flex text-md-xl">
+                              <div className="me-3">
+                                Purchased on:{" "}
+                                {new Date(
+                                  item.Activity_Date[0]
+                                ).toLocaleDateString("en-US", {
                                   month: "2-digit",
                                   day: "2-digit",
                                   year: "numeric",
-                                }
-                              )
-                            : "dd/mm/yyyy"}
-                        </div>
-                      </Ticket>
-                    ))}
+                                })}
+                              </div>
+                              <div>{item.Discount ? "Discounted" : ""}</div>
+                            </div>
+                            <div className="text-md-xl">
+                              <CardInfoItem>
+                                Purchased {item.Method_Type ?? "Online"}
+                              </CardInfoItem>
+                            </div>
+                          </div>
+                          <div className="text-gray-800 text-xl">
+                            <p>Entrance:</p>
+                            {item.Visit_Date
+                              ? new Date(item.Visit_Date).toLocaleDateString(
+                                  "en-US",
+                                  {
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                    year: "numeric",
+                                  }
+                                )
+                              : "dd/mm/yyyy"}
+                          </div>
+                        </Ticket>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -667,36 +935,38 @@ const UserSettings: React.FC = () => {
                     Your attraction record:{" "}
                   </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                    {userInfo.attraction.map((item:{[key:string]:any}, index:number) => (
-                      <CardContainer key={index}>
-                        <CardContent>
-                          <CardTitle>{item.Facility_Name}</CardTitle>
-                          <CardDescription>
-                            {item.Facility_Description}
-                          </CardDescription>
-                          <CardInfoRow>
-                            <CardInfoItem>
-                              Date:{" "}
-                              {new Date(
-                                item.Activity_Date[0]
-                              ).toLocaleDateString("en-US", {
-                                month: "2-digit",
-                                day: "2-digit",
-                                year: "numeric",
-                              })}
-                            </CardInfoItem>
-                            <CardInfoItem>
-                              {item.Discount ? "Discounted" : ""}
-                            </CardInfoItem>
-                          </CardInfoRow>
-                          <CardInfoRow>
-                            <CardInfoItem>
-                              Location Section ID: {item.Location_Section_ID}
-                            </CardInfoItem>
-                          </CardInfoRow>
-                        </CardContent>
-                      </CardContainer>
-                    ))}
+                    {userInfo.attraction.map(
+                      (item: { [key: string]: any }, index: number) => (
+                        <CardContainer key={index}>
+                          <CardContent>
+                            <CardTitle>{item.Facility_Name}</CardTitle>
+                            <CardDescription>
+                              {item.Facility_Description}
+                            </CardDescription>
+                            <CardInfoRow>
+                              <CardInfoItem>
+                                Date:{" "}
+                                {new Date(
+                                  item.Activity_Date[0]
+                                ).toLocaleDateString("en-US", {
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                  year: "numeric",
+                                })}
+                              </CardInfoItem>
+                              <CardInfoItem>
+                                {item.Discount ? "Discounted" : ""}
+                              </CardInfoItem>
+                            </CardInfoRow>
+                            <CardInfoRow>
+                              <CardInfoItem>
+                                Location Section ID: {item.Location_Section_ID}
+                              </CardInfoItem>
+                            </CardInfoRow>
+                          </CardContent>
+                        </CardContainer>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -716,36 +986,38 @@ const UserSettings: React.FC = () => {
                 <div className="text-slate-700">
                   <p className="font-bold text-2xl m-4">Your recent shows: </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                    {userInfo.show.map((item:{[key:string]:any}, index:number) => (
-                      <CardContainer key={index}>
-                        <CardContent>
-                          <CardTitle>{item.Facility_Name}</CardTitle>
-                          <CardDescription>
-                            {item.Facility_Description}
-                          </CardDescription>
-                          <CardInfoRow>
-                            <CardInfoItem>
-                              Date:{" "}
-                              {new Date(
-                                item.Activity_Date[0]
-                              ).toLocaleDateString("en-US", {
-                                month: "2-digit",
-                                day: "2-digit",
-                                year: "numeric",
-                              })}
-                            </CardInfoItem>
-                            <CardInfoItem>
-                              Discount: {item.Discount}
-                            </CardInfoItem>
-                          </CardInfoRow>
-                          <CardInfoRow>
-                            <CardInfoItem>
-                              Location Section ID: {item.Location_Section_ID}
-                            </CardInfoItem>
-                          </CardInfoRow>
-                        </CardContent>
-                      </CardContainer>
-                    ))}
+                    {userInfo.show.map(
+                      (item: { [key: string]: any }, index: number) => (
+                        <CardContainer key={index}>
+                          <CardContent>
+                            <CardTitle>{item.Facility_Name}</CardTitle>
+                            <CardDescription>
+                              {item.Facility_Description}
+                            </CardDescription>
+                            <CardInfoRow>
+                              <CardInfoItem>
+                                Date:{" "}
+                                {new Date(
+                                  item.Activity_Date[0]
+                                ).toLocaleDateString("en-US", {
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                  year: "numeric",
+                                })}
+                              </CardInfoItem>
+                              <CardInfoItem>
+                                Discount: {item.Discount}
+                              </CardInfoItem>
+                            </CardInfoRow>
+                            <CardInfoRow>
+                              <CardInfoItem>
+                                Location Section ID: {item.Location_Section_ID}
+                              </CardInfoItem>
+                            </CardInfoRow>
+                          </CardContent>
+                        </CardContainer>
+                      )
+                    )}
                   </div>
                 </div>
               )}
@@ -767,33 +1039,35 @@ const UserSettings: React.FC = () => {
                     Recently visited shop:{" "}
                   </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                    {userInfo.shop.map((item:{[key:string]:any}, index:number) => (
-                      <CardContainer key={index}>
-                        <CardContent>
-                          <CardTitle>{item.Facility_Name}</CardTitle>
-                          <CardDescription>
-                            {item.Facility_Description}
-                          </CardDescription>
-                          <CardInfoRow>
-                            <CardInfoItem>
-                              Date:{" "}
-                              {new Date(
-                                item.Activity_Date[0]
-                              ).toLocaleDateString("en-US", {
-                                month: "2-digit",
-                                day: "2-digit",
-                                year: "numeric",
-                              })}
-                            </CardInfoItem>
-                          </CardInfoRow>
-                          <CardInfoRow>
-                            <CardInfoItem>
-                              Location Section ID: {item.Location_Section_ID}
-                            </CardInfoItem>
-                          </CardInfoRow>
-                        </CardContent>
-                      </CardContainer>
-                    ))}
+                    {userInfo.shop.map(
+                      (item: { [key: string]: any }, index: number) => (
+                        <CardContainer key={index}>
+                          <CardContent>
+                            <CardTitle>{item.Facility_Name}</CardTitle>
+                            <CardDescription>
+                              {item.Facility_Description}
+                            </CardDescription>
+                            <CardInfoRow>
+                              <CardInfoItem>
+                                Date:{" "}
+                                {new Date(
+                                  item.Activity_Date[0]
+                                ).toLocaleDateString("en-US", {
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                  year: "numeric",
+                                })}
+                              </CardInfoItem>
+                            </CardInfoRow>
+                            <CardInfoRow>
+                              <CardInfoItem>
+                                Location Section ID: {item.Location_Section_ID}
+                              </CardInfoItem>
+                            </CardInfoRow>
+                          </CardContent>
+                        </CardContainer>
+                      )
+                    )}
                   </div>
                 </div>
               )}
