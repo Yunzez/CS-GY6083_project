@@ -291,6 +291,11 @@ ORDER BY NEWID();
 INSERT INTO voa.dbo.AFZ_Visitor_Type (Visitor_Type) VALUES
      (N'Individual'),(N'Group'),(N'Member'),(N'Student');
 
+
+INSERT INTO voa.dbo.AFZ_Visitor_Type (Visitor_Type) VALUES ('Admin');
+INSERT INTO voa.dbo.AFZ_Visitor_Type (Visitor_Type) VALUES ('Guest');
+
+
 -- add Ticket Method
 INSERT INTO voa.dbo.AFZ_Ticket_Method (Method_Type, Discount) VALUES
      (N'Online' , 0.95),(N'Onsite', 1);
@@ -455,3 +460,4 @@ VALUES
   (38, 4929415677866153, 'Mike', 'Brown', 789, '2026-08-31', 'credit'),
   (39, 6011346804642873, 'Sarah', 'Johnson', 234, '2023-03-31', 'debit'),
   (40, 4532648285106349, 'Emily', 'Jones', 789, '2025-11-30', 'credit')
+

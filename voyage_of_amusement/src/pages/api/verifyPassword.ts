@@ -1,4 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import type { NextApiRequest, NextApiResponse } from 'next'
+import runMiddleware from '@/component/Middleware';
 import { pool } from "./server";
 import sql, { ConnectionPool } from "mssql";
 import bcrypt from "bcryptjs";
@@ -9,6 +10,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  await runMiddleware(req, res);
   try {
     await pool.connect().then((newConnection) => {
       connection = newConnection;

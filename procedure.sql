@@ -138,7 +138,7 @@ BEGIN
             BEGIN
                 INSERT INTO AFZ_Visitors (Fname, Lname, City, Email, Cell_Number, Birthdate, Visitor_Type_ID)
                 OUTPUT inserted.Visitor_ID INTO @new_id
-                VALUES (@fname, @lname, @city, @email, @phone, @dob, 2);
+                VALUES (@fname, @lname, @city, @email, @phone, @dob, 6);
             END
             ELSE
             BEGIN

@@ -254,3 +254,56 @@ END
 go
 
 
+CREATE TRIGGER UpdateShowAmountDue
+     ON AFZ_Show_Watch
+     AFTER INSERT
+     AS
+     BEGIN
+        DECLARE @newAmount TABLE (Activity_ID NUMERIC(5), Amount NUMERIC(10, 2))
+
+        INSERT INTO @newAmount
+        SELECT i.Activity_ID, SUM(S.Price)
+        FROM AFZ_Shows S
+        join AFZ_Show_Schedule ss on ss.Show_Facility_ID = s.Facility_ID
+        INNER JOIN inserted i ON i.SS_ID = ss.Show_Facility_ID
+        GROUP BY i.Activity_ID
+
+        UPDATE AFZ_Activity
+        SET AFZ_Activity.Amount_Due =
+            CASE WHEN DATEDIFF(year, AV.Birthdate, getutcdate()) <= 7
+                 THEN 0
+                 ELSE NA.Amount
+            END
+        FROM @newAmount NA
+        JOIN AFZ_Activity ON NA.Activity_ID = AFZ_Activity.Activity_ID
+        INNER JOIN AFZ_Visitors AV on AFZ_Activity.Visitor_ID = AV.Visitor_ID
+     END
+GO
+
+CREATE TRIGGER UpdateGuestVisitor
+    ON AFZ_Visitors
+    INSTEAD OF INSERT
+AS
+BEGIN
+    IF EXISTS (
+        SELECT inserted.Visitor_ID
+        FROM inserted
+        JOIN AFZ_Visitors on AFZ_Visitors.Email = inserted.Email
+        WHERE inserted.Visitor_Type_ID != 6
+    )
+    BEGIN
+        UPDATE AFZ_Visitors
+        SET AFZ_Visitors.Birthdate = inserted.Birthdate,
+            AFZ_Visitors.Fname = inserted.Fname,
+            AFZ_Visitors.Lname = inserted.Lname,
+            AFZ_Visitors.Password = inserted.Password,
+            AFZ_Visitors.Cell_Number = inserted.Cell_Number,
+            AFZ_Visitors.City = inserted.City
+            FROM inserted
+            WHERE AFZ_Visitors.Email = inserted.Email
+    END
+END
+
+
+
+

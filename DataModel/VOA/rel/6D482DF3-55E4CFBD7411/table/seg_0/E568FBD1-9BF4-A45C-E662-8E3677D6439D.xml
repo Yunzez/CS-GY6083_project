@@ -132,19 +132,6 @@
 <ownDataTypeParameters>255,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
-<Column name="Registered" id="B1ADFAA2-5EE1-3E22-BFC8-5DD4BB157CB7">
-<createdBy>black</createdBy>
-<createdTime>2023-05-03 04:49:16 UTC</createdTime>
-<commentInRDBMS><![CDATA[If this visitor registered via website.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT006</logicalDatatype>
-<dataTypeSize>1</dataTypeSize>
-<defaultValue>False</defaultValue>
-<ownDataTypeParameters>1,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="091D9089-1112-2090-F5BD-F3FE106345BE" name="AFZ_Visitors_PK">

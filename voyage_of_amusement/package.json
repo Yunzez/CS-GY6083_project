@@ -17,6 +17,7 @@
     "@types/react-dom": "18.0.11",
     "bcryptjs": "^2.4.3",
     "chart.js": "^4.3.0",
+    "cors": "^2.8.5",
     "eslint": "8.36.0",
     "eslint-config-next": "13.2.4",
     "framer-motion": "^10.12.4",
@@ -33,6 +34,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
+    "@types/cors": "^2.8.13",
     "@types/mssql": "^8.1.2",
     "@types/react-lazy-load-image-component": "^1.5.3",
     "@types/react-transition-group": "^4.4.5",

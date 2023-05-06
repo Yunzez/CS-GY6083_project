@@ -1355,12 +1355,6 @@ alter table AFZ_Show_Watch
 		primary key nonclustered (Activity_ID, SS_ID)
 go
 
-alter table AFZ_Visitors
-	add User_type varchar(2) default 'us'
-go
-
-exec sp_addextendedproperty 'MS_Description', 'The type of the user. If ad, then Admin. If us, then User', 'USER', 'dbo', 'TABLE', 'AFZ_Visitors', 'COLUMN', 'User_type'
-go
 
 -- Oracle SQL Developer Data Modeler ��Ҫ����: 
 -- 
