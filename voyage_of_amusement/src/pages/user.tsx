@@ -28,11 +28,32 @@ const CardDiv = styled.div`
   margin-bottom: 3rem;
 `;
 
-const parkingTextContent = [
-  "  You can view your payment history for all transactions made on our platform",
-  "To view the details of a specific transaction, click on the transaction in the list.",
-  " If you have any questions about a transaction or notice any discrepancies, please contact our support team.",
+const attractionsTextContent = [
+  "You can see all history of your visited attractions on here, such as roller coaster, rides, and tours.",
+  "Once you have booked an attraction, you will receive a confirmation email with all the details, the information will show here.",
+  "Please arrive at the attraction on time and bring any required identification or documents with you.",
 ];
+
+
+const ticketsTextContent = [
+  "You can purchase tickets for various events, shows, and attractions through our platform.",
+  "Once you have purchased your tickets, they will be available for download or you can show them on your mobile device.",
+  "Please make sure to read the ticket terms and conditions carefully before purchasing.",
+];
+
+const showsTextContent = [
+  "You can browse and book shows on our platform, such as concerts, theater productions, and comedy shows.",
+  "Once you have booked a show, your tickets will be available for download or you can show them on your mobile device.",
+  "Please make sure to arrive at the venue on time and follow any instructions provided by the show organizers.",
+];
+
+const paymentsTextContent = [
+  "You can view your payment history for all transactions made on our platform.",
+  "To view the details of a specific transaction, click on the transaction in the list.",
+  "If you have any questions about a transaction or notice any discrepancies, please contact our support team.",
+];
+
+
 
 const CardContainer = styled.div`
   cursor: pointer;
@@ -213,7 +234,8 @@ const UserSettings: React.FC = () => {
     FAIL: "FUCK",
   };
   const [step, setStep] = useState(ResetStep.VERIFY);
-  const { isLoggedIn, setLoggedIn, user, setUser, userInfo } = useAppContext();
+  const { isLoggedIn, setLoggedIn, user, setUser, userInfo, payment } =
+    useAppContext();
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [superTickets, setSuperTickets] = useState<Ticket[]>([]);
   const [superVisitors, setSuperVisitors] = useState<UserType[]>([]);
@@ -441,7 +463,7 @@ const UserSettings: React.FC = () => {
   const [doubleInput, setDoubleInput] = useState("");
 
   useEffect(() => {
-    setShortPW(false)
+    setShortPW(false);
     if (doubleInput.trim() !== inputNewPW.trim()) {
       setUnmatch(true);
     } else {
@@ -613,7 +635,7 @@ const UserSettings: React.FC = () => {
                     role="alert"
                   >
                     <span className="block sm:inline">
-                      Password length less than 4 characters 
+                      Password length less than 4 characters
                     </span>
                   </div>
                 )}
@@ -860,7 +882,7 @@ const UserSettings: React.FC = () => {
         <div className={styles.mainPanel}>
           <div id="payment-history" className="py-2 px-4 mt-6">
             <CardDiv>
-              <SettingCard title={"Tickets"} content={parkingTextContent} />
+              <SettingCard title={"Tickets"} content={ticketsTextContent} />
 
               {userInfo?.ticket.length === 0 ? (
                 <p className="text-red-500">You have no information yet</p>
@@ -924,7 +946,7 @@ const UserSettings: React.FC = () => {
             <CardDiv>
               <SettingCard
                 title={"Attraction visited"}
-                content={parkingTextContent}
+                content={attractionsTextContent}
               />
 
               {userInfo.attraction.length === 0 ? (
@@ -977,7 +999,7 @@ const UserSettings: React.FC = () => {
             <CardDiv>
               <SettingCard
                 title={"Visited Shows"}
-                content={parkingTextContent}
+                content={showsTextContent}
               />
 
               {userInfo.show.length === 0 ? (
@@ -1026,46 +1048,61 @@ const UserSettings: React.FC = () => {
           <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
           <div id="shops-visited" className="py-2 px-4">
             <CardDiv>
-              <SettingCard
-                title={"Visited Shops"}
-                content={parkingTextContent}
-              />
+              <SettingCard title={"Payments"} content={paymentsTextContent} />
 
-              {userInfo.shop.length === 0 ? (
-                <p className="text-red-500">You have no information yet</p>
+              {payment.length === 0 ? (
+                <p className="text-red-500">You have payment yet</p>
               ) : (
                 <div className="text-slate-700">
                   <p className="font-bold text-2xl m-4">
                     Recently visited shop:{" "}
                   </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
-                    {userInfo.shop.map(
-                      (item: { [key: string]: any }, index: number) => (
-                        <CardContainer key={index}>
-                          <CardContent>
-                            <CardTitle>{item.Facility_Name}</CardTitle>
-                            <CardDescription>
-                              {item.Facility_Description}
-                            </CardDescription>
-                            <CardInfoRow>
-                              <CardInfoItem>
-                                Date:{" "}
-                                {new Date(
-                                  item.Activity_Date[0]
-                                ).toLocaleDateString("en-US", {
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  year: "numeric",
-                                })}
-                              </CardInfoItem>
-                            </CardInfoRow>
-                            <CardInfoRow>
-                              <CardInfoItem>
-                                Location Section ID: {item.Location_Section_ID}
-                              </CardInfoItem>
-                            </CardInfoRow>
-                          </CardContent>
-                        </CardContainer>
+                    {payment.map(
+                      (payment: { [key: string]: any }, index: number) => (
+                        <div
+                          key={index}
+                          className="border p-4 rounded-lg shadow-md flex justify-between"
+                        >
+                          <div>
+                            <h3 className="font-bold text-lg mb-4">
+                              Payment ID:
+                            </h3>
+                            <p>
+                              <span className="font-bold">Payment Date:</span>
+                            </p>
+                            <p>
+                              <span className="font-bold">Payment Method:</span>
+                            </p>
+                            <p>
+                              <span className="font-bold">Amount Due:</span>
+                            </p>
+                            <p>
+                              <span className="font-bold">Payment Amount:</span>
+                            </p>
+                            <p>
+                              <span className="font-bold">Source Type:</span>
+                            </p>
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg mb-4">
+                              {payment.Payment_ID}
+                            </h3>
+                            <p>
+                              {new Date(
+                                payment.Payment_Date
+                              ).toLocaleDateString("en-US", {
+                                month: "2-digit",
+                                day: "2-digit",
+                                year: "numeric",
+                              })}
+                            </p>
+                            <p>{payment.Payment_Method}</p>
+                            <p>${payment.Amount_Due}</p>
+                            <p>${payment.Payment_Amount}</p>
+                            <p>{payment.Source_Type}</p>
+                          </div>
+                        </div>
                       )
                     )}
                   </div>

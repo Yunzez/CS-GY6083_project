@@ -13,6 +13,7 @@ type AppContextType = {
   userInfo: any;
   setUserInfo: React.Dispatch<React.SetStateAction<any>>;
   refetchFacility: () => void
+  payment:any
 };
 
 const AppContext = createContext<AppContextType>(null!);
@@ -61,6 +62,8 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     shop: [],
     ticket: [],
   });
+
+  const [payment, setPayment] = useState([])
   const [ready, setReady] = useState(false);
   const [facility, setFacility] = useState<FacilityType[]>(
     [] as FacilityType[]
@@ -133,8 +136,10 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
       fetch(`/api/getUserInfo?userId=${user.Visitor_ID}`)
         .then((res) => res.json())
         .then((data) => {
-          if (data.summary) {
+          if (data.summary ) {
             setUserInfo(summarizeUserInfo(data.summary));
+            setPayment(data.payment)
+            console.log('payment', data.payment)
           }
         })
         .catch((error) => {
@@ -166,7 +171,8 @@ const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     facility,
     notification,
     setNotification,
-    refetchFacility
+    refetchFacility,
+    payment
   };
 
   return (

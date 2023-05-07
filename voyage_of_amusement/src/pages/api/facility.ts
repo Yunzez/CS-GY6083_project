@@ -59,7 +59,6 @@ export default async function handler(
             where "[AS]".Facility_ID = @id
             `);
             const additionalData = result.recordset;
-            console.log("store result", result, additionalData);
             return {
                 ...row,
                 additionalData,
