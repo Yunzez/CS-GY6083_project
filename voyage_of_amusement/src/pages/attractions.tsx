@@ -19,7 +19,7 @@ interface Attraction {
 const Attractions = () => {
   const delay = (ms: number | undefined) =>
     new Promise((res) => setTimeout(res, ms));
-  const { isLoggedIn, ready, facility, user, setUserInfo } = useAppContext();
+  const { isLoggedIn, ready, facility, user, setUserInfo, refetchFacility } = useAppContext();
   const router = useRouter();
 
   const [hasCheckout, setHasCheckout] = useState(false);
@@ -122,9 +122,23 @@ const Attractions = () => {
         facility.data?.filter((item) => item.Source_Type === "Att") as never[]
       );
       setFilteredFacility(targetFacility as never[]);
-      console.log(targetFacility);
+      console.log(targetFacility, facility);
+
+      if(facility.length === 0) {
+        console.log('refetch facility')
+        refetchFacility()
+        console.log(facility)
+        
+      }
     }
   }, [ready, facility]);
+
+  useEffect(() => {
+    console.log("targetFacility changed:", targetFacility);
+    if (targetFacility.length > 0) {
+      setFilteredFacility(targetFacility  as never[]);
+    }
+  }, [targetFacility]);
 
   console.log("refresh");
   const handleSearchSubmit = (searchTerm: string) => {
