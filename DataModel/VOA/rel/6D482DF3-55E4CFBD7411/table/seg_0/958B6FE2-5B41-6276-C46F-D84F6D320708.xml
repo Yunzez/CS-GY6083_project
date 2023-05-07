@@ -37,6 +37,18 @@
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Description" id="A30DF8F2-8516-3C53-5D8D-A62345F910AF">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 06:51:30 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of this parking section]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="2FE6AF9C-A57A-1628-E475-11934C072D1F" name="AFZ_Parking_Locations_PK">

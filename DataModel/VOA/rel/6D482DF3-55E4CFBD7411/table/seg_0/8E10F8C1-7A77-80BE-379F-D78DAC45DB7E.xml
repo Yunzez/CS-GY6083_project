@@ -24,19 +24,6 @@
 <colAssociation fkAssociation="FBFD828C-D26C-66FB-C861-7626CE99B78D" referredColumn="100D71D6-726E-A975-4CD9-F45E5CBAA132"/>
 </associations>
 </Column>
-<Column name="Store_Name" id="3DC8D78D-EDC2-933C-D162-8AFC1F0D8201">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 08:04:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[Store Name.]]></commentInRDBMS>
-<generatorID>319F0CBF-88DB-1B09-9EA3-AA8292C308D3</generatorID>
-<ownerDesignName>VOA</ownerDesignName>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>32</dataTypeSize>
-<ownDataTypeParameters>32,,</ownDataTypeParameters>
-<autoIncrementCycle>false</autoIncrementCycle>
-</Column>
 <Column name="Category_ID" id="A42A17FF-A6D4-D8FD-AB27-62B1008890F7">
 <createdBy>black</createdBy>
 <createdTime>2023-03-30 08:04:07 UTC</createdTime>
@@ -53,6 +40,28 @@
 <associations>
 <colAssociation fkAssociation="88EE23AE-D60C-A4E8-4389-99B24D4E1A05" referredColumn="B851D0DE-D821-ED78-36A2-1DB2A41D2A1E"/>
 </associations>
+</Column>
+<Column name="Open_Time" id="58A1A9D6-CC61-A52A-2627-DC222D890B0C">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:22:05 UTC</createdTime>
+<commentInRDBMS><![CDATA[The open time of the store.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="Close_Time" id="2DCD2A36-B3BA-9E81-906A-26C15D0F03E7">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:22:05 UTC</createdTime>
+<commentInRDBMS><![CDATA[The close time of the Store.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT014</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
 </Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">

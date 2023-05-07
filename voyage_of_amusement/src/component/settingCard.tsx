@@ -9,9 +9,9 @@ function SettingCard(props: ParkingHistoryProps): JSX.Element {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const content = props.content
     return (
-        <div id="parking-history" className="py-8 px-4">
-            <div className="h-80 section">
-                <div className="bg-white rounded-lg shadow-md">
+        <div className="py-2 ">
+            <div className=" section">
+                <div className="bg-white rounded-lg shadow">
                     <div className="px-4 py-2 flex justify-between items-center border-b border-gray-200">
                         <div className="flex justify-between flex-grow w-100">
                             <h2 className="text-lg font-semibold">{props.title}</h2>

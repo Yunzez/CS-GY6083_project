@@ -43,6 +43,18 @@
 <dataTypeSize>1</dataTypeSize>
 <ownDataTypeParameters>1,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Description" id="5607D3E2-E8B0-68E7-3526-AB2BBF70F677">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 06:52:03 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of this parking section.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="303E3E71-613F-AB8E-3FD4-D5E931442BC3" name="Attraction_Type PK">

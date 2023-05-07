@@ -37,6 +37,18 @@
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Description" id="FEBF0AC8-DC08-B2E0-75D7-CC0171CA3E37">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:27:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of the Type of Attraction.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="AD7D3978-A425-107A-B890-3C2EB110DBC3" name="AFZ_Attraction_Type_PK">

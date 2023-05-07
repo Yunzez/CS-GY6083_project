@@ -1,0 +1,60 @@
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
+}
+
+.card {
+  max-width: 600px;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid transparent;
+}
+
+.cardAnimation:hover {
+  border: 1px solid lightgrey;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.4);
+}
+
+.cardContainer {
+  display:flex; 
+  justify-content: space-around;
+  flex-wrap: wrap;
+  transition: all 0.3s ease-in-out;
+  margin-bottom: 30px;
+}
+
+.cardAnimation {
+  animation: cardScaleUp 0.3s ease-out forwards;
+  opacity: 0;
+  width: 0;
+  transform: scale(0);
+}
+
+@keyframes cardScaleUp {
+  from {
+    opacity: 0;
+    width: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    width: 100%;
+    transform: scale(1) rotate(0deg);
+  }
+}

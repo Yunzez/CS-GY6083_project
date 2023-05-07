@@ -47,6 +47,48 @@
 <dataTypeSize>3</dataTypeSize>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="Facility_Name" id="C751D950-BACE-FFF8-0981-F06EDECF264D">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:20:39 UTC</createdTime>
+<commentInRDBMS><![CDATA[The name of the Facility]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Facility_Description" id="DF052FE7-5644-0217-181C-47465B55922C">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:20:55 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of the facility.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Facility_URL" id="8B72A803-81D5-AD36-6E88-D97046AC76F8">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:21:14 UTC</createdTime>
+<commentInRDBMS><![CDATA[The URL of picture the Facility.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<engineerTo>
+<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="14A63DF6-1D25-8F24-B818-03C16DCDD9B8" name="Facility PK">

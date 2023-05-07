@@ -17,34 +17,6 @@
 <normalForm>Third</normalForm>
 <discriminatorValue>Att</discriminatorValue>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="Attraction_Name" id="410DA806-E357-CEE9-8449-94049BCA8BF1">
-<createdBy>black</createdBy>
-<createdTime>2023-03-30 02:11:07 UTC</createdTime>
-<commentInRDBMS><![CDATA[The name of Attraction.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>128</dataTypeSize>
-<ownDataTypeParameters>128,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="Att_Description" id="25AFAD5D-CC5E-0AD8-7BAA-20162E2AF8FC">
-<createdBy>angelowu</createdBy>
-<createdTime>2023-03-25 21:01:32 UTC</createdTime>
-<commentInRDBMS><![CDATA[The description of the attraction.]]></commentInRDBMS>
-<ownerDesignName>VOA</ownerDesignName>
-<engineerTo>
-<item key="6D482DF3-1E92-0117-D061-55E4CFBD7411" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>128</dataTypeSize>
-<ownDataTypeParameters>128,,</ownDataTypeParameters>
-</Attribute>
 <Attribute name="Minimum_Height" id="D4736125-F5E6-2936-1B94-CB9552B5F8B8">
 <createdBy>angelowu</createdBy>
 <createdTime>2023-03-25 21:03:24 UTC</createdTime>

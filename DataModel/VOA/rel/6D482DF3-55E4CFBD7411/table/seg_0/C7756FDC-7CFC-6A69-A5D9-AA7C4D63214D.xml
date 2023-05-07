@@ -37,6 +37,18 @@ Food stall, Ice cream parlor, Restaurant, Gift Shop, Apparels]]></commentInRDBMS
 <ownDataTypeParameters>32,,</ownDataTypeParameters>
 <autoIncrementCycle>false</autoIncrementCycle>
 </Column>
+<Column name="Description" id="44A8E73A-8C64-F0A7-1553-3110ACFA9208">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 07:27:57 UTC</createdTime>
+<commentInRDBMS><![CDATA[The description of the Type of store.]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255</dataTypeSize>
+<ownDataTypeParameters>255,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
 </columns>
 <indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
 <ind_PK_UK id="266F3EC9-5A2F-9BD0-15CC-37E9B37D6592" name="AFZ_Store_Category_PK">

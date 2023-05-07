@@ -1,0 +1,92 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="4AD7FFBB-A192-94EF-E087-BCE7A862A39F" name="AFZ_Show_Watch">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:05:43 UTC</createdTime>
+<generatorID>692995E0-E969-C87B-BD1E-CC456FC94C9D</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<ordsAlias>afz_parkingv1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="Activity_ID" id="BAF5E8AA-6DFF-3B4E-1DED-5D2986A26C76">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:05:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[The UID of the activity]]></commentInRDBMS>
+<generatorID>B90F4BD3-E66C-31EA-1ADF-0345A773F17F</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="83702AA9-D15B-A62B-71BB-21CA40FB526A" referredColumn="5DE65289-C183-C9F3-033C-2903B4A6EF68"/>
+</associations>
+</Column>
+<Column name="Watch_Time" id="F86B18D1-72B9-EB1E-35E0-38593CE10113">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:05:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[The time the visitor watchs the show.]]></commentInRDBMS>
+<generatorID>0520C8F6-D979-8505-2CE3-7791A222064E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="SS_ID" id="84927B11-6867-65EB-0713-F380370A9795">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:09:47 UTC</createdTime>
+<commentInRDBMS><![CDATA[The ID of the Show Schedule]]></commentInRDBMS>
+<ownerDesignName>VOA</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="89713ACE-DE9F-D89D-A017-97AA405E02AD" referredColumn="6AC83563-3E12-87F0-A550-2F298C008F72"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="686AE05E-301B-39B7-B488-2ACA5E2C6B4D" name="AFZ_Show_Watch_PK">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:05:43 UTC</createdTime>
+<generatorID>AD236288-FE69-2311-0C25-D0059968A430</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BAF5E8AA-6DFF-3B4E-1DED-5D2986A26C76"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C68A0BDD-7953-9DA4-2B49-0D2C18BF83B6" name="Activity_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:05:43 UTC</createdTime>
+<generatorID>2ED99503-CE54-8ADB-412B-57A0C064B33E</generatorID>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="BAF5E8AA-6DFF-3B4E-1DED-5D2986A26C76"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="F3423A53-E79C-F1AC-D898-B264EFC73675" name="Show_Schedule_FK">
+<createdBy>black</createdBy>
+<createdTime>2023-04-08 17:09:47 UTC</createdTime>
+<ownerDesignName>VOA</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="84927B11-6867-65EB-0713-F380370A9795"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

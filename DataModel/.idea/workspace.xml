@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9b0ceee1-dcac-425a-a973-1e48b2127b76" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cs6083.database.windows.net" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cs6083.database.windows.net" type="feb32156:DbDataSourceImpl" />
+        <item name="voa: database" type="ccb7ac2a:MsImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cs6083.database.windows.net" type="feb32156:DbDataSourceImpl" />
+        <item name="voa: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cs6083.database.windows.net" type="feb32156:DbDataSourceImpl" />
+        <item name="voa: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cs6083.database.windows.net" type="feb32156:DbDataSourceImpl" />
+        <item name="voa: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="AFZ_Show_Watch: table" type="63ab2ba1:MsImplModel$Table" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="cs6083.database.windows.net" type="feb32156:DbDataSourceImpl" />
+        <item name="voa: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
+        <item name="routines" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ProjectId" id="2O8L6pfjP7rSjHqrajK5Mwrju3X" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DBE.Init.BalloonShown" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:cs6083.database.windows.net" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:cs6083.database.windows.net" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@f6c55ab" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="179" key="#SQL_Dialects" timestamp="1680937474895">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#SQL_Dialects/0.0.1920.1040@0.0.1920.1040" timestamp="1680937474895" />
+    <state x="552" y="179" key="#SQL_Resolution_Scopes" timestamp="1680937501561">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="179" key="#SQL_Resolution_Scopes/0.0.1920.1040@0.0.1920.1040" timestamp="1680937501561" />
+    <state x="1032" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1680937146220">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1032" y="182" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1680937146220" />
+    <state x="741" y="211" key="ExecutionTargetDialog" timestamp="1683346902938">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="741" y="211" key="ExecutionTargetDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1683346902938" />
+    <state x="700" y="135" key="FileChooserDialogImpl" timestamp="1683396387193">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="700" y="135" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1683396387193" />
+    <state x="1050" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1680937188461" />
+    <state width="845" height="183" key="GridCell.Tab.0.bottom" timestamp="1683396235785">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="183" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
+    <state width="1293" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
+    <state width="845" height="183" key="GridCell.Tab.0.center" timestamp="1683396235785">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="183" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
+    <state width="1293" height="273" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
+    <state width="845" height="183" key="GridCell.Tab.0.left" timestamp="1683396235785">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="183" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
+    <state width="1293" height="273" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
+    <state width="845" height="183" key="GridCell.Tab.0.right" timestamp="1683396235785">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="845" height="183" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
+    <state width="1293" height="273" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
+    <state width="200" height="461" key="SqlResolveConfigurable" timestamp="1680937500767">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="200" height="461" key="SqlResolveConfigurable/0.0.1920.1040@0.0.1920.1040" timestamp="1680937500767" />
+    <state x="666" y="0" width="343" height="240" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1683346180311">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="444" y="0" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1280.680@0.0.1280.680" timestamp="1682182973057" />
+    <state x="666" y="0" width="343" height="240" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/0.0.1920.1040@0.0.1920.1040" timestamp="1683346180311" />
+    <state x="739" y="343" width="441" height="354" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1683346347871">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="343" width="441" height="354" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1683346347871" />
+    <state x="527" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1683347805331">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="351" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1280.680@0.0.1280.680" timestamp="1682182967798" />
+    <state x="527" y="0" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1683347805331" />
+    <state x="174" y="0" key="com.intellij.database.view.ui.DatabasePreviewDialog" timestamp="1683390306716">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="174" y="0" key="com.intellij.database.view.ui.DatabasePreviewDialog/0.0.1280.680@0.0.1280.680" timestamp="1683390306716" />
+  </component>
+</project>
