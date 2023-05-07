@@ -205,7 +205,7 @@ export default function Home() {
     }
   `;
   const ImageComponent = () => (
-    <div className="relative md:h-[40vh] py-5 h-[65vh]  h-full mb-5">
+    <div className="relative md:h-[40vh] py-5 h-[65vh] mb-5">
       <Image
         src={imagePaths[currIndex].src}
         layout="fill"
