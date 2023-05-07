@@ -104,7 +104,7 @@ const SigninPage = () => {
   return (
     <div className="mt-5 flex items-center justify-center rounded-lg">
       <div className=" flex justify-center items-center bg-slate-50 p-5 w-4/5">
-        <div className={`cus_max_75vh flex flex-grow w-1/4 max-h-min`}>
+        <div className={`cus_max_75vh flex flex-grow max-h-min w-0 md:w-1/4`}>
           <img
             src={imagePaths[0]}
             id="rotate_img0"
@@ -137,7 +137,7 @@ const SigninPage = () => {
           />
           {/* <img src={imagePaths[1]} id="rotate_img1" alt="Slider Image" className=" opacity-0 w-0 transition-all duration-500 object-cover rounded-lg transition-all" /> */}
         </div>
-        <div className="flex flex-col items-center mt-4 w-2/5">
+        <div className="flex flex-col items-center mt-4 md:w-2/5">
           {showProcess == false && showDone == false && (
             <div className="border-4 border-slate-50  px-5 py-5 mt-5">
               {error.length > 0 && (

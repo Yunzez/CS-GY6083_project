@@ -207,7 +207,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
     }
   }, [user]);
   return (
-    <div className="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen flex items-center justify-center ">
+    <div className="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen flex items-center justify-center mb-20">
       <div className="bg-white  md:p-10 p-2 rounded-lg shadow-lg text-center md:w-[70vw] w-[90vw]">
         {!showDone && !showPay && !showProcess && (
           <>

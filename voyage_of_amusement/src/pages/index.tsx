@@ -9,7 +9,6 @@ import { useRouter } from "next/router";
 import Modal from "@/component/Modal";
 import styled, { keyframes } from "styled-components";
 
-
 export default function Home() {
   const router = useRouter();
   const { isLoggedIn, setLoggedIn, facility } = useAppContext();
@@ -48,8 +47,6 @@ export default function Home() {
         "Be entertained by our talented performers with our exciting shows, featuring music, dance, comedy, and more. From Broadway-style productions to interactive experiences, there's never a dull moment at our park. Don't miss out on the fun!",
     },
   ];
-
-
 
   const Card = styled.div`
     background: rgb(236, 236, 236);
@@ -207,92 +204,96 @@ export default function Home() {
       }
     }
   `;
-const ImageComponent = () =>  (
-  <div className="relative md:h-96  py-5  h-full mb-5">
-          <Image
-            src={imagePaths[currIndex].src}
-            layout="fill"
-            objectFit="cover"
-            objectPosition="center"
-            alt={imagePaths[currIndex].title}
-            className="z-10"
-          />
-          <div className="absolute bottom-0 left-0 right-0 p-0 bg-white shadow-lg z-10">
-            <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gray-900 bg-opacity-60 rounded">
-              <div className="mx-5 px-5 flex flex-col ">
-                <div className="mx-5 px-5 ">
-                  <h1 className="text-xl md:text-5xl font-bold mb-4 text-white mx-5 px-5 flex justify-center ">
-                    {imagePaths[currIndex ].title}
-                  </h1>
-                </div>
+  const ImageComponent = () => (
+    <div className="relative md:h-[40vh] py-5 h-[65vh]  h-full mb-5">
+      <Image
+        src={imagePaths[currIndex].src}
+        layout="fill"
+        objectFit="cover"
+        objectPosition="center"
+        alt={imagePaths[currIndex].title}
+        className="z-10 "
+      />
+      <div className="absolute bottom-0 left-0 right-0 p-0 bg-white shadow-lg z-10">
+        <div className="absolute bottom-0 left-0 right-0 p-2 md:p-4 bg-gray-900 bg-opacity-60 rounded">
+          <div className="mx-5 px-5 flex flex-col ">
+            <div className="mx-5 px-5 ">
+              <h1 className="text-xl md:text-5xl font-bold mb-4 text-white mx-5 px-5 flex justify-center ">
+                {imagePaths[currIndex].title}
+              </h1>
+            </div>
 
-                <div className="mx-5 px-5 ">
-                  <h5 className="w-100 md:text-xl text-base font-medium text-white mb-8 md:px-4  px-1 flex justify-center ">
-                    {imagePaths[currIndex].description}
-                  </h5>
-                </div>
-                <div className="flex justify-center">
-                  {imagePaths.map((_, index) => (
-                    <span
-                      key={index}
-                      className={`w-3 h-3 rounded-full mx-2 ${
-                        index === currIndex ? "bg-gray-900" : "bg-gray-500"
-                      }`}
-                    />
-                  ))}
-                </div>
-              </div>
+            <div className="mx-5 px-5 ">
+              <h5 className="w-100 md:text-xl text-xs text-base font-medium text-white mb-8 md:px-4  px-1 flex justify-center ">
+                {imagePaths[currIndex].description}
+              </h5>
+            </div>
+            <div className="flex justify-center">
+              {imagePaths.map((_, index) => (
+                <span
+                  key={index}
+                  className={`w-3 h-3 rounded-full mx-2 ${
+                    index === currIndex ? "bg-gray-900" : "bg-gray-500"
+                  }`}
+                />
+              ))}
             </div>
           </div>
-          <div className="absolute left-4 top-3/4 transform -translate-y-1/2 flex items-center justify-center h-full z-20">
-            <button
-              onClick={() => { setcurrIndex((currIndex - 1)% imagePaths.length);}}
-              className="rounded-full lg:h-16 lg:w-16 md:h-12 md:w-12 h-8 w-8 bg-white text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-colors duration-300 focus:outline-none shadow-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M15 19l-7-7 7-7"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className="absolute right-4  top-3/4 transform -translate-y-1/2 flex items-center justify-center h-full z-20">
-            <button
-              onClick={() => {setcurrIndex((currIndex + 1)% imagePaths.length);}}
-              className="rounded-full lg:h-16 lg:w-16 md:h-12 md:w-12 h-8 w-8 bg-white text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-colors duration-300 focus:outline-none shadow-lg"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
-          </div>
         </div>
-)
+      </div>
+      <div className="absolute left-4 top-3/4 transform -translate-y-1/2 flex items-center justify-center h-full z-20">
+        <button
+          onClick={() => {
+            setcurrIndex((currIndex - 1) % imagePaths.length);
+          }}
+          className="rounded-full lg:h-16 lg:w-16 md:h-12 md:w-12 h-8 w-8 bg-white text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-colors duration-300 focus:outline-none shadow-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
+        </button>
+      </div>
+      <div className="absolute right-4  top-3/4 transform -translate-y-1/2 flex items-center justify-center h-full z-20">
+        <button
+          onClick={() => {
+            setcurrIndex((currIndex + 1) % imagePaths.length);
+          }}
+          className="rounded-full lg:h-16 lg:w-16 md:h-12 md:w-12 h-8 w-8 bg-white text-gray-700 flex items-center justify-center hover:bg-gray-300 transition-colors duration-300 focus:outline-none shadow-lg"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <>
       <div className="relative mb-5">
-       <ImageComponent/>
+        <ImageComponent />
         <div className="flex justify-center">
           <Card>
             <div
@@ -300,7 +301,7 @@ const ImageComponent = () =>  (
               onClick={() => router.push("/entranceTicket")}
             >
               <button className="flex flex-col relative bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white font-bold py-6 px-12 rounded-full shadow-lg transform transition-transform hover:scale-105 hover:shadow-xl">
-                <div className="ml-4 text-2xl text-center">
+                <div className="ml-4 md:text-2xl text-lg text-center">
                   Get Your Ticket!
                 </div>
               </button>
@@ -312,8 +313,8 @@ const ImageComponent = () =>  (
           className={`flex flex-wrap justify-center mx-4 py-5 ${styles.awayFromFooter}`}
         >
           <IntroCard
-            circle1Top={-25}
-            circle1Left={525}
+            circle1Top={25}
+            circle1Left={25}
             circle2Bottom={25}
             circle2Right={25}
             circle1Color="rgb(63 98 18)"
@@ -411,7 +412,7 @@ const ImageComponent = () =>  (
 
           <IntroCard
             circle1Top={-30}
-            circle1Left={485}
+            circle1Left={85}
             circle2Bottom={-25}
             circle2Right={50}
             circle1Color="rgb(251 191 36)"

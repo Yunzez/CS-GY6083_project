@@ -210,14 +210,14 @@ const Attractions = () => {
             </div>
           </div>
           <div className="card__content">
-            <div className="container flex text-center relative mb-5 pt-5  mt-5 container mx-auto justify-center w-screen ">
+            <div className="container flex text-center relative md:mb-5 md:pt-5 md:mt-5 container mx-auto justify-center md:w-screen ">
               <div className="flex flex-col">
-                <h1 className="  text-3xl md:text-5xl font-bold mb-4 ms-8 text-indigo-900">
+                <h1 className="  text-3xl md:text-5xl font-bold mb-4 md:ms-8 text-indigo-900">
                   {" "}
                   Browse Our Attractions
                 </h1>
 
-                <h6 className=" ext-3xl md:text-xl font-semibold mb-8 ms-8 text-indigo-800">
+                <h6 className=" md:text-xl font-semibold mb-8 md:ms-8 text-indigo-800">
                   {" "}
                   Selected Filter to View Different Attractions
                 </h6>

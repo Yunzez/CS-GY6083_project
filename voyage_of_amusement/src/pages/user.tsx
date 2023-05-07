@@ -34,7 +34,6 @@ const attractionsTextContent = [
   "Please arrive at the attraction on time and bring any required identification or documents with you.",
 ];
 
-
 const ticketsTextContent = [
   "You can purchase tickets for various events, shows, and attractions through our platform.",
   "Once you have purchased your tickets, they will be available for download or you can show them on your mobile device.",
@@ -52,8 +51,6 @@ const paymentsTextContent = [
   "To view the details of a specific transaction, click on the transaction in the list.",
   "If you have any questions about a transaction or notice any discrepancies, please contact our support team.",
 ];
-
-
 
 const CardContainer = styled.div`
   cursor: pointer;
@@ -81,6 +78,9 @@ const CardTitle = styled.p`
   font-weight: bold;
   font-size: 24px;
   margin-bottom: 16px;
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 `;
 
 const CardDescription = styled.p`
@@ -110,6 +110,9 @@ const Ticket = styled.div`
   box-shadow: 0 0 0 4px rgb(203, 213, 225), 2px 2px 4px 2px rgba(0, 0, 0, 0.5);
   transition: 0.4s ease-in-out;
   position: relative;
+  @media (max-width: 768px) {
+    display: inline;
+  }
 `;
 
 const TicketsContainer = styled.div`
@@ -888,7 +891,7 @@ const UserSettings: React.FC = () => {
                 <p className="text-red-500">You have no information yet</p>
               ) : (
                 <div className="text-slate-700">
-                  <p className="font-bold  text-2xl m-4  ">
+                  <p className="font-bold  md:text-2xl m-4  ">
                     {" "}
                     Your ticket history:
                   </p>
@@ -901,7 +904,7 @@ const UserSettings: React.FC = () => {
                             <small className="text-muted text-md-xl">
                               Admission Ticket
                             </small>
-                            <div className="flex text-md-xl">
+                            <div className="md:flex md:text-xl">
                               <div className="me-3">
                                 Purchased on:{" "}
                                 {new Date(
@@ -920,7 +923,7 @@ const UserSettings: React.FC = () => {
                               </CardInfoItem>
                             </div>
                           </div>
-                          <div className="text-gray-800 text-xl">
+                          <div className="text-gray-800 md:text-xl">
                             <p>Entrance:</p>
                             {item.Visit_Date
                               ? new Date(item.Visit_Date).toLocaleDateString(
@@ -953,7 +956,7 @@ const UserSettings: React.FC = () => {
                 <p className="text-red-500">You have no information yet</p>
               ) : (
                 <div className="text-slate-700">
-                  <p className="font-bold text-2xl  m-4 ">
+                  <p className="font-bold md:text-2xl  m-4 ">
                     Your attraction record:{" "}
                   </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
@@ -997,16 +1000,15 @@ const UserSettings: React.FC = () => {
           <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
           <div id="shows-visited" className="py-2 px-4">
             <CardDiv>
-              <SettingCard
-                title={"Visited Shows"}
-                content={showsTextContent}
-              />
+              <SettingCard title={"Visited Shows"} content={showsTextContent} />
 
               {userInfo.show.length === 0 ? (
                 <p className="text-red-500">You have no information yet</p>
               ) : (
                 <div className="text-slate-700">
-                  <p className="font-bold text-2xl m-4">Your recent shows: </p>
+                  <p className="font-bold md:text-2xl m-4">
+                    Your recent shows:{" "}
+                  </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                     {userInfo.show.map(
                       (item: { [key: string]: any }, index: number) => (
@@ -1054,41 +1056,20 @@ const UserSettings: React.FC = () => {
                 <p className="text-red-500">You have payment yet</p>
               ) : (
                 <div className="text-slate-700">
-                  <p className="font-bold text-2xl m-4">
-                    Recently visited shop:{" "}
-                  </p>
+                  <p className="font-bold md:text-2xl m-4">Recent payments: </p>
                   <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
                     {payment.map(
                       (payment: { [key: string]: any }, index: number) => (
                         <div
                           key={index}
-                          className="border p-4 rounded-lg shadow-md flex justify-between"
+                          className="border p-4 rounded-lg shadow-md flex flex-col md:flex-row md:justify-between"
                         >
-                          <div>
-                            <h3 className="font-bold text-lg mb-4">
+                          <div className="mb-4 md:mb-0">
+                            <h3 className="font-bold text-lg mb-2 md:mb-4">
                               Payment ID:
                             </h3>
                             <p>
-                              <span className="font-bold">Payment Date:</span>
-                            </p>
-                            <p>
-                              <span className="font-bold">Payment Method:</span>
-                            </p>
-                            <p>
-                              <span className="font-bold">Amount Due:</span>
-                            </p>
-                            <p>
-                              <span className="font-bold">Payment Amount:</span>
-                            </p>
-                            <p>
-                              <span className="font-bold">Source Type:</span>
-                            </p>
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-lg mb-4">
-                              {payment.Payment_ID}
-                            </h3>
-                            <p>
+                              <span className="font-bold">Payment Date:</span>{" "}
                               {new Date(
                                 payment.Payment_Date
                               ).toLocaleDateString("en-US", {
@@ -1097,10 +1078,27 @@ const UserSettings: React.FC = () => {
                                 year: "numeric",
                               })}
                             </p>
-                            <p>{payment.Payment_Method}</p>
-                            <p>${payment.Amount_Due}</p>
-                            <p>${payment.Payment_Amount}</p>
-                            <p>{payment.Source_Type}</p>
+                            <p>
+                              <span className="font-bold">Payment Method:</span>{" "}
+                              {payment.Payment_Method}
+                            </p>
+                            <p>
+                              <span className="font-bold">Amount Due:</span> $
+                              {payment.Amount_Due}
+                            </p>
+                            <p>
+                              <span className="font-bold">Payment Amount:</span>{" "}
+                              ${payment.Payment_Amount}
+                            </p>
+                            <p>
+                              <span className="font-bold">Source Type:</span>{" "}
+                              {payment.Source_Type}
+                            </p>
+                          </div>
+                          <div className="md:ml-4">
+                            <h3 className="font-bold text-lg mb-2 md:mb-4">
+                              {payment.Payment_ID}
+                            </h3>
                           </div>
                         </div>
                       )

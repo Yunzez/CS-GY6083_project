@@ -44,22 +44,48 @@ const Navbar: React.FC<LayoutProps> = ({ className }) => {
         </Button>
         <div className="flex flex-col justify-center items-center h-full">
           <div className="flex flex-col items-center justify-center">
+            {isLoggedIn && (
+              <>
+                <Button
+                  className="text-lg font-bold text-gray-800 my-4 py-3 px-7 flex items-center justify-center "
+                  onClick={() => {router.push("/user"); setShowMenu(false);}}
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="20"
+                    height="20"
+                    fill="currentColor"
+                    className="bi bi-person-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
+                  </svg>
+                </Button>
+              </>
+            )}
             <Button
               className="text-lg font-bold text-gray-800 my-4"
-              onClick={() => router.push("/")}
+              onClick={() => {
+                router.push("/");
+                setShowMenu(false);
+              }}
             >
               Home
             </Button>
             <Button
               className="text-lg font-bold text-gray-800 my-4"
-              onClick={() => router.push("/about")}
+              onClick={() => {
+                router.push("/about"), setShowMenu(false);
+              }}
             >
               About
             </Button>
             {!isLoggedIn && (
               <Button
                 className="text-lg font-bold text-gray-800 my-4"
-                onClick={() => router.push("/signup")}
+                onClick={() => {
+                  router.push("/signup"), setShowMenu(false);
+                }}
               >
                 Sign Up
               </Button>
@@ -118,9 +144,11 @@ const Navbar: React.FC<LayoutProps> = ({ className }) => {
                 >
                   <div>
                     <div className="m-2">
-                    <small >Click anywhere beyound the notification card to close</small>
+                      <small>
+                        Click anywhere beyound the notification card to close
+                      </small>
                     </div>
-                  
+
                     {notification.length > 0 ? (
                       notification.map((element, index) => (
                         <div
@@ -151,27 +179,24 @@ const Navbar: React.FC<LayoutProps> = ({ className }) => {
             About
           </Button>
           {!isLoggedIn && (
-              <Button
-              className="mx-2"
-                onClick={() => router.push("/signup")}
-              >
-                Sign Up
-              </Button>
-            )}
+            <Button className="mx-2" onClick={() => router.push("/signup")}>
+              Sign Up
+            </Button>
+          )}
 
-            {isLoggedIn && (
-              <Button
+          {isLoggedIn && (
+            <Button
               className="mx-2"
-                onClick={() => {
-                  setLoggedIn(false);
-                  setUser({});
-                  sessionStorage.setItem("isLoggedIn", 'false')
-                  router.push("/");
-                }}
-              >
-                Logout
-              </Button>
-            )}
+              onClick={() => {
+                setLoggedIn(false);
+                setUser({});
+                sessionStorage.setItem("isLoggedIn", "false");
+                router.push("/");
+              }}
+            >
+              Logout
+            </Button>
+          )}
           {isLoggedIn && (
             <>
               <Button

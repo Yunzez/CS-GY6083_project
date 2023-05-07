@@ -161,7 +161,7 @@ const Signup: React.FC = () => {
     <div className="mt-5 flex items-center justify-center rounded-lg">
       <div className=" flex justify-center items-center bg-slate-50 p-5 w-4/5">
         <div
-          className={`cus_max_75vh flex   max-h-min transform-all w-1/2 flex-grow`}
+          className={`cus_max_75vh flex  max-h-min transform-all w-0 md:w-1/2 flex-grow `}
         >
           <img
             src={imagePaths[0]}
@@ -196,7 +196,7 @@ const Signup: React.FC = () => {
           {/* <img src={imagePaths[1]} id="rotate_img1" alt="Slider Image" className=" opacity-0 w-0 transition-all duration-500 object-cover rounded-lg transition-all" /> */}
         </div>
 
-        <div className="flex flex-col items-center mt-4 w-1/2">
+        <div className="flex flex-col items-center mt-4 md:w-1/2 mb-10">
           <div className="border-4 border-slate-50  px-5 py-5 mt-5">
             {showProcess == false && showDone == false && (
               <>

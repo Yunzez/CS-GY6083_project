@@ -74,7 +74,7 @@ const router = useRouter()
       <button
         className={`${
           selectedSection ? "bg-yellow-500" : "bg-gray-400"
-        } text-white py-3 px-6 rounded-full hover:bg-yellow-600 transition-colors duration-300`}
+        } text-white py-3 px-6 rounded-full hover:bg-yellow-600 transition-colors duration-300 mb-20 cursor-pointer`}
         onClick={handleReserveClick}
         disabled={!selectedSection}
       >
