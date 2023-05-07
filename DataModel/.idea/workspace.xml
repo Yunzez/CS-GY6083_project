@@ -68,6 +68,7 @@
   <component name="PropertiesComponent">
     <property name="DBE.Init.BalloonShown" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="database.data.extractors.current.id" value="Comma-separated (CSV)_id" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ServiceViewManager">
@@ -109,29 +110,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="741" y="211" key="ExecutionTargetDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1683346902938" />
-    <state x="1050" y="279" key="FileChooserDialogImpl" timestamp="1680937188461">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="700" y="135" key="FileChooserDialogImpl" timestamp="1683396387193">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="700" y="135" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1683396387193" />
     <state x="1050" y="279" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1680937188461" />
-    <state width="845" height="128" key="GridCell.Tab.0.bottom" timestamp="1683390052568">
+    <state width="845" height="183" key="GridCell.Tab.0.bottom" timestamp="1683396235785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="128" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1683390052568" />
+    <state width="845" height="183" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
     <state width="1293" height="273" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
-    <state width="845" height="128" key="GridCell.Tab.0.center" timestamp="1683390052568">
+    <state width="845" height="183" key="GridCell.Tab.0.center" timestamp="1683396235785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="128" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1683390052568" />
+    <state width="845" height="183" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
     <state width="1293" height="273" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
-    <state width="845" height="128" key="GridCell.Tab.0.left" timestamp="1683390052568">
+    <state width="845" height="183" key="GridCell.Tab.0.left" timestamp="1683396235785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="128" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1683390052568" />
+    <state width="845" height="183" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
     <state width="1293" height="273" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
-    <state width="845" height="128" key="GridCell.Tab.0.right" timestamp="1683390052568">
+    <state width="845" height="183" key="GridCell.Tab.0.right" timestamp="1683396235785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="845" height="128" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1683390052568" />
+    <state width="845" height="183" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1683396235785" />
     <state width="1293" height="273" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1683347798837" />
     <state width="200" height="461" key="SqlResolveConfigurable" timestamp="1680937500767">
       <screen x="0" y="0" width="1920" height="1040" />
