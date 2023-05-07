@@ -16,11 +16,11 @@ const SigninPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const imagePaths = [
-    "/asset_img/1.jpg",
-    "/asset_img/2.jpg",
-    "/asset_img/3.jpg",
-    "/asset_img/4.jpg",
-    "/asset_img/5.jpg",
+    "https://afzvoa.blob.core.windows.net/assetimg/1.jpg",
+    "https://afzvoa.blob.core.windows.net/assetimg/2.jpg",
+    "https://afzvoa.blob.core.windows.net/assetimg/3.jpg",
+    "https://afzvoa.blob.core.windows.net/assetimg/4.jpg",
+    "https://afzvoa.blob.core.windows.net/assetimg/5.jpg",
   ];
 
   useEffect(() => {

@@ -18,31 +18,31 @@ export default function Home() {
   const [currIndex, setcurrIndex] = useState(0);
   const imagePaths = [
     {
-      src: "/home_img/rollercoaster.jpg",
+      src: "https://afzvoa.blob.core.windows.net/homeimg/rollercoaster.jpg",
       title: "Roller Coaster",
       description:
         "Get your heart racing with our thrilling roller coasters, featuring drops, loops, and twists that will leave you screaming for more. With rides for all ages and levels of excitement, there's something for everyone at our amusement park.",
     },
     {
-      src: "/home_img/store.jpg",
+      src: "https://afzvoa.blob.core.windows.net/homeimg/store.jpg",
       title: "Store",
       description:
         "Shop to your heart's content at our many stores, offering a wide variety of souvenirs, clothing, and snacks. Whether you're looking for a keepsake to remember your visit, or just need a quick bite to eat, our stores have you covered.",
     },
     {
-      src: "/home_img/restaurant.jpg",
+      src: "https://afzvoa.blob.core.windows.net/homeimg/restaurant.jpg",
       title: "Restaurant",
       description:
         "Satisfy your hunger with a delicious meal at one of our many restaurants, serving up everything from classic burgers and fries to gourmet cuisine. With options for every taste and dietary preference, you're sure to find something to love at our park.",
     },
     {
-      src: "/home_img/parking.jpg",
+      src: "https://afzvoa.blob.core.windows.net/homeimg/parking.jpg",
       title: "Parking",
       description:
         "Leave the hassle of finding parking to us! Our convenient parking lot offers plenty of space for your vehicle, and easy access to the park entrance. Plus, with affordable rates and friendly staff, you can park with confidence and peace of mind.",
     },
     {
-      src: "/home_img/show.jpg",
+      src: "https://afzvoa.blob.core.windows.net/homeimg/show.jpg",
       title: "Show",
       description:
         "Be entertained by our talented performers with our exciting shows, featuring music, dance, comedy, and more. From Broadway-style productions to interactive experiences, there's never a dull moment at our park. Don't miss out on the fun!",
