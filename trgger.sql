@@ -302,6 +302,12 @@ BEGIN
             FROM inserted
             WHERE AFZ_Visitors.Email = inserted.Email
     END
+    ELSE
+    BEGIN
+        INSERT INTO AFZ_Visitors (Fname, Lname, City, Email, Cell_Number, Birthdate, Password)
+        SELECT Fname, Lname, City, Email, Cell_Number, Birthdate, Password
+        FROM inserted
+    END
 END
 
 
