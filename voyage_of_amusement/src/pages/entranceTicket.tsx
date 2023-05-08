@@ -15,7 +15,7 @@ type Row = {
   phone: string;
   fname: string;
   lname: string;
-  dob: string;
+  birthday: string;
   city: string;
 };
 
@@ -73,7 +73,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
       phone: "",
       fname: "",
       lname: "",
-      dob: "",
+      birthday: "",
       city: "",
     },
   ]);
@@ -87,7 +87,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
         phone: "",
         fname: "",
         lname: "",
-        dob: "",
+        birthday: "",
         city: "",
       },
     ]);
@@ -140,7 +140,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
         phone: row.phone,
         fname: row.fname,
         lname: row.lname,
-        dob: row.dob,
+        birthday: row.birthday,
         city: row.city,
         master_activity_id: master_activity_id,
       };
@@ -198,7 +198,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
           phone: user.Cell_Number,
           fname: user.Fname,
           lname: user.Lname,
-          dob: user.Birthdate,
+          birthday: user.Birthdate,
           city: user.City,
         };
 
@@ -301,7 +301,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
                           "lname",
                           "email",
                           "phone",
-                          "dob",
+                          "birthday",
                           "city",
                         ] as Array<keyof Row>
                       ).map((field) => (
@@ -314,7 +314,7 @@ export const EntranceTicket: React.FC<EntranceTicketProps> = ({
                           </label>
                           <input
                             className="border border-gray-300 rounded py-2 px-3"
-                            type={field === "dob" ? "date" : "text"}
+                            type={field === "birthday" ? "date" : "text"}
                             id={`${field}-${row.id}`}
                             value={row[field]}
                             onChange={(e) =>

@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { FacilityType, useAppContext, FacilityDetailType } from "@/contexts/GlobaclContext";
+import {
+  FacilityType,
+  useAppContext,
+  FacilityDetailType,
+} from "@/contexts/GlobaclContext";
 import { CSSTransition } from "react-transition-group";
 import FacilityCard from "@/component/AttractionCard";
 import styles from "@/styles/attraction.module.css";
@@ -19,24 +23,24 @@ interface Attraction {
 const Attractions = () => {
   const delay = (ms: number | undefined) =>
     new Promise((res) => setTimeout(res, ms));
-  const { isLoggedIn, ready, facility, user, setUserInfo, refetchFacility } = useAppContext();
+  const { isLoggedIn, ready, facility, user, setUserInfo, refetchFacility } =
+    useAppContext();
   const router = useRouter();
 
   const [hasCheckout, setHasCheckout] = useState(false);
   const [checkoutProcess, setCheckoutProcess] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
 
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalData, setModalData] = useState<FacilityDetailType>({} );
-  const [numTickets, setNumTickets] = useState(0);
+  const [modalData, setModalData] = useState<FacilityDetailType>({});
+  const [numTickets, setNumTickets] = useState(1);
   const [selected, setSelected] = useState("Attractions");
   const [targetFacility, setTargetFacility] = useState<FacilityDetailType>([]);
   const [filteredFacility, setFilteredFacility] = useState([]);
   const FilterDiv = styled.div`
     padding: 25px;
     box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
-      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,         
+      rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 96vw;
     margin: 0 auto;
@@ -107,10 +111,14 @@ const Attractions = () => {
     }
 
     setTargetFacility(
-      facility.data.filter((item) => item.Source_Type === abbreviation ) as never[]
+      facility.data.filter(
+        (item) => item.Source_Type === abbreviation
+      ) as never[]
     );
     setFilteredFacility(
-      facility.data.filter((item) => item.Source_Type === abbreviation ) as never[]
+      facility.data.filter(
+        (item) => item.Source_Type === abbreviation
+      ) as never[]
     );
   };
 
@@ -124,11 +132,10 @@ const Attractions = () => {
       setFilteredFacility(targetFacility as never[]);
       console.log(targetFacility, facility);
 
-      if(facility.length === 0) {
-        console.log('refetch facility')
-        refetchFacility()
-        console.log(facility)
-        
+      if (facility.length === 0) {
+        console.log("refetch facility");
+        refetchFacility();
+        console.log(facility);
       }
     }
   }, [ready, facility]);
@@ -136,15 +143,14 @@ const Attractions = () => {
   useEffect(() => {
     console.log("targetFacility changed:", targetFacility);
     if (targetFacility.length > 0) {
-      setFilteredFacility(targetFacility  as never[]);
+      setFilteredFacility(targetFacility as never[]);
     }
   }, [targetFacility]);
 
   console.log("refresh");
   const handleSearchSubmit = (searchTerm: string) => {
     if (searchTerm.length > 0) {
-
-      const newFacility = targetFacility.filter((item:FacilityDetailType) =>
+      const newFacility = targetFacility.filter((item: FacilityDetailType) =>
         item.Facility_Name.toLowerCase().includes(searchTerm.toLowerCase())
       );
       setFilteredFacility(newFacility);
@@ -155,7 +161,7 @@ const Attractions = () => {
   };
 
   const handleAttractionClick = () => {
-    setNumTickets(0);
+    setNumTickets(1);
     setIsModalOpen(true);
   };
 
@@ -268,8 +274,6 @@ const Attractions = () => {
               </div>
             </div>
           </div>
-          
-          
         </FilterDiv>
         <div className=" w-full flex justify-content-end">
           <div className="flex justify-center w-full relative mb-20 pt-5  m-2 container mx-auto ">
@@ -295,7 +299,7 @@ const Attractions = () => {
           </div>
         </div>
       </div>
-        
+
       <div className={` ${styles.cardContainer}`}>
         {filteredFacility &&
           filteredFacility.map((data, key) => {
@@ -386,38 +390,51 @@ const Attractions = () => {
                     <hr className="my-2" />
                     <div>
                       {modalData.additionalData.length > 0 &&
-                        modalData.additionalData.map((item: {
-                            Item_Name: string;
-                            Item_Des: string;
-                            Unit_Price: string
-                        }, index: number) => (
-                          <div
-                            key={index}
-                            className="bg-white rounded-lg p-4 mb-4"
-                          >
-                            <h3 className="text-xl font-bold mb-2">
-                              {item.Item_Name}
-                            </h3>
-                            <p className="text-gray-700  font-semibold">
-                              {item.Item_Des}
-                            </p>
-                            <div className="flex justify-between mt-2">
-                              <p className="text-lg text-gray-600  font-semibold">
-                                Price: ${Number(item.Unit_Price).toFixed(2)}
+                        modalData.additionalData.map(
+                          (
+                            item: {
+                              Item_Name: string;
+                              Item_Des: string;
+                              Unit_Price: string;
+                            },
+                            index: number
+                          ) => (
+                            <div
+                              key={index}
+                              className="bg-white rounded-lg p-4 mb-4"
+                            >
+                              <h3 className="text-xl font-bold mb-2">
+                                {item.Item_Name}
+                              </h3>
+                              <p className="text-gray-700  font-semibold">
+                                {item.Item_Des}
                               </p>
+                              <div className="flex justify-between mt-2">
+                                <p className="text-lg text-gray-600  font-semibold">
+                                  Price: ${Number(item.Unit_Price).toFixed(2)}
+                                </p>
+                              </div>
+                              <hr />
                             </div>
-                            <hr />
-                          </div>
-                        ))}
+                          )
+                        )}
                     </div>
                   </div>
                 )}
+
+                {modalData.Source_Type == "Shw" && (
+                  <h5>
+                    You can reserve a show here, you will only be charged if you
+                    make it to the show since the capacity of the show is
+                    limited
+                  </h5>
+                )}
                 {modalData.Source_Type !== "Sto" ? (
                   <>
-                    <div className="text-gray-600 mr-2 flex mt-5 justify-center">
+                    {/* <div className="text-gray-600 mr-2 flex mt-5 justify-center">
                       Number of tickets:
-                    </div>
-                    <div className="flex items-center justify-center my-4">
+                    </div> */}
+                    {/* <div className="flex items-center justify-center my-4">
                       <div className="flex items-center border rounded-lg overflow-hidden">
                         <button
                           type="button"
@@ -439,7 +456,7 @@ const Attractions = () => {
                           +
                         </button>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="flex justify-end">
                       <button
                         type="button"
@@ -448,7 +465,7 @@ const Attractions = () => {
                           handleCheckout(modalData);
                         }}
                       >
-                        Checkout
+                        Reserve
                       </button>
                     </div>
                   </>
@@ -531,7 +548,7 @@ const Attractions = () => {
                       setCheckoutProcess(false);
                     }}
                   >
-                    Sick
+                    Okay
                   </button>
                   <button
                     className="px-6 py-3 bg-slate-500 text-white rounded-full hover:bg-slate-600 transition-colors duration-300"

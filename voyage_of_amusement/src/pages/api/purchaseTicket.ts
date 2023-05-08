@@ -26,7 +26,7 @@ export default async function handler(
       phone,
       fname,
       lname,
-      dob,
+      birthday,
       city,
       visitor_id,
       visit_date,
@@ -39,7 +39,7 @@ export default async function handler(
       .input("lname", lname)
       .input("email", email)
       .input("phone", phone)
-      .input("dob", dob)
+      .input("dob", birthday)
       .input("city", city)
       .input("visitor_id", visitor_id)
       .input("method_id", 1) // 1 for online

@@ -37,7 +37,7 @@ export default async function handler(
         );
 
       res.status(200).send({ summary: result.recordset, payment: payment.recordset });
-      console.log("after query for user info", payment.recordset );
+      console.log("after query for user info",result.recordset, payment.recordset );
     } catch (err) {
       console.error(err);
       console.log("error he");

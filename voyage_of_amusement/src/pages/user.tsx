@@ -373,11 +373,11 @@ const UserSettings: React.FC = () => {
           setSuperTickets(data.ticket);
           const [lengthsArray, labelData] = filterGraphData(
             data.ticket,
-            "Ticket_Type_ID"
+            "Ticket_Type"
           );
           const [priceLengthsArray, priceLabelData] = filterGraphData(
             data.ticket,
-            "Price"
+            "Sold_Price"
           );
 
           const [VTLengthsArray, VTLabelData] = filterGraphData(
@@ -779,29 +779,25 @@ const UserSettings: React.FC = () => {
             )}
 
             <div className="flex items-center justify-between py-2 border-b border-gray-300">
-              <div className="w-1/6 text-center">Ticket_ID</div>
-              <div className="w-1/6 text-center">Activity_ID</div>
-              <div className="w-1/6 text-center">Price</div>
-              <div className="w-1/6 text-center">Purchase_Date</div>
-              <div className="w-1/6 text-center">Visit_Date</div>
-              <div className="w-1/6 text-center">Validate</div>
+              <div className="w-1/5 text-center">Ticket_ID</div>
+              <div className="w-1/5 text-center">Ticket Type</div>
+              <div className="w-1/5 text-center">Sold Price</div>
+              <div className="w-1/5 text-center">Purchase_Date</div>
+              <div className="w-1/5 text-center">Purchase Method</div>
             </div>
             {superTickets.map((ticket) => (
               <div
                 className="flex items-center justify-between py-2 border-b border-gray-300"
                 key={ticket.Ticket_ID}
               >
-                <div className="w-1/6 text-center">{ticket.Ticket_ID}</div>
-                <div className="w-1/6 text-center">{ticket.Activity_ID}</div>
-                <div className="w-1/6 text-center">${ticket.Price}</div>
-                <div className="w-1/6 text-center">
-                  {new Date(ticket.Purchase_Date ?? "").toLocaleDateString()}
+                <div className="w-1/5 text-center">{ticket.Ticket_ID}</div>
+                <div className="w-1/5 text-center">{ticket.Ticket_Type}</div>
+                <div className="w-1/5 text-center">${ticket.Sold_Price}</div>
+                <div className="w-1/5 text-center">
+                  {new Date(ticket.Activity_Date ?? "").toLocaleDateString()}
                 </div>
-                <div className="w-1/6 text-center">
-                  {new Date(ticket.Visit_Date ?? "").toLocaleDateString()}
-                </div>
-                <div className="w-1/6 text-center">
-                  {ticket.Validate === 0 ? "Yes" : "No"}
+                <div className="w-1/5 text-center">
+                {ticket.Method_Type[0]}
                 </div>
               </div>
             ))}
@@ -904,27 +900,30 @@ const UserSettings: React.FC = () => {
                             <small className="text-muted text-md-xl">
                               Admission Ticket
                             </small>
-                            <div className="md:flex md:text-xl">
-                              <div className="me-3">
-                                Purchased on:{" "}
-                                {new Date(
-                                  item.Activity_Date[0]
-                                ).toLocaleDateString("en-US", {
-                                  month: "2-digit",
-                                  day: "2-digit",
-                                  year: "numeric",
-                                })}
-                              </div>
-                              <div>{item.Discount ? "Discounted" : ""}</div>
+                            <div className="md:flex md:text-xl ">
+                              {item.Activity_Date[0] && (
+                                <div className="me-3 w-full">
+                                  Purchased on:{" "}
+                                  {new Date(
+                                    item.Activity_Date[0]
+                                  ).toLocaleDateString("en-US", {
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                    year: "numeric",
+                                  })}
+                                </div>
+                              )}
+
                             </div>
+                            <div className="mt-1 mb-1">{item.Discount ? "Discounted" : ""}</div>
                             <div className="text-md-xl">
                               <CardInfoItem>
                                 Purchased {item.Method_Type ?? "Online"}
                               </CardInfoItem>
                             </div>
                           </div>
-                          <div className="text-gray-800 md:text-xl">
-                            <p>Entrance:</p>
+                          <div className="text-gray-800 md:text-md ">
+                            <p>Valid on:</p>
                             {item.Visit_Date
                               ? new Date(item.Visit_Date).toLocaleDateString(
                                   "en-US",
@@ -948,7 +947,7 @@ const UserSettings: React.FC = () => {
           <div id="parking-history" className="py-2 px-4">
             <CardDiv>
               <SettingCard
-                title={"Attraction visited"}
+                title={"Attraction Reserved"}
                 content={attractionsTextContent}
               />
 
@@ -970,7 +969,7 @@ const UserSettings: React.FC = () => {
                             </CardDescription>
                             <CardInfoRow>
                               <CardInfoItem>
-                                Date:{" "}
+                              Reserved Date:{" "}
                                 {new Date(
                                   item.Activity_Date[0]
                                 ).toLocaleDateString("en-US", {
@@ -1000,7 +999,10 @@ const UserSettings: React.FC = () => {
           <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
           <div id="shows-visited" className="py-2 px-4">
             <CardDiv>
-              <SettingCard title={"Visited Shows"} content={showsTextContent} />
+              <SettingCard
+                title={"Shows reserved"}
+                content={showsTextContent}
+              />
 
               {userInfo.show.length === 0 ? (
                 <p className="text-red-500">You have no information yet</p>
@@ -1020,7 +1022,7 @@ const UserSettings: React.FC = () => {
                             </CardDescription>
                             <CardInfoRow>
                               <CardInfoItem>
-                                Date:{" "}
+                              Reserved Date:{" "}
                                 {new Date(
                                   item.Activity_Date[0]
                                 ).toLocaleDateString("en-US", {
@@ -1029,8 +1031,55 @@ const UserSettings: React.FC = () => {
                                   year: "numeric",
                                 })}
                               </CardInfoItem>
+                            </CardInfoRow>
+                            <CardInfoRow>
                               <CardInfoItem>
-                                Discount: {item.Discount}
+                                Location Section ID: {item.Location_Section_ID}
+                              </CardInfoItem>
+                            </CardInfoRow>
+                          </CardContent>
+                        </CardContainer>
+                      )
+                    )}
+                  </div>
+                </div>
+              )}
+            </CardDiv>
+          </div>
+          <hr className="my-6 h-0.5 border-t-0 bg-neutral-100 opacity-100 dark:opacity-50" />
+          <div className="py-2 px-4">
+            <CardDiv>
+              <SettingCard
+                title={"Visited Store"}
+                content={showsTextContent}
+              />
+
+              {userInfo.shop.length === 0 ? (
+                <p className="text-red-500">You have no information yet</p>
+              ) : (
+                <div className="text-slate-700">
+                  <p className="font-bold md:text-2xl m-4">
+                    Your recent shows:{" "}
+                  </p>
+                  <div className="grid gap-4 grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3">
+                    {userInfo.shop.map(
+                      (item: { [key: string]: any }, index: number) => (
+                        <CardContainer key={index}>
+                          <CardContent>
+                            <CardTitle>{item.Facility_Name}</CardTitle>
+                            <CardDescription>
+                              {item.Facility_Description}
+                            </CardDescription>
+                            <CardInfoRow>
+                              <CardInfoItem>
+                                Purchase Date:{" "}
+                                {new Date(
+                                  item.Activity_Date[0]
+                                ).toLocaleDateString("en-US", {
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                  year: "numeric",
+                                })}
                               </CardInfoItem>
                             </CardInfoRow>
                             <CardInfoRow>
